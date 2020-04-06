@@ -1,11 +1,13 @@
 <?php
-/*
-  Plugin Name: emulsion addons
-  Plugin URI: https://tenman.info/
-  Description: Theme misc settings
-  Author: Tenman Akio
-  Version: 1.0
-  Author URI: http://tenman.info/
+/**
+ * Plugin Name: emulsion addons
+ * Plugin URI:  https://github.com/tenman/emulsion-addons
+ * Description: A plugin for customizing WordPress theme emulsion.
+ * Version:     1.0.1
+ * Author:      nobita
+ * Author URI:  https://www.tenman.info/
+ * License:     GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name' );

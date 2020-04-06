@@ -7,8 +7,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-the emulsion addons is a WordPress plugin including some cool feature like theme customizer
-The plugin has been designed for emulsion WordPress theme.
+A plugin for customizing WordPress theme emulsion.
 
 == Description ==
 
@@ -16,10 +15,10 @@ You can customize the theme layout and color scheme.
 With the automatic contrast function linked to the background color setting, you can easily set the color scheme.
 
 Use with [wp-scss plugin](https://wordpress.org/plugins/wp-scss/) to automatically compile the theme scss files.
-You can reset the theme style for each post.
 
+Add a meta box to the theme post editor. This feature allows you to stop theme styles or remove headers.
 Interference with non-theme styles such as page builder and block editor can be kept to a minimum.
-Theme functionality is modularized, so you can remove headers and footers and initialize styles for each template as needed.
+
 Contains detailed documentation for the theme
 
 == Installation ==
@@ -32,14 +31,16 @@ Contains detailed documentation for the theme
 Do you have questions or issues with emulsion theme?
 Use these support channels appropriately.
 
-[docs]https://tenman.info/wp3/emulsion-addons/docs
-
+[issues](https://github.com/tenman/emulsion-addons/issues)
+[support](https://wordpress.org/support/plugin/emulsion-addons/)
 == Screenshots ==
 
 1. screenshot-1.png
 
 == Changelog ==
 
+=1.0.1 : april 6 2020 =
+        * https://github.com/tenman/emulsion/releases
 =1.0.0 : april 6 2020 =
-*initial release
+        * initial release
 
