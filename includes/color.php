@@ -654,6 +654,8 @@ function emulsion_resuponsive_css() {
 	$content_width_plus_sidebar_width_plus1	 = $content_width_plus_sidebar_width_plus1 . 'px';
 	$content_width_plus_sidebar_width		 = (int) emulsion_get_var( 'emulsion_content_width' ) + (int) emulsion_get_var( 'emulsion_sidebar_width' ) + 16;
 	$content_width_plus_sidebar_width		 = $content_width_plus_sidebar_width . 'px';
+	//@since 1.0.2 fixed hard coded uri
+	$theme_image_uri						 = esc_url( get_template_directory_uri() );
 
 	$css = <<<CSS
 /*?
@@ -1066,7 +1068,7 @@ function emulsion_resuponsive_css() {
   }
 
   .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"]:checked ~ nav .menu .nav-menu-child-opener[type="checkbox"]:checked ~ label:before {
-    background: url("/wp-37/wp-content/themes/emulsion/images/svg/arrow-up.svg#white");
+    background: url("{$theme_image_uri}/images/svg/arrow-up.svg#white");
     background-size: contain;
   }
   .on-scroll .template-part-header-custom ~ .primary-menu-wrapper {
