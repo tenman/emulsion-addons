@@ -59,7 +59,6 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_current_layout_type', 'emulsion_addons_current_layout_type' );
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
-	add_filter( 'emulsion_get_svg_ids', 'emulsion_addons_get_svg_ids' );
 }
 
 if ( ! function_exists( 'emulsion_test_for_min_php' ) ) {
@@ -1668,20 +1667,6 @@ if ( ! function_exists( 'emulsion_addons_is_display_featured_image_in_the_loop' 
 
 }
 
-
-if ( ! function_exists( 'emulsion_addons_get_svg_ids' ) ) {
-
-	function emulsion_addons_get_svg_ids($svgs) {
-
-		preg_match_all('#id=(\'|\")([^(\'|\")]+)(\'|\")#', $svgs, $result, PREG_PATTERN_ORDER );
-
-		if( isset( $result[2] ) && ! empty( $result[2] )){
-			return json_encode($result[2]);
-		}
-
-		return false;
-	}
-}
 add_filter('emulsion_metabox_display_control','emulsion_addons_metabox_display_control', 11, 5 );
 
 function emulsion_addons_metabox_display_control( $bool, $location, $post_id, $is_single , $is_page ) {
