@@ -110,7 +110,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			 * remove element and their contents
 			 */
 
-			$post_text	 = emulsion_strip_tags_content( $post_text, '<table><del><figure><blockquote>', true );
+			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code>', true );
 
 			/**
 			 * Remove Comments
@@ -295,3 +295,33 @@ if ( ! function_exists( 'emulsion_post_excerpt_more' ) ) {
 	}
 }
 
+if ( ! function_exists( 'emulsion_strip_elements' ) ) {
+
+	/**
+	 * html Deletes a specific element from the text.
+	 * About difference with strip_tags () function
+	 * strip_tags () can $allowable_tags can be set,but $disallowable_tags cannot be set.
+	 * This function enables $disallowable_tags.
+	 * @param type $text
+	 * @param type $tags
+	 * @param type $invert
+	 * @return text
+	 */
+	function emulsion_strip_elements( $text, $tags = '', $invert = false ) {
+
+		preg_match_all( '/<(.+?)[\s]*\/?[\s]*>/si', trim( $tags ), $tags );
+		$tags = array_unique( $tags[1] );
+
+		if ( is_array( $tags ) && count( $tags ) > 0 ) {
+			if ( $invert == false ) {
+				return preg_replace( '@<(?!(?:' . implode( '|', $tags ) . ')\b)(\w+)\b.*?>.*?</\1>@si', '', $text );
+			} else {
+				return preg_replace( '@<(' . implode( '|', $tags ) . ')\b.*?>.*?</\1>@si', '', $text );
+			}
+		} elseif ( $invert == false ) {
+			return preg_replace( '@<(\w+)\b.*?>.*?</\1>@si', '', $text );
+		}
+		return $text;
+	}
+
+}
