@@ -10,7 +10,7 @@ function emulsion_addons_hooks_setup() {
 	if ( 'active' !== $wp_scss_status ) {
 		add_action( 'wp_ajax_emulsion_tiny_mce_css_variables', 'emulsion_tiny_mce_css_variables_callback' );
 	}
-
+	add_filter( 'emulsion_inline_style', 'emulsion_plugins_style_change_inline' );
 	add_action( 'edit_post_link', 'emulsion_custom_gutenberg_edit_link', 10, 3 );
 	function_exists( 'emulsion_customizer_add_supports_excerpt' ) ? add_action( 'emulsion_template_pre_index', 'emulsion_customizer_add_supports_excerpt' ) : '';
 	add_action( 'init', 'emulsion_plugins' );
@@ -531,7 +531,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 		$wp_scss_status = get_theme_mod( 'emulsion_wp_scss_status' );
 
 		if ( function_exists('emulsion__css_variables') && 'active' !== $wp_scss_status && ! is_user_logged_in() ) {
-
+			//dinamic css
 			$style .= emulsion__css_variables( '' );
 		}
 		$style = emulsion_sanitize_css( $style );
@@ -1797,36 +1797,4 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id, $i
 
 	return true;
 }
-if ( ! function_exists( 'emulsion_plugins_style_change_inline' ) ) {
 
-	function emulsion_plugins_style_change_inline( $css ) {
-		global $wp_style;
-
-		$add_css = '';
-
-		if ( is_page() && false == emulsion_metabox_display_control( 'page_style' ) ) {
-
-			return;
-		}
-		if ( is_single() && false == emulsion_metabox_display_control( 'style' ) ) {
-
-			return;
-		}
-		if ( ! emulsion_the_theme_supports( 'enqueue' ) ) {
-
-			return;
-		}
-		if ( is_user_logged_in() || is_admin() ) {
-
-			return $css;
-		}
-		if ( ! is_admin() || ! is_user_logged_in() || emulsion_theme_addons_exists() ) {
-
-			$get_css = file( get_theme_file_path( 'css/common.css' ) );
-			$add_css .= implode( '', $get_css );
-			return $css . $add_css;
-		}
-		return $css;
-	}
-
-}

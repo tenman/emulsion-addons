@@ -562,7 +562,7 @@ if ( ! function_exists( 'emulsion_custom_background_cb' ) ) {
 
 		$style = $color ? "background-color: #$color;" : '';
 
-		if ( $background ) {
+		if ( $background || ! empty( $style ) ) {
 
 			$image = ' background-image:linear-gradient(var(--thm_background_image_dim), var(--thm_background_image_dim)), url("' . esc_url_raw( $background ) . '");';
 
