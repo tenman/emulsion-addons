@@ -11,8 +11,8 @@ function emulsion__css_variables( $css = '' ) {
 
 		if ( is_customize_preview() ) {
 
-	//delete_transient( $transient_name );
-			remove_theme_mod( 'emulsion__css_variables' );
+			delete_transient( $transient_name );
+			//remove_theme_mod( 'emulsion__css_variables' );
 		}
 		if( is_singular() ) {
 
@@ -24,8 +24,8 @@ function emulsion__css_variables( $css = '' ) {
 			}
 
 		}
-	//	$transient_val = get_transient( $transient_name );
-		$setting_values = get_theme_mod( 'emulsion__css_variables' );
+		$transient_val = get_transient( $transient_name );
+		//$setting_values = get_theme_mod( 'emulsion__css_variables' );
 		
 		if ( false !==  $setting_values && ! is_user_logged_in() ) {
 
@@ -212,8 +212,8 @@ CSS;
 
 	$style = emulsion_sanitize_css( $style );
 
-	//set_transient( $transient_name, $style, 60 * 60 * 24 );
-	set_theme_mod( 'emulsion__css_variables', $style );
+	set_transient( $transient_name, $style, 60 * 60 * 24 );
+	//set_theme_mod( 'emulsion__css_variables', $style );
 	
 
 	return $css. $style;
