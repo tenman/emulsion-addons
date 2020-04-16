@@ -925,22 +925,7 @@ if ( ! function_exists( 'emulsion_get_google_font_family_from_url' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_sanitize_css' ) ) {
 
-	/**
-	 * CSS sanitize
-	 */
-	function emulsion_sanitize_css( $css ) {
-
-		/**
-		 *
-		 * Please add filter style sanitize code. if need
-		 *
-		 */
-		return wp_strip_all_tags( $css );
-	}
-
-}
 if ( ! function_exists( 'emulsion_get_footer_cols' ) ) {
 
 	/**

@@ -518,6 +518,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 	function emulsion_styles( $css ) {
 		$style	 = $css;
 		$style	 .= emulsion_inline_style_filter( '' );
+		
 		$style	 .= emulsion_term_duplicate_link_hide( '' );
 		$style	 .= emulsion_smart_category_highlight( '' );
 		$style	 .= emulsion_add_common_font_css( '' );
@@ -539,33 +540,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_inline_style_filter' ) ) {
 
-	function emulsion_inline_style_filter( $style ) {
-
-		if ( defined( 'WPSCSS_PLUGIN_DIR' ) ) {
-			return $style;
-		}
-		// ignone default color
-		$header_text_color = get_theme_mod( 'header_textcolor', false );
-
-		if ( ! empty( $header_text_color ) && ctype_xdigit( $header_text_color ) ) {
-			////varidate hex color value
-			//$header_text_color  = sanitize_hex_color( $header_text_color );
-			$style .= '
-		div.header-layer .entry-text,
-		div.header-layer .entry-text a,
-		div.header-layer .site-description,
-		div.header-layer .site-title .site-title-text,
-		div.header-layer .header-text a{ color:#' . $header_text_color . ';}';
-		}
-
-		$style = emulsion_sanitize_css( $style );
-
-		return $style;
-	}
-
-}
 if ( ! function_exists( 'emulsion_term_duplicate_link_hide' ) ) {
 
 	function emulsion_term_duplicate_link_hide( $css ) {
