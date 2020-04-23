@@ -25,9 +25,8 @@ function emulsion__css_variables( $css = '' ) {
 
 		}
 		$transient_val = get_transient( $transient_name );
-		//$setting_values = get_theme_mod( 'emulsion__css_variables' );
-		
-		if ( false !==  $setting_values && ! is_user_logged_in() ) {
+				
+		if ( ! is_user_logged_in() ) {
 
 			return $css. $transient_val;
 		}
@@ -120,7 +119,6 @@ function emulsion__css_variables( $css = '' ) {
 	$box_gap							 = emulsion_get_css_variables_values( 'box_gap' );
 	$main_width							 = emulsion_get_css_variables_values( 'main_width' );
 	$align_offset						 = emulsion_get_css_variables_values( 'align_offset' );
-	//$sidebar_width						 = emulsion_get_css_variables_values( 'sidebar_width' );
 	$content_gap						 = emulsion_get_css_variables_values( 'content_gap' );
 	$content_line_height				 = emulsion_get_css_variables_values( 'content_line_height' );
 	$common_line_height					 = emulsion_get_css_variables_values( 'common_line_height' );
@@ -128,6 +126,21 @@ function emulsion__css_variables( $css = '' ) {
 	$default_header_height				 = emulsion_get_css_variables_values( 'default_header_height' );
 	$full_width_negative_margin			 = emulsion_get_css_variables_values( 'full_width_nagative_margin' );
 	$boxed_conditions					 = $stream_condition . ',' . $grid_condition;
+	
+	/**
+	 * Customizer color picker support only hex color
+	 * If the color picker value is the same as the background color, it will be overwritten transparent
+	 */
+	
+	if ( get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) == emulsion_get_background_color() ) {
+		$columns_section_bg = 'transparent';
+	}
+	if ( get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) == emulsion_get_background_color() ) {
+		$media_text_section_bg = 'transparent';
+	}
+	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) == emulsion_get_background_color() ) {
+		$gallery_section_bg = 'transparent';
+	}
 
 	$style = <<<CSS
 body{

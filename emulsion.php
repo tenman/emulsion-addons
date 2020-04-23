@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.0.6
+ * Version:     1.0.7
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -18,13 +18,13 @@ if ( 'emulsion' == $emulsion_addon_accept_theme_name &&
 		version_compare( $emulsion_addon_accept_theme_version, '1.1.7', '>=' ) ) {
 
 	include_once( $emulsion_root . 'includes/functions.php');
-	
+
 	include_once( $emulsion_root . 'includes/validate.php');
 	include_once( $emulsion_root . 'includes/theme-supports-functions.php' );
 	include_once( $emulsion_root . 'includes/theme-supports.php' );
 	include_once( $emulsion_root . 'includes/color-functions.php' );
 	include_once( $emulsion_root . 'includes/conf.php' );
-	include_once( $emulsion_root . 'includes/template-tags.php' );	
+	include_once( $emulsion_root . 'includes/template-tags.php' );
 	include_once( $emulsion_root . 'includes/hooks.php' );
 
 	include_once( $emulsion_root . 'includes/snippets.php' );
@@ -86,10 +86,10 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		if ( 'reset' == $reset_val ) {
 			emulsion_reset_customizer_settings();
 		}
-		
+
 		emulsion_customizer_add_supports_layout();
 		emulsion_customizer_add_supports_footer();
-		
+
 		/**
 		 * Gutenberg
 		 * Apply block editor style when theme style has been removed
@@ -107,16 +107,26 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 			add_theme_support( 'wp-block-styles' );
 		}
-		
 	}
 
+	if ( function_exists( 'has_header_video' ) ) {
+		
+		/**
+		 * Header video
+		 */
+		add_filter( 'emulsion_custom_header_defaults', function( $args ) {
+			$args['video'] = true;
+			return $args;
+		} );
+		add_filter( 'header_video_settings', 'emulsion_video_controls' );
+	}
 }
 
 
 add_action( 'wp_enqueue_scripts', 'emulsion_addons_register_scripts_and_styles' );
 
 function emulsion_addons_register_scripts_and_styles() {
-	
+
 }
 
 /**
@@ -140,6 +150,6 @@ function emulsion_deactivate_plugin(){
 register_activation_hook( __FILE__,  'emulsion_activate_plugin' );
 
 function emulsion_activate_plugin(){
-	
+
 	emulsion_wp_scss_activate_check();
 }

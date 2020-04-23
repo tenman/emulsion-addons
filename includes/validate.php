@@ -144,7 +144,7 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 	if ( $context == "post" ) {
 
 		$emulsion_allowed_tag	 = array(
-			'a' => array(
+			'a'		 => array(
 				'href'				 => true,
 				'rel'				 => true,
 				'rev'				 => true,
@@ -156,7 +156,11 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 				'aria-current'		 => true,
 				'data-no-instant'	 => true,
 			),
-				);
+			'time'	 => array(
+				'class'		 => true,
+				'datetime'	 => true,
+			),
+		);
 		$emulsion_allowed_tag	 = array_map( '_wp_add_global_attributes', $emulsion_allowed_tag );
 
 		return array_merge( $allowedposttags, $emulsion_allowed_tag );
@@ -535,6 +539,7 @@ function emulsion_customizer_preview_redirect_validate( $input ) {
 }
 
 function emulsion_post_display_author_format_validate( $input ) {
+
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
 	$values			 = emulsion_get_var( $name, 'choices' );
@@ -946,7 +951,7 @@ function emulsion_header_layout_validate( $input ) {
 	$values			 = emulsion_get_var( $name, 'choices' );
 	$default_value	 = emulsion_get_var( $name, 'default' );
 
-	if ( array_key_exists( $input, $values ) ) {
+	if ( ! empty( $input ) && array_key_exists( $input, $values ) ) {
 
 		return $input;
 	}
