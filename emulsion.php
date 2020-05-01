@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.0.8
+ * Version:     1.0.9
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -60,7 +60,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 			add_theme_support( 'custom-background', array(
 				'default-color'			 => 'ffffff',
-				'default-image'			 => get_theme_file_uri( 'images/background-image.png' ),
+				'default-image'			 => '', //get_theme_file_uri( 'images/background-image.png' )
 				'default-preset'		 => 'default',
 				'default-position-x'	 => 'left',
 				'default-position-y'	 => 'top',
