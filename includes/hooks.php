@@ -55,6 +55,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_current_layout_type', 'emulsion_addons_current_layout_type' );
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
+	add_filter( 'emulsion_inline_script', 'emulsion_description');
 }
 
 if ( ! function_exists( 'emulsion_test_for_min_php' ) ) {
@@ -1826,4 +1827,28 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id, $i
 
 	return true;
 }
-
+function emulsion_description( $script ){
+	
+	$script .=<<<SCRIPT
+	jQuery(document).ready(function ($) {
+    /**
+     * when not exists meta description tag, add meta description tag
+     *
+     */
+    function emulsion_get_meta(metaName) {
+        const metas = document.getElementsByTagName('meta');
+        for (let i = 0; i < metas.length; i++) {
+            if (metas[i].getAttribute('name') === metaName) {
+                return metas[i].getAttribute('content');
+            }
+        }
+        return '';
+    }
+    if ('' == emulsion_get_meta('description') && 'none' !== emulsion_script_vars.meta_description) {
+        $("head").append('<meta name="description" content="' + emulsion_script_vars.meta_description + '" />');
+    }
+});
+SCRIPT;
+	
+	return $script;
+}

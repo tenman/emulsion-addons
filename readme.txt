@@ -38,7 +38,7 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
-=1.0.7 : april 15 2020 =
+=1.0.7 : may 1 2020 =
         * https://github.com/tenman/emulsion/releases
 =1.0.6 : april 15 2020 =
         * https://github.com/tenman/emulsion/releases
