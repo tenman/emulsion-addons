@@ -226,7 +226,7 @@
 
                 $('.primary-menu-wrapper, .primary-menu-wrapper a').css({'background-color': sidebar_bg, 'color': text_color});
             }
-
+            
             $('article a,.placeholder-header a, .entry-date').css({'color': text_color, 'background': 'transparent'});
             $('body, .custom-background.background-css-pattern-seigaiha').css('background-color', newval);
             $('.menu-placeholder').css({'background': 'transparent'});
@@ -574,7 +574,7 @@
             }
         });
     });
-    //emulsion_sidebar_background
+
     wp.customize('emulsion_block_columns_section_bg', function (value) {
         value.bind(function (newval) {
             var color = emulsion_text_color(newval);

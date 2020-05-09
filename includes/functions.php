@@ -1,5 +1,10 @@
 <?php
 function emulsion_plugin_info( $info, $echo = true ) {
+	
+	if( ! function_exists('get_plugin_data') ){
+		
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	}
 
 	$emulsion_current_data = get_plugin_data( plugin_dir_path( __DIR__ ) . 'emulsion.php' );
 
@@ -365,18 +370,13 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		 */
 		set_theme_mod( 'background_color', $emulsion_default_background_color );
 
-
-
 		$emulsion_default_header_textcolor_color = str_replace( '#', '', emulsion_header_text_color_reset() );
 		set_theme_mod( 'header_textcolor', $emulsion_default_header_textcolor_color );
-
-
 
 		foreach ( $emulsion_customize_args as $name => $val ) {
 
 			remove_theme_mod( $name );
 		}
-
 
 		$emulsion_custom_background_defaults_image = emulsion_get_supports( 'background' )[0]['default']['default-image'];
 		set_theme_mod( 'background_image', $emulsion_custom_background_defaults_image );
