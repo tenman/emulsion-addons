@@ -180,8 +180,6 @@ if ( ! function_exists( 'emulsion_body_class' ) ) {
 
 		$classes[] = 'noscript';
 		
-		
-		
 		unset( $classes['emulsion'] );
 		
 		$classes[] = sanitize_html_class( emulsion_plugin_info( 'Slug', false ) );
@@ -1089,16 +1087,26 @@ if ( ! function_exists( 'emulsion_remove_url_from_text' ) ) {
 	}
 
 }
+if( ! function_exists('emulsion_amp_css') ) {
+	
+	function emulsion_amp_css(){
+		// removed function
+		return '';
+	}
+}
+
 if ( function_exists( 'amp_init' ) ) {
+	
 	/**
 	 * AMP
+	 * for reader template
 	 * https://wordpress.org/plugins/amp/
 	 */
-	add_action( 'amp_post_template_css', 'emulsion_amp_css' );
+	add_action( 'amp_post_template_css', 'emulsion_addons_amp_css' );
 
-	if ( ! function_exists( 'emulsion_amp_css' ) ) {
+	if ( ! function_exists( 'emulsion_addons_amp_css' ) ) {
 
-		function emulsion_amp_css() {
+		function emulsion_addons_amp_css() {
 			
 			$supports = false;
 			$supports = emulsion_the_theme_supports( 'amp' );
@@ -1107,15 +1115,50 @@ if ( function_exists( 'amp_init' ) ) {
 				return;
 			}
 			$css_variables	 = emulsion__css_variables();
-			$get_css		 = file( get_theme_file_path( 'css/amp.css' ) );
-			$css			 = implode( '', $get_css );
 			/**
 			 * @see emulsion_sanitize_css() in functions.php
 			 * For sanitization, you can add any processing you need
 			 */
-			echo emulsion_sanitize_css( $css_variables . $css );
+			echo emulsion_sanitize_css( $css_variables );
 		}
 
 	}
+
+}
+
+/**
+ * AMP plugin setting
+ */
+add_action( 'wp_enqueue_scripts', 'emulsion_amp_enqueue_script' );
+add_filter('emulsion_template_pre','emulsion_amp_setting');
+
+function emulsion_amp_enqueue_script() {
+    if ( ! emulsion_is_amp() ) {
+		wp_register_style( 'emulsion-completion', get_template_directory_uri() . '/css/common.css', array(), $emulsion_current_data_version, 'all' );
+		wp_enqueue_style( 'emulsion-completion' );	
+        return;
+    }
+    wp_register_style( 'amp-reader', get_template_directory_uri() . '/css/amp.css', array(), '', 'all' );
+	wp_enqueue_style( 'amp-reader' );
+	
+	$css_variables	 = emulsion__css_variables();
+	wp_add_inline_style('amp-reader', $css_variables);
+}
+
+function emulsion_amp_setting() {
+		
+	if ( emulsion_is_amp() ) {
+		emulsion_remove_supports( 'enqueue' );
+		emulsion_remove_supports( 'search_drawer' );
+		emulsion_remove_supports( 'primary_menu' );
+		emulsion_remove_supports( 'sidebar' );
+		emulsion_remove_supports( 'sidebar_page' );
+		emulsion_remove_supports( 'title_in_page_header' );
+		add_filter('post_thumbnail_html','_return_empty_string');		
+		emulsion_remove_supports( 'instantclick' );
+		emulsion_remove_supports( 'toc' );
+		emulsion_remove_supports( 'tooltip' );
+
+	} 
 
 }
