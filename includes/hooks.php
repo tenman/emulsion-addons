@@ -551,6 +551,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 		$style	 .= emulsion_add_common_font_css( '' );
 		$style	 .= emulsion_heading_font_css( '' );
 		$style	 .= emulsion_widget_meta_font_css( '' );
+		$style   .= emulsion_block_latest_posts_excerpt( '' );
 
 		if ( function_exists('emulsion_dinamic_css') && ( is_user_logged_in() || is_admin() || is_customize_preview() ) ) {
 
@@ -1040,6 +1041,33 @@ CSS;
 	}
 
 }
+
+
+
+if ( ! function_exists( 'emulsion_block_latest_posts_excerpt' ) ) {
+
+	function emulsion_block_latest_posts_excerpt( $css ) {
+		
+		$excerpt_lines	 = get_theme_mod( 'emulsion_excerpt_length_grid', emulsion_get_var( 'emulsion_excerpt_length_grid' ) );
+		$style			 = '';
+
+		if( function_exists('emulsion_lang_cjk') && emulsion_lang_cjk() ) {
+			
+		$style =<<<CSS
+				
+body .wp-block-latest-posts > li .wp-block-latest-posts__post-excerpt{
+	height:calc( var(--thm_meta_data_font_size) * var(--thm_content_line_height) * absint($excerpt_lines) );
+	overflow:hidden;
+}				
+				
+CSS;
+		return $css. $style;
+		}
+
+		return $css;
+				
+	}
+}
 if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 
 	function emulsion_widget_meta_font_css( $css ) {
@@ -1327,11 +1355,11 @@ if ( ! function_exists( 'emulsion_cjk_excerpt' ) ) {
 		 * Languages that do not separate words with spaces
 		 * block latest post excerpt. not support
 		 */
-		$locale = sanitize_text_field( get_locale() );
 
 		$length = apply_filters( 'emulsion_cjk_excerpt_length', 256 ); //todo check 110 to 256 changed
 
-		if ( 'ja' == $locale || 'ko-KR' == $locale || 'zh-CN' == $locale ) {
+		if ( function_exists('emulsion_lang_cjk') && emulsion_lang_cjk() ) {
+			
 			return wp_html_excerpt( $text, $length, '...' );
 		}
 		return $text;

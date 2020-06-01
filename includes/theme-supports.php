@@ -139,6 +139,12 @@ emulsion_add_supports( 'background_css_pattern' );
  * meta description
  */
 emulsion_add_supports( 'meta_description' );
+
+/**
+ * Viewport
+ * header meta viewport element
+ */
+emulsion_add_supports( 'viewport' );
 /**
  * Plugin TGMPA
  */

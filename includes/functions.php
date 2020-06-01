@@ -1129,20 +1129,31 @@ if ( function_exists( 'amp_init' ) ) {
 /**
  * AMP plugin setting
  */
-add_action( 'wp_enqueue_scripts', 'emulsion_amp_enqueue_script' );
-add_filter('emulsion_template_pre','emulsion_amp_setting');
+
+$post_id = get_the_ID();
+
+if ( ! is_singular() || 
+		is_singular() &&  ! empty( $post_id ) && 'no-style' !== get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) ||
+		is_singular() &&  ! empty( $post_id ) && 'no-style' !== get_post_meta( $post_id, 'emulsion_page_theme_style_script', true )
+		) {
+
+	add_action( 'wp_enqueue_scripts', 'emulsion_amp_enqueue_script' );
+	add_filter( 'emulsion_template_pre', 'emulsion_amp_setting' );
+}
 
 function emulsion_amp_enqueue_script() {
-    if ( ! emulsion_is_amp() ) {
+
+	if ( ! emulsion_is_amp() ) {
+
 		wp_register_style( 'emulsion-completion', get_template_directory_uri() . '/css/common.css', array(), $emulsion_current_data_version, 'all' );
-		wp_enqueue_style( 'emulsion-completion' );	
-        return;
-    }
-    wp_register_style( 'amp-reader', get_template_directory_uri() . '/css/amp.css', array(), '', 'all' );
+		wp_enqueue_style( 'emulsion-completion' );
+		return;
+	}
+	wp_register_style( 'amp-reader', get_template_directory_uri() . '/css/amp.css', array(), '', 'all' );
 	wp_enqueue_style( 'amp-reader' );
-	
-	$css_variables	 = emulsion__css_variables();
-	wp_add_inline_style('amp-reader', $css_variables);
+
+	$css_variables = emulsion__css_variables();
+	wp_add_inline_style( 'amp-reader', $css_variables );
 }
 
 function emulsion_amp_setting() {

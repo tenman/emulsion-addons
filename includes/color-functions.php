@@ -770,7 +770,7 @@ if ( ! function_exists( 'emulsion_link_colors' ) ) {
 
 function emulsion_sidebar_background_reset(  ) {
 
-	return '#'. emulsion_get_supports( 'background' )[0]['default']['default-color'];
+	return emulsion_get_var('emulsion_sidebar_background', 'default');
 }
 function emulsion_sidebar_text_color_reset(  ) {
 
@@ -809,28 +809,27 @@ function emulsion_header_link_color_reset(  ) {
 
 function emulsion_background_color_reset(  ) {
 
-	return '#'. emulsion_get_supports( 'background' )[0]['default']['default-color'];
+	return sprintf('#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
 }
 
 function emulsion_general_text_color_reset(  ) {
 
-	$default_bacckground = '#'. emulsion_get_supports( 'background' )[0]['default']['default-color'];
+	$default_background =  emulsion_background_color_reset( );
 
-	return emulsion_contrast_color( $default_bacckground );
+	return emulsion_contrast_color( $default_background );
 }
 
 function emulsion_general_link_color_reset(  ) {
 
-	$default_bacckground = '#'. emulsion_get_supports( 'background' )[0]['default']['default-color'];
-
-	$link_color = emulsion_link_colors( $default_bacckground );
+	$default_background =  emulsion_background_color_reset();
+	$link_color = emulsion_link_colors( $default_background );
 
 	return $link_color;
 }
 
 function emulsion_primary_menu_background_reset( ) {
 
-	return '#'. emulsion_get_supports( 'background' )[0]['default']['default-color'];
+	return emulsion_get_var( 'emulsion_primary_menu_background', 'default' );
 
 }
 function emulsion_primary_menu_link_color_reset( ) {
