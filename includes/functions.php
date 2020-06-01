@@ -1142,6 +1142,13 @@ if ( ! is_singular() ||
 }
 
 function emulsion_amp_enqueue_script() {
+	
+	$emulsion_current_data_version = null;
+
+	if ( is_user_logged_in() ) {
+
+		$emulsion_current_data_version = emulsion_version();
+	}
 
 	if ( ! emulsion_is_amp() ) {
 
@@ -1149,7 +1156,7 @@ function emulsion_amp_enqueue_script() {
 		wp_enqueue_style( 'emulsion-completion' );
 		return;
 	}
-	wp_register_style( 'amp-reader', get_template_directory_uri() . '/css/amp.css', array(), '', 'all' );
+	wp_register_style( 'amp-reader', get_template_directory_uri() . '/css/amp.css', array(), $emulsion_current_data_version, 'all' );
 	wp_enqueue_style( 'amp-reader' );
 
 	$css_variables = emulsion__css_variables();
