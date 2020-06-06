@@ -313,7 +313,7 @@ if ( ! function_exists( 'emulsion_sub_background_color_darken' ) ) {
 	 * @param type $lightness
 	 * @return type
 	 */
-	function emulsion_sub_background_color_darken(  ) {
+	function emulsion_sub_background_color_darken() {
 
 		$hex		 = emulsion_the_background_color();
 		$hue		 = emulsion_get_hex2hsl_array( $hex )[0];
@@ -334,7 +334,7 @@ if ( ! function_exists( 'emulsion_sub_background_color_darken' ) ) {
 }
 if ( ! function_exists( 'emulsion_sub_background_color_lighten' ) ) {
 
-	function emulsion_sub_background_color_lighten(  ) {
+	function emulsion_sub_background_color_lighten() {
 
 		$hex		 = emulsion_the_background_color();
 		$hue		 = intval(emulsion_get_hex2hsl_array( $hex )[0]);
@@ -533,7 +533,7 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 		$background_color = get_background_color();
 
 		if ( empty( $background_color ) ) {
-			$background_color = emulsion_get_supports( 'background' )[0]['default']['default-color'];
+			$background_color = get_theme_support( 'custom-background', 'default-color' );
 			$background_color = str_replace('#','', $background_color);
 		}
 		$background_color	 = sprintf( '#%1$s', $background_color );
@@ -664,10 +664,9 @@ if ( ! function_exists( 'emulsion_sidebar_background' ) ) {
 	 * Return sidebar color calculated from background color
 	 * @return string
 	 */
-	function emulsion_sidebar_background(  ) {
+	function emulsion_sidebar_background() {
 
 		$background_color	 = emulsion_get_background_color();
-		//$background_default  = emulsion_get_supports( 'background' )[0]['default']['default-color'];
 		$background_default = get_theme_support( 'custom-background', 'default-color' ); 
 		$text_color			 = emulsion_contrast_color();
 
@@ -768,18 +767,18 @@ if ( ! function_exists( 'emulsion_link_colors' ) ) {
 
 
 
-function emulsion_sidebar_background_reset(  ) {
+function emulsion_sidebar_background_reset() {
 
-	return emulsion_get_var('emulsion_sidebar_background', 'default');
+	return emulsion_background_color_reset();
 }
-function emulsion_sidebar_text_color_reset(  ) {
+function emulsion_sidebar_text_color_reset() {
 
 	$background = emulsion_sidebar_background_reset();
 
 	return emulsion_contrast_color( $background );
 
 }
-function emulsion_sidebar_link_color_reset(  ) {
+function emulsion_sidebar_link_color_reset() {
 
 	$background = emulsion_sidebar_background_reset();
 
@@ -787,19 +786,19 @@ function emulsion_sidebar_link_color_reset(  ) {
 
 }
 
-function emulsion_header_background_color_reset(  ) {
+function emulsion_header_background_color_reset() {
 
 	return emulsion_get_var( 'emulsion_header_background_color', 'default' );
 }
 
-function emulsion_header_text_color_reset(  ) {
+function emulsion_header_text_color_reset() {
 
 	$background = emulsion_header_background_color_reset();
 
 	return emulsion_contrast_color( $background );
 
 }
-function emulsion_header_link_color_reset(  ) {
+function emulsion_header_link_color_reset() {
 
 	$background = emulsion_sidebar_background_reset();
 
@@ -807,19 +806,19 @@ function emulsion_header_link_color_reset(  ) {
 
 }
 
-function emulsion_background_color_reset(  ) {
+function emulsion_background_color_reset() {
 
 	return sprintf('#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
 }
 
-function emulsion_general_text_color_reset(  ) {
+function emulsion_general_text_color_reset() {
 
-	$default_background =  emulsion_background_color_reset( );
+	$default_background =  emulsion_background_color_reset();
 
 	return emulsion_contrast_color( $default_background );
 }
 
-function emulsion_general_link_color_reset(  ) {
+function emulsion_general_link_color_reset() {
 
 	$default_background =  emulsion_background_color_reset();
 	$link_color = emulsion_link_colors( $default_background );
@@ -827,18 +826,18 @@ function emulsion_general_link_color_reset(  ) {
 	return $link_color;
 }
 
-function emulsion_primary_menu_background_reset( ) {
+function emulsion_primary_menu_background_reset() {
 
-	return emulsion_get_var( 'emulsion_primary_menu_background', 'default' );
+	return emulsion_background_color_reset();
 
 }
-function emulsion_primary_menu_link_color_reset( ) {
+function emulsion_primary_menu_link_color_reset() {
 
-	$background = emulsion_primary_menu_background_reset( );
+	$background = emulsion_primary_menu_background_reset();
 
 	return emulsion_link_colors( $background );
 }
-function emulsion_primary_menu_text_color_reset( ) {
+function emulsion_primary_menu_text_color_reset() {
 
 	$background =emulsion_primary_menu_background_reset();
 
@@ -965,8 +964,7 @@ if ( ! function_exists( 'emulsion_the_background_color' ) ) {
 
 		if ( empty( $background_color ) ) {
 
-			//$background_color = sprintf('#%1$s', emulsion_get_supports( 'background' )[0]['default']['default-color'] );
-			$background_color = '#ffffff';
+			$default_background = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
 		}
 		$background_color = apply_filters( 'emulsion_the_background_color', $background_color );
 

@@ -34,7 +34,7 @@ function emulsion_set_wp_scss_options() {
 		}
 	}
 }
-
+// TODO
 register_activation_hook( WP_CONTENT_DIR . '/plugins/wp-scss/wp-scss.php', 'emulsion_wp_scss_activate_check' );
 
 function emulsion_wp_scss_activate_check() {
@@ -48,11 +48,19 @@ function emulsion_wp_scss_deactivate_check() {
 	set_theme_mod( 'emulsion_wp_scss_status', 'deactive' );
 }
 
-if( function_exists('wp_scss_compile') && 'deactive' == get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
+if( function_exists( 'emulsion_is_plugin_active' ) 
+		&& emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) 
+		&& 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
+	
 	//When you switch themes, cooperation with wp-scss may be canceled, and if the plugin is active, cooperate.
 	//Do nothing if wp-scss is active before installing the theme.
 	set_theme_mod( 'emulsion_wp_scss_status', 'active' );
+	emulsion_set_wp_scss_options();
 }
+if( function_exists( 'emulsion_is_plugin_active' ) && ! emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) ){
+	set_theme_mod( 'emulsion_wp_scss_status', 'deactive' );
+}
+// End TODO
 
 if ( 'active' == get_theme_mod( 'emulsion_wp_scss_status' ) ) {
 
@@ -89,18 +97,12 @@ function emulsion_wp_scss_needs_compiling( $compile ) {
 /**
  * register scss variables for wp-scss plugin
  */
-
-
-//add_filter( 'wp_scss_variables', 'emulsion_wp_scss_set_variables' );
-
 function emulsion_wp_scss_set_variables() {
 
 	global $emulsion_custom_header_defaults;
 
 	$stream_condition	 = emulsion_get_css_variables_values( 'stream' );
 	$grid_condition		 = emulsion_get_css_variables_values( 'grid' );
-	
-		//$background_image_dim				 = emulsion_get_css_variables_values( 'background_image_dim' );
 
 	$variables			 = array(
 		'background_image_dim'				 => emulsion_get_css_variables_values( 'background_image_dim' ),

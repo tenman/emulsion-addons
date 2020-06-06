@@ -206,27 +206,7 @@
                 var sidebar_bg = '#000000';
                 var current_sidebar_color = $('.sidebar-widget-area').css("background-color");
             }
-
-            if ($(".sidebar-widget-area").css("background-color") == "rgb(255,255,255)" ||
-                    $(".sidebar-widget-area").css("background-color") == "rgb(255, 255, 255)" ||
-                    $(".sidebar-widget-area").css("background-color") == "#ffffff" ||
-                    $(".sidebar-widget-area").css("background-color") == "rgb(0,0,0)" ||
-                    $(".sidebar-widget-area").css("background-color") == "rgb(0, 0, 0)" ||
-                    $(".sidebar-widget-area").css("background-color") == "#000000") {
-
-                $('.sidebar-widget-area, .sidebar-widget-area a').css({'background-color': sidebar_bg, 'color': text_color});
-            }
-
-            if ($(".primary-menu-wrapper").css("background-color") == "rgb(255,255,255)" ||
-                    $(".primary-menu-wrapper").css("background-color") == "rgb(255, 255, 255)" ||
-                    $(".primary-menu-wrapper").css("background-color") == "#ffffff" ||
-                    $(".primary-menu-wrapper").css("background-color") == "rgb(0,0,0)" ||
-                    $(".primary-menu-wrapper").css("background-color") == "rgb(0, 0, 0)" ||
-                    $(".primary-menu-wrapper").css("background-color") == "#000000") {
-
-                $('.primary-menu-wrapper, .primary-menu-wrapper a').css({'background-color': sidebar_bg, 'color': text_color});
-            }
-            
+              
             $('article a,.placeholder-header a, .entry-date').css({'color': text_color, 'background': 'transparent'});
             $('body, .custom-background.background-css-pattern-seigaiha').css('background-color', newval);
             $('.menu-placeholder').css({'background': 'transparent'});
@@ -319,11 +299,7 @@
 
         });
     });
-    wp.customize('background_color', function (value) {
-        value.bind(function (newval) {
-            document.documentElement.style.setProperty('--thm_background_color', newval);
-        });
-    });
+
 
     wp.customize('emulsion_post_display_date', function (value) {
         value.bind(function (newval) {

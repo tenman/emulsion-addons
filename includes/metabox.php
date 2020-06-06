@@ -208,6 +208,37 @@ class emulsion_add_meta_boxes {
 
 }
 
+function emulsion_header_reset_no_bg( $css ){
+	
+	$post_id = get_the_ID();
+
+	$text_color	 = emulsion_header_text_color_reset();
+	$link_color	 = emulsion_header_link_color_reset();
+	$hover_color = emulsion_header_text_color_reset();
+	$header_bg	 = emulsion_header_background_color_reset();
+
+	$css_reset = <<<CSS
+
+	body.page-id-{$post_id}.metabox-reset-page-header,
+	body.postid-{$post_id}.metabox-reset-post-header{
+		--thm_header_text_color:{$text_color};
+		--thm_header_link_color: {$link_color};
+		--thm_header_hover_color: {$hover_color};
+		--thm_header_bg_color: {$header_bg};
+		--thm_header_background_gradient_color: {$header_bg};
+	}
+				
+CSS;
+	
+	$setting = get_post_meta( $post_id, 'emulsion_post_header', true );
+	$setting_page = get_post_meta( $post_id, 'emulsion_page_header', true );
+
+	if ( 'no_bg' == $setting && is_single() || 'no_bg' == $setting_page && is_page()) {
+
+			return $css. $css_reset;
+	}
+	return $css;
+}
 
 function emulsion_reset_no_bg( $css ){
 
@@ -232,7 +263,23 @@ function emulsion_reset_no_bg( $css ){
 
 		.page-id-{$post_id}.metabox-reset-page-presentation,
 		.postid-{$post_id}.metabox-reset-post-presentation{
-
+		
+			--thm_gallery_section_link_color: {$general_link_color};
+			--thm_gallery_section_color: {$general_text_color};
+			--thm_gallery_section_bg: {$general_text_color};
+			--thm_columns_section_link_color: {$general_link_color};
+			--thm_columns_section_color: {$general_text_color};
+			--thm_columns_section_bg: {$background_color};
+			--thm_media_text_section_link_color: {$general_link_color};
+			--thm_media_text_section_color: {$general_text_color};
+			--thm_media_text_section_bg: {$background_color};
+			--thm_relate_posts_link_color: {$general_link_color};
+			--thm_relate_posts_color: {$general_text_color};
+			--thm_relate_posts_bg: {$background_color};
+			--thm_comments_link_color: {$general_link_color};
+			--thm_comments_color: {$general_text_color};
+			--thm_comments_bg: {$background_color};
+			--thm_social_icon_color:{$general_link_color};
 
 			--thm_general_text_color:{$general_text_color};
 			--thm_general_link_color:{$general_link_color};

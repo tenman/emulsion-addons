@@ -56,6 +56,9 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description');
+	
+	add_filter('emulsion_inline_style', 'emulsion_header_reset_no_bg');
+	
 }
 
 if ( ! function_exists( 'emulsion_test_for_min_php' ) ) {
@@ -388,8 +391,8 @@ if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 			}
 			if ( 'no_bg' == $emulsion_post_theme_style_script || 'no_bg' == $emulsion_page_theme_style_script ) {
 
-				$default_bacckground = '#' . emulsion_get_supports( 'background' )[0]['default']['default-color'];
-				$text_color			 = emulsion_contrast_color( $default_bacckground );
+				$default_background = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
+				$text_color			 = emulsion_contrast_color( $default_background );
 
 				if ( '#ffffff' == $text_color ) {
 
@@ -490,8 +493,8 @@ if ( ! function_exists( 'emulsion_brightness_class' ) ) {
 			}
 			if ( 'no_bg' == $emulsion_post_theme_style_script || 'no_bg' == $emulsion_page_theme_style_script ) {
 
-				$default_bacckground = '#' . emulsion_get_supports( 'background' )[0]['default']['default-color'];
-				$text_color			 = emulsion_contrast_color( $default_bacckground );
+				$default_background = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
+				$text_color			 = emulsion_contrast_color( $default_background );
 
 				if ( '#ffffff' == $text_color ) {
 
@@ -1769,7 +1772,10 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id, $i
 		$setting = get_post_meta( $post_id, 'emulsion_post_header', true );
 
 		if ( 'no_bg' == $setting && $is_single ) {
-			add_filter( 'theme_mod_emulsion_header_background_color', 'emulsion_header_background_color_reset' );
+	
+			add_filter( 'theme_mod_emulsion_header_background_color', 'emulsion_header_background_color_reset',11 );
+			
+			
 		}
 		if ( 'no_header' == $setting && $is_single ) {
 
