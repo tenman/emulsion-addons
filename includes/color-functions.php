@@ -533,8 +533,9 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 		$background_color = get_background_color();
 
 		if ( empty( $background_color ) ) {
-			$background_color = get_theme_support( 'custom-background', 'default-color' );
-			$background_color = str_replace('#','', $background_color);
+			$background_color	 = get_theme_support( 'custom-background', 'default-color' );
+			$background_color	 = empty( $background_color ) ? '#ffffff' : $background_color;
+			$background_color	 = str_replace( '#', '', $background_color );
 		}
 		$background_color	 = sprintf( '#%1$s', $background_color );
 		$background_color	 = sanitize_hex_color( $background_color );
@@ -667,9 +668,12 @@ if ( ! function_exists( 'emulsion_sidebar_background' ) ) {
 	function emulsion_sidebar_background() {
 
 		$background_color	 = emulsion_get_background_color();
-		$background_default = get_theme_support( 'custom-background', 'default-color' ); 
-		$text_color			 = emulsion_contrast_color();
+		$background_color	 = empty( $background_color ) ? '#ffffff' : $background_color;
+		$background_default	 = get_theme_support( 'custom-background', 'default-color' );
+		$background_default	 = empty( $background_color ) ? '#ffffff' : $background_default;
 
+		$text_color			 = emulsion_contrast_color( $background_color );
+		
 		if ( '#ffffff' == $text_color ) {
 
 			if ( $background_default !== $background_color ) {

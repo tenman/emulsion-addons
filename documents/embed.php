@@ -65,16 +65,6 @@
             <td><span class="dashicons dashicons-yes"></span></td>
         </tr>
         <tr>
-            <?php printf('<td> <a href="%1$s>%2$s</a></td>', 'http://collegehumor.com', esc_html__( 'CollegeHumor', 'emulsion' ) ) ?>
-            <td> <span class="dashicons dashicons-media-video"></span> <?php esc_html_e('Videos', 'emulsion' ) ?></td>
-            <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'https://codex.wordpress.org/Version_4.0', 'WordPress 4.0' ) ?>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
             <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'https://crowdsignal.com/', esc_html__( 'Crowdsignal', 'emulsion' ) ) ?>
             <td> <?php esc_html_e('Polls &amp; Surveys', 'emulsion') ?></td>
             <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'https://codex.wordpress.org/Version_3.0', 'WordPress 3.0' ) ?>

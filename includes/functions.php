@@ -161,19 +161,19 @@ if ( ! function_exists( 'emulsion_body_class' ) ) {
 
 		if ( is_page()  && false == emulsion_metabox_display_control( 'page_style' ) ) {
 
-			$classes[]		 = 'metabox-removed-emulsion-presentation';
+			$classes[]		 = 'emulsion-removed-presentation';
 			$metabox_flag	 = true;
 			return $classes;
 		}
 		if ( is_single() && false == emulsion_metabox_display_control( 'style' ) ) {
 
-			$classes[]		 = 'metabox-removed-emulsion-presentation';
+			$classes[]		 = 'emulsion-removed-presentation';
 			$metabox_flag	 = true;
 			return $classes;
 		}
 		if ( ! emulsion_get_supports( 'enqueue' ) ) {
 
-			$classes[]		 = 'removed-emulsion-presentation';
+			$classes[]		 = 'emulsion-not-support-presentation';
 			$metabox_flag	 = true;
 			return $classes;
 		}
@@ -381,7 +381,10 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 
 			remove_theme_mod( $name );
 		}
-
+		if( false !== get_theme_mod('emulsion__css_variables')){
+			
+			remove_theme_mod('emulsion__css_variables');
+		}
 		$emulsion_custom_background_defaults_image = get_theme_support( 'custom-background', 'default-image' );
 		
 		if( ! empty( $emulsion_custom_background_defaults_image ) ) {
@@ -396,7 +399,6 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		if ( ! empty( $favorite_color_palette ) ) {
 			set_theme_mod( 'emulsion_favorite_color_palette', $favorite_color_palette );
 		}
-
 
 		set_theme_mod( 'emulsion_reset_theme_settings', 'continue' );
 	}
@@ -1178,7 +1180,7 @@ function emulsion_amp_enqueue_script() {
 }
 
 function emulsion_amp_setting() {
-		
+
 	if ( emulsion_is_amp() ) {
 		emulsion_remove_supports( 'enqueue' );
 		emulsion_remove_supports( 'search_drawer' );
@@ -1190,7 +1192,6 @@ function emulsion_amp_setting() {
 		emulsion_remove_supports( 'instantclick' );
 		emulsion_remove_supports( 'toc' );
 		emulsion_remove_supports( 'tooltip' );
-
 	} 
 
 }

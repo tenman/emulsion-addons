@@ -4,6 +4,20 @@ add_action( 'after_setup_theme', 'emulsion_addons_hooks_setup' );
 function emulsion_addons_hooks_setup() {
 	
 	! class_exists( 'WP_List_Table' ) ? require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) : '';
+	
+	
+	if ( function_exists( 'emulsion_is_plugin_active' ) && emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) && 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
+
+		//When you switch themes, cooperation with wp-scss may be canceled, and if the plugin is active, cooperate.
+		//Do nothing if wp-scss is active before installing the theme.
+		set_theme_mod( 'emulsion_wp_scss_status', 'active' );
+		emulsion_set_wp_scss_options();
+	}
+
+	if ( function_exists( 'emulsion_is_plugin_active' ) && ! emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) ) {
+		
+		set_theme_mod( 'emulsion_wp_scss_status', 'deactive' );
+	}
 
 	$wp_scss_status = get_theme_mod( 'emulsion_wp_scss_status' );
 
@@ -57,8 +71,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description');
 	
-	add_filter('emulsion_inline_style', 'emulsion_header_reset_no_bg');
-	
+
 }
 
 if ( ! function_exists( 'emulsion_test_for_min_php' ) ) {
@@ -1380,69 +1393,8 @@ if ( ! function_exists( 'emulsion_addons_the_header_layer_class' ) ) {
 	 * @param type $class
 	 */
 	function emulsion_addons_the_header_layer_class( $class = '' ) {
-
-		/**
-		 * Whether the header has images or video, its state is represented by class.
-		 * classes : header-video-active, header-image-active, no-header-media password-required
-		 */
-		$add_class			 = post_password_required() ? ' password-required' : '';
-		$post_id			 = get_the_ID();
-		$current_post_type	 = trim( get_post_type( $post_id ) );
-
-		if ( is_header_video_active() &&
-				has_header_video() &&
-				false !== emulsion_home_type() &&
-				'custom' == get_theme_mod( 'emulsion_header_layout', emulsion_get_var( 'emulsion_header_layout' ) )
-		) {
-
-			$add_class .= ' header-video-active';
-		} elseif ( has_header_image() &&
-				( ! is_singular( $current_post_type ) || is_page() ) &&
-				! is_paged() &&
-				false !== emulsion_home_type() &&			
-				'custom' == get_theme_mod( 'emulsion_header_layout', emulsion_get_var( 'emulsion_header_layout' ) ) ) {
-			//plugin active
-			//static page or loop
-			$add_class .= ' header-image-active';
-		} elseif ( is_singular( $current_post_type ) ) {
-
-			if ( ! post_password_required( $post_id ) ) {
-				// Post using featured image
-				if ( has_post_thumbnail( $post_id ) &&			
-						'yes' == get_theme_mod( 'emulsion_title_in_header', emulsion_get_var( 'emulsion_title_in_header' )  &&
-						'custom' == get_theme_mod( 'emulsion_header_layout', emulsion_get_var( 'emulsion_header_layout' ) ) &&
-						! empty( get_the_post_thumbnail() ) )// like woocommerce
-				) {
-
-					$add_class .= ' header-image-active';
-				} else {
-
-					$add_class .= ' no-header-media';
-				}
-			}
-		} else {
-
-			$add_class .= ' no-header-media';
-		}
-
-		/**
-		 * CTA layer
-		 */
-		if ( has_nav_menu( 'header' ) ) {
-			$add_class .= ' cta-layer-active';
-		} else {
-			$add_class .= ' cta-layer-deactive';
-		}
-
-		/**
-		 * Logo
-		 */
-		if ( has_custom_logo() ) {
-
-			$add_class .= ' has-custom-logo';
-		}
-
-		$header_background_color = emulsion_get_css_variables_values( 'header_background_color' );
+		
+		$header_background_color		 = get_theme_mod('emulsion_header_background_color', emulsion_get_var( 'emulsion_header_background_color' ) );
 		$default_header_background_color = emulsion_get_var( 'emulsion_header_background_color', 'default' );
 
 		if ( $default_header_background_color == $header_background_color ) {
@@ -1773,9 +1725,7 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id, $i
 
 		if ( 'no_bg' == $setting && $is_single ) {
 	
-			add_filter( 'theme_mod_emulsion_header_background_color', 'emulsion_header_background_color_reset',11 );
-			
-			
+			add_filter( 'theme_mod_emulsion_header_background_color', 'emulsion_header_background_color_reset',11 );			
 		}
 		if ( 'no_header' == $setting && $is_single ) {
 

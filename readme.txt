@@ -2,8 +2,8 @@
 Contributors: nobita
 Tags: emulsion theme,customizer
 Requires at least: 5.0
-Tested up to: 5.4.1
-Stable tag: 1.2.3
+Tested up to: 5.4.2
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,9 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
-=1.2.2 : June 6 2020 =
+=1.2.4 : June 12 2020 =
+        * https://github.com/tenman/emulsion/releases
+=1.2.3 : June 6 2020 =
         * https://github.com/tenman/emulsion/releases
 =1.2.2 : June 1 2020 =
         * https://github.com/tenman/emulsion/releases
