@@ -31,7 +31,7 @@ printf('<p><a href="%2$s">%1$s</a></p>',
 		'https://www.tenman.info/wp3/emulsion/en/2019/12/17/%e3%83%86%e3%83%bc%e3%83%9e%e3%81%ae-svg-2/'
 );
 
-printf('<table class="svg-icon-table"><thead><tr><th>%1$s</th><th>%2$s</th><th>%3$s</tr></thead>',
+printf('<table class="svg-icon-table color-scheme-default"><thead><tr><th>%1$s</th><th>%2$s</th><th>%3$s</tr></thead>',
 		esc_html__('Icon', 'emulsion'),
 		esc_html__('Block Editor Additional CSS Class Name', 'emulsion' ),
 		esc_html__('Template', 'emulsion' ) 

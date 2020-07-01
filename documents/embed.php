@@ -1,6 +1,6 @@
 <h3>Oembed media support</h3>
 
-<table class="form-table emulsion-document-table">
+<table class="form-table emulsion-document-table color-scheme-default">
 	<thead>
 		<tr class="item-title">
 			<th><?php esc_html_e('Service', 'emulsion' ) ?></th>

@@ -49,6 +49,8 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'admin_body_class', 'emulsion_admin_body_class' );
 	add_filter( 'body_class', 'emulsion_brightness_class', 15 );
 	add_filter( 'body_class', 'emulsion_remove_custom_background_class' );
+	add_filter( 'body_class', 'emulsion_addons_body_class' );
+	
 	add_filter( 'dynamic_sidebar_params', 'emulsion_footer_widget_params' );
 	add_filter( 'post_class', 'emulsion_add_woocommerce_class_to_post' );
 	add_filter( 'emulsion_hover_color', 'emulsion_hover_color_filter' );
@@ -70,6 +72,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description');
+	add_filter( 'theme_mod_emulsion_header_html', 'do_shortcode');
 	
 
 }
@@ -841,6 +844,11 @@ if ( ! function_exists( 'emulsion_smart_category_highlight' ) ) {
 					$result	 .= $body_id . ' .cat-item.cat-item-' . absint( $term->term_id ) . " {\n display:none;\n} \n";
 					$result	 .= $body_id . '.category-archives .cat-item.cat-item-' . absint( $term->term_id ) . " {\n display:none; \n } \n";
 				}
+				/* remove uncategorized */
+				if ( absint( get_category_by_slug( 'uncategorized' )->term_id ) == absint( get_option( 'default_category' ) ) ) {
+					
+					$result .= '#document .cat-item-1{display:none;}';
+				}				
 			}
 		}
 
@@ -1394,9 +1402,9 @@ if ( ! function_exists( 'emulsion_addons_the_header_layer_class' ) ) {
 	 */
 	function emulsion_addons_the_header_layer_class( $class = '' ) {
 		
-		$header_background_color		 = get_theme_mod('emulsion_header_background_color', emulsion_get_var( 'emulsion_header_background_color' ) );
+		$header_background_color		 = get_theme_mod( 'emulsion_header_background_color', emulsion_get_var( 'emulsion_header_background_color' ) );
 		$default_header_background_color = emulsion_get_var( 'emulsion_header_background_color', 'default' );
-
+		$add_class						 = '';
 		if ( $default_header_background_color == $header_background_color ) {
 
 			$add_class .= ' header-is-default-color';

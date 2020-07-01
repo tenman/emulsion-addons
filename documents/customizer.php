@@ -1,6 +1,6 @@
 <h3><?php esc_html_e( 'Theme customizer overview', 'emulsion' ); ?></h3>
 
-<table class="form-table emulsion-document-table">
+<table class="form-table emulsion-document-table color-scheme-default">
 	<col style="width:25%;" />
 	<col style="" />
 	<col style="" />

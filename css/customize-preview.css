@@ -531,11 +531,11 @@ body.is-loop.customize-partial-edit-shortcuts-shown .customize-partial-edit-shor
 .excerpt article{
     position:relative;
 }
-.excerpt article header.has-post-image{
+.excerpt article header.show-post-image{
     margin-bottom:3px;
 }
 
-.excerpt article header.has-post-image ~ .entry-content{
+.excerpt article header.show-post-image ~ .entry-content{
     display:none;
 }
 .excerpt article header.has-post-imag ~ footer{

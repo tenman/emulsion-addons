@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.2.4
+ * Version:     1.2.5
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -108,6 +108,23 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 			add_theme_support( 'wp-block-styles' );
 		}
+		
+		/**
+		 * Block Editor experimantal styles
+		 * 
+		 */
+		if ( emulsion_the_theme_supports( 'block_experimentals' ) ) {
+
+			emulsion_add_supports( 'block_experimentals' );
+		}
+		/**
+		 * Date format Japan era
+		 * replace Y年n月j日 to 令和[0-9]年n月j日
+		 */
+		if ( emulsion_the_theme_supports( 'japan_era' ) ) {
+
+			emulsion_add_supports( 'japan_era' );
+		}
 	}
 
 	if ( function_exists( 'has_header_video' ) ) {
@@ -121,6 +138,8 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		} );
 		add_filter( 'header_video_settings', 'emulsion_video_controls' );
 	}
+	
+
 }
 
 /**

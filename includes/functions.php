@@ -146,7 +146,7 @@ if ( ! function_exists( 'emulsion_get_current_settings' ) ) {
 /**
  * Theme Body Class
  */
-if ( ! function_exists( 'emulsion_body_class' ) ) {
+if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 
 	/**
 	 * Theme body class
@@ -154,7 +154,7 @@ if ( ! function_exists( 'emulsion_body_class' ) ) {
 	 * @param type $classes
 	 * @return array;
 	 */
-	function emulsion_body_class( $classes ) {
+	function emulsion_addons_body_class( $classes ) {
 		global $_wp_theme_features;
 
 		$metabox_flag = false;

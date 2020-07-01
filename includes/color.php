@@ -1203,7 +1203,6 @@ function emulsion_resuponsive_css() {
 }
 @media screen and (max-width: $content_width_plus_sidebar_width_plus1) {
 	body.emulsion-no-sidebar article header, body.emulsion-has-sidebar article header {
-		display: block;
 		margin: 0;
 	}
 	.emulsion-has-sidebar .nav-links {

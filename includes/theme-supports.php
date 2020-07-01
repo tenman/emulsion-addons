@@ -164,4 +164,8 @@ if ( ! function_exists( 'amp_init' ) ) {
 
 	emulsion_remove_supports( 'amp' );
 }
-
+/**
+ * Block Editor experimantal styles
+ * 
+ */
+	emulsion_add_supports( 'block_experimentals' );
