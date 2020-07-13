@@ -456,9 +456,9 @@ if ( ! function_exists( 'emulsion_sectionized_class' ) ) {
 		if ( 'columns' == $block ) {
 
 			$background			 = get_theme_mod( 'emulsion_block_columns_section_bg', false );
-			$background_default	 = emulsion_theme_default_val( 'emulsion_block_columns_section_bg' );
+			$background_default	 = emulsion_get_var( 'emulsion_block_columns_section_bg' ,'default' );
 
-			if ( $background_default == $background ) {
+			if ( $background_default == $background  ) {
 				
 				return 'is-default';
 			}
@@ -483,7 +483,8 @@ if ( ! function_exists( 'emulsion_sectionized_class' ) ) {
 		if ( 'media_text' == $block ) {
 			
 			$background			 = get_theme_mod( 'emulsion_block_media_text_section_bg', false );
-			$background_default	 = emulsion_theme_default_val( 'emulsion_block_media_text_section_bg' );
+			$background_default	 = emulsion_get_var( 'emulsion_block_media_text_section_bg' ,'default' );
+			
 
 			if ( $background_default == $background ) {
 				
@@ -508,7 +509,7 @@ if ( ! function_exists( 'emulsion_sectionized_class' ) ) {
 		if ( 'gallery' == $block ) {
 			
 			$background			 = get_theme_mod( 'emulsion_block_gallery_section_bg', false );
-			$background_default	 = emulsion_theme_default_val( 'emulsion_block_gallery_section_bg' );
+			$background_default	 = emulsion_get_var( 'emulsion_block_gallery_section_bg' ,'default' );
 
 			if ( $background_default == $background ) {
 				return 'is-default';

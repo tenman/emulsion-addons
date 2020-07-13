@@ -316,6 +316,12 @@ if ( ! function_exists( 'emulsion_sub_background_color_darken' ) ) {
 	function emulsion_sub_background_color_darken() {
 
 		$hex		 = emulsion_the_background_color();
+		if( '#ffffff' == $hex ) {
+			$hex = '#efefef';
+		}
+		if( '#000000' == $hex ) {
+			$hex = '#111111';
+		}
 		$hue		 = emulsion_get_hex2hsl_array( $hex )[0];
 		$saturation	 = emulsion_get_hex2hsl_array( $hex )[1];
 		$lightness	 = emulsion_get_hex2hsl_array( $hex )[2];
@@ -337,11 +343,17 @@ if ( ! function_exists( 'emulsion_sub_background_color_lighten' ) ) {
 	function emulsion_sub_background_color_lighten() {
 
 		$hex		 = emulsion_the_background_color();
+		if( '#ffffff' == $hex ) {
+			$hex = '#efefef';
+		}
+		if( '#000000' == $hex ) {
+			$hex = '#111111';
+		}
 		$hue		 = intval(emulsion_get_hex2hsl_array( $hex )[0]);
 		$saturation	 = intval(emulsion_get_hex2hsl_array( $hex )[1]);
 		$lightness	 = intval(emulsion_get_hex2hsl_array( $hex )[2]);
 		$alpha = 1;
-
+        
 
 		if ( 0 == $hue ) {
 			$lightness = $lightness > 0 ? $lightness * 1.25: 0;

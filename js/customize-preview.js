@@ -521,7 +521,7 @@
             var color = emulsion_text_color(newval);
             $('.primary-menu-wrapper').css({'background': newval, 'color': color});
             $('.primary-menu-wrapper a').css({'color': color, 'background': 'transparent'});
-
+            $('.emulsion-has-sidebar .primary-menu-wrapper .menu-placeholder').css({'background': newval, 'color': color});
             $('.primary-menu-wrapper').removeClass('menu-is-light menu-is-dark');
 
             if ('#ffffff' == emulsion_text_color(newval)) {
@@ -537,7 +537,7 @@
             $('.sidebar-widget-area').css({'background': newval, 'color': color});
             $('.sidebar-widget-area #calendar_wrap th, .sidebar-widget-area #calendar_wrap td').css({'background': newval, 'color': color});
             $('.sidebar-widget-area a').css({'color': color, 'background': 'transparent'});
-            $('.emulsion-has-sidebar .primary-menu-wrapper .menu-placeholder').css({'background': newval, 'color': color});
+           
 
             $('.sidebar-widget-area, .footer-widget-area').removeClass('sidebar-is-light sidebar-is-dark sidebar-is-default');
 
@@ -805,6 +805,7 @@
             document.documentElement.style.setProperty('--thm_header_bg_color', newval);//fx
 
             $('header.header-layer').css({'background': newval});
+            $('.layout-grid .grid article header').css({'background': newval});
 
             $('.header-layer .site-title-text, .header-layer .site-description, .header-layer .entry-title, .header-layer .has-text, .header-layer .posted-on .entry-date, .header-layer .taxonomy-description').css({'color': emulsion_text_color(newval)});
 

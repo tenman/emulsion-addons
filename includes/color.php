@@ -665,7 +665,7 @@ function emulsion_resuponsive_css() {
 	$content_width							 = emulsion_get_css_variables_values( 'content_width' );
 	$content_gap							 = emulsion_get_css_variables_values( 'content_gap' );
 	$sidebar_width							 = emulsion_get_css_variables_values( 'sidebar_width' );
-	$content_width_plus_content_gap			 = (int) emulsion_get_var( 'emulsion_content_width' ) + (int) emulsion_get_var( 'emulsion_content_gap' );
+	$content_width_plus_content_gap			 = (int) emulsion_get_var( 'emulsion_content_width' ) + 24 * 2 + 16;// todo hard code 24
 	$content_width_plus_content_gap			 = $content_width_plus_content_gap . 'px';
 	$content_width_plus_sidebar_width_plus1	 = (int) emulsion_get_var( 'emulsion_content_width' ) + (int) emulsion_get_var( 'emulsion_sidebar_width' ) + 1 + 16;
 	$content_width_plus_sidebar_width_plus1	 = $content_width_plus_sidebar_width_plus1 . 'px';
@@ -994,7 +994,8 @@ function emulsion_resuponsive_css() {
 	  width: calc(100vw - var(--thm_sidebar_width) - 1rem);
 	}
 	.emulsion-has-sidebar .primary-menu-wrapper .menu-placeholder{
-		background: var(--thm_sidebar_bg_color);
+		background: var(--thm_primary_menu_background);
+        color: var(--thm_primary_menu_color);
 	}
 }
 @media screen and ( max-width : $main_width ) {
@@ -1067,12 +1068,16 @@ function emulsion_resuponsive_css() {
     overflow: visible;
   }
   .header-layer-nav-menu input[type="checkbox"][data-skin] + label[for="primary-menu-controll"] {
+	visibility:visible;
     display: block;
   }
   .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"] ~ nav {
-    display: none;
+	visibility:hidden;
+    /*display: none;*/
   }
   .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"]:checked ~ nav {
+
+	visibility:visible;
     display: block;
     z-index: 10;
     position: absolute;
@@ -1082,6 +1087,7 @@ function emulsion_resuponsive_css() {
 
   .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"]:checked ~ nav .menu {
     width: 100%;
+	display:block;
   }
 
   .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"]:checked ~ nav .menu .nav-menu-child-opener[type="checkbox"]:checked ~ label:before {
