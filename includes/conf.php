@@ -27,6 +27,7 @@ $emulsion_setting_type	 = 'theme_mod';
 $emulsion_customize_cap	 = 'edit_theme_options';
 
 $emulsion_customize_args = array(
+	
 	/**
 	 * Background color
 	 */
@@ -1427,6 +1428,26 @@ $emulsion_customize_args = array(
 			'disable'	 => esc_html__( 'Disable', 'emulsion' ),
 		),
 	),
+	"emulsion_single_post_navigation"					 => array(
+		'section'					 => 'emulsion_section_single_post_navigation',
+		'priority'					 => 10,
+		'default'					 => "enable",
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'refresh',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Single Post Navigation', 'emulsion' ),
+		'description'				 => esc_html__( 'Set the visibility of prev next link at the bottom of the single post', 'emulsion' ),
+		'validate'					 => 'emulsion_single_post_navigation_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'extend_customize_control'	 => '',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'enable'	 => esc_html__( 'Enable', 'emulsion' ),
+			'disable'	 => esc_html__( 'Disable', 'emulsion' ),
+		),
+	),
 	/**
 	 * Block editor
 	 */
@@ -1724,7 +1745,7 @@ $emulsion_customize_args = array(
 			'inherit'	 => esc_html__( 'show', 'emulsion' ),
 		),
 	),
-	"emulsion_post_display_tag"				 => array(
+	"emulsion_post_display_tag"			 => array(
 		'section'					 => 'emulsion_section_post',
 		'priority'					 => 10,
 		'default'					 => "inherit",
@@ -1744,52 +1765,299 @@ $emulsion_customize_args = array(
 			'inherit'	 => esc_html__( 'show', 'emulsion' ),
 		),
 	),
+	/**
+	 * Borders
+	 */
+////////////////////////////////////////////	
+	"emulsion_border_global"				 => array(
+		'section'					 => 'emulsion_section_border_global',
+		'priority'					 => 10,
+		'default'					 => '#eeeeee',
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Color', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_global_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'sanitize_hex_color',
+		'extend_customize_control'	 => 'WP_Customize_Color_Control',
+		
+	),
+	"emulsion_border_global_style"				 => array(
+		'section'					 => 'emulsion_section_border_global',
+		'priority'					 => 11,
+		'default'					 => "solid",
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Style', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_global_style_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'none'		 => esc_html__( 'none', 'emulsion' ),
+			'solid'	 => esc_html__( 'solid', 'emulsion' ),
+			'dashed'	 => esc_html__( 'dashed', 'emulsion' ),
+			'dotted'	 => esc_html__( 'dotted', 'emulsion' ),
+		),
+		
+	),
+	"emulsion_border_global_width"				 => array(
+		'section'					 => 'emulsion_section_border_global',
+		'priority'					 => 11,
+		'default'					 => 1,
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border width', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_global_width_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'number',
+		'input_attrs'				 => array(
+			'min'	 => 1,
+			'max'	 => 16,
+			'step'	 => 1,
+		),
+		
+	),
+////////////////////////////////////////////	
+	"emulsion_border_sidebar"				 => array(
+		'section'					 => 'emulsion_section_border_sidebar',
+		'priority'					 => 10,
+		'default'					 => '#eeeeee',
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Color', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_sidebar_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'sanitize_hex_color',
+		'extend_customize_control'	 => 'WP_Customize_Color_Control',
+		
+	),
+	"emulsion_border_sidebar_style"				 => array(
+		'section'					 => 'emulsion_section_border_sidebar',
+		'priority'					 => 11,
+		'default'					 => "solid",
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Style', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_sidebar_style_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'none'		 => esc_html__( 'none', 'emulsion' ),
+			'solid'	 => esc_html__( 'solid', 'emulsion' ),
+			'dashed'	 => esc_html__( 'dashed', 'emulsion' ),
+			'dotted'	 => esc_html__( 'dotted', 'emulsion' ),
+		),
+		
+	),
+	"emulsion_border_sidebar_width"				 => array(
+		'section'					 => 'emulsion_section_border_sidebar',
+		'priority'					 => 11,
+		'default'					 => 1,
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border width', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_sidebar_width_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'number',
+		'input_attrs'				 => array(
+			'min'	 => 1,
+			'max'	 => 16,
+			'step'	 => 1,
+		),
+		
+	),
+	"emulsion_border_grid"				 => array(
+		'section'					 => 'emulsion_section_border_grid',
+		'priority'					 => 10,
+		'default'					 => '#eeeeee',
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Color', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_grid_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'sanitize_hex_color',
+		'extend_customize_control'	 => 'WP_Customize_Color_Control',
+		
+	),
+	"emulsion_border_grid_style"				 => array(
+		'section'					 => 'emulsion_section_border_grid',
+		'priority'					 => 11,
+		'default'					 => "solid",
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Style', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_grid_style_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'none'		 => esc_html__( 'none', 'emulsion' ),
+			'solid'	 => esc_html__( 'solid', 'emulsion' ),
+			'dashed'	 => esc_html__( 'dashed', 'emulsion' ),
+			'dotted'	 => esc_html__( 'dotted', 'emulsion' ),
+		),
+		
+	),
+	"emulsion_border_grid_width"				 => array(
+		'section'					 => 'emulsion_section_border_grid',
+		'priority'					 => 11,
+		'default'					 => 1,
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border width', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_grid_width_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'number',
+		'input_attrs'				 => array(
+			'min'	 => 1,
+			'max'	 => 16,
+			'step'	 => 1,
+		),
+		
+	),
+	"emulsion_border_stream"				 => array(
+		'section'					 => 'emulsion_section_border_stream',
+		'priority'					 => 10,
+		'default'					 => '#eeeeee',
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Color', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_stream_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'sanitize_hex_color',
+		'extend_customize_control'	 => 'WP_Customize_Color_Control',
+		
+	),
+	"emulsion_border_stream_style"				 => array(
+		'section'					 => 'emulsion_section_border_stream',
+		'priority'					 => 11,
+		'default'					 => "solid",
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border Style', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_stream_style_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'none'		 => esc_html__( 'none', 'emulsion' ),
+			'solid'	 => esc_html__( 'sollid', 'emulsion' ),
+			'dashed'	 => esc_html__( 'dashed', 'emulsion' ),
+			'dotted'	 => esc_html__( 'dotted', 'emulsion' ),
+		),	
+	),
+	"emulsion_border_stream_width"				 => array(
+		'section'					 => 'emulsion_section_border_stream',
+		'priority'					 => 11,
+		'default'					 => 1,
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'postMessage',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Border width', 'emulsion' ),
+		'description'				 => '',
+		'validate'					 => 'emulsion_border_stream_width_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'type'						 => 'number',
+		'input_attrs'				 => array(
+			'min'	 => 1,
+			'max'	 => 16,
+			'step'	 => 1,
+		),
+		
+	),
 );
 
 /**
  * Panel
  */
 $emulsion_theme_customize_panels = array(
+	'emulsion_theme_settings_border_panel'			 => array(
+		'priority'		 => 41,
+		'capability'	 => $emulsion_customize_cap,
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Border', 'emulsion' ),
+		'description'	 => '',
+	),
 	'emulsion_theme_settings_fonts_panel'			 => array(
 		'priority'		 => 41,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Fonts', 'emulsion' ),
+		'title'			 => esc_html__( 'Fonts', 'emulsion' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_link_panel'			 => array(
 		'priority'		 => 41,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Link', 'emulsion' ),
+		'title'			 => esc_html__( 'Link', 'emulsion' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_layout_panel'			 => array(
 		'priority'		 => 42,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Layout', 'emulsion' ),
+		'title'			 => esc_html__( 'Layout', 'emulsion' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_advanced_panel'		 => array(
 		'priority'		 => 250,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Theme Advanced Settings', 'emulsion' ),
+		'title'			 => esc_html__( 'Theme Advanced Settings', 'emulsion' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_block_editor_panel'	 => array(
 		'priority'		 => 62,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Block editor', 'emulsion' ),
+		'title'			 => esc_html__( 'Block editor', 'emulsion' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_post_panel'			 => array(
 		'priority'		 => 59,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => __( 'Post and Block Editor', 'emulsion' ),
+		'title'			 => esc_html__( 'Post and Block Editor', 'emulsion' ),
 		'description'	 => '',
 	),
 
@@ -1800,7 +2068,42 @@ $emulsion_theme_customize_panels = array(
  */
 
 $emulsion_theme_customize_sections = array(
-
+	'emulsion_section_border_global'					 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_border_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Global', 'emulsion' ),
+		'description'	 => '',
+	),
+	
+	'emulsion_section_border_sidebar'					 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_border_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Sidebar', 'emulsion' ),
+		'description'	 => '',
+	),
+	'emulsion_section_border_block'					 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_border_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Block', 'emulsion' ),
+		'description'	 => '',
+	),
+	'emulsion_section_border_grid'					 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_border_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Grid', 'emulsion' ),
+		'description'	 => '',
+	),
+	'emulsion_section_border_stream'					 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_border_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Stream', 'emulsion' ),
+		'description'	 => '',
+	),
 	'emulsion_section_fonts_general'					 => array(
 		'priority'		 => 25,
 		'panel'			 => 'emulsion_theme_settings_fonts_panel',
@@ -1978,6 +2281,13 @@ $emulsion_theme_customize_sections = array(
 		'panel'			 => 'emulsion_theme_settings_advanced_panel',
 		'theme_supports' => '',
 		'title'			 => esc_html__( 'Customizer', 'emulsion' ),
+		'description'	 => '',
+	),
+	'emulsion_section_single_post_navigation'			 => array(
+		'priority'		 => 25,
+		'panel'			 => 'emulsion_theme_settings_advanced_panel',
+		'theme_supports' => '',
+		'title'			 => esc_html__( 'Single Post Navigation', 'emulsion' ),
 		'description'	 => '',
 	),
 	/**

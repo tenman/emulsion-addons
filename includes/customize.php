@@ -145,7 +145,6 @@ if ( $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial( 'emulsion_header_media_max_height', array(
 		'selector' => '.header-layer',
 	) );
-
 	$wp_customize->selective_refresh->add_partial( 'display_header_text', array(
 		'selector' => '.site-title-text, .site-description',
 	) );
@@ -157,7 +156,45 @@ if ( $wp_customize ) {
 	) );
 	$wp_customize->selective_refresh->add_partial( 'emulsion_bg_image_blend_color_amount', array(
 		'selector' => 'html',
-	) );	
+	) );
+	////////////////////////////
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_global', array(
+		'selector' => 'body.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_global_style', array(
+		'selector' => 'body.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_global_width', array(
+		'selector' => 'body.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_sidebar', array(
+		'selector' => '.sidebar-widget-area.has-border-custom, .footer-widget-area.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_sidebar_style', array(
+		'selector' => '.sidebar-widget-area.has-border-custom, .footer-widget-area.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_sidebar_width', array(
+		'selector' => '.sidebar-widget-area.has-border-custom, .footer-widget-area.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_grid', array(
+		'selector' => '.grid.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_grid_style', array(
+		'selector' => '.grid.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_grid_width', array(
+		'selector' => '.grid.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_stream', array(
+		'selector' => '.stream.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_stream_style', array(
+		'selector' => '.stream.has-border-custom', 'fallback_refresh'	 => true,
+	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_border_stream_width', array(
+		'selector' => '.stream.has-border-custom', 'fallback_refresh'	 => true,
+	) );
 }
 
 /**
@@ -463,6 +500,9 @@ function emulsion_customizer_style() {
 
 	$css .= <<<CUSTOMIZE_CSS
 			/* todo */
+#customize-theme-controls input[type="number"]{
+			padding:0 0 0 8px;
+}
 #customize-theme-controls .customize-inside-control-row{
 			display:block;
 			line-height:1.5;
@@ -480,7 +520,6 @@ function emulsion_customizer_style() {
 	font-size:2rem;
 			font-family:sans-serif;
 			line-height:1.5;
-
 }
 #accordion-section-emulsion_section_post:before{
 	content:'{$text_section_emulsion_section_layout_header}';

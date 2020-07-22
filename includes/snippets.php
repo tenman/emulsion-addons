@@ -63,9 +63,7 @@ if ( ! function_exists( 'emulsion_append_header_layer_snippet' ) ) {
 
 		$html = wp_nav_menu( $defaults );
 
-		$css = '.cta-layer { text-align:center;position:absolute;bottom:0;z-index:10;width:100%;}'
-				. '.cta-layer-active{padding-bottom:6rem;}'
-				. '.cta-layer-active .cta-layer a{margin-left:3px;margin-right:3px;border:1px solid rgba(188,188,188,.5);}';
+		$css = '';
 
 		$js = '';
 

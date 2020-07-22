@@ -345,7 +345,23 @@ function emulsion_color_value_validate( $values, $type = 'hex' ) {
  * }
  *
  */
-	
+function emulsion_border_global_validate( $input ) {
+
+	return sanitize_hex_color( $input );
+}
+function emulsion_border_sidebar_validate( $input ) {
+
+	return sanitize_hex_color( $input );
+}
+
+function emulsion_border_grid_validate( $input ) {
+
+	return sanitize_hex_color( $input );
+}
+function emulsion_border_stream_validate( $input ) {
+
+	return sanitize_hex_color( $input );
+}	
 function emulsion_bg_image_blend_color_validate( $input ) {
 
 	return sanitize_hex_color( $input );
@@ -401,6 +417,7 @@ function emulsion_general_text_color_validate( $input ) {
 	return sanitize_hex_color( $input );
 }
 
+
 function emulsion_bg_image_blend_color_amount_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
@@ -411,7 +428,60 @@ function emulsion_bg_image_blend_color_amount_validate( $input ) {
 	}
 	return $default_value;
 }
+function emulsion_border_global_style_validate( $input ) {
 
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
+
+function emulsion_border_sidebar_style_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
+
+function emulsion_border_grid_style_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
+function emulsion_border_stream_style_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
 function emulsion_layout_search_results_post_image_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
@@ -511,6 +581,20 @@ function emulsion_layout_posts_page_post_image_validate( $input ) {
 }
 
 function emulsion_layout_homepage_post_image_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
+
+function emulsion_single_post_navigation_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
 	$values			 = emulsion_get_var( $name, 'choices' );
@@ -650,7 +734,58 @@ function emulsion_heading_font_base_validate( $input ) {
 	);
 	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
 }
+function emulsion_border_global_width_validate( $input ) {
 
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'input_attrs' );
+	$default_value	 = (int) emulsion_get_var( $name, 'default' );
+
+	$options = array(
+		'min_range'	 => $values['min'],
+		'max_range'	 => $values['max'],
+		'default'	 => $default_value,
+	);
+	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
+}
+function emulsion_border_sidebar_width_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'input_attrs' );
+	$default_value	 = (int) emulsion_get_var( $name, 'default' );
+
+	$options = array(
+		'min_range'	 => $values['min'],
+		'max_range'	 => $values['max'],
+		'default'	 => $default_value,
+	);
+	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
+}
+function emulsion_border_grid_width_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'input_attrs' );
+	$default_value	 = (int) emulsion_get_var( $name, 'default' );
+
+	$options = array(
+		'min_range'	 => $values['min'],
+		'max_range'	 => $values['max'],
+		'default'	 => $default_value,
+	);
+	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
+}
+function emulsion_border_stream_width_validate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'input_attrs' );
+	$default_value	 = (int) emulsion_get_var( $name, 'default' );
+
+	$options = array(
+		'min_range'	 => $values['min'],
+		'max_range'	 => $values['max'],
+		'default'	 => $default_value,
+	);
+	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
+}
 function emulsion_common_font_size_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );

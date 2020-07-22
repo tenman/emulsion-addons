@@ -199,6 +199,18 @@ function emulsion_wp_scss_set_variables() {
 		'caption_height'					 => emulsion_get_css_variables_values( 'caption_height' ),
 		'default_header_height'				 => emulsion_get_css_variables_values( 'default_header_height' ),
 		'full_width_negative_margin'		 => emulsion_get_css_variables_values( 'full_width_nagative_margin' ),
+		'border_global'					 => emulsion_get_css_variables_values( 'border_global' ),
+		'border_sidebar'					 => emulsion_get_css_variables_values( 'border_sidebar' ),
+		'border_grid'						 => emulsion_get_css_variables_values( 'border_grid' ),
+		'border_stream'						 => emulsion_get_css_variables_values( 'border_stream' ),
+		'border_global_style'				 => emulsion_get_css_variables_values( 'border_global_style' ),
+		'border_sidebar_style'				 => emulsion_get_css_variables_values( 'border_sidebar_style' ),
+		'border_grid_style'					 => emulsion_get_css_variables_values( 'border_grid_style' ),
+		'border_stream_style'				 => emulsion_get_css_variables_values( 'border_stream_style' ),
+		'border_global_width'				 => emulsion_get_css_variables_values( 'border_global_width' ),
+		'border_sidebar_width'				 => emulsion_get_css_variables_values( 'border_sidebar_width' ),
+		'border_grid_width'					 => emulsion_get_css_variables_values( 'border_grid_width' ),
+		'border_stream_width'				 => emulsion_get_css_variables_values( 'border_grid_width' ),
 	);
 
 	return $variables;

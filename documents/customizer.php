@@ -291,6 +291,10 @@
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_comments_bg' ); ?></td>
 		<td><?php esc_html_e('Set the background of comment block', 'emulsion')?></td>
 	</tr>
+	<tr>
+		<td><span class="dashicons dashicons-admin-customizer"></span> <?php  emulsion_get_customizer_link_element( 'panel', 'emulsion_theme_settings_border_panel', esc_html__( 'Custom Border', 'emulsion' ) ); ?></td>
+		<td><?php esc_html_e('Set the custom border', 'emulsion')?></td>
+	</tr>
 </table>
 
 <?php

@@ -33,6 +33,7 @@ function emulsion_document_style() {
 			background:#fff;
 			color:#222;
 		}
+			
 		.admin-color-light{
 			--thm_emulsion-accent-bg:#e5e5e5;
 			--thm_emulsion-accent-fg:#333;
@@ -42,6 +43,9 @@ function emulsion_document_style() {
 			background:#e5e5e5;
 			color:#333;
 		}
+		.color-scheme-light a:hover{
+			
+		}
 		.admin-color-blue{
 			--thm_emulsion-accent-bg:#52accc;
 			--thm_emulsion-accent-fg:#fff;
@@ -49,6 +53,9 @@ function emulsion_document_style() {
 		.color-scheme-blue *,
 		.color-scheme-blue{
 			background:#52accc;
+			color:#fff;
+		}
+		.color-scheme-blue a:hover{
 			color:#fff;
 		}
 		.admin-color-coffee{
@@ -60,6 +67,9 @@ function emulsion_document_style() {
 			background:#59524c;
 			color:#fff;
 		}
+		.color-scheme-coffee a:hover{
+			color:#fff;
+		}
 		.admin-color-ectoplasm{
 			--thm_emulsion-accent-bg:#523f6d;
 			--thm_emulsion-accent-fg:#fff;
@@ -68,7 +78,10 @@ function emulsion_document_style() {
 		.color-scheme-ectoplasm{
 			background:#523f6d;
 			color:#fff;
-		}	
+		}
+		.color-scheme-ectoplasm a:hover{
+			color:#fff;
+		}
 		.admin-color-midnight{
 			--thm_emulsion-accent-bg:#363b3f;
 			--thm_emulsion-accent-fg:#fff;
@@ -76,6 +89,9 @@ function emulsion_document_style() {
 		.color-scheme-midnight *,
 		.color-scheme-midnight{
 			background:#363b3f;
+			color:#fff;
+		}
+		.color-scheme-midnight a:hover{
 			color:#fff;
 		}
 		.admin-color-ocean{
@@ -87,6 +103,9 @@ function emulsion_document_style() {
 			background:#738e96;
 			color:#fff;
 		}
+		.color-scheme-ocean a:hover{		
+			color:#fff;
+		}
 		.admin-color-sunrise{
 			--thm_emulsion-accent-bg:#cf4944;
 			--thm_emulsion-accent-fg:#fff;
@@ -94,6 +113,9 @@ function emulsion_document_style() {
 		.color-scheme-sunrise *,
 		.color-scheme-sunrise{
 			background:#cf4944;
+			color:#fff;
+		}
+		.color-scheme-sunrise a:hover{		
 			color:#fff;
 		}
 		p{
@@ -460,6 +482,21 @@ function emulsion_document_style() {
 .vh100{
     min-height:100vh;
 }
+.block-name{
+	margin-top:3rem;
+	margin-bottom:3rem;
+	font-size:1.5rem;
+	border:1px solid;
+	background:#fff;
+	text-decoration:none;
+	display:inline-block;
+	padding:.4rem .8rem .6rem;
+}
+.block-name a{
+
+
+			
+}
 CSS;
 
 	printf( '<style type="text/css">%1$s</style>', wp_strip_all_tags( $css ) );
@@ -493,7 +530,27 @@ function emulsion_admin_tabs( $current = 'homepage' ) {
 /**
  *  Make Customizer link
  */
-function emulsion_get_customizer_link_element( $place, $name ) {
+function emulsion_get_customizer_link_element( $place, $name, $link_text = '' ) {
+	
+	
+	
+	if($place == 'section' && empty( $link_text ) ) {
+		
+		global $emulsion_theme_customize_sections;
+		
+		$label = $emulsion_theme_customize_sections[$name]['title'];
+		
+	}
+	if($place == 'panel' && empty( $link_text ) ) {
+		
+		global $emulsion_theme_customize_panels;
+		
+		$label = $emulsion_theme_customize_panels[$name]['title'];
+		
+	}
+
+	if($place == 'control' && empty( $link_text ) ) {
+		
 
 	$label = emulsion_get_var( $name, 'label' );
 
@@ -541,8 +598,11 @@ function emulsion_get_customizer_link_element( $place, $name ) {
 			$label	 = esc_html__( 'Custom Logo', 'emulsion' );
 			break;
 	}
+	}
 
-
+	if( ! empty( $link_text ) ) {
+		$label = sanitize_text_field( $link_text );
+	}
 	$query["autofocus[{$place}]"] = $name;
 
 	$link = add_query_arg( $query, admin_url( 'customize.php' ) );

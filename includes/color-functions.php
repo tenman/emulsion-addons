@@ -67,7 +67,9 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 		$comments_link_color			 = emulsion_link_colors( $comments_bg, 'comments' );
 		$heading_web_font_family		 = get_theme_mod( 'emulsion_heading_google_font_url', emulsion_get_var( 'emulsion_heading_google_font_url' ) );
 		$fallback_heading_font_family	 = get_theme_mod( 'emulsion_heading_font_family', emulsion_get_var( 'emulsion_heading_font_family' ) );
+		
 
+		
 		if ( ! empty( $heading_web_font_family ) ) {
 
 			$heading_font_family = emulsion_get_google_font_family_from_url( $heading_web_font_family, $fallback_heading_font_family ) ;
@@ -161,7 +163,21 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'grid'								 => array( 'value' => emulsion_get_template_part_css_selectors( 'grid' ), 'unit' => '' ),
 			'font_sizes'						 => array( 'value' => emulsion_get_font_sizes(), 'unit' => '' ),
 			'color_palette'						 => array( 'value' => emulsion_get_color_palette(), 'unit' => '' ),
+			'border_global'					 => array( 'value' => emulsion_get_var( 'emulsion_border_global' ), 'unit' => '' ),
+			'border_sidebar'					 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar' ), 'unit' => '' ),
+			'border_grid'						 => array( 'value' => emulsion_get_var( 'emulsion_border_grid' ), 'unit' => '' ),
+			'border_stream'						 => array( 'value' => emulsion_get_var( 'emulsion_border_stream' ), 'unit' => '' ),
+			'border_global_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_style' ), 'unit' => '' ),
+			'border_sidebar_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_style' ), 'unit' => '' ),
+			'border_grid_style'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_style' ), 'unit' => '' ),
+			'border_stream_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_stream_style' ), 'unit' => '' ),
+			'border_global_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_width' ), 'unit' => 'px' ),
+			'border_sidebar_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_width' ), 'unit' => 'px' ),
+			'border_grid_width'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_width' ), 'unit' => 'px' ),
+			'border_stream_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_stream_width' ), 'unit' => 'px' ),
 		);
+		
+
 
 		$check_customizer_change = get_theme_mod('emulsion_customizer_is_changed');
 
