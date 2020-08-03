@@ -155,10 +155,27 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 				),
 				'aria-current'		 => true,
 				'data-no-instant'	 => true,
+				
 			),
 			'time'	 => array(
 				'class'		 => true,
 				'datetime'	 => true,
+			),
+			'img'	 => array(
+				'aria-hidden' => true,
+				'alt'		 => true,
+				'align'		 => true,
+				'border'	 => true,
+				'decoding'	 => true,
+				'height'	 => true,
+				'hspace'	 => true,
+				'loading'	 => true,
+				'longdesc'	 => true,
+				'vspace'	 => true,
+				'src'		 => true,
+				'usemap'	 => true,
+				'width'		 => true,
+
 			),
 		);
 		$emulsion_allowed_tag	 = array_map( '_wp_add_global_attributes', $emulsion_allowed_tag );

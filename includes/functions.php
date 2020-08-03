@@ -177,9 +177,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 			$metabox_flag	 = true;
 			return $classes;
 		}
-
-		$classes[] = 'noscript';
-		
+				
 		unset( $classes['emulsion'] );
 		
 		$classes[] = sanitize_html_class( emulsion_plugin_info( 'Slug', false ) );

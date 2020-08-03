@@ -88,11 +88,11 @@
              <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'https://www.facebook.com/', esc_html__( 'Facebook', 'emulsion' ) ) ?>
             <td> <?php esc_html_e('post, activity, photo, video, media, question, note', 'emulsion') ?></td>
             <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'https://codex.wordpress.org/Version_4.7', 'WordPress 4.7' ) ?>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> <span class="dashicons dashicons-yes"></span></td>
+            <td><span class="dashicons dashicons-yes"></span></td>
+            <td><span class="dashicons dashicons-yes"></span></td>
+            <td><span class="dashicons dashicons-no-alt"></span></td>
+            <td><span class="dashicons dashicons-no-alt"></span></td>
         </tr>
         <tr>
             <?php printf('<td> <a href="%1$s">%2$s</a></td>', 'http://www.flickr.com/', esc_html__( 'Flickr', 'emulsion' ) ) ?>
