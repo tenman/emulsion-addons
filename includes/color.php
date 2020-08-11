@@ -258,9 +258,6 @@ CSS;
 	return $css. $style;
 }
 
-
-
-
 function emulsion_dinamic_css( $css = '' ) {
 
 	/**
@@ -353,9 +350,14 @@ CSS;
 	$style			 = emulsion_remove_spaces_from_css( $style );
 	$stream_css		 = emulsion_stream_layout_css();
 	$grid_css		 = emulsion_grid_layout_css();
-	$responsive_css	 = emulsion_resuponsive_css();
+	
+
+		$responsive_css = emulsion_resuponsive_css();
+
+
 
 	$css_result = $grid_css . $stream_css . $style . $responsive_css;
+	
 	set_theme_mod( 'dinamic_css', $css_result );
 	
 	if( is_page() &&  emulsion_metabox_display_control( 'page_style' ) ) {
@@ -679,7 +681,14 @@ CSSRES;
 }
 
 function emulsion_resuponsive_css() {
-
+	
+		if( false === get_theme_mod('emulsion_main_width', false ) &&
+			false === get_theme_mod('emulsion_content_width', false ) &&
+			false === get_theme_mod('emulsion_sidebar_width', false ) ) {
+			
+			return;
+		}
+	
 	/**
 	 * Theme main CSS is a compiled static file described in common.css.
 	 * If you do not use the wp-scss plugin, this function will need to dynamically override common.css.
@@ -883,33 +892,33 @@ function emulsion_resuponsive_css() {
   .comment-form, .comment-respond {
     padding-left: 0;
   }
-	.comment-form .comment-form,
+	.comment-form,
 	.comment-respond .comment-form {
 		box-sizing: border-box;
 	}
-	.comment-form .comment-form textarea,
+	.comment-form textarea,
 	.comment-respond .comment-form textarea {
 		width: 100%;
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.comment-form .comment-form input[name="author"],
+	.comment-form input[name="author"],
 	.comment-respond .comment-form input[name="author"],
-	.comment-form .comment-form input[type="url"],
+	.comment-form input[type="url"],
 	.comment-respond .comment-form input[type="url"],
-	.comment-form .comment-form input[type="email"],
+	.comment-form input[type="email"],
 	.comment-respond .comment-form input[type="email"],
-	.comment-form .comment-form input[type="author"],
+	.comment-form input[type="author"],
 	.comment-respond .comment-form input[type="author"],
-	.comment-form .comment-form input[type="comment"],
+	.comment-form input[type="comment"],
 	.comment-respond .comment-form input[type="comment"] {
 		width: 100%;
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.comment-form .comment-form input[type="submit"],
+	.comment-form input[type="submit"],
 	.comment-respond .comment-form input[type="submit"] {
 		font-size: 0.8125rem;
 		line-height: 1.5;
@@ -918,15 +927,15 @@ function emulsion_resuponsive_css() {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.comment-form .comment-form label[for="url"], .comment-respond .comment-form label[for="url"],
-	.comment-form .comment-form label[for="email"], .comment-respond .comment-form label[for="email"],
-	.comment-form .comment-form label[for="author"], .comment-respond .comment-form label[for="author"],
-	.comment-form .comment-form label[for="comment"], .comment-respond .comment-form label[for="comment"] {
+	.comment-form label[for="url"], .comment-respond .comment-form label[for="url"],
+	.comment-form label[for="email"], .comment-respond .comment-form label[for="email"],
+	.comment-form label[for="author"], .comment-respond .comment-form label[for="author"],
+	.comment-form label[for="comment"], .comment-respond .comment-form label[for="comment"] {
 		vertical-align: top;
 		display: inline-block;
 		width: 8em;
 	}
-  .comment-form .comment-form label.wp-comment-cookies-consent, .comment-respond .comment-form label.wp-comment-cookies-consent {
+  .comment-form label.wp-comment-cookies-consent, .comment-respond .comment-form label.wp-comment-cookies-consent {
     font-size: 0.8125rem;
     line-height: 1.5;
   }

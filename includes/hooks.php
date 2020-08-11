@@ -588,34 +588,6 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 
 }
 
-/*
-if ( ! function_exists( 'emulsion_inline_style_filter' ) ) {
-
-	function emulsion_inline_style_filter( $style ) {
-
-		if ( defined( 'WPSCSS_PLUGIN_DIR' ) ) {
-			return $style;
-		}
-
-		$header_text_color = emulsion_header_text_color_fallback();
-
-		if ( ! empty( $header_text_color ) && ctype_xdigit( $header_text_color ) ) {
-
-			$style .= '
-			div.header-layer .entry-text,
-			div.header-layer .entry-text a,
-			div.header-layer .site-description,
-			div.header-layer .site-title .site-title-text,
-			div.header-layer .header-text a{ color:#' . sanitize_text_field( $header_text_color ) . ';}';
-		}
-
-		$style = emulsion_sanitize_css( $style );
-
-		return $style;
-	}
-
-}*/
-
 if ( ! function_exists( 'emulsion_term_duplicate_link_hide' ) ) {
 
 	function emulsion_term_duplicate_link_hide( $css ) {
@@ -633,11 +605,17 @@ if ( ! function_exists( 'emulsion_term_duplicate_link_hide' ) ) {
 			if ( is_category() ) {
 				$term_link	 = esc_url( get_category_link( $term_id ) );
 				$css		 .= '.post-categories a[href="' . $term_link . '"]{display:none;} ';
+				
+				
 			}
 			if ( is_tag() ) {
 				$term_link	 = esc_url( get_term_link( $term_id ) );
 				$css		 .= '.post-tag a[href="' . $term_link . '"]{display:none;} ';
-			}
+			}			
+		}
+		/* remove uncategorized */
+		if ( absint( get_category_by_slug( 'uncategorized' )->term_id ) == absint( get_option( 'default_category' ) ) ) {
+			$css .= '#document .cat-item-1{display:none;}';
 		}
 
 		return $css;
@@ -844,11 +822,7 @@ if ( ! function_exists( 'emulsion_smart_category_highlight' ) ) {
 					$result	 .= $body_id . ' .cat-item.cat-item-' . absint( $term->term_id ) . " {\n display:none;\n} \n";
 					$result	 .= $body_id . '.category-archives .cat-item.cat-item-' . absint( $term->term_id ) . " {\n display:none; \n } \n";
 				}
-				/* remove uncategorized */
-				if ( absint( get_category_by_slug( 'uncategorized' )->term_id ) == absint( get_option( 'default_category' ) ) ) {
-					
-					$result .= '#document .cat-item-1{display:none;}';
-				}				
+						
 			}
 		}
 
