@@ -374,7 +374,7 @@ if ( ! function_exists( 'emulsion_excerpt_length' ) ) {
 if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 
 	function emulsion_admin_body_class( $classes ) {
-		global $post;
+		global $post, $wp_version;
 
 
 		if ( ! isset( $post ) || ! function_exists( 'emulsion_get_var' ) ) {
@@ -443,6 +443,11 @@ if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 			} else {
 
 				$block_editor_class_name = ' emulsion-gb-phase-block';
+			}
+			
+			if ( version_compare( $wp_version, '5.5', '>=' ) ) {
+				
+				$block_editor_class_name = ' emulsion-gb-phase-site';
 			}
 
 			$theme_classes	 = implode( ' ', emulsion_body_class( array() ) );

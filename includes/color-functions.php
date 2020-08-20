@@ -128,7 +128,7 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'primary_menu_background'			 => array( 'value' => $primary_menu_background, 'unit' => '' ),
 			'header_image_ratio'				 => array( 'value' => emulsion_header_image_ratio(), 'unit' => '' ),
 			'upload_base_dir'					 => array( 'value' => emulsion_upload_base_dir(), 'unit' => '' ),
-			'theme_image_dir'					 => array( 'value' => emulsion_theme_image_dir(), 'unit' => '' ),
+			'theme_image_dir'					 => array( 'value' => function_exists('emulsion_theme_image_dir') ? emulsion_theme_image_dir():'', 'unit' => '' ),
 			'box_gap'							 => array( 'value' => emulsion_get_var( 'emulsion_box_gap' ), 'unit' => 'px' ),
 			'layout_posts_page'					 => array( 'value' => emulsion_get_var( 'emulsion_layout_posts_page' ), 'unit' => '' ),
 			'layout_author_archives'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_author_archives' ), 'unit' => '' ),

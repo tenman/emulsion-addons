@@ -1184,7 +1184,7 @@ function emulsion_resuponsive_css() {
   }
 }
 @media screen and (min-width: $content_width_plus_sidebar_width_plus1) {
-  .sidebar-widget-area{
+  body.emulsion-has-sidebar .sidebar-widget-area{
     position: relative;
     z-index: 1;
     flex-basis: var(--thm_sidebar_width, 400px);
@@ -1197,6 +1197,21 @@ function emulsion_resuponsive_css() {
     flex: 0 0;
   }
 }
+@media screen and ( max-width : $content_width_plus_sidebar_width ) {
+    body.emulsion-has-sidebar .sidebar-widget-area{
+        position:relative;
+        z-index:1;
+        flex-basis:100%;
+        width:100%;
+        max-width:100%;       
+        flex:0 0;
+    }
+	ul.sidebar-widget-area-lists{
+        width:100vw;
+    }
+}			
+			
+			
 @media screen and (min-width: $content_width_plus_sidebar_width_plus1) {
 	.emulsion-has-sidebar .grid .wp-block-columns.alignfull,
 	.emulsion-has-sidebar .grid .wp-block-text-columns.alignfull,
