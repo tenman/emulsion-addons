@@ -3,7 +3,7 @@ Contributors: nobita
 Tags: emulsion theme,customizer
 Requires at least: 5.0
 Tested up to: 5.4.2
-Stable tag: 1.3.0
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,8 @@ Add a meta box to the theme post editor. This feature allows you to stop theme s
 Interference with non-theme styles such as page builder and block editor can be kept to a minimum.
 
 Contains detailed documentation for the theme
+
+[github releases](https://github.com/tenman/emulsion-addons/releases)
 
 == Installation ==
 
