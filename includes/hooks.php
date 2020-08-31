@@ -24,6 +24,8 @@ function emulsion_addons_hooks_setup() {
 	if ( 'active' !== $wp_scss_status ) {
 		add_action( 'wp_ajax_emulsion_tiny_mce_css_variables', 'emulsion_tiny_mce_css_variables_callback' );
 	}
+	
+	
 	add_filter( 'emulsion_inline_style', 'emulsion_plugins_style_change_inline' );
 	add_action( 'edit_post_link', 'emulsion_custom_gutenberg_edit_link', 10, 3 );
 	function_exists( 'emulsion_customizer_add_supports_excerpt' ) ? add_action( 'emulsion_template_pre_index', 'emulsion_customizer_add_supports_excerpt' ) : '';
@@ -190,7 +192,7 @@ if ( ! function_exists( 'emulsion_category_link_format' ) ) {
 
 		if ( isset( $args['show_count'] ) && ! empty( $args['show_count'] ) ) {
 
-			return preg_replace( '!\(([0-9]+)\)!', "<span class=\"emulsion-cat-count counter\">$1</span>", $output );
+			return preg_replace( '!\(([0-9]+)\)!', "<span class=\"emulsion-cat-count counter badge circle\">$1</span>", $output );
 		}
 
 		return $output;
@@ -587,6 +589,8 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 			//dinamic css
 			$style .= emulsion__css_variables( '' );
 		}
+
+		
 		$style = emulsion_sanitize_css( $style );
 		return $style;
 	}
@@ -616,10 +620,10 @@ if ( ! function_exists( 'emulsion_term_duplicate_link_hide' ) ) {
 			if ( is_tag() ) {
 				$term_link	 = esc_url( get_term_link( $term_id ) );
 				$css		 .= '.post-tag a[href="' . $term_link . '"]{display:none;} ';
-			}			
+			}		
 		}
 		/* remove uncategorized */
-		if ( absint( get_category_by_slug( 'uncategorized' )->term_id ) == absint( get_option( 'default_category' ) ) ) {
+		if ( isset( get_category_by_slug( 'uncategorized' )->term_id ) && absint( get_category_by_slug( 'uncategorized' )->term_id ) == absint( get_option( 'default_category' ) ) ) {
 			$css .= '#document .cat-item-1{display:none;}';
 		}
 

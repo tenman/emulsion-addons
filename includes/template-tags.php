@@ -110,7 +110,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			 * remove element and their contents
 			 */
 
-			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code>', true );
+			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code><pre>', true );
 
 			/**
 			 * Remove Comments

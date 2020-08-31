@@ -148,6 +148,10 @@ if ( $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial( 'display_header_text', array(
 		'selector' => '.site-title-text, .site-description',
 	) );
+	$wp_customize->selective_refresh->add_partial( 'emulsion_header_background_color', array(
+		'selector' => '.header-layer, .grid header',
+	) );
+	
 	$wp_customize->selective_refresh->add_partial( 'emulsion_bg_image_text', array(
 		'selector' => 'article',
 	) );
