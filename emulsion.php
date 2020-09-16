@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.3.2
+ * Version:     1.3.3
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -125,6 +125,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 			emulsion_add_supports( 'japan_era' );
 		}
+		
 	}
 
 	if ( function_exists( 'has_header_video' ) ) {
@@ -138,8 +139,40 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		} );
 		add_filter( 'header_video_settings', 'emulsion_video_controls' );
 	}
-	
+	/**
+	 * emulsion theme suppports
+	 */
+	'disable' == get_theme_mod( 'emulsion_relate_posts', emulsion_get_var( 'emulsion_relate_posts' ) ) 
+			? emulsion_remove_supports( 'relate_posts' ) 
+			: '';
+	'disable' == get_theme_mod( 'emulsion_tooltip', emulsion_get_var( 'emulsion_tooltip' ) ) 
+			? emulsion_remove_supports( 'tooltip' ) 
+			: '';
+	'disable' == get_theme_mod( 'emulsion_search_drawer', emulsion_get_var( 'emulsion_search_drawer' ) )  
+			? emulsion_remove_supports( 'search_drawer' ) 
+			: '';
+	'full_text' == get_theme_mod( 'emulsion_layout_search_results', emulsion_get_var( 'emulsion_layout_search_results' ) ) 
+			? emulsion_remove_supports( 'search_keyword_highlight' ) 
+			: '';
+	'disable' == get_theme_mod( 'emulsion_alignfull', emulsion_get_var( 'emulsion_alignfull' ) )  
+			? emulsion_remove_supports( 'alignfull' ) 
+			: '';
+	'no' == get_theme_mod( 'emulsion_title_in_header', emulsion_get_var( 'emulsion_title_in_header' ) ) 
+			? emulsion_remove_supports( 'title_in_page_header' ) 
+			: '';
+	'disable' == get_theme_mod( 'emulsion_table_of_contents', emulsion_get_var( 'emulsion_table_of_contents' ) ) 
+			? emulsion_remove_supports( 'toc' ) 
+			: '';
+	'remove' == get_theme_mod( 'emulsion_page_header', emulsion_get_var( 'emulsion_page_header' ) ) 
+			? emulsion_remove_supports( 'header' ) 
+			: '';
 
+	'disable' == get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) 
+			? emulsion_remove_supports( 'instantclick' ) 
+			: '';
+	'disable' == get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) ) 
+			? emulsion_remove_supports( 'lazyload' ) 
+			: '';
 }
 
 /**

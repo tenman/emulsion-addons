@@ -582,7 +582,7 @@
     wp.customize('emulsion_primary_menu_background', function (value) {
         value.bind(function (newval) {
             var color = emulsion_text_color(newval);
-            $('.primary-menu-wrapper').css({'background': newval, 'color': color});
+            $('.primary-menu-wrapper, .menu-main-container, .wp-nav-menu,primary').css({'background': newval, 'color': color});
             $('.primary-menu-wrapper a').css({'color': color, 'background': 'transparent'});
             $('.emulsion-has-sidebar .primary-menu-wrapper .menu-placeholder').css({'background': newval, 'color': color});
             $('.primary-menu-wrapper').removeClass('menu-is-light menu-is-dark');

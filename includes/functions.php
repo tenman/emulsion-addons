@@ -340,6 +340,12 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 
 		$favorite_color_palette = '';
 		$favorite_color_palette = get_theme_mod( 'emulsion_favorite_color_palette', emulsion_get_var( 'emulsion_favorite_color_palette' ) );
+		
+		/**
+		 * default value has been dinamic @1.5.3
+		 */
+
+		set_theme_mod( 'emulsion_scheme', 'default' );
 
 		/**
 		 * layout grid steam is dinamicaly set emulsion_add_supports()
@@ -361,7 +367,7 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		set_theme_mod( 'emulsion_layout_category_archives', $emulsion_layout_category_archives );
 		set_theme_mod( 'emulsion_layout_tag_archives', $emulsion_layout_tag_archives );
 		set_theme_mod( 'emulsion_layout_author_archives', $emulsion_layout_author_archives );
-
+		
 
 
 		$emulsion_default_background_color = get_theme_support( 'custom-background', 'default-color' );
@@ -1094,6 +1100,8 @@ function emulsion_amp_enqueue_script() {
 	}
 }
 
+
+
 function emulsion_amp_setting() {
 
 	if ( emulsion_is_amp() ) {
@@ -1109,4 +1117,37 @@ function emulsion_amp_setting() {
 		emulsion_remove_supports( 'tooltip' );
 	} 
 
+}
+
+add_action( 'wp_enqueue_scripts', 'emulsion_setup_styles' );
+
+function emulsion_setup_styles() {
+	/**
+	 * Google fonts
+	 */
+	$emulsion_common_google_font_url = '';
+
+	$emulsion_common_google_font_url = esc_url( get_theme_mod( 'emulsion_common_google_font_url', emulsion_get_var( 'emulsion_common_google_font_url' ) ) );
+
+	if ( ! empty( $emulsion_common_google_font_url ) && false == wp_style_is( 'emulsion-common-google-font' ) ) {
+
+		wp_register_style( 'emulsion-common-google-font', $emulsion_common_google_font_url, array( 'emulsion' ), null, 'all' );
+		wp_enqueue_style( 'emulsion-common-google-font' );
+	}
+
+	$emulsion_heading_google_font_url = esc_url( get_theme_mod( 'emulsion_heading_google_font_url', emulsion_get_var( 'emulsion_heading_google_font_url' ) ) );
+
+	if ( ! empty( $emulsion_heading_google_font_url ) && false == wp_style_is( 'emulsion-heading-google-font' ) ) {
+
+		wp_register_style( 'emulsion-heading-google-font', $emulsion_heading_google_font_url, array( 'emulsion' ), null, 'all' );
+		wp_enqueue_style( 'emulsion-heading-google-font' );
+	}
+
+	$emulsion_widget_meta_google_font_url = esc_url( get_theme_mod( 'emulsion_widget_meta_google_font_url', emulsion_get_var( 'emulsion_widget_meta_google_font_url' ) ) );
+
+	if ( ! empty( $emulsion_widget_meta_google_font_url ) && false == wp_style_is( 'emulsion-widget-meta-google-font' ) ) {
+
+		wp_register_style( 'emulsion-widget-meta-google-font', $emulsion_widget_meta_google_font_url, array( 'emulsion' ), null, 'all' );
+		wp_enqueue_style( 'emulsion-widget-meta-google-font' );
+	}
 }

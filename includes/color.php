@@ -152,7 +152,7 @@ function emulsion__css_variables( $css = '' ) {
 	if ( get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) == emulsion_get_background_color() ) {
 		$media_text_section_bg = 'transparent';
 	}
-	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) == emulsion_get_background_color() ) {
+	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) == emulsion_get_background_color() ) {
 		$gallery_section_bg = 'transparent';
 	}
 
@@ -301,6 +301,7 @@ function emulsion_dinamic_css( $css = '' ) {
 		}
 	}
 	$style = emulsion__css_variables();
+	
 	$style .= <<<CSS
 
 
@@ -348,11 +349,13 @@ $make_boxed_style
 CSS;
 
 	$style			 = emulsion_remove_spaces_from_css( $style );
+	
 	$stream_css		 = emulsion_stream_layout_css();
+	
 	$grid_css		 = emulsion_grid_layout_css();
 	
 
-		$responsive_css = emulsion_resuponsive_css();
+	$responsive_css = emulsion_resuponsive_css();
 
 
 
@@ -618,12 +621,19 @@ function emulsion_grid_layout_css() {
 		$class .grid .article-wrapper article footer {
 			flex: 1 0 auto;
 			align-self: flex-end;
-			margin-top: 0;
-			margin-top: var(--thm_content_gap, 24px);
+			margin-top:0
 			margin-bottom: var(--thm_content_gap, 24px);
 			height: auto;
 			display: flex;
 			justify-content: flex-end;
+				
+		}
+		$class .grid .article-wrapper article footer:empty,
+		$class .grid .article-wrapper article footer:empty:after,
+		$class .grid .article-wrapper article footer:empty:before {
+			display:none;
+            margin-bottom:0;
+				
 		}
 		$class .grid .article-wrapper article footer span {
 			display: flex;

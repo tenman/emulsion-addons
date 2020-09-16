@@ -9,7 +9,7 @@ locate_template( 'lib/validate.php', true, true );
 function emulsion_settings_page_init() {
 
 	$theme_name		 = emulsion_theme_info( 'Name', false );
-	$settings_page	 = add_theme_page( $theme_name . ' Documents', $theme_name . ' Documents', 'edit_theme_options', 'theme-settings', 'emulsion_settings_page' );
+	$settings_page	 = add_menu_page( $theme_name . ' Theme', esc_html__('Theme', 'emulsion'), 'edit_theme_options', 'theme-settings', 'emulsion_settings_page', 'dashicons-admin-appearance', 60 );
 
 	if ( $settings_page ) {
 		add_action( 'admin_print_styles-' . $settings_page, 'emulsion_document_style', 99 );
@@ -317,21 +317,29 @@ function emulsion_document_style() {
 			font-size:3rem;
 			margin-top:1.5rem;
 			margin-bottom:.75rem;
+			padding-left:24px;
+			padding-right:24px;
 		}
 		h2{
 			font-size:2rem;
 			margin-top:1.5rem;
 			margin-bottom:.75rem;
+			padding-left:24px;
+			padding-right:24px;
 		}
 		h3{
 			font-size:1.5rem;
 			margin-top:1.5rem;
 			margin-bottom:.75rem;
+			padding-left:24px;
+			padding-right:24px;
 		}
 		h4{
 			font-size:1rem;
 			margin-top:1.5rem;
 			margin-bottom:.75rem;
+			padding-left:24px;
+			padding-right:24px;
 		}
 			
 		.custom-classes{
@@ -402,6 +410,9 @@ function emulsion_document_style() {
 	  margin-right: auto;
 	  flex: 0 1 calc(50% - 5px - var(--thm_box_gap) * 2);
 	}
+.wp-block-group.grid > .wp-block-group__inner-container > .grid-child.size1of1, .wp-block-group.grid > .wp-block-group__inner-container > .grid-child.size1of1 {
+  flex: 0 1 calc(100% - 5px - var(--thm_box_gap) * 2);
+}
 .wp-block-group.grid > .wp-block-group__inner-container > .grid-child.size1of3, .wp-block-group.grid > .wp-block-group__inner-container > .grid-child.size1of3 {
   flex: 0 1 calc(33.33333% - 5px - var(--thm_box_gap) * 2);
 }
@@ -621,7 +632,7 @@ function emulsion_settings_page() {
 
 	<div class="emulsion-document">
 		<header class="emulsion-document-header">
-			<h2><span class="dashicons dashicons-welcome-learn-more"></span> <?php echo esc_html( $theme_name ); ?></h2>
+			<h2><span class="dashicons dashicons-welcome-learn-more"></span> <?php esc_html_e('Theme:','emulsion') ?> <?php echo esc_html( $theme_name ); ?></h2>
 		</header>
 
 	<?php //isset( $_GET['tab'] ) ? emulsion_admin_tabs( $_GET['tab'] ) : emulsion_admin_tabs( 'homepage' );   ?>
@@ -633,7 +644,7 @@ function emulsion_settings_page() {
 		<div id="poststuff">
 
 	<?php
-	if ( $pagenow == 'themes.php' && $emulsion_page_value == 'theme-settings' ) {
+	if ( $pagenow == 'admin.php' && $emulsion_page_value == 'theme-settings' ) {
 
 		$tab = isset( $emulsion_tab_value ) ? $emulsion_tab_value : 'homepage';
 

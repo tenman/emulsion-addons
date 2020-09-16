@@ -96,9 +96,13 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'header_gradient'					 => array( 'value' => emulsion_get_var( 'emulsion_header_gradient' ), 'unit' => '' ),
 			'content_margin_top'				 => array( 'value' => emulsion_get_var( 'emulsion_content_margin_top' ), 'unit' => 'px' ),
 			'colors_for_editor'					 => array( 'value' => emulsion_get_var( 'emulsion_colors_for_editor' ), 'unit' => '' ),
+		//	'general_text_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_text_color' ), 'unit' => '' ),
+			//'general_text_color'				 => array( 'value' => emulsion_contrast_color(), 'unit' => '' ),
 			'general_text_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_text_color' ), 'unit' => '' ),
-			'general_link_hover_color'			 => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
-			'general_link_color'				 => array( 'value' => emulsion_link_colors(), 'unit' => '' ),
+			//'general_link_hover_color'			 => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
+			'general_link_hover_color'			 => array( 'value' => emulsion_get_var( 'emulsion_general_link_hover_color' ), 'unit' => '' ),
+			//'general_link_color'				 => array( 'value' => emulsion_link_colors(), 'unit' => '' ),
+			'general_link_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_link_color' ), 'unit' => '' ),//
 			'excerpt_linebreak'					 => array( 'value' => emulsion_get_var( 'emulsion_excerpt_linebreak' ), 'unit' => '' ),
 			'comments_link_color'				 => array( 'value' => $comments_link_color, 'unit' => '' ),
 			'comments_color'					 => array( 'value' => $comments_color, 'unit' => '' ),
@@ -711,7 +715,7 @@ if ( ! function_exists( 'emulsion_sidebar_background' ) ) {
 
 				$sidebar_background = 'inherit';
 			}
-			$sidebar_background = apply_filters( 'emulsion_sidebar_background_light', $sidebar_background );
+			$sidebar_background = apply_filters( 'emulsion_sidebar_background_dark', $sidebar_background );
 		}
 		if ( '#333333' == $text_color ) {
 
@@ -768,6 +772,8 @@ if ( ! function_exists( 'emulsion_link_colors' ) ) {
 	 */
 
 	function emulsion_link_colors( $hex_color = '' , $location = '' ) {
+		
+		
 
 		$text_color = emulsion_contrast_color( $hex_color );
 

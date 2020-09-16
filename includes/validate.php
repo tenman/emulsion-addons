@@ -362,6 +362,25 @@ function emulsion_color_value_validate( $values, $type = 'hex' ) {
  * }
  *
  */
+/*
+function emulsion_scheme_validate( $input ) {
+
+		if ( array_key_exists( $input, emulsion_theme_scheme ) ) {
+
+			return $input;
+		}
+
+		return 'default';
+}*/
+function emulsion_google_analytics_tracking_code_validate( $input ) {
+	
+	if( ! empty( $input) ) {
+		
+		return sanitize_text_field( $input );
+	}
+	
+	return ''; 
+}
 function emulsion_border_global_validate( $input ) {
 
 	return sanitize_hex_color( $input );
@@ -1013,7 +1032,7 @@ function emulsion_widget_meta_font_size_validate( $input ) {
 	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
 }
 
-function emulsion_widget_meta_font_family( $input ) {
+function emulsion_widget_meta_font_family_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
 	$values			 = emulsion_get_var( $name, 'choices' );

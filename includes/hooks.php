@@ -75,6 +75,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description');
 	add_filter( 'theme_mod_emulsion_header_html', 'do_shortcode');
+	add_action( 'wp_footer','emulsion_addons_google_tracking_code', 99 );
 	
 
 }
@@ -584,8 +585,8 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 			$style .= emulsion_dinamic_css( '' );
 		}
 		$wp_scss_status = get_theme_mod( 'emulsion_wp_scss_status' );
-
-		if ( function_exists('emulsion__css_variables') && 'active' !== $wp_scss_status && ! is_user_logged_in() ) {
+//&& ! is_user_logged_in()
+		if ( function_exists('emulsion__css_variables') && 'active' !== $wp_scss_status  ) {
 			//dinamic css
 			$style .= emulsion__css_variables( '' );
 		}
@@ -1826,4 +1827,36 @@ function emulsion_description( $script ){
 SCRIPT;
 	
 	return $script;
+}
+
+
+function emulsion_addons_google_tracking_code() {
+
+	$tag			 = sanitize_text_field( get_theme_mod( 'emulsion_google_analytics_tracking_code' ) );
+	$theme_mod_name	 = 'emulsion_google_analytics_' . md5( $tag );
+
+	if ( $result = get_theme_mod( $theme_mod_name, false ) ) {
+
+		echo $result;
+		return;
+	}
+
+	if ( ! empty( $tag ) && ! get_theme_mod( $theme_mod_name, false ) ) {
+
+		$tracking_code = <<<CODE
+			
+<script async src="https://www.googletagmanager.com/gtag/js?id={$tag}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+
+	gtag('js', new Date());
+
+	gtag('config', '{$tag}');
+</script>
+	
+CODE;
+		set_theme_mod( $theme_mod_name, $tracking_code );
+		echo $tracking_code;
+	}
 }

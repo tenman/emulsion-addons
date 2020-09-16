@@ -295,6 +295,8 @@ function emulsion_customize_controle_translate() {
 			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to latest post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message
 			. '<p>' . esc_html__( 'The background image is display only for single posts and pages.', 'emulsion' ) . '</p>'
 			. '<p>' . esc_html__( 'If you see a default button, press it to save and reload. Then, set your favorite background image.', 'emulsion' ) . '</p>',
+		'scheme_notification'						 => '<p>'.esc_html__( 'At this time, this setting does not support real-time preview', 'emulsion' ).
+		'<br />'. esc_html__( 'After changing the settings, save and reload your browser', 'emulsion' ). '</p>'	,
 	);
 	return $translation_array;
 }
