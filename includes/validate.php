@@ -1536,7 +1536,7 @@ function emulsion_block_media_text_section_height_validate( $input ) {
 
 if ( ! function_exists( 'emulsion_get_var' ) ) {
 
-	function emulsion_get_var( $name = '', $property = '' ) {
+	function emulsion_get_var( $name = '', $property = '', $unit = false ) {
 
 		global $emulsion_customize_args;
 
@@ -1544,11 +1544,16 @@ if ( ! function_exists( 'emulsion_get_var' ) ) {
 		if ( ! empty( $emulsion_customize_args[$name] ) && array_key_exists( $name, $emulsion_customize_args ) ) {
 
 			if ( empty( $property ) ) {
+				
+				if( true === $unit ){
+					
+					return sprintf('%1$s%2$s', get_theme_mod( $name, $emulsion_customize_args[$name]['default'] ), $emulsion_customize_args[$name]['unit'] );
+				}
 
 				return get_theme_mod( $name, $emulsion_customize_args[$name]['default'] );
 			}
 			if ( ! empty( $property ) && isset( $emulsion_customize_args[$name][$property] ) ) {
-
+				
 				return $emulsion_customize_args[$name][$property];
 			}
 

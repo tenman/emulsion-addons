@@ -346,6 +346,7 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		 */
 
 		set_theme_mod( 'emulsion_scheme', 'default' );
+		
 
 		/**
 		 * layout grid steam is dinamicaly set emulsion_add_supports()
@@ -378,6 +379,8 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		set_theme_mod( 'background_color', $emulsion_default_background_color );
 		set_theme_mod( 'emulsion_primary_menu_background', $emulsion_default_background_color );
 		set_theme_mod( 'emulsion_sidebar_background', $emulsion_default_background_color );
+		
+
 
 		//$emulsion_default_header_textcolor_color = str_replace( '#', '', emulsion_header_text_color_reset() );
 		set_theme_mod( 'header_textcolor', null );

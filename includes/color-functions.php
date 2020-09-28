@@ -41,6 +41,7 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			
 			$header_text_color		 = emulsion_contrast_color( $header_background_color );
 		}
+		
 		$header_link_color				 = emulsion_link_colors( $header_background_color, 'site_header' );
 		$header_hover_color				 = emulsion_hover_colors( $header_background_color, 'site_header' );
 		$columns_section_bg				 = emulsion_get_var( 'emulsion_block_columns_section_bg' );
@@ -96,43 +97,48 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'header_gradient'					 => array( 'value' => emulsion_get_var( 'emulsion_header_gradient' ), 'unit' => '' ),
 			'content_margin_top'				 => array( 'value' => emulsion_get_var( 'emulsion_content_margin_top' ), 'unit' => 'px' ),
 			'colors_for_editor'					 => array( 'value' => emulsion_get_var( 'emulsion_colors_for_editor' ), 'unit' => '' ),
-		//	'general_text_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_text_color' ), 'unit' => '' ),
-			//'general_text_color'				 => array( 'value' => emulsion_contrast_color(), 'unit' => '' ),
 			'general_text_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_text_color' ), 'unit' => '' ),
-			//'general_link_hover_color'			 => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
 			'general_link_hover_color'			 => array( 'value' => emulsion_get_var( 'emulsion_general_link_hover_color' ), 'unit' => '' ),
-			//'general_link_color'				 => array( 'value' => emulsion_link_colors(), 'unit' => '' ),
 			'general_link_color'				 => array( 'value' => emulsion_get_var( 'emulsion_general_link_color' ), 'unit' => '' ),//
 			'excerpt_linebreak'					 => array( 'value' => emulsion_get_var( 'emulsion_excerpt_linebreak' ), 'unit' => '' ),
 			'comments_link_color'				 => array( 'value' => $comments_link_color, 'unit' => '' ),
 			'comments_color'					 => array( 'value' => $comments_color, 'unit' => '' ),
 			'comments_bg'						 => array( 'value' => $comments_bg, 'unit' => '' ),
+			
 			'relate_posts_link_color'			 => array( 'value' => $relate_posts_link_color, 'unit' => '' ),
 			'relate_posts_color'				 => array( 'value' => $relate_posts_color, 'unit' => '' ),
 			'relate_posts_bg'					 => array( 'value' => $relate_posts_bg, 'unit' => '' ),
+			
 			'media_text_section_link_color'		 => array( 'value' => $media_text_section_link_color, 'unit' => '' ),
 			'media_text_section_color'			 => array( 'value' => $media_text_section_color, 'unit' => '' ),
 			'media_text_section_bg'				 => array( 'value' => $media_text_section_bg, 'unit' => '' ),
 			'media_text_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_media_text_section_height' ), 'unit' => 'vh' ),
+			
 			'columns_section_link_color'		 => array( 'value' => $columns_section_link_color, 'unit' => '' ),
 			'columns_section_color'				 => array( 'value' => $columns_section_color, 'unit' => '' ),
 			'columns_section_bg'				 => array( 'value' => $columns_section_bg, 'unit' => '' ),
 			'columns_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_columns_section_height' ), 'unit' => 'vh' ),
+			
 			'gallery_section_link_color'		 => array( 'value' => $gallery_section_link_color, 'unit' => '' ),
 			'gallery_section_color'				 => array( 'value' => $gallery_section_color, 'unit' => '' ),
 			'gallery_section_bg'				 => array( 'value' => $gallery_section_bg, 'unit' => '' ),
 			'gallery_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_gallery_section_height' ), 'unit' => 'vh' ),
+			
 			'hover_color'						 => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
+			
 			'sidebar_link_color'				 => array( 'value' => $sidebar_link_color, 'unit' => '' ),
 			'sidebar_color'						 => array( 'value' => $sidebar_color, 'unit' => '' ),
 			'sidebar_background'				 => array( 'value' => $sidebar_background, 'unit' => '' ),
 			'sidebar_hover_color'				 => array( 'value' => $sidebar_hover_color, 'unit' => '' ),
+			
 			'primary_menu_link_color'			 => array( 'value' => $primary_menu_link_color, 'unit' => '' ),
 			'primary_menu_color'				 => array( 'value' => $primary_menu_color, 'unit' => '' ),
 			'primary_menu_background'			 => array( 'value' => $primary_menu_background, 'unit' => '' ),
+			
 			'header_image_ratio'				 => array( 'value' => emulsion_header_image_ratio(), 'unit' => '' ),
 			'upload_base_dir'					 => array( 'value' => emulsion_upload_base_dir(), 'unit' => '' ),
 			'theme_image_dir'					 => array( 'value' => function_exists('emulsion_theme_image_dir') ? emulsion_theme_image_dir():'', 'unit' => '' ),
+			
 			'box_gap'							 => array( 'value' => emulsion_get_var( 'emulsion_box_gap' ), 'unit' => 'px' ),
 			'layout_posts_page'					 => array( 'value' => emulsion_get_var( 'emulsion_layout_posts_page' ), 'unit' => '' ),
 			'layout_author_archives'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_author_archives' ), 'unit' => '' ),
@@ -140,16 +146,21 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'layout_category_archives'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_category_archives' ), 'unit' => '' ),
 			'layout_date_archives'				 => array( 'value' => emulsion_get_var( 'emulsion_layout_date_archives' ), 'unit' => '' ),
 			'layout_homepage'					 => array( 'value' => emulsion_get_var( 'emulsion_layout_homepage' ), 'unit' => '' ),
+			
 			'sidebar_position'					 => array( 'value' => emulsion_get_var( 'emulsion_sidebar_position' ), 'unit' => '' ),
+			
 			'widget_meta_font_transform'		 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_transform' ), 'unit' => '' ),
 			'widget_meta_font_family'			 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_family' ), 'unit' => '' ),
 			'widget_meta_font_size'				 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_size' ), 'unit' => 'px' ),
+			
 			'heading_font_transform'			 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_transform' ), 'unit' => '' ),
 			'heading_font_scale'				 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_scale' ), 'unit' => '' ),
 			'heading_font_weight'				 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_weight' ), 'unit' => '' ),
 			'heading_font_family'				 => array( 'value' => $heading_font_family, 'unit' => '' ),
+			
 			'common_font_family'				 => array( 'value' => emulsion_get_var( 'emulsion_common_font_family' ), 'unit' => '' ),
 			'common_font_size'					 => array( 'value' => emulsion_get_var( 'emulsion_common_font_size' ), 'unit' => 'px' ),
+			
 			'align_offset'						 => array( 'value' => 200, 'unit' => 'px' ),
 			'main_width'						 => array( 'value' => emulsion_get_var( 'emulsion_main_width' ), 'unit' => 'px' ),
 			'content_width'						 => array( 'value' => emulsion_get_var( 'emulsion_content_width' ), 'unit' => 'px' ),
@@ -161,20 +172,26 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'default_header_height'				 => array( 'value' => 300, 'unit' => 'px' ),
 			'header_background_color'			 => array( 'value' => emulsion_get_var( 'emulsion_header_background_color' ), 'unit' => '' ),
 			'header_background_gradient_color'	 => array( 'value' => $header_background_gradient_color, 'unit' => '' ),
+			
 			'background_color'					 => array( 'value' => emulsion_get_background_color(), 'unit' => '' ),
 			'footer_widget_width'				 => array( 'value' => emulsion_get_footer_cols_css(), 'unit' => '%' ),
+			
 			'stream'							 => array( 'value' => emulsion_get_template_part_css_selectors( 'stream' ), 'unit' => '' ),
 			'grid'								 => array( 'value' => emulsion_get_template_part_css_selectors( 'grid' ), 'unit' => '' ),
+			
 			'font_sizes'						 => array( 'value' => emulsion_get_font_sizes(), 'unit' => '' ),
 			'color_palette'						 => array( 'value' => emulsion_get_color_palette(), 'unit' => '' ),
+			
 			'border_global'					 => array( 'value' => emulsion_get_var( 'emulsion_border_global' ), 'unit' => '' ),
 			'border_sidebar'					 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar' ), 'unit' => '' ),
 			'border_grid'						 => array( 'value' => emulsion_get_var( 'emulsion_border_grid' ), 'unit' => '' ),
 			'border_stream'						 => array( 'value' => emulsion_get_var( 'emulsion_border_stream' ), 'unit' => '' ),
+			
 			'border_global_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_style' ), 'unit' => '' ),
 			'border_sidebar_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_style' ), 'unit' => '' ),
 			'border_grid_style'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_style' ), 'unit' => '' ),
 			'border_stream_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_stream_style' ), 'unit' => '' ),
+			
 			'border_global_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_width' ), 'unit' => 'px' ),
 			'border_sidebar_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_width' ), 'unit' => 'px' ),
 			'border_grid_width'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_width' ), 'unit' => 'px' ),

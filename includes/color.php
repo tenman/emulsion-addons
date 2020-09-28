@@ -487,9 +487,11 @@ CSS;
 					flex: 1 1 auto;
 					width: 100%;
 					max-width: 100%;
+				    overflow:hidden;
+					margin:0 var(--thm_box_gap) var(--thm_box_gap);
 				  }
 				$class .stream .article-wrapper article {
-					width: calc(100vw - 1.5rem);
+					width: 100%;
 				}
 				$class .stream .article-wrapper article .stream-wrapper {
 					flex-direction: column;
@@ -582,7 +584,7 @@ function emulsion_grid_layout_css() {
 			width: var(--thm_content_width, 296px);
 			align-self: stretch;
 			margin: var(--thm_box_gap, 3px);
-			min-width: var(--thm_content_width, 296px);
+			
 		}
 		$class .grid .article-wrapper article {
 			display: flex;
@@ -684,6 +686,8 @@ CSS;
 CSSRES;
 	}
 	$css .= '}';
+	
+	
 
 	$css = emulsion_remove_spaces_from_css( $css );
 
@@ -1220,7 +1224,7 @@ function emulsion_resuponsive_css() {
         width:100vw;
     }
 }			
-			
+	
 			
 @media screen and (min-width: $content_width_plus_sidebar_width_plus1) {
 	.emulsion-has-sidebar .grid .wp-block-columns.alignfull,
@@ -1340,7 +1344,7 @@ function emulsion_resuponsive_css() {
 		grid-template-rows: 2;
 		grid-column: span 1;
 	}
-	.on-scroll.logged-in .menu-active {
+	.on-scroll[class].logged-in .menu-active {
 		margin-top: 0;
 	}
 }

@@ -9,7 +9,7 @@ locate_template( 'lib/validate.php', true, true );
 function emulsion_settings_page_init() {
 
 	$theme_name		 = emulsion_theme_info( 'Name', false );
-	$settings_page	 = add_menu_page( $theme_name . ' Theme', esc_html__('Theme', 'emulsion'), 'edit_theme_options', 'theme-settings', 'emulsion_settings_page', 'dashicons-admin-appearance', 60 );
+	$settings_page	 = add_theme_page( $theme_name . ' Documents', $theme_name . ' Documents', 'edit_theme_options', 'theme-settings', 'emulsion_settings_page' );
 
 	if ( $settings_page ) {
 		add_action( 'admin_print_styles-' . $settings_page, 'emulsion_document_style', 99 );
@@ -644,7 +644,7 @@ function emulsion_settings_page() {
 		<div id="poststuff">
 
 	<?php
-	if ( $pagenow == 'admin.php' && $emulsion_page_value == 'theme-settings' ) {
+	if ( $pagenow == 'themes.php' && $emulsion_page_value == 'theme-settings' ) {
 
 		$tab = isset( $emulsion_tab_value ) ? $emulsion_tab_value : 'homepage';
 

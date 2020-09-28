@@ -277,6 +277,8 @@ function emulsion_customize_controle_translate() {
 		'code_section_block_editor_alignwide_notification'			 => '<span class="emulsion_fadeout_message_section_block_editor_alignwide">'
 			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has alignwide, alignfull post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_block_editor_not_found_notification'			 => '<p>' . esc_html__( 'No posts found related to settings', 'emulsion' ) . '</p>',
+		'code_section_scheme_notification'					 => '<span class="emulsion_fadeout_message_section_layout_homepage">'
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_homepage_notification'					 => '<span class="emulsion_fadeout_message_section_layout_homepage">'
 			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_category_archives_notification'		 => '<span class="emulsion_fadeout_message_section_layout_category_archives">'

@@ -169,3 +169,7 @@ if ( ! function_exists( 'amp_init' ) ) {
  * 
  */
 	emulsion_add_supports( 'block_experimentals' );
+/**
+ * Scheme
+ */
+	emulsion_add_supports('scheme');

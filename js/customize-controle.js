@@ -88,6 +88,37 @@
         });
     });
 
+    //todo
+
+     wp.customize.section('emulsion_scheme', function (section) {
+        section.expanded.bind(function (isExpanded) {
+
+            if (isExpanded) {
+                var code = 'emulsion-scheme-alert';
+                section.notifications.add(code, new wp.customize.Notification(code, {
+                    dismissible: true,
+                    message: emulsion_customizer_controle.scheme_notification,
+                    type: 'error'
+                }));
+
+            }
+        });
+    });
+
+     wp.customize.section('emulsion_scheme', function (section) {
+        section.expanded.bind(function (isExpanded) {
+            if (isExpanded && PREVIEW_REDIRECT == "enable") {
+                var code = 'redirect';
+                var url = wp.customize.settings.url.home;
+                var section = 'emulsion_scheme';
+                var message = emulsion_customizer_controle.code_section_scheme_notification;
+                emulsion_redirect_notification(section, message, url, code);
+                // todo
+                setTimeout(function () { $('.emulsion_fadeout_message_section_layout_homepage').fadeOut(); }, 5000);
+            }
+        });
+    });
+/////////////////////////////////////////////////////////////////////////////
     wp.customize.section('emulsion_section_layout_category_archives', function (section) {
         section.expanded.bind(function (isExpanded) {
             if (isExpanded && PREVIEW_REDIRECT == "enable") {
@@ -376,7 +407,7 @@
     /**
      * Notification
      */
-
+    /** Changed widget page
     $(document).ready(function (type) {
         //Notification type: 'none', 'error', 'warning', 'info', 'success'
         var code = 'widget-panel-info';
@@ -387,20 +418,8 @@
         }));
 
     });
-    wp.customize.section('emulsion_scheme', function (section) {
-        section.expanded.bind(function (isExpanded) {
-            
-            if (isExpanded) {
-                var code = 'emulsion-scheme-alert';
-                section.notifications.add(code, new wp.customize.Notification(code, {
-                    dismissible: true,
-                    message: emulsion_customizer_controle.scheme_notification,
-                    type: 'error'
-                }));
+    */
 
-            }
-        });
-    });
 
     wp.customize('emulsion_category_colors', function (setting) {
         setting.bind(function (value) {
