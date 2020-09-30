@@ -2659,6 +2659,8 @@ function emulsion_control_description( $control ) {
 }
 
 function emulsion_addons_default_values( $name, $fallback ) {
+	
+//	return emulsion_theme_default_values( $name, $fallback );
 	global $emulsion_theme_scheme, $content_width;
 	
 	$scheme = get_theme_mod('emulsion_scheme');

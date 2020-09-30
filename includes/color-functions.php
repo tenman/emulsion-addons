@@ -582,13 +582,14 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 		$background_color = get_background_color();
 
 		if ( empty( $background_color ) ) {
-			$background_color	 = get_theme_support( 'custom-background', 'default-color' );
-			$background_color	 = empty( $background_color ) ? '#ffffff' : $background_color;
-			$background_color	 = str_replace( '#', '', $background_color );
+			
+			$theme_default		 = get_theme_support( 'custom-background', 'default-color' );
+			$background_color	 = $theme_default ? $theme_default : 'ffffff';
 		}
+		
 		$background_color	 = sprintf( '#%1$s', $background_color );
 		$background_color	 = sanitize_hex_color( $background_color );
-
+		
 		return apply_filters( 'emulsion_get_background_color' , $background_color );
 	}
 }

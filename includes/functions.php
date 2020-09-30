@@ -705,7 +705,7 @@ if ( ! function_exists( 'emulsion_remove_background_img_class' ) ) {
 
 }
 if ( ! function_exists( 'emulsion_link_color_filter' ) ) {
-
+//	add_filter( 'emulsion_link_color', 'emulsion_link_color_filter' );
 	/**
 	 * Reflect when a color different from the default color is set in the customizer
 	 * @param type $color

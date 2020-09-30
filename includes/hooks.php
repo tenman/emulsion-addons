@@ -56,7 +56,10 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'dynamic_sidebar_params', 'emulsion_footer_widget_params' );
 	add_filter( 'post_class', 'emulsion_add_woocommerce_class_to_post' );
 	add_filter( 'emulsion_hover_color', 'emulsion_hover_color_filter' );
-	add_filter( 'emulsion_link_color', 'emulsion_link_color_filter' );
+	
+
+	
+	
 	add_filter( 'theme_mod_background_image', 'emulsion_bg_img_display_hide_post_editor' );
 	add_filter( 'wp_trim_words', 'emulsion_cjk_excerpt' );
 
@@ -1388,8 +1391,10 @@ if ( ! function_exists( 'emulsion_addons_the_header_layer_class' ) ) {
 		
 		$header_background_color		 = get_theme_mod( 'emulsion_header_background_color', emulsion_get_var( 'emulsion_header_background_color' ) );
 		$default_header_background_color = emulsion_get_var( 'emulsion_header_background_color', 'default' );
+		$has_saved_background_color      = get_theme_mod( 'emulsion_header_background_color' );
+		
 		$add_class						 = '';
-		if ( $default_header_background_color == $header_background_color ) {
+		if ( $default_header_background_color == $header_background_color && $has_saved_background_color == $header_background_color ) {
 
 			$add_class .= ' header-is-default-color';
 		} else {
@@ -1434,7 +1439,8 @@ if ( ! function_exists( 'emulsion_addons_get_month_link' ) ) {
 		if ( 'ago' == $type ) {
 
 			$publish_date =  get_the_time('U');
-			$date_text = sprintf( esc_html__( '%1$s ago', 'emulsion' ), human_time_diff( $publish_date, current_time( 'timestamp' ) ) );
+			/* translators: %s  human_time_diff() */
+			$date_text = sprintf( esc_html__( '%s ago', 'emulsion' ), human_time_diff( $publish_date, current_time( 'timestamp' ) ) );
 		}
 		if ( 'default' == $type ) {
 

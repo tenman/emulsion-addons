@@ -1095,6 +1095,16 @@ function emulsion_resuponsive_css() {
     margin-left: 0;
     margin-right: 0;
   }
+  .archive main .page-title-block .taxonomy-description {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
+	max-width: 100%;
+  }
+  .archive main .page-title-block .taxonomy-description p{
+	padding-left:0;
+	padding-right:0;		
+  }
 }
 @media screen and (max-width: $content_width_plus_content_gap) {
   body .template-part-header.header-image-active {
