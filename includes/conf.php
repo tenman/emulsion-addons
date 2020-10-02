@@ -54,7 +54,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_header_background_color"		 => array(
 		'section'					 => 'colors',
-		'default'					 => emulsion_addons_default_values( "emulsion_header_background_color", '#ffffff' ),
+		'default'					 => emulsion_addons_default_values( "emulsion_header_background_color", '#eeeeee' ),
 		'priority'					 => 8,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -70,7 +70,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_header_sub_background_color"	 => array(
 		'section'					 => 'colors',
-		'default'					 => emulsion_addons_default_values( "emulsion_header_sub_background_color", '#ffffff' ),
+		'default'					 => emulsion_addons_default_values( "emulsion_header_sub_background_color", '#eeeeee' ),
 		'priority'					 => 8,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -853,7 +853,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_homepage_post_image"					 => array(
 		'section'					 => 'emulsion_section_layout_homepage',
-		'default'					 => emulsion_addons_default_values( "emulsion_layout_homepage_post_image", 'hide' ),
+		'default'					 => emulsion_addons_default_values( "emulsion_layout_homepage_post_image", 'show' ),
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -1332,7 +1332,7 @@ $emulsion_customize_args = array(
 	"emulsion_lazyload"						 => array(
 		'section'					 => 'emulsion_section_advanced_lazyload',
 		'priority'					 => 10,
-		'default'					 => emulsion_addons_default_values( "emulsion_lazyload", "disable" ),
+		'default'					 => emulsion_addons_default_values( "emulsion_lazyload", "enable" ),
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
 		'transport'					 => 'refresh',
