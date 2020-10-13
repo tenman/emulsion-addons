@@ -903,9 +903,6 @@ function emulsion_resuponsive_css() {
   body.emulsion-has-sidebar .footer-widget-area .footer-widget-area-lists .widget, body.emulsion-no-sidebar .footer-widget-area .footer-widget-area-lists .widget {
     flex: 1 1 auto;
   }
-  .comment-form, .comment-respond {
-    padding-left: 0;
-  }
 	.comment-form,
 	.comment-respond .comment-form {
 		box-sizing: border-box;
