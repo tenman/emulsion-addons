@@ -23,6 +23,7 @@ class emulsion_add_meta_boxes {
 				'description'	 => 'This setting is mainly for page builder users.',
 			),
 		),
+		
 		'emulsion_post_theme_style_script'	 => array(
 			'post_type'	 => 'post',
 			'title'		 => 'Style',
@@ -132,6 +133,11 @@ class emulsion_add_meta_boxes {
 		$args			 = $this->screens[key( $this->screens )]['args'];
 		$metabox_label	 = '';
 		if ( current_user_can( 'edit_posts' ) ) {
+
+			if( 'boilerplate' == get_theme_mod( 'emulsion_scheme' ) ) {
+				
+				unset( $this->screens['emulsion_post_theme_style_script'] );
+			}
 
 			foreach ( $this->screens as $key => $screen ) {
 

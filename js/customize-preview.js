@@ -256,8 +256,11 @@
             document.documentElement.style.setProperty('--thm_background_color', newval);
             document.documentElement.style.setProperty('--thm_sub_background_color_lighten', sub_color(newval, 125));
             document.documentElement.style.setProperty('--thm_sub_background_color_darken', sub_color(newval, 75));
+            document.documentElement.style.setProperty('--thm_general_text_color', newval);
+            document.documentElement.style.setProperty('--thm_general_link_color', sub_color(newval, 75));
+            document.documentElement.style.setProperty('--thm_general_link_hover_color', newval);
 
-            $('article, .entry-title, .entry-content *').css({'color': emulsion_text_color(newval)});
+          //  $('article, .entry-title, .entry-content *').css({'color': emulsion_text_color(newval)});
         });
     });
 
@@ -973,4 +976,20 @@
         });
     });
 
+
 })(jQuery);
+
+( function( $, api ) {
+  'use strict';
+
+  $( function() {
+    api.preview.bind( 'active', function() {
+      var bodyClass = document.querySelector('body').className,
+          bodyClassArr = bodyClass.split(" ");
+
+      api.preview.send( 'emulsion-body-class', bodyClassArr );
+      
+    } );
+  } );
+  
+}( jQuery, wp.customize ) );

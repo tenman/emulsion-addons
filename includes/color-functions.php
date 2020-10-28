@@ -587,6 +587,7 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 			$background_color	 = $theme_default ? $theme_default : 'ffffff';
 		}
 		
+		
 		$background_color	 = sprintf( '#%1$s', $background_color );
 		$background_color	 = sanitize_hex_color( $background_color );
 		
@@ -1023,7 +1024,7 @@ if ( ! function_exists( 'emulsion_the_background_color' ) ) {
 			$default_background = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
 		}
 		$background_color = apply_filters( 'emulsion_the_background_color', $background_color );
-
+		
 		return $background_color;
 	}
 }

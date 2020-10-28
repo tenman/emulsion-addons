@@ -217,7 +217,9 @@ function emulsion_customize_preview_js() {
 		wp_enqueue_style( 'emulsion-customize-preview-style', 
 			esc_url( plugin_dir_url( __DIR__ ). 'css/customize-preview.css' ), array( 'emulsion' ), $emulsion_current_data_version, 'all' );
 		/* translation */
-		add_filter('emulsion_inline_style_pre', 'emulsion_customizer_translate_css');
+		add_filter('emulsion_inline_style_pre', 'emulsion_customizer_translate_css');		
+		
+
 	}
 }
 

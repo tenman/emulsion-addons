@@ -1813,6 +1813,7 @@ function emulsion_description( $script ){
 	
 	$script .=<<<SCRIPT
 	jQuery(document).ready(function ($) {
+	
     /**
      * when not exists meta description tag, add meta description tag
      *
@@ -1839,15 +1840,16 @@ SCRIPT;
 function emulsion_addons_google_tracking_code() {
 
 	$tag			 = sanitize_text_field( get_theme_mod( 'emulsion_google_analytics_tracking_code' ) );
-	$theme_mod_name	 = 'emulsion_google_analytics_' . md5( $tag );
+	$flag			 = get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) );
+	$theme_mod_name	 = 'emulsion_google_analytics_' . md5( $tag . $flag );
 
-	if ( $result = get_theme_mod( $theme_mod_name, false ) ) {
-
+	if ( $result = get_theme_mod( $theme_mod_name, false ) && $tag ) {
+		
 		echo $result;
 		return;
 	}
 
-	if ( ! empty( $tag ) && ! get_theme_mod( $theme_mod_name, false ) ) {
+	if ( ! empty( $tag )  ) {
 
 		$tracking_code = <<<CODE
 			
@@ -1859,9 +1861,11 @@ function emulsion_addons_google_tracking_code() {
 	gtag('js', new Date());
 
 	gtag('config', '{$tag}');
+	
 </script>
 	
 CODE;
+
 		set_theme_mod( $theme_mod_name, $tracking_code );
 		echo $tracking_code;
 	}

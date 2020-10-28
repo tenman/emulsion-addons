@@ -1,42 +1,40 @@
 <?php
+
 /**
  * Apply Color Settings for Theme
  * @param type $css
  * @return type
  */
-
 function emulsion__css_variables( $css = '' ) {
 
 	$transient_name = __FUNCTION__;
 
-		if ( is_customize_preview() ) {
+	if ( is_customize_preview() ) {
 
-			//delete_transient( $transient_name );
-			remove_theme_mod( 'emulsion__css_variables' );
+		//delete_transient( $transient_name );
+		remove_theme_mod( 'emulsion__css_variables' );
+	}
+	if ( is_singular() ) {
+
+		$post_id = get_the_ID();
+
+		if ( 'no_bg' == get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) ) {
+
+			return $css;
 		}
-		if( is_singular() ) {
+	}
+	//$transient_val = get_transient( $transient_name );
 
-			$post_id = get_the_ID();
+	$transient_val = get_theme_mod( 'emulsion__css_variables' );
 
-			if( 'no_bg' == get_post_meta($post_id, 'emulsion_post_theme_style_script', true) ) {
+	if ( ! is_user_logged_in() ) {
 
-				return $css;
-			}
-
-		}
-		//$transient_val = get_transient( $transient_name );
-		
-		$transient_val = get_theme_mod( 'emulsion__css_variables' );
-				
-		if ( ! is_user_logged_in() ) {
-
-			return $css. $transient_val;
-		}
+		return $css . $transient_val;
+	}
 
 	/**
 	 * CSS variables
 	 */
-
 	$background_image_dim				 = emulsion_get_css_variables_values( 'background_image_dim' );
 	$heading_font_scale					 = emulsion_get_css_variables_values( 'heading_font_scale' );
 	$heading_font_base					 = emulsion_get_css_variables_values( 'heading_font_base' );
@@ -145,7 +143,6 @@ function emulsion__css_variables( $css = '' ) {
 	 * Customizer color picker support only hex color
 	 * If the color picker value is the same as the background color, it will be overwritten transparent
 	 */
-	
 	if ( get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) == emulsion_get_background_color() ) {
 		$columns_section_bg = 'transparent';
 	}
@@ -160,102 +157,101 @@ function emulsion__css_variables( $css = '' ) {
 body{
 	/* dinamic */
 	--thm_background_image_dim:$background_image_dim;
-	--thm_heading_font_scale:$heading_font_scale;
-	--thm_heading_font_base:$heading_font_base;
-	--thm_header_media_max_height:$header_media_max_height;
-	--thm_post_display_date:$post_display_date;
-	--thm_post_display_author:$post_display_author;
-	--thm_post_display_category:$post_display_category;
-	--thm_post_display_tag:$post_display_tag;
-	--thm_sub_background_color_lighten:$sub_background_color_lighten;
-	--thm_sub_background_color_darken:$sub_background_color_darken;
-	--thm_favorite_color_palette:$favorite_color_palette;
-	--thm_header_image_dim:rgba(0,0,0,.3);
+	--thm_border_global:$border_global;
+	--thm_border_global_style:$border_global_style;
+	--thm_border_global_width:$border_global_width;
+	--thm_border_grid:$border_grid;
+	--thm_border_grid_style:$border_grid_style;
+	--thm_border_grid_width:$border_grid_width;
+	--thm_border_sidebar:$border_sidebar;
+	--thm_border_sidebar_style:$border_sidebar_style;
+	--thm_border_sidebar_width:$border_sidebar_width;	
+	--thm_border_stream:$border_stream;
+	--thm_border_stream_style:$border_stream_style;
+	--thm_border_stream_width:$border_stream_width;
+	--thm_columns_section_bg: $columns_section_bg;
+	--thm_columns_section_color: $columns_section_color;
+	--thm_columns_section_link_color: $columns_section_link_color;
+	--thm_comments_bg:$comments_bg;
+	--thm_comments_color:$comments_color;
+	--thm_comments_link_color:$comments_link_color;
 	--thm_content_margin_top:$content_margin_top;
-	--thm_general_text_color:$general_text_color;
+	--thm_excerpt_linebreak:$excerpt_linebreak;
+	--thm_favorite_color_palette:$favorite_color_palette;
+	--thm_gallery_section_bg: $gallery_section_bg;
+	--thm_gallery_section_color: $gallery_section_color;
+	--thm_gallery_section_link_color: $gallery_section_link_color;
 	--thm_general_link_color:$general_link_color;
 	--thm_general_link_hover_color:$general_link_hover_color;
-	--thm_excerpt_linebreak:$excerpt_linebreak;
-	--thm_comments_link_color:$comments_link_color;
-	--thm_comments_color:$comments_color;
-	--thm_comments_bg:$comments_bg;
-	--thm_sidebar_link_color:$sidebar_link_color;
-	--thm_sidebar_hover_color:$sidebar_hover_color;
-	--thm_sidebar_text_color:$sidebar_color;
-	--thm_sidebar_bg_color:$sidebar_background;
-	--thm_primary_menu_link_color:$primary_menu_link_color;
-	--thm_primary_menu_color:$primary_menu_color;
-	--thm_primary_menu_background:$primary_menu_background;
-	--thm_relate_posts_link_color:$relate_posts_link_color;
-	--thm_relate_posts_color:$relate_posts_color;
-	--thm_relate_posts_bg:$relate_posts_bg;
-	--thm_media_text_section_link_color:$media_text_section_link_color;
-	--thm_media_text_section_color:$media_text_section_color;
+	--thm_general_text_color:$general_text_color;
+	--thm_header_background_gradient_color:$header_background_gradient_color;
+	--thm_header_hover_color: $header_hover_color;
+	--thm_header_image_dim:rgba(0,0,0,.3);
+	--thm_header_link_color: $header_link_color;
+	--thm_header_media_max_height:$header_media_max_height;
+	--thm_heading_font_base:$heading_font_base;
+	--thm_heading_font_scale:$heading_font_scale;
 	--thm_media_text_section_bg:$media_text_section_bg;
+	--thm_media_text_section_color:$media_text_section_color;
 	--thm_media_text_section_height:$media_text_section_height;
-	--thm_columns_section_link_color: $columns_section_link_color;
-	--thm_columns_section_color: $columns_section_color;
-	--thm_columns_section_bg: $columns_section_bg;
+	--thm_media_text_section_link_color:$media_text_section_link_color;
+	--thm_post_display_author:$post_display_author;
+	--thm_post_display_category:$post_display_category;
+	--thm_post_display_date:$post_display_date;
+	--thm_post_display_tag:$post_display_tag;
+	--thm_primary_menu_background:$primary_menu_background;
+	--thm_primary_menu_color:$primary_menu_color;
+	--thm_primary_menu_link_color:$primary_menu_link_color;
+	--thm_relate_posts_bg:$relate_posts_bg;
+	--thm_relate_posts_color:$relate_posts_color;
+	--thm_relate_posts_link_color:$relate_posts_link_color;
+	--thm_sidebar_bg_color:$sidebar_background;
+	--thm_sidebar_hover_color:$sidebar_hover_color;
+	--thm_sidebar_link_color:$sidebar_link_color;
+	--thm_sidebar_text_color:$sidebar_color;
+	--thm_sub_background_color_darken:$sub_background_color_darken;
+	--thm_sub_background_color_lighten:$sub_background_color_lighten;
+    --thm_align_offset:$align_offset;
+    --thm_background_color: $background_color;
+    --thm_box_gap: $box_gap;
+    --thm_caption_height: $caption_height;
     --thm_columns_section_height:$columns_section_height;
-	--thm_gallery_section_link_color: $gallery_section_link_color;
-	--thm_gallery_section_color: $gallery_section_color;
-	--thm_gallery_section_bg: $gallery_section_bg;
-    --thm_gallery_section_height:$gallery_section_height;
-    --thm_heading_font_transform:$heading_font_transform;
-    --thm_heading_font_weight: $heading_font_weight;
-    --thm_heading_font_family: $heading_font_family;
     --thm_common_font_family: $common_font_family;
     --thm_common_font_size: $common_font_size;
-    --thm_meta_data_font_size: $meta_data_font_size;
-    --thm_meta_data_font_family: $meta_data_font_family;
-    --thm_meta_data_font_transform: $meta_data_font_transform;
-    --thm_align_offset:$align_offset;
-    --thm_main_width: $main_width;
-    --thm_content_width: $content_width;
-    --thm_sidebar_width: $sidebar_width;
-    /* This variable has a browser width of 1680 px,(--thm_main_width + -sidebar_width) which is unreliable, but it is limited by max-width */
-    --thm_main_width-with-sidebar: calc(100vw - var(--thm_sidebar_width) - 48px );
+    --thm_common_line_height: $common_line_height;
     --thm_content_gap: $content_gap;
     --thm_content_line_height: $content_line_height;
-    --thm_common_line_height: $common_line_height;
-    --thm_caption_height: $caption_height;
-    --thm_box_gap: $box_gap;
-    /* when header media not exists */
+    --thm_content_width: $content_width;
     --thm_default_header_height: $default_header_height;
-    --thm_social_icon_color:$general_link_color;
+    --thm_footer_widget_width: $footer_widget_width;
+    --thm_gallery_section_height:$gallery_section_height;
+    --thm_header_bg_color: $header_bg_color;
+    --thm_header_text_color: $header_text_color;
+    --thm_heading_font_family: $heading_font_family;
+    --thm_heading_font_transform:$heading_font_transform;
+    --thm_heading_font_weight: $heading_font_weight;
     --thm_hover_color:$hover_color;
     --thm_i18n_no_title:$i18n_no_title;/* Not Work Now( .hoge:before{content:var(--thm_i18n_no_title,'No Title');}). Please use SCSS variables(.hoge:before{content:'#{$i18n_no_title}';}) */
-    --thm_header_text_color: $header_text_color;
-	--thm_header_link_color: $header_link_color;
-	--thm_header_hover_color: $header_hover_color;
-    --thm_header_bg_color: $header_bg_color;
-	--thm_header_background_gradient_color:$header_background_gradient_color;
-    --thm_footer_widget_width: $footer_widget_width;
-    --thm_background_color: $background_color;
-	--thm_border_global:$border_global;
-	--thm_border_sidebar:$border_sidebar;
-	--thm_border_grid:$border_grid;
-	--thm_border_stream:$border_stream;
-	--thm_border_global_style:$border_global_style;
-	--thm_border_sidebar_style:$border_sidebar_style;
-	--thm_border_grid_style:$border_grid_style;
-	--thm_border_stream_style:$border_stream_style;
-	--thm_border_global_width:$border_global_width;
-	--thm_border_sidebar_width:$border_sidebar_width;	
-	--thm_border_grid_width:$border_grid_width;
-	--thm_border_stream_width:$border_stream_width;
+    --thm_main_width-with-sidebar: calc(100vw - var(--thm_sidebar_width) - 48px );
+    --thm_main_width: $main_width;
+    --thm_meta_data_font_family: $meta_data_font_family;
+    --thm_meta_data_font_size: $meta_data_font_size;
+    --thm_meta_data_font_transform: $meta_data_font_transform;
+    --thm_sidebar_width: $sidebar_width;
+    --thm_social_icon_color:$general_link_color;
+
 }
 CSS;
 
-	$style =  apply_filters( 'emulsion__css_variables', $style );
+	$style = apply_filters( 'emulsion__css_variables', $style );
 
 	$style = emulsion_sanitize_css( $style );
 
 	//set_transient( $transient_name, $style, 60 * 60 * 24 );
 	set_theme_mod( 'emulsion__css_variables', $style );
-	
 
-	return $css. $style;
+
+	return $css . $style;
 }
 
 function emulsion_dinamic_css( $css = '' ) {
@@ -263,24 +259,23 @@ function emulsion_dinamic_css( $css = '' ) {
 	/**
 	 * CSS variables
 	 */
-
-	if( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 
 		$saved_css = get_theme_mod( 'dinamic_css' );
 
-		if( $saved_css !== false ){
+		if ( $saved_css !== false ) {
 
 			return $css . $saved_css;
 		}
 	}
 
 
-	$make_boxed_style				 = '';
-	$boxed_style_1					 = ' .has-column main .grid {	--thm_main_width: calc(100vw - var(--thm_sidebar_width) - 48px);}';
-	$boxed_style_2					 = ' main .grid {	--thm_content_width: 300px; }';
-	$boxed_style_3					 = ' main .grid article {--thm_content_width: 100%;}';
-	$boxed_style_4					 = ' main .stream { --thm_content_width: 410px;}';
-	$boxed_style_5					 = ' main .stream article {--thm_content_width: 100%;}';
+	$make_boxed_style	 = '';
+	$boxed_style_1		 = ' .has-column main .grid {	--thm_main_width: calc(100vw - var(--thm_sidebar_width) - 48px);}';
+	$boxed_style_2		 = ' main .grid {	--thm_content_width: 300px; }';
+	$boxed_style_3		 = ' main .grid article {--thm_content_width: 100%;}';
+	$boxed_style_4		 = ' main .stream { --thm_content_width: 410px;}';
+	$boxed_style_5		 = ' main .stream article {--thm_content_width: 100%;}';
 
 	if ( ! empty( $stream_condition ) || ! empty( $grid_condition ) ) {
 
@@ -301,7 +296,7 @@ function emulsion_dinamic_css( $css = '' ) {
 		}
 	}
 	$style = emulsion__css_variables();
-	
+
 	$style .= <<<CSS
 
 
@@ -348,31 +343,31 @@ $make_boxed_style
 
 CSS;
 
-	$style			 = emulsion_remove_spaces_from_css( $style );
-	
-	$stream_css		 = emulsion_stream_layout_css();
-	
-	$grid_css		 = emulsion_grid_layout_css();
-	
+	$style = emulsion_remove_spaces_from_css( $style );
 
-	$responsive_css = emulsion_resuponsive_css();
+	$stream_css = emulsion_stream_layout_css();
+	$stream_css = '';
+	$grid_css = emulsion_grid_layout_css();
+	$grid_css = '';
 
+	//$responsive_css = "/* responsive test */\n". emulsion_resuponsive_css();
+	$responsive_css = '';
 
 
 	$css_result = $grid_css . $stream_css . $style . $responsive_css;
-	
+
 	set_theme_mod( 'dinamic_css', $css_result );
-	
-	if( is_page() &&  emulsion_metabox_display_control( 'page_style' ) ) {
+
+	if ( is_page() && emulsion_metabox_display_control( 'page_style' ) ) {
 
 		return $css . $css_result;
 	}
-	if( is_single() && emulsion_metabox_display_control( 'style' ) ) {
+	if ( is_single() && emulsion_metabox_display_control( 'style' ) ) {
 
 		return $css . $css_result;
 	}
 
-	if( emulsion_get_supports( 'enqueue' ) ) {
+	if ( emulsion_get_supports( 'enqueue' ) ) {
 
 		return $css . $css_result;
 	}
@@ -382,14 +377,12 @@ CSS;
  *
  * @return type
  */
-
 function emulsion_stream_layout_css() {
 
 	/**
 	 * Theme main CSS is a compiled static file described in common.css.
 	 * If you do not use the wp-scss plugin, this function will need to dynamically override common.css.
 	 */
-
 	$stream_condition	 = emulsion_get_css_variables_values( 'stream' );
 	$content_width		 = emulsion_get_css_variables_values( 'content_width' );
 
@@ -480,7 +473,7 @@ CSS;
 	$css .= '@media screen and ( max-width : ' . $content_width . 'px ) {';
 
 	foreach ( $stream_condition_array as $class ) {
-		/*@media screen and ( max-width : 720px ) {*/
+		/* @media screen and ( max-width : 720px ) { */
 
 		$css .= <<<CSS2
 				$class .stream .article-wrapper {
@@ -540,7 +533,6 @@ function emulsion_grid_layout_css() {
 	 * Theme main CSS is a compiled static file described in common.css.
 	 * If you do not use the wp-scss plugin, this function will need to dynamically override common.css.
 	 */
-
 	$grid_condition	 = emulsion_get_css_variables_values( 'grid' );
 	$main_width		 = emulsion_get_css_variables_values( 'main_width' );
 
@@ -686,8 +678,8 @@ CSS;
 CSSRES;
 	}
 	$css .= '}';
-	
-	
+
+
 
 	$css = emulsion_remove_spaces_from_css( $css );
 
@@ -695,24 +687,23 @@ CSSRES;
 }
 
 function emulsion_resuponsive_css() {
-	
-		if( false === get_theme_mod('emulsion_main_width', false ) &&
-			false === get_theme_mod('emulsion_content_width', false ) &&
-			false === get_theme_mod('emulsion_sidebar_width', false ) ) {
-			
-			return;
-		}
-	
+
+	 if ( false === get_theme_mod( 'emulsion_main_width', false ) &&
+			false === get_theme_mod( 'emulsion_content_width', false ) &&
+			false === get_theme_mod( 'emulsion_sidebar_width', false ) ) {
+
+		return;
+	}
+
 	/**
 	 * Theme main CSS is a compiled static file described in common.css.
 	 * If you do not use the wp-scss plugin, this function will need to dynamically override common.css.
 	 */
-
 	$main_width								 = emulsion_get_css_variables_values( 'main_width' );
 	$content_width							 = emulsion_get_css_variables_values( 'content_width' );
 	$content_gap							 = emulsion_get_css_variables_values( 'content_gap' );
 	$sidebar_width							 = emulsion_get_css_variables_values( 'sidebar_width' );
-	$content_width_plus_content_gap			 = (int) emulsion_get_var( 'emulsion_content_width' ) + 24 * 2 + 16;// todo hard code 24
+	$content_width_plus_content_gap			 = (int) emulsion_get_var( 'emulsion_content_width' ) + 24 * 2 + 16; // todo hard code 24
 	$content_width_plus_content_gap			 = $content_width_plus_content_gap . 'px';
 	$content_width_plus_sidebar_width_plus1	 = (int) emulsion_get_var( 'emulsion_content_width' ) + (int) emulsion_get_var( 'emulsion_sidebar_width' ) + 1 + 16;
 	$content_width_plus_sidebar_width_plus1	 = $content_width_plus_sidebar_width_plus1 . 'px';
@@ -1387,24 +1378,25 @@ function emulsion_resuponsive_css() {
 	}
 }
 CSS;
+	
+
 
 	$css = emulsion_sanitize_css( $css );
 
 	return $css;
 }
 
-
 function emulsion_image_dir() {
 
-		$theme_image_dir = esc_url( get_template_directory_uri() . '/images/' );
-		$child_image_dir = esc_url( get_stylesheet_directory_uri() . '/images/' );
+	$theme_image_dir = esc_url( get_template_directory_uri() . '/images/' );
+	$child_image_dir = esc_url( get_stylesheet_directory_uri() . '/images/' );
 
-		if ( file_exists( $child_image_dir ) && is_child_theme() ) {
+	if ( file_exists( $child_image_dir ) && is_child_theme() ) {
 
-			$theme_image_dir = $child_image_dir;
-		}
-
-		$theme_image_dir = wp_make_link_relative( $theme_image_dir );
-
-		return $theme_image_dir;
+		$theme_image_dir = $child_image_dir;
 	}
+
+	$theme_image_dir = wp_make_link_relative( $theme_image_dir );
+
+	return $theme_image_dir;
+}

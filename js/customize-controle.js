@@ -89,7 +89,7 @@
     });
 
     //todo
-
+    
      wp.customize.section('emulsion_scheme', function (section) {
         section.expanded.bind(function (isExpanded) {
 
@@ -108,13 +108,14 @@
      wp.customize.section('emulsion_scheme', function (section) {
         section.expanded.bind(function (isExpanded) {
             if (isExpanded && PREVIEW_REDIRECT == "enable") {
-                var code = 'redirect';
+               // var code = 'redirect';
                 var url = wp.customize.settings.url.home;
-                var section = 'emulsion_scheme';
-                var message = emulsion_customizer_controle.code_section_scheme_notification;
-                emulsion_redirect_notification(section, message, url, code);
+                wp.customize.previewer.previewUrl.set(url);
+               // var section = 'emulsion_scheme';
+               // var message = emulsion_customizer_controle.code_section_scheme_notification;
+                //emulsion_redirect_notification(section, message, url, code);
                 // todo
-                setTimeout(function () { $('.emulsion_fadeout_message_section_layout_homepage').fadeOut(); }, 5000);
+               // setTimeout(function () { $('.emulsion_fadeout_message_section_layout_homepage').fadeOut(); }, 5000);
             }
         });
     });
@@ -663,5 +664,13 @@
             });
         });
     });
+    /**
+     * Get body class from privew
+     */
+    wp.customize.bind( 'ready', function() {
+        wp.customize.previewer.bind( 'emulsion-body-class', function( data ) {
+            //console.log('Data from preview window: ', data);
+        } );
+    } );
 
 })(jQuery);

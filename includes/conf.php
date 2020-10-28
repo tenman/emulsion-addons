@@ -107,7 +107,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_sidebar_background"				 => array(
 		'section'					 => 'colors',
-		'default'					 => emulsion_addons_default_values( "emulsion_sidebar_background", emulsion_sidebar_background() ),
+		'default'					 => emulsion_addons_default_values( "emulsion_sidebar_background", emulsion_sidebar_background() ),//
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -895,7 +895,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_posts_page_post_image"					 => array(
 		'section'					 => 'emulsion_section_layout_posts_page',
-		'default'					 => emulsion_addons_default_values( "emulsion_layout_posts_page_post_image", 'hide' ),
+		'default'					 => emulsion_addons_default_values( "emulsion_layout_posts_page_post_image", 'show' ),
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -2659,17 +2659,17 @@ function emulsion_control_description( $control ) {
 }
 
 function emulsion_addons_default_values( $name, $fallback ) {
-	
-//	return emulsion_theme_default_values( $name, $fallback );
+
+
 	global $emulsion_theme_scheme, $content_width;
-	
-	$scheme = get_theme_mod('emulsion_scheme');
-	
-	if( ! defined( 'emulsion_theme_scheme' ) ) {
-		include( get_template_directory().'/scheme.php');
+
+	$scheme = get_theme_mod( 'emulsion_scheme' );
+
+	if ( ! defined( 'emulsion_theme_scheme' ) ) {
+		include( get_template_directory() . '/scheme.php');
 	}
 
-	if ( defined('emulsion_theme_scheme') && isset( emulsion_theme_scheme[$scheme][$name] ) ) {
+	if ( defined( 'emulsion_theme_scheme' ) && isset( emulsion_theme_scheme[$scheme][$name] ) ) {
 
 		$function_name			 = emulsion_theme_scheme[$scheme][$name];
 		$function_name_validate	 = $name . '_validate';
@@ -2680,13 +2680,25 @@ function emulsion_addons_default_values( $name, $fallback ) {
 
 			$result = $function_name();
 
-			return $function_name_validate( $result );
-		}
+			$result = $function_name_validate( $result );
+			/*if ( is_customize_preview() ) {
+				add_filter( 'theme_mod_' . $name, function( $value ) use($result) {
+					return $result;
+				} );
+			}*/
 
-		return emulsion_theme_scheme[$scheme][$name];
+			return $result;
+		}
+		$result = emulsion_theme_scheme[$scheme][$name];
+		/*if ( is_customize_preview() ) {
+			add_filter( 'theme_mod_' . $name, function( $value ) use($result) {
+				return $result;
+			} );
+		}*/
+
+		return $result;
 	} else {
 
 		return $fallback;
 	}
 }
-
