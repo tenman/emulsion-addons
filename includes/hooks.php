@@ -1874,7 +1874,13 @@ function emulsion_admin_bar_menu() {
 
 	global $menu;
 
-	if ( ! gutenberg_is_fse_theme() || ! emulsion_get_supports( 'full_site_editor' ) ) {
+	if( ! function_exists('gutenberg_is_fse_theme') ) {
+
+		return;
+	}
+
+	if (  ! gutenberg_is_fse_theme() || ! emulsion_get_supports( 'full_site_editor' ) ) {
+		
 		return;
 	}
 
