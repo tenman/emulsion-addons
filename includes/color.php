@@ -165,7 +165,7 @@ body{
 	--thm_border_grid_width:$border_grid_width;
 	--thm_border_sidebar:$border_sidebar;
 	--thm_border_sidebar_style:$border_sidebar_style;
-	--thm_border_sidebar_width:$border_sidebar_width;	
+	--thm_border_sidebar_width:$border_sidebar_width;
 	--thm_border_stream:$border_stream;
 	--thm_border_stream_style:$border_stream_style;
 	--thm_border_stream_width:$border_stream_width;
@@ -576,7 +576,7 @@ function emulsion_grid_layout_css() {
 			width: var(--thm_content_width, 296px);
 			align-self: stretch;
 			margin: var(--thm_box_gap, 3px);
-			
+
 		}
 		$class .grid .article-wrapper article {
 			display: flex;
@@ -620,14 +620,14 @@ function emulsion_grid_layout_css() {
 			height: auto;
 			display: flex;
 			justify-content: flex-end;
-				
+
 		}
 		$class .grid .article-wrapper article footer:empty,
 		$class .grid .article-wrapper article footer:empty:after,
 		$class .grid .article-wrapper article footer:empty:before {
 			display:none;
             margin-bottom:0;
-				
+
 		}
 		$class .grid .article-wrapper article footer span {
 			display: flex;
@@ -1091,7 +1091,7 @@ function emulsion_resuponsive_css() {
   }
   .archive main .page-title-block .taxonomy-description p{
 	padding-left:0;
-	padding-right:0;		
+	padding-right:0;
   }
 }
 @media screen and (max-width: $content_width_plus_content_gap) {
@@ -1215,15 +1215,15 @@ function emulsion_resuponsive_css() {
         z-index:1;
         flex-basis:100%;
         width:100%;
-        max-width:100%;       
+        max-width:100%;
         flex:0 0;
     }
 	ul.sidebar-widget-area-lists{
         width:100vw;
     }
-}			
-	
-			
+}
+
+
 @media screen and (min-width: $content_width_plus_sidebar_width_plus1) {
 	.emulsion-has-sidebar .grid .wp-block-columns.alignfull,
 	.emulsion-has-sidebar .grid .wp-block-text-columns.alignfull,
@@ -1292,7 +1292,7 @@ function emulsion_resuponsive_css() {
 	body header.template-part-header .header-layer-site-title-navigation .header-layer-nav-menu {
 		display: block;
 		position: absolute;
-		top: 0;
+		top: 64px;
 		right: 0;
 		z-index: 8;
 		width: 100vw;
@@ -1378,7 +1378,7 @@ function emulsion_resuponsive_css() {
 	}
 }
 CSS;
-	
+
 
 
 	$css = emulsion_sanitize_css( $css );

@@ -166,10 +166,15 @@ if ( ! function_exists( 'amp_init' ) ) {
 }
 /**
  * Block Editor experimantal styles
- * 
+ *
  */
 	emulsion_add_supports( 'block_experimentals' );
 /**
  * Scheme
  */
 	emulsion_add_supports('scheme');
+
+/**
+ * FSE
+ */
+	emulsion_add_supports('full_site_editor');
