@@ -40,6 +40,8 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
+=1.4.2 : December 1 2020 =
+        * https://github.com/tenman/emulsion/releases
 =1.4.1 : November 21 2020 =
         * https://github.com/tenman/emulsion/releases
 =1.4.0 : November 20 2020 =
