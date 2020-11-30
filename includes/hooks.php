@@ -35,8 +35,8 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'wp_resource_hints', 'emulsion_resource_hints', 10, 2 );
 	add_filter( 'emulsion_inline_style', 'emulsion_styles' );
 	add_filter( 'wp_list_categories', 'emulsion_category_link_format', 10, 2 );
-	function_exists( 'emulsion_keyword_with_mark_elements_title' ) ? add_filter( 'the_title', 'emulsion_keyword_with_mark_elements_title', 99999 ) : '';
-	function_exists( 'emulsion_keyword_with_mark_elements' ) ? add_filter( 'the_content', 'emulsion_keyword_with_mark_elements', 99999 ) : '';
+	function_exists( 'emulsion_keyword_with_mark_elements_title' ) && ! is_admin() ? add_filter( 'the_title', 'emulsion_keyword_with_mark_elements_title', 99999 ) : '';
+	function_exists( 'emulsion_keyword_with_mark_elements' ) && ! is_admin() ? add_filter( 'the_content', 'emulsion_keyword_with_mark_elements', 99999 ) : '';
 	add_filter( 'get_the_excerpt', 'emulsion_get_the_excerpt_filter', 10, 2 );
 	add_filter( 'embed_oembed_html', 'emulsion_oembed_filter', 99, 4 );
 	add_filter( 'get_archives_link', 'emulsion_archive_link_format', 10, 6 );
