@@ -143,13 +143,14 @@ function emulsion__css_variables( $css = '' ) {
 	 * Customizer color picker support only hex color
 	 * If the color picker value is the same as the background color, it will be overwritten transparent
 	 */
-	if ( get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) == emulsion_get_background_color() ) {
+
+	if ( get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) !== emulsion_get_background_color() ) {
 		$columns_section_bg = 'transparent';
 	}
-	if ( get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) == emulsion_get_background_color() ) {
+	if ( get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) !== emulsion_get_background_color() ) {
 		$media_text_section_bg = 'transparent';
 	}
-	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) == emulsion_get_background_color() ) {
+	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) !== emulsion_get_background_color() ) {
 		$gallery_section_bg = 'transparent';
 	}
 
@@ -1145,9 +1146,9 @@ function emulsion_resuponsive_css() {
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
-    -webkit-box-shadow: -1px 6px 7px 0px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: -1px 6px 7px 0px rgba(0, 0, 0, 0.25);
-    box-shadow: -1px 6px 7px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow:var(--thm_box_shadow);
+    -moz-box-shadow:var(--thm_box_shadow);
+    box-shadow:var(--thm_box_shadow);
   }
   .template-part-header-custom ~ .primary-menu-wrapper input[type="checkbox"][data-skin] + label[for="primary-menu-controll"] {
     visibility: visible;

@@ -455,7 +455,7 @@ if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 				$block_editor_class_name = ' emulsion-gb-phase-site';
 			}
 
-			$theme_classes	 = implode( ' ', emulsion_body_class( array() ) );
+			$theme_classes	 = implode( ' ', emulsion_addons_body_class( array() ) );
 			$theme_classes	 = str_replace( array( 'noscript' ), '', $theme_classes );
 
 			return $classes . $theme_classes . $emulsion_brightnes . $color_for_editor_class . $block_editor_class_name;

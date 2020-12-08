@@ -24,7 +24,7 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 
 			$header_background_gradient_color = emulsion_get_var( 'emulsion_header_background_color' );
 		}
-		
+
 		$emulsion_bg_image_blend_color			 = emulsion_get_var( 'emulsion_bg_image_blend_color' );
 		$emulsion_bg_image_blend_color_amount	 = emulsion_get_var( 'emulsion_bg_image_blend_color_amount' ) / 100;
 		$background_image_dim					 = emulsion_the_hex2rgba( $emulsion_bg_image_blend_color, $emulsion_bg_image_blend_color_amount );
@@ -36,12 +36,12 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 				'blank' !== $has_set_header_textcolor ){
 
 			$header_text_color = '#'. get_theme_mod( 'header_textcolor' );
-			
+
 		} else {
-			
+
 			$header_text_color		 = emulsion_contrast_color( $header_background_color );
 		}
-		
+
 		$header_link_color				 = emulsion_link_colors( $header_background_color, 'site_header' );
 		$header_hover_color				 = emulsion_hover_colors( $header_background_color, 'site_header' );
 		$columns_section_bg				 = emulsion_get_var( 'emulsion_block_columns_section_bg' );
@@ -68,9 +68,9 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 		$comments_link_color			 = emulsion_link_colors( $comments_bg, 'comments' );
 		$heading_web_font_family		 = get_theme_mod( 'emulsion_heading_google_font_url', emulsion_get_var( 'emulsion_heading_google_font_url' ) );
 		$fallback_heading_font_family	 = get_theme_mod( 'emulsion_heading_font_family', emulsion_get_var( 'emulsion_heading_font_family' ) );
-		
 
-		
+
+
 		if ( ! empty( $heading_web_font_family ) ) {
 
 			$heading_font_family = emulsion_get_google_font_family_from_url( $heading_web_font_family, $fallback_heading_font_family ) ;
@@ -104,41 +104,41 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'comments_link_color'				 => array( 'value' => $comments_link_color, 'unit' => '' ),
 			'comments_color'					 => array( 'value' => $comments_color, 'unit' => '' ),
 			'comments_bg'						 => array( 'value' => $comments_bg, 'unit' => '' ),
-			
+
 			'relate_posts_link_color'			 => array( 'value' => $relate_posts_link_color, 'unit' => '' ),
 			'relate_posts_color'				 => array( 'value' => $relate_posts_color, 'unit' => '' ),
 			'relate_posts_bg'					 => array( 'value' => $relate_posts_bg, 'unit' => '' ),
-			
+
 			'media_text_section_link_color'		 => array( 'value' => $media_text_section_link_color, 'unit' => '' ),
 			'media_text_section_color'			 => array( 'value' => $media_text_section_color, 'unit' => '' ),
 			'media_text_section_bg'				 => array( 'value' => $media_text_section_bg, 'unit' => '' ),
 			'media_text_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_media_text_section_height' ), 'unit' => 'vh' ),
-			
+
 			'columns_section_link_color'		 => array( 'value' => $columns_section_link_color, 'unit' => '' ),
 			'columns_section_color'				 => array( 'value' => $columns_section_color, 'unit' => '' ),
 			'columns_section_bg'				 => array( 'value' => $columns_section_bg, 'unit' => '' ),
 			'columns_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_columns_section_height' ), 'unit' => 'vh' ),
-			
+
 			'gallery_section_link_color'		 => array( 'value' => $gallery_section_link_color, 'unit' => '' ),
 			'gallery_section_color'				 => array( 'value' => $gallery_section_color, 'unit' => '' ),
 			'gallery_section_bg'				 => array( 'value' => $gallery_section_bg, 'unit' => '' ),
 			'gallery_section_height'			 => array( 'value' => emulsion_get_var( 'emulsion_block_gallery_section_height' ), 'unit' => 'vh' ),
-			
+
 			'hover_color'						 => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
-			
+
 			'sidebar_link_color'				 => array( 'value' => $sidebar_link_color, 'unit' => '' ),
 			'sidebar_color'						 => array( 'value' => $sidebar_color, 'unit' => '' ),
 			'sidebar_background'				 => array( 'value' => $sidebar_background, 'unit' => '' ),
 			'sidebar_hover_color'				 => array( 'value' => $sidebar_hover_color, 'unit' => '' ),
-			
+
 			'primary_menu_link_color'			 => array( 'value' => $primary_menu_link_color, 'unit' => '' ),
 			'primary_menu_color'				 => array( 'value' => $primary_menu_color, 'unit' => '' ),
 			'primary_menu_background'			 => array( 'value' => $primary_menu_background, 'unit' => '' ),
-			
+
 			'header_image_ratio'				 => array( 'value' => emulsion_header_image_ratio(), 'unit' => '' ),
 			'upload_base_dir'					 => array( 'value' => emulsion_upload_base_dir(), 'unit' => '' ),
 			'theme_image_dir'					 => array( 'value' => function_exists('emulsion_theme_image_dir') ? emulsion_theme_image_dir():'', 'unit' => '' ),
-			
+
 			'box_gap'							 => array( 'value' => emulsion_get_var( 'emulsion_box_gap' ), 'unit' => 'px' ),
 			'layout_posts_page'					 => array( 'value' => emulsion_get_var( 'emulsion_layout_posts_page' ), 'unit' => '' ),
 			'layout_author_archives'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_author_archives' ), 'unit' => '' ),
@@ -146,21 +146,21 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'layout_category_archives'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_category_archives' ), 'unit' => '' ),
 			'layout_date_archives'				 => array( 'value' => emulsion_get_var( 'emulsion_layout_date_archives' ), 'unit' => '' ),
 			'layout_homepage'					 => array( 'value' => emulsion_get_var( 'emulsion_layout_homepage' ), 'unit' => '' ),
-			
+
 			'sidebar_position'					 => array( 'value' => emulsion_get_var( 'emulsion_sidebar_position' ), 'unit' => '' ),
-			
+
 			'widget_meta_font_transform'		 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_transform' ), 'unit' => '' ),
 			'widget_meta_font_family'			 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_family' ), 'unit' => '' ),
 			'widget_meta_font_size'				 => array( 'value' => emulsion_get_var( 'emulsion_widget_meta_font_size' ), 'unit' => 'px' ),
-			
+
 			'heading_font_transform'			 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_transform' ), 'unit' => '' ),
 			'heading_font_scale'				 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_scale' ), 'unit' => '' ),
 			'heading_font_weight'				 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_weight' ), 'unit' => '' ),
 			'heading_font_family'				 => array( 'value' => $heading_font_family, 'unit' => '' ),
-			
+
 			'common_font_family'				 => array( 'value' => emulsion_get_var( 'emulsion_common_font_family' ), 'unit' => '' ),
 			'common_font_size'					 => array( 'value' => emulsion_get_var( 'emulsion_common_font_size' ), 'unit' => 'px' ),
-			
+
 			'align_offset'						 => array( 'value' => 200, 'unit' => 'px' ),
 			'main_width'						 => array( 'value' => emulsion_get_var( 'emulsion_main_width' ), 'unit' => 'px' ),
 			'content_width'						 => array( 'value' => emulsion_get_var( 'emulsion_content_width' ), 'unit' => 'px' ),
@@ -172,32 +172,32 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'default_header_height'				 => array( 'value' => 300, 'unit' => 'px' ),
 			'header_background_color'			 => array( 'value' => emulsion_get_var( 'emulsion_header_background_color' ), 'unit' => '' ),
 			'header_background_gradient_color'	 => array( 'value' => $header_background_gradient_color, 'unit' => '' ),
-			
+
 			'background_color'					 => array( 'value' => emulsion_get_background_color(), 'unit' => '' ),
 			'footer_widget_width'				 => array( 'value' => emulsion_get_footer_cols_css(), 'unit' => '%' ),
-			
+
 			'stream'							 => array( 'value' => emulsion_get_template_part_css_selectors( 'stream' ), 'unit' => '' ),
 			'grid'								 => array( 'value' => emulsion_get_template_part_css_selectors( 'grid' ), 'unit' => '' ),
-			
+
 			'font_sizes'						 => array( 'value' => emulsion_get_font_sizes(), 'unit' => '' ),
 			'color_palette'						 => array( 'value' => emulsion_get_color_palette(), 'unit' => '' ),
-			
+
 			'border_global'					 => array( 'value' => emulsion_get_var( 'emulsion_border_global' ), 'unit' => '' ),
 			'border_sidebar'					 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar' ), 'unit' => '' ),
 			'border_grid'						 => array( 'value' => emulsion_get_var( 'emulsion_border_grid' ), 'unit' => '' ),
 			'border_stream'						 => array( 'value' => emulsion_get_var( 'emulsion_border_stream' ), 'unit' => '' ),
-			
+
 			'border_global_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_style' ), 'unit' => '' ),
 			'border_sidebar_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_style' ), 'unit' => '' ),
 			'border_grid_style'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_style' ), 'unit' => '' ),
 			'border_stream_style'				 => array( 'value' => emulsion_get_var( 'emulsion_border_stream_style' ), 'unit' => '' ),
-			
+
 			'border_global_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_global_width' ), 'unit' => 'px' ),
 			'border_sidebar_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar_width' ), 'unit' => 'px' ),
 			'border_grid_width'					 => array( 'value' => emulsion_get_var( 'emulsion_border_grid_width' ), 'unit' => 'px' ),
 			'border_stream_width'				 => array( 'value' => emulsion_get_var( 'emulsion_border_stream_width' ), 'unit' => 'px' ),
 		);
-		
+
 
 
 		$check_customizer_change = get_theme_mod('emulsion_customizer_is_changed');
@@ -234,8 +234,8 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 /**
  * The argument check has been added to the following functions.
  * If an invalid color value is added to the argument, red will return.
- * 
- * emulsion_rgb2hex, 
+ *
+ * emulsion_rgb2hex,
  * emulsion_the_hex2rgb,
  * emulsion_the_hex2rgba,
  * emulsion_the_hex2hsla,
@@ -245,11 +245,11 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 if ( ! function_exists( 'emulsion_rgb2hex' ) ) {
 
 	function emulsion_rgb2hex( $rgb = array( 0, 0, 0 ) ) {
-		
+
 		$is_valid = emulsion_color_value_validate( $rgb, 'rgb' );
-		
+
 		if( ! $is_valid ){
-			
+
 			return '#ff0000';
 		}
 
@@ -269,7 +269,7 @@ if ( ! function_exists( 'emulsion_the_hex2rgb' ) ) {
 	 * @return type
 	 */
 	function emulsion_the_hex2rgb( $hex = '#000' ) {
-		
+
 		if ( list($r, $g, $b) = emulsion_get_hex2rgb_array( $hex ) ) {
 
 			return sprintf( 'rgba( %1$d, %2$d, %3$d )', $r, $g, $b );
@@ -288,14 +288,14 @@ if ( ! function_exists( 'emulsion_the_hex2rgba' ) ) {
 	 * @return type
 	 */
 	function emulsion_the_hex2rgba( $hex = '#000', $alpha = 1 ) {
-		
+
 		$is_valid_alpha	 = emulsion_color_value_validate( $alpha, 'alpha' );
 
 		if ( ! $is_valid_alpha ) {
-			
+
 			$alpha = 1;
 		}
-		
+
 		if ( list($r, $g, $b) = emulsion_get_hex2rgb_array( $hex ) ) {
 
 			return sprintf( 'rgba( %1$d, %2$d, %3$d, %4$.1F)', $r, $g, $b, $alpha );
@@ -318,7 +318,7 @@ if ( ! function_exists( 'emulsion_the_hex2hsla' ) ) {
 		if ( empty( $hex ) ) {
 
 			$hex = emulsion_the_background_color();
-		} 
+		}
 
 		$is_valid_alpha	 = emulsion_color_value_validate( $alpha, 'alpha' );
 
@@ -390,7 +390,7 @@ if ( ! function_exists( 'emulsion_sub_background_color_lighten' ) ) {
 		$saturation	 = intval(emulsion_get_hex2hsl_array( $hex )[1]);
 		$lightness	 = intval(emulsion_get_hex2hsl_array( $hex )[2]);
 		$alpha = 1;
-        
+
 
 		if ( 0 == $hue ) {
 			$lightness = $lightness > 0 ? $lightness * 1.25: 0;
@@ -433,7 +433,7 @@ function emulsion_accent_color( $hex = '', $alpha = 1, $hue = '',
 		$hsl_array	 = emulsion_get_hex2hsl_array( $hex );
 		$hue		 = (int) $hsl_array[0] + $hue;
 
-	} 
+	}
 	if ( ! empty( $hex ) && empty( $hue )) {
 
 		$hsl_array	 = emulsion_get_hex2hsl_array( $hex );
@@ -484,17 +484,17 @@ if ( ! function_exists( 'emulsion_get_hex2hsl_array' ) ) {
 	 * @return type
 	 */
 	function emulsion_get_hex2hsl_array( $hex ) {
-		
+
 		$is_valid		  = emulsion_color_value_validate( $hex, 'hex' );
 		$is_valid_no_hash = emulsion_color_value_validate( $hex, 'hex_no_hash' );
 
 		if( ! $is_valid ) {
 
-			if( ! $is_valid_no_hash ) {	
-				
+			if( ! $is_valid_no_hash ) {
+
 				return array( 0, 100, 50 );
 			}
-		}		
+		}
 
 		if ( list( $r, $g, $b ) = emulsion_get_hex2rgb_array( $hex ) ) {
 
@@ -582,15 +582,15 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 		$background_color = get_background_color();
 
 		if ( empty( $background_color ) ) {
-			
+
 			$theme_default		 = get_theme_support( 'custom-background', 'default-color' );
 			$background_color	 = $theme_default ? $theme_default : 'ffffff';
 		}
-		
-		
+
+
 		$background_color	 = sprintf( '#%1$s', $background_color );
 		$background_color	 = sanitize_hex_color( $background_color );
-		
+
 		return apply_filters( 'emulsion_get_background_color' , $background_color );
 	}
 }
@@ -701,9 +701,9 @@ if ( ! function_exists( 'emulsion_header_image_ratio' ) ) {
 
 			$header_image_ratio = floatval( $header_height / $header_width );
 		}
-		
+
 		if( is_float( $header_image_ratio ) ) {
-			
+
 			return $header_image_ratio;
 		} else {
 			return 0.5625;
@@ -724,7 +724,7 @@ if ( ! function_exists( 'emulsion_sidebar_background' ) ) {
 		$background_default	 = empty( $background_color ) ? '#ffffff' : $background_default;
 
 		$text_color			 = emulsion_contrast_color( $background_color );
-		
+
 		if ( '#ffffff' == $text_color ) {
 
 			if ( $background_default !== $background_color ) {
@@ -791,8 +791,8 @@ if ( ! function_exists( 'emulsion_link_colors' ) ) {
 	 */
 
 	function emulsion_link_colors( $hex_color = '' , $location = '' ) {
-		
-		
+
+
 
 		$text_color = emulsion_contrast_color( $hex_color );
 
@@ -991,7 +991,7 @@ if ( ! function_exists( 'emulsion_contrast_color' ) ) {
 
 			$hex_color = emulsion_the_background_color();
 
-		} 
+		}
 
 		list( $r, $g, $b) = emulsion_get_hex2rgb_array( $hex_color );
 
@@ -1024,7 +1024,7 @@ if ( ! function_exists( 'emulsion_the_background_color' ) ) {
 			$default_background = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
 		}
 		$background_color = apply_filters( 'emulsion_the_background_color', $background_color );
-		
+
 		return $background_color;
 	}
 }
@@ -1037,16 +1037,16 @@ if ( ! function_exists( 'emulsion_get_hex2rgb_array' ) ) {
 	 * @return boolean
 	 */
 	function emulsion_get_hex2rgb_array( $hex ) {
-		
+
 		$is_valid		  = emulsion_color_value_validate( $hex, 'hex' );
 		$is_valid_no_hash = emulsion_color_value_validate( $hex, 'hex_no_hash' );
 
 		if( ! $is_valid ){
 
-			if( ! $is_valid_no_hash ) {	
+			if( ! $is_valid_no_hash ) {
 				return array( 255, 0, 0 );
 			}
-		}			
+		}
 
 		$hex = str_replace( '#', '', $hex );
 		$d	 = '[a-fA-F0-9]';
