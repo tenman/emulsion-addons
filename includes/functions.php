@@ -729,6 +729,11 @@ if ( ! function_exists( 'emulsion_link_color_filter' ) ) {
 if ( ! function_exists( 'emulsion_hover_color_filter' ) ) {
 
 	function emulsion_hover_color_filter( $color ) {
+
+		if( ! is_customize_preview() ) {
+
+			return $color;
+		}
 		/**
 		 * apply customizer setting value
 		 * Reflect when a color different from the default color is set in the customizer
