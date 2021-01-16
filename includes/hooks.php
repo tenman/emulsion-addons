@@ -285,6 +285,11 @@ if ( ! function_exists( 'emulsion_custom_gutenberg_edit_link' ) ) {
 	 */
 	function emulsion_custom_gutenberg_edit_link( $link, $post_id, $text ) {
 
+		if( is_multisite() ) {
+
+			return $link;
+		}
+
 		$which				 = get_post_meta( $post_id, 'classic-editor-remember', true );
 		$allow_users_option	 = get_option( 'classic-editor-allow-users' );
 
@@ -1528,7 +1533,6 @@ if ( ! function_exists( 'emulsion_addons_get_post_meta_on' ) ) {
 		}
 
 		$entry_month_html = wp_kses( emulsion_get_month_link(), EMULSION_POST_META_DATA_ALLOWED_ELEMENTS );
-
 
 		$result = sprintf( $html, $text_posted_on, $entry_month_html, $text_by, $author, $comment_link, $class );
 

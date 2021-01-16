@@ -48,10 +48,10 @@ function emulsion_wp_scss_deactivate_check() {
 	set_theme_mod( 'emulsion_wp_scss_status', 'deactive' );
 }
 
-if( function_exists( 'emulsion_is_plugin_active' ) 
-		&& emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) 
+if( function_exists( 'emulsion_is_plugin_active' )
+		&& emulsion_is_plugin_active( 'wp-scss/wp-scss.php' )
 		&& 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
-	
+
 	//When you switch themes, cooperation with wp-scss may be canceled, and if the plugin is active, cooperate.
 	//Do nothing if wp-scss is active before installing the theme.
 	set_theme_mod( 'emulsion_wp_scss_status', 'active' );
