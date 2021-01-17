@@ -1,8 +1,6 @@
 <?php
 add_action( 'admin_menu', 'emulsion_settings_page_init' );
 
-locate_template( 'lib/validate.php', true, true );
-
 /**
  * Create Page
  */
@@ -26,14 +24,14 @@ function emulsion_document_style() {
 		.admin-color-default{
 			--thm_emulsion-accent-bg:#fff;
 			--thm_emulsion-accent-fg:#222;
-			
+
 		}
 		.color-scheme-default,
 		.color-scheme-fresh{
 			background:#fff;
 			color:#222;
 		}
-			
+
 		.admin-color-light{
 			--thm_emulsion-accent-bg:#e5e5e5;
 			--thm_emulsion-accent-fg:#333;
@@ -44,7 +42,7 @@ function emulsion_document_style() {
 			color:#333;
 		}
 		.color-scheme-light a:hover{
-			
+
 		}
 		.admin-color-blue{
 			--thm_emulsion-accent-bg:#52accc;
@@ -103,7 +101,7 @@ function emulsion_document_style() {
 			background:#738e96;
 			color:#fff;
 		}
-		.color-scheme-ocean a:hover{		
+		.color-scheme-ocean a:hover{
 			color:#fff;
 		}
 		.admin-color-sunrise{
@@ -115,7 +113,7 @@ function emulsion_document_style() {
 			background:#cf4944;
 			color:#fff;
 		}
-		.color-scheme-sunrise a:hover{		
+		.color-scheme-sunrise a:hover{
 			color:#fff;
 		}
 		p{
@@ -132,15 +130,15 @@ function emulsion_document_style() {
 			margin-left:auto;
 			margin-right:auto;
 			font-size:13px;
-			
+
 		}
 		.emulsion-document header{
-			
+
 		}
 		.emulsion-document footer{
 			text-align:center;
 			padding:1.5rem 1.5rem .75rem;
-			
+
 		}
 		.emulsion-document .nav-tab-wrapper{
 			margin-left:1rem;
@@ -150,7 +148,7 @@ function emulsion_document_style() {
 			float: left;
 			border: 1px solid #ccc;
 			border-bottom: none;
-			margin-left: 0.5em; 
+			margin-left: 0.5em;
 			padding: 5px 10px;
 			font-size: 14px;
 			line-height: 1.71428571;
@@ -200,9 +198,9 @@ function emulsion_document_style() {
 			padding:.5rem 10px;
 		}
 		thead,
-		.emulsion-document-table.form-table tr.item-title{	
+		.emulsion-document-table.form-table tr.item-title{
 			background:var(--thm_emulsion-accent-bg);
-			
+
 		}
 		th,
 		.emulsion-document-table.form-table tr.item-title th{
@@ -210,7 +208,7 @@ function emulsion_document_style() {
 			color:var(--thm_emulsion-accent-fg);
 			background:var(--thm_emulsion-accent-bg);
 			padding:.5rem;
-			
+
 		}
 		tfoot td{
 			padding:.5rem;
@@ -229,7 +227,7 @@ function emulsion_document_style() {
 			padding:1rem 10px;
 			background:transparent;
 			vertical-align:top;
-			
+
 		}
 		.emulsion-document-table .sub-title td[colspan]{
 			border:none;
@@ -287,10 +285,10 @@ function emulsion_document_style() {
 			padding-left:40px;
 		}
 		.additional-class li{
-			
+
 		}
 		.additional-class li ul{
-			margin-left:2rem;			
+			margin-left:2rem;
 		}
 		.additional-class .label{
 			font-weight:700;
@@ -341,7 +339,7 @@ function emulsion_document_style() {
 			padding-left:24px;
 			padding-right:24px;
 		}
-			
+
 		.custom-classes{
 		}
 		.custom-classes h4,
@@ -375,9 +373,9 @@ function emulsion_document_style() {
             --thm_social_icon_color:#000;
             fill:#000;
     }
-	
+
 	.wp-block-group.grid {
-			
+
 		--thm_content_width: 720px;
 	  --thm_box_gap:3px;
 	}
@@ -391,13 +389,13 @@ function emulsion_document_style() {
 	  overflow: visible;
 	  padding-top: var(--thm_box_gap);
 	}
-	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child *, 
+	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child *,
 	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child *{
-	
+
 	}
-	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child, 
+	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child,
 	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child {
-		
+
 		border:1px solid #ccc;
 	  --thm_content_width: 720px;
 	  margin: var(--thm_box_gap);
@@ -506,7 +504,7 @@ function emulsion_document_style() {
 .block-name a{
 
 
-			
+
 }
 CSS;
 
@@ -532,7 +530,7 @@ function emulsion_admin_tabs( $current = 'homepage' ) {
 
 	foreach ( $tabs as $tab => $name ) {
 		$class = ( $tab == $current ) ? ' nav-tab-active' : '';
-		
+
 		printf( '<a class="nav-tab %1$s" href="?page=theme-settings&tab=%2$s">%3$s</a>', esc_attr( $class ), esc_attr( $tab ), esc_html( $name ) );
 	}
 	echo '</h2>';
@@ -542,26 +540,26 @@ function emulsion_admin_tabs( $current = 'homepage' ) {
  *  Make Customizer link
  */
 function emulsion_get_customizer_link_element( $place, $name, $link_text = '' ) {
-	
-	
-	
+
+
+
 	if($place == 'section' && empty( $link_text ) ) {
-		
+
 		global $emulsion_theme_customize_sections;
-		
+
 		$label = $emulsion_theme_customize_sections[$name]['title'];
-		
+
 	}
 	if($place == 'panel' && empty( $link_text ) ) {
-		
+
 		global $emulsion_theme_customize_panels;
-		
+
 		$label = $emulsion_theme_customize_panels[$name]['title'];
-		
+
 	}
 
 	if($place == 'control' && empty( $link_text ) ) {
-		
+
 
 	$label = emulsion_get_var( $name, 'label' );
 
