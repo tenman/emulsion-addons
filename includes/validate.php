@@ -92,7 +92,7 @@ const EMULSION_EXCERPT_ALLOWED_ELEMENTS = array(
 	),
 	'br' => array(),
 	'div' => array(
-		'class' => true,	
+		'class' => true,
 	),
 	'blockquote' => array(
 		'cite' =>array(),
@@ -155,7 +155,7 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 				),
 				'aria-current'		 => true,
 				'data-no-instant'	 => true,
-				
+
 			),
 			'time'	 => array(
 				'class'		 => true,
@@ -186,57 +186,57 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 	return $allowedposttags; }, 99, 2 );
 
 /**
- * test 
+ * test
  * List of judgment tests for emulsion_color_value_validate.
  * Test listings are here for recently created functions.
- * 
+ *
 			echo '<div class="fit"> <h1>Unit test</h1>';
-			echo '<h2>correct emulsion_rgb2hex</h2>';			
+			echo '<h2>correct emulsion_rgb2hex</h2>';
 			echo emulsion_rgb2hex( $rgb = array( 0, 0, 0 ) );
 			echo '<h2>count error</h2>';
 			echo var_dump( emulsion_rgb2hex( $rgb = array( 0, 0, 0, 0 ) ) );
 			echo '<h2>value error</h2>';
 			echo var_dump( emulsion_rgb2hex( $rgb = array( 0, 0, 256 ) ) );
-			echo '<hr />';			
-			echo '<h2>correct emulsion_the_hex2rgb</h2>';			
-			echo emulsion_the_hex2rgb( '#ffa500' ) ;		
-			echo '<h2>correct emulsion_the_hex2rgb no hash</h2>';	
+			echo '<hr />';
+			echo '<h2>correct emulsion_the_hex2rgb</h2>';
+			echo emulsion_the_hex2rgb( '#ffa500' ) ;
+			echo '<h2>correct emulsion_the_hex2rgb no hash</h2>';
 			echo emulsion_the_hex2rgb( 'ffa500' ) ;
 			echo '<h2>bad value</h2>';
 			echo var_dump( emulsion_the_hex2rgb( '#ffa50') );
 			echo '<h2>bad value no hash</h2>';
 			echo var_dump( emulsion_the_hex2rgb( '#ffa50' ) );
-			echo '<hr />';			
-			echo '<h2>correct emulsion_the_hex2rgba</h2>';			
-			echo emulsion_the_hex2rgba( '#ffa500' ) ;		
-			echo '<h2>correct emulsion_the_hex2rgba no hash</h2>';	
+			echo '<hr />';
+			echo '<h2>correct emulsion_the_hex2rgba</h2>';
+			echo emulsion_the_hex2rgba( '#ffa500' ) ;
+			echo '<h2>correct emulsion_the_hex2rgba no hash</h2>';
 			echo emulsion_the_hex2rgba( 'ffa500' ) ;
 			echo '<h2>bad value</h2>';
 			echo var_dump( emulsion_the_hex2rgba( '#ffa50') );
 			echo '<h2>bad value no hash</h2>';
 			echo var_dump( emulsion_the_hex2rgba( '#ffa50' ) );
 			echo '<hr />';
-			echo '<h2> 2 correct emulsion_the_hex2rgba</h2>';			
-			echo emulsion_the_hex2rgba( '#ffa500',.5 ) ;		
-			echo '<h2>correct emulsion_the_hex2rgba no hash</h2>';	
+			echo '<h2> 2 correct emulsion_the_hex2rgba</h2>';
+			echo emulsion_the_hex2rgba( '#ffa500',.5 ) ;
+			echo '<h2>correct emulsion_the_hex2rgba no hash</h2>';
 			echo emulsion_the_hex2rgba( 'ffa500',.5 ) ;
 			echo '<h2>bad value</h2>';
 			echo var_dump( emulsion_the_hex2rgba( '#ffa50',1.1) );
 			echo '<h2>bad value no hash</h2>';
 			echo var_dump( emulsion_the_hex2rgba( '#ffa50',1.1 ) );
-			echo '<hr />';			
-			echo '<h2>correct emulsion_the_hex2hsla</h2>';			
-			echo emulsion_the_hex2hsla( '#ffa500' ) ;		
-			echo '<h2>correct emulsion_the_hex2hsla no hash</h2>';	
+			echo '<hr />';
+			echo '<h2>correct emulsion_the_hex2hsla</h2>';
+			echo emulsion_the_hex2hsla( '#ffa500' ) ;
+			echo '<h2>correct emulsion_the_hex2hsla no hash</h2>';
 			echo emulsion_the_hex2hsla( 'ffa500' ) ;
 			echo '<h2>bad value</h2>';
 			echo var_dump( emulsion_the_hex2hsla( '#ffa50') );
 			echo '<h2>bad value no hash</h2>';
 			echo var_dump( emulsion_the_hex2hsla( '#ffa50' ) );
-			echo '<hr />';		
-			echo '<h2> 2 correct emulsion_the_hex2hsla</h2>';			
-			echo emulsion_the_hex2hsla( '#ffa500',.5 ) ;		
-			echo '<h2>correct emulsion_the_hex2hsla no hash</h2>';	
+			echo '<hr />';
+			echo '<h2> 2 correct emulsion_the_hex2hsla</h2>';
+			echo emulsion_the_hex2hsla( '#ffa500',.5 ) ;
+			echo '<h2>correct emulsion_the_hex2hsla no hash</h2>';
 			echo emulsion_the_hex2hsla( 'ffa500',.5 ) ;
 			echo '<h2>bad value</h2>';
 			echo var_dump( emulsion_the_hex2hsla( '#ffa50',1.1) );
@@ -252,7 +252,7 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 				echo '</p>';
 			}
  * Coding example
- * 
+ *
 				$base_color		 = '#8e44ad';
 				$accent_color	 = emulsion_accent_color( $base_color );
 				$text_color		 = emulsion_contrast_color( $accent_color );
@@ -262,16 +262,16 @@ add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
 							. '<div style="background:%2$s;color:%3$s">'
 								. '<p>hello world</p>'
 							. '</div>'
-						. '</div>', 
-						$base_color, 
-						$accent_color, 
+						. '</div>',
+						$base_color,
+						$accent_color,
 						$text_color );
 
 				echo $html;
- * 
+ *
  */
 function emulsion_color_value_validate( $values, $type = 'hex' ) {
-	
+
 	/**
 	 * Color args value check
 	 * @since ver1.1.6
@@ -292,42 +292,42 @@ function emulsion_color_value_validate( $values, $type = 'hex' ) {
 		}
 		return ( 3 === count( $values ) && true === $is_valid );
 	}
-	
+
 	if ( 'rgba' == $type ) {
-		
+
 		if ( ! is_array( $values ) ) {
-			
+
 			return false;
 		}
 
 		foreach ( $values as $key => $value ) {
 
 			$is_valid = is_integer( $value ) && $value >= 0 && $value <= 255 ? true : false;
-			
+
 			if( 3 == $key ) {
 				//The value is not necessarily a float 0,1
 				$is_valid =  $value >= 0 && $value <= 1 ? true : false;
 			}
 
 			if ( false === $is_valid ) {
-				
+
 				break;
 			}
 		}
 		return ( 4 === count( $values ) && true === $is_valid );
 	}
-	
+
 	if( 'alpha' == $type ) {
-		
+
 		return is_numeric( $values ) && $values >= 0 && $values <= 1 ? true : false;
 	}
-	
+
 	if( 'hex' == $type) {
-		
+
 		return ! empty( sanitize_hex_color( $values ) );
 	}
 	if( 'hex_no_hash' == $type) {
-		
+
 		return ! empty( sanitize_hex_color_no_hash( $values ) );
 	}
 }
@@ -335,29 +335,29 @@ function emulsion_color_value_validate( $values, $type = 'hex' ) {
 
 /**
  * Customizer sanitize callback
- * 
+ *
  * Each option value has a corresponding varidate function.
- * 
+ *
  * Get_theme_mod (), a function to get option values, can use theme_mod_{$ option_name}.filter.
  * For example, the color property value set in the customizer is limited to hex color.
  * When a filter is used, not only hex color value but also rgb () and hsl () can be used even if the value is invalid.
- * 
+ *
  * What is the method when users always want to close with hex color values?
- * 
+ *
  * for example emulsion_sidebar_background
- * 
+ *
  * By using a filter like the following, if an unintended value is used, it will be able to return the default value.
- * 
+ *
  * add_filter('theme_mod_emulsion_sidebar_background', 'filter_emulsion_sidebar_background', PHP_INT_MAX);
- * 
+ *
  * function filter_color_varidate( $value ){
- *		
+ *
  *		$valid_value = emulsion_header_background_color_validate( $value );
- * 
+ *
  *		if( ! empty( $valid_value ) ) {
  *			return $valid_value;
  *		}
- * 
+ *
  *		return emulsion_get_var('emulsion_header_background_color','default' );
  * }
  *
@@ -373,13 +373,13 @@ function emulsion_scheme_validate( $input ) {
 		return 'default';
 }*/
 function emulsion_google_analytics_tracking_code_validate( $input ) {
-	
+
 	if( ! empty( $input) ) {
-		
+
 		return sanitize_text_field( $input );
 	}
-	
-	return ''; 
+
+	return '';
 }
 function emulsion_border_global_validate( $input ) {
 
@@ -397,7 +397,7 @@ function emulsion_border_grid_validate( $input ) {
 function emulsion_border_stream_validate( $input ) {
 
 	return sanitize_hex_color( $input );
-}	
+}
 function emulsion_bg_image_blend_color_validate( $input ) {
 
 	return sanitize_hex_color( $input );
@@ -1122,8 +1122,8 @@ function emulsion_header_layout_validate( $input ) {
 	$values			 = emulsion_get_var( $name, 'choices' );
 	$default_value	 = emulsion_get_var( $name, 'default' );
 
-	if ( ! empty( $input ) && array_key_exists( $input, $values ) ) {
-
+	//if ( ! empty( $input ) && array_key_exists( $input, $values ) ) {
+	if ( is_string( $input ) && array_key_exists( $input, $values ) ) {
 		return $input;
 	}
 
@@ -1134,7 +1134,7 @@ function emulsion_header_html_validate( $input ) {
 
 	if ( ! empty( $input ) ) {
 
-		// check lost element			
+		// check lost element
 		$emulsion_place = basename( __FILE__ ) . ' line:' . __LINE__ . ' ' . __FUNCTION__ . '()';
 		true === WP_DEBUG ? emulsion_elements_assert_equal( $input, wp_kses_post( $input ), $emulsion_place ) : '';
 
@@ -1273,7 +1273,7 @@ function emulsion_layout_search_results_validate( $input ) {
 
 function emulsion_footer_credit_validate( $input ) {
 
-	// check lost element			
+	// check lost element
 	$emulsion_place = basename( __FILE__ ) . ' line:' . __LINE__ . ' ' . __FUNCTION__ . '()';
 	true === WP_DEBUG ? emulsion_elements_assert_equal( $input, wp_kses_post( $input ), $emulsion_place ) : '';
 
@@ -1544,16 +1544,16 @@ if ( ! function_exists( 'emulsion_get_var' ) ) {
 		if ( ! empty( $emulsion_customize_args[$name] ) && array_key_exists( $name, $emulsion_customize_args ) ) {
 
 			if ( empty( $property ) ) {
-				
+
 				if( true === $unit ){
-					
+
 					return sprintf('%1$s%2$s', get_theme_mod( $name, $emulsion_customize_args[$name]['default'] ), $emulsion_customize_args[$name]['unit'] );
 				}
 
 				return get_theme_mod( $name, $emulsion_customize_args[$name]['default'] );
 			}
 			if ( ! empty( $property ) && isset( $emulsion_customize_args[$name][$property] ) ) {
-				
+
 				return $emulsion_customize_args[$name][$property];
 			}
 

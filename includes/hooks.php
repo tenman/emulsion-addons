@@ -78,7 +78,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description' );
-	add_filter( 'theme_mod_emulsion_header_html', 'do_shortcode' );
+//	add_filter( 'theme_mod_emulsion_header_html', 'do_shortcode' );
 	add_action( 'wp_footer', 'emulsion_addons_google_tracking_code', 99 );
 }
 

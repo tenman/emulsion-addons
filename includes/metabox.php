@@ -23,7 +23,7 @@ class emulsion_add_meta_boxes {
 				'description'	 => 'This setting is mainly for page builder users.',
 			),
 		),
-		
+
 		'emulsion_post_theme_style_script'	 => array(
 			'post_type'	 => 'post',
 			'title'		 => 'Style',
@@ -54,7 +54,7 @@ class emulsion_add_meta_boxes {
 				'description'	 => 'Remove Background Image',
 			),
 		),
-		
+
 		// Page
 		'emulsion_page_sidebar'			 => array(
 			'post_type'	 => 'page',
@@ -135,7 +135,7 @@ class emulsion_add_meta_boxes {
 		if ( current_user_can( 'edit_posts' ) ) {
 
 			if( 'boilerplate' == get_theme_mod( 'emulsion_scheme' ) ) {
-				
+
 				unset( $this->screens['emulsion_post_theme_style_script'] );
 			}
 
@@ -215,7 +215,7 @@ class emulsion_add_meta_boxes {
 }
 
 function emulsion_header_reset_no_bg( $css ){
-	
+
 	$post_id = get_the_ID();
 
 	$text_color	 = emulsion_header_text_color_reset();
@@ -233,9 +233,9 @@ function emulsion_header_reset_no_bg( $css ){
 		--thm_header_bg_color: {$header_bg};
 		--thm_header_background_gradient_color: {$header_bg};
 	}
-				
+
 CSS;
-	
+
 	$setting = get_post_meta( $post_id, 'emulsion_post_header', true );
 	$setting_page = get_post_meta( $post_id, 'emulsion_page_header', true );
 
@@ -269,7 +269,7 @@ function emulsion_reset_no_bg( $css ){
 
 		.page-id-{$post_id}.metabox-reset-page-presentation,
 		.postid-{$post_id}.metabox-reset-post-presentation{
-		
+
 			--thm_gallery_section_link_color: {$general_link_color};
 			--thm_gallery_section_color: {$general_text_color};
 			--thm_gallery_section_bg: {$general_text_color};
@@ -356,10 +356,10 @@ function emulsion_post_metabox_html( $post, $callback_args ) {
 	?>
 	<p><?php echo wp_kses( $callback_args['args']['icon'], array('span' => array('class' => array() ) ) ) ?><?php echo esc_html( $description ); ?></p>
 	<?php
-	emulsion_radio_fields( $callback_args['id'], $callback_args['args']['fields'], $checked );
+	emulsion_radio_fields( $checked, $callback_args['id'], $callback_args['args']['fields'] );
 }
 
-function emulsion_radio_fields( $group_name = '', $fields = array(), $current_field ) {
+function emulsion_radio_fields( $current_field, $group_name = '', $fields = array() ) {
 
 	foreach ( $fields as $key => $val ) {
 
