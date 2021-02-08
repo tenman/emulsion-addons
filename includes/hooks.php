@@ -78,7 +78,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description' );
-//	add_filter( 'theme_mod_emulsion_header_html', 'do_shortcode' );
+	add_filter( 'theme_mod_emulsion_header_html', 'apply_shortcodes' );
 	add_action( 'wp_footer', 'emulsion_addons_google_tracking_code', 99 );
 }
 
@@ -582,6 +582,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 
 		$style	 .= emulsion_term_duplicate_link_hide( '' );
 		$style	 .= emulsion_smart_category_highlight( '' );
+		$style	 .= emulsion_adminbar_css( '' );
 		$style	 .= emulsion_add_common_font_css( '' );
 		$style	 .= emulsion_heading_font_css( '' );
 		$style	 .= emulsion_widget_meta_font_css( '' );
@@ -848,6 +849,30 @@ if ( ! function_exists( 'emulsion_smart_category_highlight' ) ) {
 	}
 
 }
+if( ! function_exists('emulsion_adminbar_css') ) {
+
+	function emulsion_adminbar_css( $css ){
+
+		$css .=<<< CSS
+				#wp-admin-bar-fse_switch_off{
+
+					border-left:1rem solid #ff0033;
+				}
+				#wp-admin-bar-fse_switch_on a{
+
+					border-left:1rem solid #90ee90;
+				}
+				#wp-admin-bar-fse_switch_transitional a{
+
+					border-left:1rem solid #3498db;
+				}
+
+CSS;
+		return $css;
+
+	}
+}
+
 if ( ! function_exists( 'emulsion_add_common_font_css' ) ) {
 
 	function emulsion_add_common_font_css( $css ) {
@@ -1890,19 +1915,26 @@ function emulsion_admin_bar_menu() {
 	if ( current_user_can( 'manage_options' ) ) {
 		global $wp_admin_bar;
 
-		$color = 'off' == filter_input( INPUT_GET, 'fse' )
-				? '<strong style="color:#fff;background:#ff0033;display:block;padding-left:8px;padding-right:8px;">'
-				: '<strong style="color:#000;background:#90ee90;display:block;padding-left:8px;padding-right:8px;">';
+		if( 'off' == filter_input( INPUT_GET, 'fse' ) ) {
+			$menu_title = esc_html__( 'FSE OFF', 'emulsion' );
+			$color = '<strong style="color:#fff;background:#ff0033;display:block;padding-left:8px;padding-right:8px;">';
+		} elseif( 'transitional' == filter_input( INPUT_GET, 'fse' )  ) {
+			$menu_title = esc_html__( 'FSE Transitional', 'emulsion' );
+			$color = '<strong style="color:#fff;background:#3498db;display:block;padding-left:8px;padding-right:8px;">';
+		} else {
+			$menu_title = esc_html__( 'FSE', 'emulsion' );
+			$color = '<strong style="color:#000;background:#90ee90;display:block;padding-left:8px;padding-right:8px;">';
+		}
 
 		if ( is_admin() ) {
 
-			$color = '<strong style="display:block;padding-left:8px;padding-right:8px;">';
+			//$color = '<strong style="display:block;padding-left:8px;padding-right:8px;">';
 		}
 
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'top-secondary',
 			'id'	 => 'fse_switch',
-			'title'	 => $color . esc_html__( 'FSE', 'emulsion' ) . '</strong>',
+			'title'	 => $color . $menu_title . '</strong>',
 			'href'	 => esc_url( remove_query_arg( 'fse' ) ),
 		) );
 
@@ -1914,6 +1946,12 @@ function emulsion_admin_bar_menu() {
 				'id'	 => 'fse_switch_off',
 				'title'	 => esc_html__( 'fse-off', 'emulsion' ),
 				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
+			) );
+			$wp_admin_bar->add_menu( array(
+				'parent' => 'fse_switch',
+				'id'	 => 'fse_switch_transitional',
+				'title'	 => esc_html__( 'fse-transitional', 'emulsion' ),
+				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
 			) );
 
 			$wp_admin_bar->add_menu( array(
@@ -1930,13 +1968,25 @@ function emulsion_admin_bar_menu() {
 				'href'	 => esc_url( get_admin_url( NULL, 'edit.php?post_type=wp_template_part' ) ),
 			) );
 		} else {
-
+			$wp_admin_bar->add_menu( array(
+				'parent' => 'fse_switch',
+				'id'	 => 'fse_switch_off',
+				'title'	 => esc_html__( 'fse-off', 'emulsion' ),
+				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
+			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_on',
 				'title'	 => esc_html__( 'fse-on', 'emulsion' ),
 				'href'	 => esc_url( remove_query_arg( 'fse' ) ),
 			) );
+			$wp_admin_bar->add_menu( array(
+				'parent' => 'fse_switch',
+				'id'	 => 'fse_switch_transitional',
+				'title'	 => esc_html__( 'fse-transitional', 'emulsion' ),
+				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
+			) );
+
 		}
 
 		if ( ! is_admin() ) {

@@ -363,6 +363,7 @@ CSS;
 
 		return $css . $css_result;
 	}
+
 	if ( is_single() && emulsion_metabox_display_control( 'style' ) ) {
 
 		return $css . $css_result;
@@ -1215,12 +1216,13 @@ function emulsion_resuponsive_css() {
         position:relative;
         z-index:1;
         flex-basis:100%;
-        width:100%;
-        max-width:100%;
+        width:100vw;
+        max-width:100vw;
         flex:1 0;
     }
 	ul.sidebar-widget-area-lists{
         width:100vw;
+		max-width:100vw;
     }
 }
 
@@ -1246,7 +1248,7 @@ function emulsion_resuponsive_css() {
 		overflow-x: hidden;
 	}
 	.sidebar-widget-area{
-        max-width:100%;
+        max-width:100vw;
     }
 }
 @media screen and (max-width: $content_width_plus_sidebar_width) {
@@ -1310,6 +1312,11 @@ function emulsion_resuponsive_css() {
 	}
 	body.on-scroll .template-part-header .header-layer-site-title-navigation {
 	  max-width: 100%;
+		top: 0;
+	}
+}
+@media screen and (max-width: 600px) {
+	body.on-scroll.logged-in .template-part-header .header-layer-site-title-navigation {
 		top: 0;
 	}
 }
