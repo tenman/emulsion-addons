@@ -89,7 +89,7 @@
     });
 
     //todo
-    
+
      wp.customize.section('emulsion_scheme', function (section) {
         section.expanded.bind(function (isExpanded) {
 
@@ -149,10 +149,11 @@
 
             if (isExpanded && PREVIEW_REDIRECT == "enable") {
                 var today = new Date();
-                var this_month = ("0" + parseInt(today.getMonth() + 1)).slice(-2);
-                var this_year = today.getFullYear();
+              //  var this_month = ("0" + parseInt(today.getMonth() + 1)).slice(-2);
+              //  var this_year = today.getFullYear();
                 var code = 'redirect';
-                var url = wp.customize.settings.url.home + '?m=' + this_year + this_month;
+              //  var url = wp.customize.settings.url.home + '?m=' + this_year + this_month;
+                var url = wp.customize.settings.url.home + '?m=' + emulsion_customizer_controle.date_archive_query;
                 var section = 'emulsion_section_layout_date_archives';
                 var message = emulsion_customizer_controle.code_section_layout_date_archives_notification;
                 emulsion_redirect_notification(section, message, url, code);

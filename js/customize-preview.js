@@ -315,7 +315,7 @@
     });
     wp.customize('emulsion_border_global_width', function (value) {
         value.bind(function (newval) {
-            $("body").addClass('has-border-custom').get(0).style.setProperty("--thm_border_global_width", newval);
+            $("body").addClass('has-border-custom').get(0).style.setProperty("--thm_border_global_width", newval + 'px');
         });
     });
 
@@ -988,8 +988,8 @@
           bodyClassArr = bodyClass.split(" ");
 
       api.preview.send( 'emulsion-body-class', bodyClassArr );
-      
+
     } );
   } );
-  
+
 }( jQuery, wp.customize ) );
