@@ -7,9 +7,9 @@ if ( ! function_exists( 'emulsion_has_archive_format' ) ) {
 	 * @return string
 	 */
 	function emulsion_has_archive_format( $supports_stream = array() ) {
-		
+
 		$post_id		 = get_the_ID();
-		$post_body_type	 = emulsion_the_theme_supports( 'excerpt' );	
+		$post_body_type	 = emulsion_the_theme_supports( 'excerpt' );
 
 		if ( false !== $post_id && ! empty( $supports_stream[0] ) ) {
 
@@ -62,7 +62,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 	 */
 
 	function emulsion_post_content() {
-		
+
 
 		$use_excerpt	 = emulsion_the_theme_supports( 'excerpt' );
 		$supports_stream = emulsion_the_theme_supports( 'stream' );
@@ -110,7 +110,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			 * remove element and their contents
 			 */
 
-			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code><pre>', true );
+			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code><pre><script><style><iframe><canvas><noscript><audio><video><noembed>', true );
 
 			/**
 			 * Remove Comments
@@ -226,7 +226,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 							if ( false === $has_more ) {
 
 								$excerpt_from_content  = apply_filters('the_excerpt', $excerpt_from_content );
-																																
+
 								echo wp_kses_post( $excerpt_from_content );
 							} else {
 								/**
@@ -241,13 +241,13 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 							if( 0 == strcmp( trim( $has_excerpt ), $excerpt_plain_text ) ) {
 
 								$has_excerpt  = apply_filters('the_excerpt', $has_excerpt );
-								
+
 								echo wpautop( $has_excerpt );
 							} else {
 							    //Wrap with fit class to match content_width
 								$has_excerpt = sprintf('<div class="post-excerpt-html fit">%1$s</div>', $has_excerpt );
 								$has_excerpt  = apply_filters('the_excerpt', $has_excerpt );
-								
+
 								echo  $has_excerpt;
 							}
 						}
@@ -259,7 +259,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			}
 		} else {
 
-				echo get_the_password_form( $post_id );		
+				echo get_the_password_form( $post_id );
 		}
 	}
 }
@@ -269,11 +269,11 @@ if ( ! function_exists( 'emulsion_post_excerpt_more' ) ) {
 	 * grid layout read more
 	 */
 	function emulsion_post_excerpt_more() {
-			
+
 		$supports_grid	 = emulsion_the_theme_supports( 'grid' );
 		$grid			 = emulsion_has_archive_format( $supports_grid );
 		$post_id		 = get_the_ID();
-		
+
 		if( false === $post_id ){
 			__return_empty_string();
 		}
@@ -282,9 +282,9 @@ if ( ! function_exists( 'emulsion_post_excerpt_more' ) ) {
 		$article		 = get_post( $post_id );
 
 		if ( $article ) {
-			
+
 			if ( preg_match( '$<!--more-->$', $article->post_content ) && 'excerpt' == $grid ) {
-				
+
 				printf( '<span><a href="%1$s#top" class="skin-button">%2$s<span class="screen-reader-text read-more-context">%3$s</span></a></span>',
 						esc_url( $permalink ),
 						esc_html__( 'Read More', 'emulsion' ),

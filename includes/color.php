@@ -140,19 +140,35 @@ function emulsion__css_variables( $css = '' ) {
 	$boxed_conditions					 = $stream_condition . ',' . $grid_condition;
 
 	/**
-	 * Customizer color picker support only hex color
-	 * If the color picker value is the same as the background color, it will be overwritten transparent
+	 * Correct if the option value is not set
 	 */
+/*
+	if( '#ffffff' == get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) ) {
 
-	if ( get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) !== emulsion_get_background_color() ) {
-		$columns_section_bg = 'transparent';
+		$columns_section_bg = emulsion_get_background_color();
+
+		$columns_section_color = emulsion_contrast_color( $columns_section_bg );
+
+		$columns_section_link_color = emulsion_contrast_color( $columns_section_bg );
+
 	}
-	if ( get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) !== emulsion_get_background_color() ) {
-		$media_text_section_bg = 'transparent';
+	if ( '#ffffff' == get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) ) {
+
+		$media_text_section_bg = emulsion_get_background_color();
+
+		$media_text_section_color = emulsion_contrast_color( $media_text_section_bg  );
+
+		$media_text_section_link_color = emulsion_contrast_color( $media_text_section_bg );
 	}
-	if ( get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) !== emulsion_get_background_color() ) {
-		$gallery_section_bg = 'transparent';
-	}
+	if ( '#ffffff' == get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) ) {
+
+		$gallery_section_bg = emulsion_get_background_color();
+
+		$gallery_section_color = emulsion_contrast_color( $gallery_section_bg );
+
+		$gallery_section_link_color	= emulsion_contrast_color( $gallery_section_bg );
+	}*/
+
 
 	$style = <<<CSS
 body{
@@ -754,9 +770,9 @@ function emulsion_resuponsive_css() {
 }
 @media screen and (max-width: $content_width) {
   body {
-    --thm_main_width: 100%;
-    --thm_content_width: 100%;
-    --thm_main_width-with-sidebar: 100%;
+    --thm_main_width: 100vw;
+    --thm_content_width: 100vw;
+    --thm_main_width-with-sidebar: 100vw;
   }
 
 
@@ -978,7 +994,7 @@ function emulsion_resuponsive_css() {
   .emulsion-has-sidebar .entry-content .wp-block-columns.alignfull {
     position: relative;
     width: 100%;
-    max-width: none;
+    /*max-width: none;*/
   }
   .emulsion-no-sidebar .entry-content .wp-block-columns.alignwide {
     position: static;
@@ -986,12 +1002,12 @@ function emulsion_resuponsive_css() {
 
     padding-left:0;
     padding-right:0;
-    max-width: none;
+    /*max-width: none;*/
   }
   .emulsion-no-sidebar .entry-content .wp-block-columns.alignfull {
     position: static;
     width: 100%;
-    max-width: none;
+    /*max-width: none;*/
     left: 0;
   }
   body.emulsion-has-sidebar .primary-menu-wrapper .menu-placeholder {
@@ -1253,7 +1269,7 @@ function emulsion_resuponsive_css() {
 }
 @media screen and (max-width: $content_width_plus_sidebar_width) {
 	.enable-alignfull.emulsion-has-sidebar article .alignfull {
-		max-width: none;
+		/*max-width: none;*/
 	}
 }
 @media screen and (max-width: $content_width_plus_sidebar_width) {
