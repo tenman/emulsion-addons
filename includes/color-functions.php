@@ -105,6 +105,15 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			$heading_font_family = $fallback_heading_font_family;
 		}
 
+		if( ( ! empty( get_header_textcolor() ) && is_home() && ! has_header_image() && ! is_header_video_active() ) ||
+			( ! empty( get_header_textcolor() ) && is_singular() &&  ! has_post_thumbnail() ) ||
+			( ! empty( get_header_textcolor() ) && ( is_archive() || is_search() || is_404() ) ) ) {
+
+			$header_text_color = sprintf('#%1$s', get_header_textcolor() );
+			$header_link_color = sprintf('#%1$s', get_header_textcolor() );
+			$header_hover_color = sprintf('#%1$s', get_header_textcolor() );
+		}
+
 		$settings = array(
 			'background_image_dim'			 => array( 'value' => $background_image_dim, 'unit' => '' ),
 			'heading_font_base'				 => array( 'value' => emulsion_get_var( 'emulsion_heading_font_base' ), 'unit' => '' ), // Do not add units due to font size calculations.
@@ -230,6 +239,8 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 
 			return $settings[$name]['value'] . $settings[$name]['unit'];
 		}
+
+
 		return false;
 	}
 

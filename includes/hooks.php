@@ -1213,7 +1213,7 @@ if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 		  text-transform: {$text_transform};
 		}
 		body .relate-content-wrapper {
-		  font-size: {$font_size}px;
+		  font-size: {$common_font_size}px;
 		  font-family: {$font_family};
 		}
 		body .relate-content-wrapper .relate-posts-title {
@@ -1434,7 +1434,8 @@ if ( ! function_exists( 'emulsion_addons_the_header_layer_class' ) ) {
 			}
 		}
 
-		echo esc_html( emulsion_class_name_sanitize( $add_class . $class ) );
+			echo esc_html( emulsion_class_name_sanitize( $add_class . $class ) );
+
 	}
 
 }

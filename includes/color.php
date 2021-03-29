@@ -139,35 +139,6 @@ function emulsion__css_variables( $css = '' ) {
 	$border_stream_width				 = emulsion_get_css_variables_values( 'border_grid_width' );
 	$boxed_conditions					 = $stream_condition . ',' . $grid_condition;
 
-	/**
-	 * Correct if the option value is not set
-	 */
-/*
-	if( '#ffffff' == get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) ) {
-
-		$columns_section_bg = emulsion_get_background_color();
-
-		$columns_section_color = emulsion_contrast_color( $columns_section_bg );
-
-		$columns_section_link_color = emulsion_contrast_color( $columns_section_bg );
-
-	}
-	if ( '#ffffff' == get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) ) {
-
-		$media_text_section_bg = emulsion_get_background_color();
-
-		$media_text_section_color = emulsion_contrast_color( $media_text_section_bg  );
-
-		$media_text_section_link_color = emulsion_contrast_color( $media_text_section_bg );
-	}
-	if ( '#ffffff' == get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) ) {
-
-		$gallery_section_bg = emulsion_get_background_color();
-
-		$gallery_section_color = emulsion_contrast_color( $gallery_section_bg );
-
-		$gallery_section_link_color	= emulsion_contrast_color( $gallery_section_bg );
-	}*/
 
 
 	$style = <<<CSS
