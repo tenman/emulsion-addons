@@ -1,0 +1,303 @@
+/**
+ * Copy from emulsion theme style.css
+ */
+
+/**
+ * fallback
+ * Due to other themes, the set color scheme cannot be reproduced. Causes a fatal problem with contrast
+ */
+
+.wp-block-cover__inner-container:first-child{
+    color:var(--thm_black_color);
+}
+[class*="background-color"],
+.has-background{
+    background:var(--thm_unknown-bg);
+    color:var(--thm_black_color);
+}
+
+.has-vivid-cyan-blue-background-color,
+.has-vivid-red-background-color,
+.has-vivid-purple-background-color{
+    color:var(--thm_white_color);
+}
+
+/**
+ * Basic Color Settings
+ *
+ * If you use the emulsion theme to create an article and then switch to another theme,
+ * the theme color settings will be lost. If you want to keep the color settings
+ * when creating the article even after switching to the theme,
+ * paste the following style into the customizer's custom CSS.
+ */
+
+body:not(.emulsion-not-support-presentation){
+    --thm_black_color:#333333;
+    --thm_gray_color:#A9A9A9;
+    --thm_silver_color:#bebebe;
+    --thm_cloud_color:#ecf0f1;
+    --thm_white_color:#ffffff;
+    --thm_alert_color:rgba(231, 76, 60, 1);
+    --thm_notice_color:rgba(163, 140, 8, 1);
+    --thm_info_color:rgba(22, 160, 133, 1);
+    --thm_cool_color:rgba(52, 152, 219, 1);
+    --thm_alert_color_alpha:rgba(231, 76, 60, .4);
+    --thm_notice_color_alpha:rgba(163, 140, 8, .4);
+    --thm_info_color_alpha:rgba(22, 160, 133, .4);
+    --thm_cool_color_alpha:rgba(52, 152, 219, .4);
+    --thm_lighten:linear-gradient(rgba(255, 255, 255, .2), rgba(255, 255, 255, .2));
+    --thm_darken:linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+    --thm_default_bullet_color:#3498db;
+    --thm_is_style_dark_color:#a9b7c6;
+    --thm_is_style_dark_bg:#282b2e;
+    --thm_code_color:#555555;
+    --thm_code_bg:#f8f8ff;
+    --thm_unknown-bg:#a1c0e0;
+}
+body:not(.emulsion-not-support-presentation) .wp-block-table{
+    --thm_table_light_gray_background:#f3f4f5;
+    --thm_table_pale_green_background:#e9fbe5;
+    --thm_table_pale_blue_background:#e7f5fe;
+    --thm_table_pale_pink_background:#ffccf8;
+}
+
+[class*='scheme-']{
+    background:var(--thm_background_color);
+}
+
+
+
+body .grid .article-wrapper article header a {
+
+}
+body .grid .article-wrapper article header.show-post-image a {
+    color: var(--thm_white_color);
+}
+body .comment-wrapper{
+    /*  var(--thm_comments_bg, #eeeeee);*/
+}
+body .relate-content-wrapper {
+    background: var(--thm_relate_posts_bg, #eeeeee);
+}
+body .toc, body .primary-menu-wrapper {
+    background: var(--thm_white_color);
+}
+body .toc .children, body .primary-menu-wrapper .children, body .toc .sub-menu, body .primary-menu-wrapper .sub-menu {
+    background: var(--thm_white_color);
+}
+body .emulsion-add-dark-color *, body .show-post-image *, body .header-image-active * {
+    color: var(--thm_white_color);
+    border-color: var(--thm_white_color);
+}
+.emulsion-removed-presentation .emulsion-add-dark-color *,
+.emulsion-removed-presentation .show-post-image *,
+.emulsion-removed-presentation .header-image-active *{
+    color:initial;
+    border-color:initial;
+}
+body .current {
+    background: rgba(188, 188, 188, 0.2);
+}
+body .current-page {
+    background: rgba(188, 188, 188, 0.2);
+}
+body .pagination .current, body .pagination .prev, body .pagination .next {
+    color: var(--thm_general_text_color);
+    background: rgba(188, 188, 188, 0.2);
+}
+
+:root .has-midnight-gradient-background,
+:root .has-cool-to-warm-spectrum-gradient-background,
+:root .has-luminous-vivid-orange-to-vivid-red-gradient-background,
+:root .has-vivid-cyan-blue-to-vivid-purple-gradient-background{
+    color:var(--thm_white_color);
+}
+:root .has-white-background-color,
+:root .has-electric-grass-gradient-background,
+:root .has-luminous-dusk-gradient-background,
+:root .has-blush-bordeaux-gradient-background,
+:root .has-blush-light-purple-gradient-background,
+:root .has-very-light-gray-to-cyan-bluish-gray-gradient-background,
+:root .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background,
+:root .has-light-green-cyan-to-vivid-green-cyan-gradient-background,
+:root .has-pale-ocean-gradient-background{
+    color:var(--thm_black_color);
+}
+
+#wpwrap [data-type="core/html"] .wp-block-html .block-editor-plain-text,
+.wp-block-preformatted,
+pre code {
+    color: var(--thm_code_color);
+    background: var(--thm_code_bg);
+}
+
+#wpwrap [data-type="core/html"] .wp-block-html .block-editor-plain-text.is-style-dark,
+.wp-block-preformatted.is-style-dark,
+pre code.is-style-dark {
+    color: var(--thm_is_style_dark_color);
+    background: var(--thm_is_style_dark_bg);
+}
+
+#wpwrap [data-type="core/html"] .wp-block-html .block-editor-plain-text.is-style-dark code,
+.wp-block-preformatted.is-style-dark code,
+pre code.is-style-dark code,
+#wpwrap [data-type="core/html"] .wp-block-html .block-editor-plain-text.is-style-dark .block-editor-plain-text,
+.wp-block-preformatted.is-style-dark .block-editor-plain-text,
+pre code.is-style-dark .block-editor-plain-text {
+    color: var(--thm_is_style_dark_color);
+    background: var(--thm_is_style_dark_bg);
+}
+
+pre.wp-block-code code {
+    color: var(--thm_code_color);
+    background: var(--thm_code_bg);
+}
+
+pre.wp-block-code.is-style-dark code {
+    color: var(--thm_is_style_dark_color);
+    background: var(--thm_is_style_dark_bg);
+}
+
+pre.wp-block-code.is-style-dark code code,
+pre.wp-block-code.is-style-dark code .block-editor-plain-text {
+    color: var(--thm_is_style_dark_color);
+    background: var(--thm_is_style_dark_bg);
+}
+
+p > code {
+    color: var(--thm_code_color);
+    background: var(--thm_code_bg);
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+del,
+strike,
+s {
+    text-decoration-color: var(--thm_alert_color);
+    opacity: 0.5;
+}
+
+h1.has-text-color>a,
+h2.has-text-color>a,
+h3.has-text-color>a,
+h4.has-text-color>a,
+h5.has-text-color>a,
+h6.has-text-color>a {
+    color: inherit;
+}
+
+.has-stripe-background-color,
+.mark-stripe {
+    background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+}
+
+.has-cool-background-color,
+.mark-success,
+.mark-cool {
+    background: var(--thm_cool_color_alpha);
+    background-image:linear-gradient( var(--thm_cool_color_alpha), var(--thm_cool_color_alpha) ),
+        linear-gradient(  var(--thm_white_color), var(--thm_white_color) );
+    color:var(--thm_black_color);
+}
+
+.has-notice-background-color,
+.mark-notice {
+    background: var(--thm_notice_color_alpha);
+    background-image:linear-gradient( var(--thm_notice_color_alpha), var(--thm_notice_color_alpha) ),
+        linear-gradient(  var(--thm_white_color), var(--thm_white_color) );
+    color:var(--thm_black_color);
+}
+.has-info-background-color,
+.mark-info {
+    background: var(--thm_info_color_alpha);
+    background-image:linear-gradient( var(--thm_info_color_alpha), var(--thm_info_color_alpha) ),
+        linear-gradient(  var(--thm_white_color), var(--thm_white_color) );
+    color:var(--thm_black_color);
+}
+
+.has-alert-background-color,
+.mark-alert {
+    background: var(--thm_alert_color_alpha);
+    background-image:linear-gradient(  var(--thm_alert_color_alpha),  var(--thm_alert_color_alpha) ),
+        linear-gradient(  var(--thm_white_color), var(--thm_white_color) );
+    color:var(--thm_black_color);
+
+}
+
+.has-gray-background-color,
+.mark-gray{
+    background: var(--thm_gray_color);
+    color: var(--thm_black_color);
+}
+.has-text-color{
+    background:transparent;
+}
+
+.has-stripe-background-color:not(.has-text-color),
+.mark-stripe:not(.has-text-color),
+.mark-success:not(.has-text-color),
+.mark-cool:not(.has-text-color),
+.mark-notice:not(.has-text-color),
+.mark-info:not(.has-text-color),
+.has-alert-background-color:not(.has-text-color),
+.mark-alert:not(.has-text-color) {
+    color: var(--thm_black_color);
+}
+.has-gray-background-color:not(.has-text-color) *:not(.has-text-color),
+.has-stripe-background-color:not(.has-text-color) *:not(.has-text-color),
+.mark-stripe:not(.has-text-color) *:not(.has-text-color),
+.mark-success:not(.has-text-color) *:not(.has-text-color),
+.mark-cool:not(.has-text-color) *:not(.has-text-color),
+.mark-notice:not(.has-text-color) *:not(.has-text-color),
+.mark-info:not(.has-text-color) *:not(.has-text-color),
+.has-alert-background-color:not(.has-text-color) *:not(.has-text-color),
+.mark-alert:not(.has-text-color) *:not(.has-text-color) {
+    color: var(--thm_black_color);
+}
+
+.has-vivid-cyan-blue-to-vivid-purple-gradient-background:not(.has-text-color),
+.has-midnight-gradient-background:not(.has-text-color),
+.has-black-background-color:not(.has-text-color) {
+    color: var(--thm_white_color);
+}
+
+.has-vivid-cyan-blue-to-vivid-purple-gradient-background:not(.has-text-color) *:not(.has-text-color),
+.has-midnight-gradient-background:not(.has-text-color) *:not(.has-text-color){
+    color: var(--thm_white_color);
+}
+
+.has-black-background-color {
+    background: var(--thm_black_color);
+}
+.emulsion .wp-block-cover.has-black-background-color *:not(.has-text-color),
+.emulsion .has-background.has-black-background-color a,
+.emulsion .has-background.has-black-background-color:not(.has-text-color) {
+    color: var(--thm_white_color);
+}
+
+p.has-background:not(.has-text-color).emulsion-add-dark-color{
+    color:var(--thm_white_color);/* @since 1.1.2 */
+}
+body.emulsion-has-sidebar.is-dark.scheme-midnight .primary-menu-wrapper nav[class|="menu"]{
+    border-bottom-color: var(--thm_common_border, rgba(188, 188, 188, .5));
+    border-bottom-style: var(--thm_common_border_style);
+    border-bottom-width: var(--thm_common_border_width);
+}
+
+/**
+ * Hide elements that don't make sense for theme-dependent block patterns
+ */
+
+.emulsion-modal-title,  /* old version */
+.modal-open-link,       /* old version */
+.emulsion-dependency{   /* @since 1.8.1 */
+    display:none;
+}
+/**
+ * In imageless block covers, background-dim can be a factor in reducing contrast
+ */
+.wp-block-cover[class*="background-color"]:before{
+    content:'';
+    background:transparent;
+}
