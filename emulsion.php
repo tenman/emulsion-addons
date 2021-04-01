@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.5.2
+ * Version:     1.5.3
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -14,8 +14,9 @@ $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name'
 $emulsion_addon_accept_theme_version = wp_get_theme( get_template() )->get( 'Version' );
 $emulsion_root						 = plugin_dir_path( __FILE__ );
 
-if ( 'emulsion' == $emulsion_addon_accept_theme_name &&
-		version_compare( $emulsion_addon_accept_theme_version, '1.1.7', '>=' ) ) {
+
+
+if ( 'emulsion' == $emulsion_addon_accept_theme_name ) {
 
 	include_once( $emulsion_root . 'includes/functions.php');
 
@@ -35,8 +36,8 @@ if ( 'emulsion' == $emulsion_addon_accept_theme_name &&
 	include_once( $emulsion_root . 'includes/wp-scss.php' );
 	include_once( $emulsion_root . 'documents/documents.php' );
 } else {
-
-	add_action( 'admin_notices', 'emulsion_admin_notice' );
+	//add_action( 'admin_notices', 'emulsion_admin_notice' );
+	add_action( 'wp_enqueue_scripts', 'emulsion_pallet_styles' );
 	return;
 }
 
@@ -196,7 +197,12 @@ function emulsion_admin_notice() {
 	printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p> [<strong>%1$s</strong>] %2$s <a href="%3$s">%4$s</a></p></div>', $emulsion_addon_theme_name . esc_html__( ' or this child theme.', 'emulsion' ), esc_html__( 'emulsion addons plugin can not support this theme.', 'emulsion' ), esc_url( admin_url( 'plugins.php?plugin_status=active' ) ), esc_html__( 'You can disable it in the plugins page', 'emulsion' )
 	);
 }
+function emulsion_pallet_styles(){
 
+	wp_register_style( 'emulsion-pallet', esc_url( plugin_dir_url( __DIR__ ). 'emulsion-addons/css/color-pallet.css' ), array(), time() , 'all' );
+
+	wp_enqueue_style( 'emulsion-pallet');
+}
 /**
  * Deactivation
  */
