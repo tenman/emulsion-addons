@@ -71,22 +71,22 @@
 		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
 		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
 	</tr>
-	
+
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_size' ); ?></td>
 		<td><?php esc_html_e( 'Ajust post text font size', 'emulsion' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_family' ); ?></td>
-		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion' ) ?></td>		
+		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_transform' ); ?></td>
-		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion' ) ?></td>		
+		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_google_font_url' ); ?></td>
-		<td><?php echo wp_kses( emulsion_get_var( 'emulsion_widget_meta_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>				
+		<td><?php echo wp_kses( emulsion_get_var( 'emulsion_widget_meta_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_title' ); ?></td>
@@ -100,7 +100,7 @@
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_sidebar_width' ); ?></td>
 		<td ><?php esc_html_e( 'Sidebar Width', 'emulsion' ) ?></td>
-	</tr>	
+	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-archive"></span> <a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>"><?php esc_html_e( 'Sidebar Widget', 'emulsion' ); ?></a></td>
 		<td><?php esc_html_e( 'There are two types of sidebar widgets, one for posting and one for page.', 'emulsion' ); ?></td>
@@ -153,14 +153,14 @@
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_heading_google_font_url' ); ?></td>
-		<td ><?php echo wp_kses( emulsion_get_var( 'emulsion_heading_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>		
+		<td ><?php echo wp_kses( emulsion_get_var( 'emulsion_heading_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>
 	</tr>
 	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'Block Editor Blocks', 'emulsion' ) ?></h3></td></tr>
 		<tr class="item-title">
 		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
 		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
 	</tr>
-	<tr>
+	<!--<tr>
 		<td>  <span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_columns_section_height' ); ?></td>
 		<td><?php esc_html_e( 'Ajust columns block height', 'emulsion' ) ?></td>
 	</tr>
@@ -171,11 +171,11 @@
 	<tr>
 		<td> <span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_gallery_section_height' ); ?></td>
 		<td><?php esc_html_e( 'Ajust gallery block height', 'emulsion' ) ?></td>
-	</tr>
-	<tr>
+	</tr>-->
+	<!--<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_gallery_section_bg' ); ?></td>
 		<td><?php esc_html_e( 'Set Gallery Block Background', 'emulsion' ) ?></td>
-	</tr>
+	</tr>-->
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_box_gap' ); ?></td>
 		<td><?php esc_html_e( 'Adjust margin of bordered block', 'emulsion' ); ?></td>

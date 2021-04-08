@@ -44,15 +44,6 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 
 		$header_link_color				 = emulsion_link_colors( $header_background_color, 'site_header' );
 		$header_hover_color				 = emulsion_hover_colors( $header_background_color, 'site_header' );
-		$columns_section_bg				 = emulsion_get_var( 'emulsion_block_columns_section_bg' );
-		$columns_section_color			 = emulsion_contrast_color( $columns_section_bg );
-		$columns_section_link_color		 = emulsion_link_colors( $columns_section_bg, 'columns' );
-		$gallery_section_bg				 = emulsion_get_var( 'emulsion_block_gallery_section_bg' );
-		$gallery_section_color			 = emulsion_contrast_color( $gallery_section_bg );
-		$gallery_section_link_color		 = emulsion_link_colors( $gallery_section_bg, 'gallery' );
-		$media_text_section_bg			 = emulsion_get_var( 'emulsion_block_media_text_section_bg' );
-		$media_text_section_color		 = emulsion_contrast_color( $media_text_section_bg );
-		$media_text_section_link_color	 = emulsion_link_colors( $media_text_section_bg, 'media_text' );
 		$relate_posts_bg				 = emulsion_get_var( 'emulsion_relate_posts_bg' );
 		$relate_posts_color				 = emulsion_contrast_color( $relate_posts_bg );
 		$relate_posts_link_color		 = emulsion_link_colors( $relate_posts_bg, 'relate_posts' );
@@ -68,34 +59,6 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 		$comments_link_color			 = emulsion_link_colors( $comments_bg, 'comments' );
 		$heading_web_font_family		 = get_theme_mod( 'emulsion_heading_google_font_url', emulsion_get_var( 'emulsion_heading_google_font_url' ) );
 		$fallback_heading_font_family	 = get_theme_mod( 'emulsion_heading_font_family', emulsion_get_var( 'emulsion_heading_font_family' ) );
-
-		/**
-		 * Correct if the option value is not set
-		 */
-		if ( '#ffffff' == get_theme_mod( 'emulsion_block_columns_section_bg', emulsion_get_var( 'emulsion_block_columns_section_bg' ) ) ) {
-
-			$columns_section_bg = emulsion_get_background_color();
-
-			$columns_section_color = emulsion_contrast_color( $columns_section_bg );
-
-			$columns_section_link_color = emulsion_contrast_color( $columns_section_bg );
-		}
-		if ( '#ffffff' == get_theme_mod( 'emulsion_block_media_text_section_bg', emulsion_get_var( 'emulsion_block_media_text_section_bg' ) ) ) {
-
-			$media_text_section_bg = emulsion_get_background_color();
-
-			$media_text_section_color = emulsion_contrast_color( $media_text_section_bg );
-
-			$media_text_section_link_color = emulsion_contrast_color( $media_text_section_bg );
-		}
-		if ( '#ffffff' == get_theme_mod( 'emulsion_block_gallery_section_bg', emulsion_get_var( 'emulsion_block_gallery_section_bg' ) ) ) {
-
-			$gallery_section_bg = emulsion_get_background_color();
-
-			$gallery_section_color = emulsion_contrast_color( $gallery_section_bg );
-
-			$gallery_section_link_color = emulsion_contrast_color( $gallery_section_bg );
-		}
 
 		if ( ! empty( $heading_web_font_family ) ) {
 
@@ -142,18 +105,6 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'relate_posts_link_color'	 => array( 'value' => $relate_posts_link_color, 'unit' => '' ),
 			'relate_posts_color'		 => array( 'value' => $relate_posts_color, 'unit' => '' ),
 			'relate_posts_bg'			 => array( 'value' => $relate_posts_bg, 'unit' => '' ),
-			'media_text_section_link_color'	 => array( 'value' => $media_text_section_link_color, 'unit' => '' ),
-			'media_text_section_color'		 => array( 'value' => $media_text_section_color, 'unit' => '' ),
-			'media_text_section_bg'			 => array( 'value' => $media_text_section_bg, 'unit' => '' ),
-			'media_text_section_height'		 => array( 'value' => emulsion_get_var( 'emulsion_block_media_text_section_height' ), 'unit' => 'vh' ),
-			'columns_section_link_color' => array( 'value' => $columns_section_link_color, 'unit' => '' ),
-			'columns_section_color'		 => array( 'value' => $columns_section_color, 'unit' => '' ),
-			'columns_section_bg'		 => array( 'value' => $columns_section_bg, 'unit' => '' ),
-			'columns_section_height'	 => array( 'value' => emulsion_get_var( 'emulsion_block_columns_section_height' ), 'unit' => 'vh' ),
-			'gallery_section_link_color' => array( 'value' => $gallery_section_link_color, 'unit' => '' ),
-			'gallery_section_color'		 => array( 'value' => $gallery_section_color, 'unit' => '' ),
-			'gallery_section_bg'		 => array( 'value' => $gallery_section_bg, 'unit' => '' ),
-			'gallery_section_height'	 => array( 'value' => emulsion_get_var( 'emulsion_block_gallery_section_height' ), 'unit' => 'vh' ),
 			'hover_color' => array( 'value' => emulsion_hover_colors(), 'unit' => '' ),
 			'sidebar_link_color'	 => array( 'value' => $sidebar_link_color, 'unit' => '' ),
 			'sidebar_color'			 => array( 'value' => $sidebar_color, 'unit' => '' ),

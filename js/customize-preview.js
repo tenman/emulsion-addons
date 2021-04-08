@@ -561,7 +561,7 @@
             }
         });
     });
-    wp.customize('emulsion_block_gallery_section_height', function (value) {
+    /*wp.customize('emulsion_block_gallery_section_height', function (value) {
         value.bind(function (newval) {
             $('.sectionized-wp-block-gallery').css({'min-height': newval + 'vh'});
         });
@@ -575,13 +575,13 @@
         value.bind(function (newval) {
             $('.wp-block-media-text').css({'min-height': newval + 'vh'});
         });
-    });
-    wp.customize('emulsion_block_gallery_section_bg', function (value) {
+    });*/
+    /*wp.customize('emulsion_block_gallery_section_bg', function (value) {
         value.bind(function (newval) {
             var color = emulsion_text_color(newval);
             $('.sectionized-wp-block-gallery').css({'background': newval, 'color': color});
         });
-    });
+    });*/
     wp.customize('emulsion_primary_menu_background', function (value) {
         value.bind(function (newval) {
             var color = emulsion_text_color(newval);

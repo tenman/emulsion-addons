@@ -128,7 +128,7 @@ emulsion_add_supports( 'entry_content_filter' );
 /**
  * sectionize
  */
-emulsion_add_supports( 'block_sectionize' ); // gutenberg block wrap with section elements
+//emulsion_add_supports( 'block_sectionize' ); // gutenberg block wrap with section elements
 
 /**
  * background pattern

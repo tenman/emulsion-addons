@@ -1474,12 +1474,12 @@ function emulsion_relate_posts_validate( $input ) {
 
 	return $default_value;
 }
-
+/*
 function emulsion_block_gallery_section_bg_validate( $input ) {
 
 	return sanitize_hex_color( $input );
-}
-
+}*/
+/*
 function emulsion_block_gallery_section_height_validate( $input ) {
 
 	$name			 = str_replace( '_validate', '', __FUNCTION__ );
@@ -1492,8 +1492,8 @@ function emulsion_block_gallery_section_height_validate( $input ) {
 		'default'	 => $default_value,
 	);
 	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
-}
-
+}*/
+/*
 function emulsion_block_columns_section_bg_validate( $input ) {
 
 	return sanitize_hex_color( $input );
@@ -1530,7 +1530,7 @@ function emulsion_block_media_text_section_height_validate( $input ) {
 		'default'	 => $default_value,
 	);
 	return filter_var( $input, FILTER_VALIDATE_INT, array( 'options' => $options ) );
-}
+}*/
 
 
 

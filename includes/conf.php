@@ -1493,7 +1493,7 @@ $emulsion_customize_args = array(
 			'step'	 => 1,
 		),
 	),
-	"emulsion_block_gallery_section_height"	 => array(
+	/*"emulsion_block_gallery_section_height"	 => array(
 		'section'					 => 'emulsion_section_block_editor_block_gallery',
 		'priority'					 => 10,
 		'default'					 => emulsion_addons_default_values( "emulsion_block_gallery_section_height", 0 ),
@@ -1606,7 +1606,7 @@ $emulsion_customize_args = array(
 		'extend_customize_control'	 => '',
 		'extend_customize_control'	 => 'WP_Customize_Color_Control',
 		'extend_customize_setting'	 => '',
-	),
+	),*/
 	"emulsion_colors_for_editor"				 => array(
 		'section'					 => 'emulsion_section_colors_for_editor',
 		'priority'					 => 10,
