@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.6.0
+ * Version:     1.6.1
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -74,6 +74,13 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 				'admin-preview-callback' => '',
 			) );
 		}
+		if ( ! empty( get_theme_mod( 'background_color' ) ) && get_theme_support( 'custom-background')[0]['default-color'] !== get_theme_mod( 'background_color' ) ) {
+
+			set_theme_mod( 'emulsion_background_remenber', get_theme_mod( 'background_color' ) );
+		} else {
+
+			remove_theme_mod( 'emulsion_background_remenber' );
+		}
 		if ( empty( get_theme_mod( 'background_image' ) ) ) {
 
 			add_filter( 'emulsion_custom_background_cb', '__return_false' );
@@ -109,6 +116,63 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		if ( ! emulsion_get_supports( 'enqueue' ) ) {
 
 			add_theme_support( 'wp-block-styles' );
+		}
+
+		$emulsion_favorite_color_palette		 = sanitize_text_field( get_theme_mod( 'emulsion_favorite_color_palette', false ) );
+		$emulsion_favorite_color_palette_default = sanitize_text_field( emulsion_theme_default_val( 'emulsion_favorite_color_palette' ) );
+
+		if ( $emulsion_favorite_color_palette !== $emulsion_favorite_color_palette_default ) {
+
+			$emulsion_favorite_color_name = esc_html__( 'My Color', 'emulsion' );
+		} else {
+
+			$emulsion_favorite_color_name = esc_html__( 'Silver', 'emulsion' );
+		}
+		if( 'enable' == get_theme_mod('emulsion_theme_color_palette') ) {
+
+			add_theme_support(
+					'editor-color-palette', array(
+				array(
+					'name'	 => esc_html__( 'Black', 'emulsion' ),
+					'slug'	 => sanitize_title( 'black' ),
+					'color'	 => '#333333',
+				),
+				array(
+					'name'	 => esc_html__( 'Gray', 'emulsion' ),
+					'slug'	 => sanitize_title( 'gray' ),
+					'color'	 => '#A9A9A9',
+				),
+				array(
+					'name'	 => esc_html__( 'White', 'emulsion' ),
+					'slug'	 => sanitize_title( 'white' ),
+					'color'	 => '#ffffff',
+				),
+				array(
+					'name'	 => esc_html__( 'Alert', 'emulsion' ),
+					'slug'	 => sanitize_title( 'alert' ),
+					'color'	 => 'rgba(231, 76, 60,.4)',
+				),
+				array(
+					'name'	 => esc_html__( 'Notice', 'emulsion' ),
+					'slug'	 => sanitize_title( 'notice' ),
+					'color'	 => 'rgba(163, 140, 8,.4)',
+				),
+				array(
+					'name'	 => esc_html__( 'Info', 'emulsion' ),
+					'slug'	 => sanitize_title( 'info' ),
+					'color'	 => 'rgba(22, 160, 133,.4)',
+				),
+				array(
+					'name'	 => esc_html__( 'Cool', 'emulsion' ),
+					'slug'	 => sanitize_title( 'cool' ),
+					'color'	 => 'rgba(52, 152, 219,.4)',
+				),
+				array(
+					'name'	 => $emulsion_favorite_color_name,
+					'slug'	 => sanitize_title_with_dashes( $emulsion_favorite_color_name ),
+					'color'	 => $emulsion_favorite_color_palette,
+				),
+			) );
 		}
 
 		/**

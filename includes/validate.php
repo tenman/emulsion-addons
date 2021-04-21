@@ -1408,6 +1408,20 @@ function emulsion_colors_for_editor_validate( $input ) {
 	return $default_value;
 }
 
+function emulsion_theme_color_palette_varidate( $input ) {
+
+	$name			 = str_replace( '_validate', '', __FUNCTION__ );
+	$values			 = emulsion_get_var( $name, 'choices' );
+	$default_value	 = emulsion_get_var( $name, 'default' );
+
+	if ( array_key_exists( $input, $values ) ) {
+
+		return $input;
+	}
+
+	return $default_value;
+}
+
 function emulsion_common_google_font_url_validate( $input ) {
 
 	if ( 'fonts.googleapis.com' !== parse_url( $input, PHP_URL_HOST ) ) {

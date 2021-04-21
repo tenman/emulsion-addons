@@ -1616,8 +1616,28 @@ $emulsion_customize_args = array(
 		'transport'					 => 'refresh',
 		'unit'						 => '',
 		'label'						 => esc_html__( 'Colors for block editor', 'emulsion' ),
-		'description'				 => esc_html__( 'Apply customizer color settings to block editor', 'emulsion' ),
+		'description'				 => esc_html__( 'Display the same color scheme as the front end in the block editor', 'emulsion' ),
 		'validate'					 => 'emulsion_colors_for_editor_validate',
+		'active_callback'			 => '',
+		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
+		'extend_customize_control'	 => '',
+		'type'						 => 'radio',
+		'choices'					 => array(
+			'enable'	 => esc_html__( 'Enable', 'emulsion' ),
+			'disable'	 => esc_html__( 'Disable', 'emulsion' ),
+		),
+	),
+	"emulsion_theme_color_palette"				 => array(
+		'section'					 => 'emulsion_section_colors_for_editor',
+		'priority'					 => 10,
+		'default'					 => emulsion_addons_default_values( "emulsion_theme_color_palette", "disable" ),
+		'data_type'					 => $emulsion_setting_type,
+		'capability'				 => $emulsion_customize_cap,
+		'transport'					 => 'refresh',
+		'unit'						 => '',
+		'label'						 => esc_html__( 'Allow Theme Color Pallet', 'emulsion' ),
+		'description'				 => esc_html__( 'Enable the theme color palette. If disabled, use the core color palette', 'emulsion' ),
+		'validate'					 => 'emulsion_theme_color_palette_validate',
 		'active_callback'			 => '',
 		'sanitize_callback'			 => 'wp_filter_nohtml_kses',
 		'extend_customize_control'	 => '',
@@ -2376,7 +2396,7 @@ $emulsion_theme_customize_sections = array(
 		'priority'		 => 25,
 		'panel'			 => 'emulsion_theme_settings_post_panel',
 		'theme_supports' => '',
-		'title'			 => esc_html__( 'Editor Color', 'emulsion' ),
+		'title'			 => esc_html__( 'Color Pallet', 'emulsion' ),
 		'description'	 => esc_html__( 'Your favorite color to the post color palette.', 'emulsion' ),
 	),
 );
@@ -2683,20 +2703,11 @@ function emulsion_addons_default_values( $name, $fallback ) {
 			$result = $function_name();
 
 			$result = $function_name_validate( $result );
-			/*if ( is_customize_preview() ) {
-				add_filter( 'theme_mod_' . $name, function( $value ) use($result) {
-					return $result;
-				} );
-			}*/
+
 
 			return $result;
 		}
 		$result = emulsion_theme_scheme[$scheme][$name];
-		/*if ( is_customize_preview() ) {
-			add_filter( 'theme_mod_' . $name, function( $value ) use($result) {
-				return $result;
-			} );
-		}*/
 
 		return $result;
 	} else {

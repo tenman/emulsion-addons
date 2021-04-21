@@ -666,7 +666,20 @@
                 }
             });
         });
+        wp.customize('emulsion_theme_color_palette', function (emulsion_theme_color_palette) {
+            emulsion_theme_color_palette.bind(function (newval) {
+
+                if ('enable' !== newval) {
+                    $('#customize-control-emulsion_favorite_color_palette').css({'visibility': 'hidden'});
+                }
+                if ('enable' == newval) {
+                    $('#customize-control-emulsion_favorite_color_palette').css({'visibility': 'visible'});
+                }
+            });
+        });
     });
+
+
     /**
      * Get body class from privew
      */

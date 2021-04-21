@@ -3,7 +3,7 @@
 /**
  * This file is the first place where features added experimentally with theme updates are created.
  * Scripts and styles are processed in a lump without being distributed to each CSS and PHP.
- * 
+ *
  */
 add_action( 'template_redirect', 'emulsion_snippet_functions' );
 
@@ -103,12 +103,14 @@ if ( ! class_exists( 'emulsion_Cta_Layer_Nav_Menu_Walker' ) ) {
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 			global $wp_query;
+			
+			$classes = emulsion_class_name_sanitize( implode(' ', $item->classes ) );
 
 			$attributes	 = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';
 			$attributes	 .= ! empty( $item->target ) ? ' target="' . esc_attr( $item->target ) . '"' : '';
 			$attributes	 .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . '"' : '';
 			$attributes	 .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
-			$attributes	 .= ' class="skin-button"';
+			$attributes	 .= ' class="skin-button '. $classes. '"';
 
 			$item_output = $args->before;
 			$item_output .= '<a' . $attributes . '>';

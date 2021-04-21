@@ -15,36 +15,36 @@ function emulsion_remove_display_header_text( $wp_customize ) {
 	 * Setting custom-logo will replace site-title site-description with the logo.
 	 */
 	/**
-	 * For the Display Site Title and Tagline checkbox to work, 
+	 * For the Display Site Title and Tagline checkbox to work,
 	 * the option value for 'header_textcolor' allow the value 'blank’
 	 * but 'blank' is not the hex color value . It is not desirable to mix
-	 * 
+	 *
 	 * If you allow 'blank'
 	 * please note that the customizer header text color setting may not be displayed
-	 * 
-	 * For validation, 
-	 * comment out the add_action above and 
+	 *
+	 * For validation,
+	 * comment out the add_action above and
 	 * add set_theme_mod ('header_textcolor', 'blank');
-	 * 
+	 *
 	 * Check customizer fields
 	 * Display Site Title and Tagline check box is not checked
 	 * Color/Header text color is not displayed
-	 * 
-	 * If you want to revert, undo the changes and 
+	 *
+	 * If you want to revert, undo the changes and
 	 * reset in Theme Advanced settings / Reset theme settings to revert.
-	 * 
-	 * This feature removal is implemented using an action hook, 
+	 *
+	 * This feature removal is implemented using an action hook,
 	 * so you can easily remove the feature.
 	 */
-	
+
 	$wp_customize->remove_control( 'display_header_text' );
 }
 
 if ( $wp_customize ) {
-		
-	$wp_customize->add_setting( 'header_textcolor', array( 'transport' => 'postMessage', 
+
+	$wp_customize->add_setting( 'header_textcolor', array( 'transport' => 'postMessage',
 		'sanitize_callback' => 'sanitize_hex_color' ) );
-	
+
 	$wp_customize->selective_refresh->add_partial( 'header_textcolor', array(
 		'selector' => '.header-text',
 	) );
@@ -151,7 +151,7 @@ if ( $wp_customize ) {
 	$wp_customize->selective_refresh->add_partial( 'emulsion_header_background_color', array(
 		'selector' => '.header-layer, .grid header',
 	) );
-	
+
 	$wp_customize->selective_refresh->add_partial( 'emulsion_bg_image_text', array(
 		'selector' => 'article',
 	) );
@@ -211,24 +211,24 @@ function emulsion_customize_preview_js() {
 
 	if ( is_customize_preview() ) {
 
-		wp_enqueue_script( 'emulsion-customize-preview', 
+		wp_enqueue_script( 'emulsion-customize-preview',
 			esc_url( plugin_dir_url( __DIR__ ). 'js/customize-preview.js' ), array( 'customize-preview' ), $emulsion_current_data_version, true );
 		/* in iframe */
-		wp_enqueue_style( 'emulsion-customize-preview-style', 
+		wp_enqueue_style( 'emulsion-customize-preview-style',
 			esc_url( plugin_dir_url( __DIR__ ). 'css/customize-preview.css' ), array( 'emulsion' ), $emulsion_current_data_version, 'all' );
 		/* translation */
-		add_filter('emulsion_inline_style_pre', 'emulsion_customizer_translate_css');		
-		
+		add_filter('emulsion_inline_style_pre', 'emulsion_customizer_translate_css');
+
 
 	}
 }
 
 
 function emulsion_customize_controle_js() {
-	
+
 	$emulsion_current_data_version = emulsion_theme_info( 'Version', false );
 
-	wp_enqueue_script( 'customize-controle', 
+	wp_enqueue_script( 'customize-controle',
 		esc_url( plugin_dir_url( __DIR__ ) . 'js/customize-controle.js' ), array( 'jquery' ), $emulsion_current_data_version, true );
 
 	$translation_array = emulsion_customize_controle_translate();
@@ -350,7 +350,7 @@ function emulsion_customizer_translate_css( $css ) {
 body.is-singular .customize-partial-edit-shortcut-emulsion_bg_image_text:hover:after{
     content:'{$emulsion_bg_image}';
     left:24px;
-}			
+}
 body.home .customize-partial-edit-shortcut-custom_header:hover:after{
     content:'{$header_media}';
     left:24px;
@@ -767,6 +767,9 @@ function emulsion_customizer_style() {
 	position:relative;
 	left:48px;
 }
+#customize-control-emulsion_favorite_color_palette{
+	visibility:hidden;
+}
 .emulsion-spinner {
      width: 1em;
      height: 1em;
@@ -926,8 +929,8 @@ function emulsion_message_post_display_date() {
 	$post_id		 = emulsion_get_customize_post_id( 'latest-post' );
 	if( empty( $page ) ) {
 		return;
-	}	
-	
+	}
+
 	$customizer_url	 = 'javascript:var url = wp.customize.settings.url.home + \'?p=' . absint( $post_id ) . '\'; wp.customize.previewer.previewUrl.set( url );';
 
 	printf( '<li id="%4$s" class="%5$s" >
@@ -945,11 +948,11 @@ function emulsion_message_header_layout() {
 	$post_id					 = emulsion_get_customize_post_id( 'latest-post' );
 	if( empty( $page ) ) {
 		return;
-	}	
+	}
 	$customizer_url_single_post	 = 'javascript:var url = wp.customize.settings.url.home + \'?p=' . absint( $post_id ) . '\'; wp.customize.previewer.previewUrl.set( url );';
 	$default_category			 = get_option( 'default_category' );
 	$customizer_url_category	 = 'javascript:var url_cat = wp.customize.settings.url.home + \'?cat=' . absint( $default_category ) . '\'; wp.customize.previewer.previewUrl.set( url_cat );';
-	
+
 
 	printf( '<li id="%4$s" class="%5$s" >
 				<label>
