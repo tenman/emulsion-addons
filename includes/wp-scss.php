@@ -156,7 +156,7 @@ function emulsion_wp_scss_set_variables() {
 		'hover_color'						 => emulsion_get_css_variables_values( 'hover_color' ),
 		'sidebar_width'						 => emulsion_get_css_variables_values( 'sidebar_width' ),
 		'sidebar-position'					 => emulsion_get_css_variables_values( 'sidebar_position' ),
-		'i18n_no_title'						 => esc_html__( 'No Title', 'emulsion' ),
+		'i18n_no_title'						 => esc_html__( 'No Title', 'emulsion-addons' ),
 		'editor_font_sizes'					 => emulsion_get_css_variables_values( 'font_sizes' ),
 		'editor_color_palettes'				 => emulsion_get_css_variables_values( 'color_palette' ),
 		'body_id'							 => '#' . emulsion_theme_info( 'Slug', false ),

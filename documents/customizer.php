@@ -1,13 +1,13 @@
-<h3><?php esc_html_e( 'Theme customizer overview', 'emulsion' ); ?></h3>
+<h3><?php esc_html_e( 'Theme customizer overview', 'emulsion-addons' ); ?></h3>
 
 <table class="form-table emulsion-document-table color-scheme-default">
 	<col style="width:25%;" />
 	<col style="" />
 	<col style="" />
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Header', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Header', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_header_background_color' ); ?></td>
@@ -21,17 +21,17 @@
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'custom_logo' ); ?></td>
-		<td><?php esc_html_e( 'Setting custom-logo will replace site-title site-description with the logo', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'Setting custom-logo will replace site-title site-description with the logo', 'emulsion-addons' ); ?></td>
 
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_category_colors' ); ?></td>
-		<td><?php esc_html_e( 'Set the color for each category in the header and link', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'Set the color for each category in the header and link', 'emulsion-addons' ); ?></td>
 
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'header_textcolor' ); ?></td>
-		<td><?php esc_html_e( "The header is automatically colored according to the image, video, and background color", 'emulsion' ); ?>
+		<td><?php esc_html_e( "The header is automatically colored according to the image, video, and background color", 'emulsion-addons' ); ?>
 			</td>
 
 	</tr>
@@ -45,44 +45,44 @@
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-format-image"></span> <?php emulsion_get_customizer_link_element( 'section', 'header_image' ); ?></td>
-		<td><?php esc_html_e( 'Header image and video can only be displayed on the homepage.', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'Header image and video can only be displayed on the homepage.', 'emulsion-addons' ); ?></td>
 	</tr>
 
 
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Footer', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Footer', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-edit"></span> <?php emulsion_get_customizer_link_element( 'section', 'emulsion_footer_credit' ); ?></td>
-		<td><?php esc_html_e( 'You can change footer credits.', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'You can change footer credits.', 'emulsion-addons' ); ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-generic"></span><?php emulsion_get_customizer_link_element( 'section', 'emulsion_footer_columns' ); ?></td>
-		<td><?php esc_html_e( 'Footer Widgets can be set in the range of 1-4 columns.', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'Footer Widgets can be set in the range of 1-4 columns.', 'emulsion-addons' ); ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-archive"></span> <?php emulsion_get_customizer_link_element( 'panel', 'widgets' ); ?></td>
-		<td><?php esc_html_e( "Please set the widget. It's okay not to set", 'emulsion' ); ?></td>
+		<td><?php esc_html_e( "Please set the widget. It's okay not to set", 'emulsion-addons' ); ?></td>
 	</tr>
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Sidebar', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Sidebar', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_size' ); ?></td>
-		<td><?php esc_html_e( 'Ajust post text font size', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Ajust post text font size', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_family' ); ?></td>
-		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_font_transform' ); ?></td>
-		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_widget_meta_google_font_url' ); ?></td>
@@ -95,49 +95,49 @@
 
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_sidebar_position' ); ?></td>
-		<td ><?php esc_html_e( 'Left sidebar or right sidebar', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'Left sidebar or right sidebar', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_sidebar_width' ); ?></td>
-		<td ><?php esc_html_e( 'Sidebar Width', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'Sidebar Width', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
-		<td><span class="dashicons dashicons-archive"></span> <a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>"><?php esc_html_e( 'Sidebar Widget', 'emulsion' ); ?></a></td>
-		<td><?php esc_html_e( 'There are two types of sidebar widgets, one for posting and one for page.', 'emulsion' ); ?></td>
+		<td><span class="dashicons dashicons-archive"></span> <a href="<?php echo esc_url( admin_url( 'widgets.php' ) ); ?>"><?php esc_html_e( 'Sidebar Widget', 'emulsion-addons' ); ?></a></td>
+		<td><?php esc_html_e( 'There are two types of sidebar widgets, one for posting and one for page.', 'emulsion-addons' ); ?></td>
 	</tr>
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Main', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Main', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td>  <span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'background_color' ); ?></td>
-		<td><?php esc_html_e( 'It applies to all pages. you can reset the setting in the editor menu.', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'It applies to all pages. you can reset the setting in the editor menu.', 'emulsion-addons' ); ?></td>
 	</tr>
 	<tr>
 		<td>  <span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'background_image' ); ?></td>
-		<td><?php esc_html_e( 'The background image is only displayed as a single post or page. you can reset the setting in the editor menu.', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'The background image is only displayed as a single post or page. you can reset the setting in the editor menu.', 'emulsion-addons' ) ?></td>
 	</tr>
-	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'General fonts', 'emulsion' ) ?></h3></td></tr>
+	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'General fonts', 'emulsion-addons' ) ?></h3></td></tr>
 		<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr><td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_common_font_size' ); ?></td>
-		<td><?php esc_html_e( 'Post text font size', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Post text font size', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_common_font_family' ); ?></td>
-		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_common_google_font_url' ); ?></td>
 		<td r><?php echo wp_kses( emulsion_get_var( 'emulsion_common_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>
 	</tr>
-	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'Heading fonts', 'emulsion' ) ?></h3></td></tr>
+	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'Heading fonts', 'emulsion-addons' ) ?></h3></td></tr>
 		<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_heading_font_scale' ); ?></td>
@@ -145,40 +145,40 @@
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_heading_font_family' ); ?></td>
-		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'serif or sans-serif', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_heading_font_transform' ); ?></td>
-		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion' ) ?></td>
+		<td ><?php esc_html_e( 'uppercase, lowercase, capitalize or none', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-editor-paragraph"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_heading_google_font_url' ); ?></td>
 		<td ><?php echo wp_kses( emulsion_get_var( 'emulsion_heading_google_font_url', 'description' ), array( 'a' => array( 'href' => array() ) ) ); ?></td>
 	</tr>
-	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'Block Editor Blocks', 'emulsion' ) ?></h3></td></tr>
+	<tr class="sub-title"><td colspan="2"><h3><?php esc_html_e( 'Block Editor Blocks', 'emulsion-addons' ) ?></h3></td></tr>
 		<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<!--<tr>
 		<td>  <span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_columns_section_height' ); ?></td>
-		<td><?php esc_html_e( 'Ajust columns block height', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Ajust columns block height', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_columns_section_bg' ); ?></td>
-		<td><?php esc_html_e( 'Set columns block background', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Set columns block background', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td> <span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_gallery_section_height' ); ?></td>
-		<td><?php esc_html_e( 'Ajust gallery block height', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Ajust gallery block height', 'emulsion-addons' ) ?></td>
 	</tr>-->
 	<!--<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_block_gallery_section_bg' ); ?></td>
-		<td><?php esc_html_e( 'Set Gallery Block Background', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Set Gallery Block Background', 'emulsion-addons' ) ?></td>
 	</tr>-->
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_box_gap' ); ?></td>
-		<td><?php esc_html_e( 'Adjust margin of bordered block', 'emulsion' ); ?></td>
+		<td><?php esc_html_e( 'Adjust margin of bordered block', 'emulsion-addons' ); ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_alignfull' ); ?></td>
@@ -187,55 +187,55 @@
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_content_width' ); ?></td>
 
-		<td><?php esc_html_e( 'Content width', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Content width', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_main_width' ); ?></td>
 
-		<td><?php esc_html_e( 'Main content area width ( alignfull width )', 'emulsion' ) ?></td>
+		<td><?php esc_html_e( 'Main content area width ( alignfull width )', 'emulsion-addons' ) ?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_favorite_color_palette' ); ?></td>
 
 		<td><?php echo wp_kses_post( emulsion_get_var( 'emulsion_favorite_color_palette', 'description' ) ); ?></td>
 	</tr>
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Archives', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Archives', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_homepage' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_posts_page' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_date_archives' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_category_archives' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_tag_archives' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_author_archives' ); ?></td>
-		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion')?></td>
+		<td><?php esc_html_e('The layout can be selected from 4 options: grid, stream, excerpt list, full text', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-layout"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_layout_search_results' ); ?></td>
-		<td><?php esc_html_e('Search Result: 2options  keyword hightlight or full text', 'emulsion')?></td>
+		<td><?php esc_html_e('Search Result: 2options  keyword hightlight or full text', 'emulsion-addons')?></td>
 	</tr>
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Advanced Settings', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Advanced Settings', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-generic"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_reset_theme_settings' ); ?></td>
@@ -278,22 +278,22 @@
 		<td><span class="dashicons dashicons-admin-generic"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_instantclick' ); ?></td>
 		<td><?php echo wp_kses_post( emulsion_get_var( 'emulsion_instantclick', 'description' ) ); ?></td>
 	</tr>
-	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Other', 'emulsion' ); ?></h3></td></tr>
+	<tr class="title"><td colspan="2"><h3><span class="dashicons dashicons-admin-tools"></span> <?php esc_html_e( 'Other', 'emulsion-addons' ); ?></h3></td></tr>
 	<tr class="item-title">
-		<th><?php esc_html_e( 'control', 'emulsion' ); ?></th>
-		<th><?php esc_html_e( 'description', 'emulsion' ); ?></th>
+		<th><?php esc_html_e( 'control', 'emulsion-addons' ); ?></th>
+		<th><?php esc_html_e( 'description', 'emulsion-addons' ); ?></th>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_relate_posts_bg' ); ?></td>
-		<td><?php esc_html_e('Set the background of related articles block', 'emulsion')?></td>
+		<td><?php esc_html_e('Set the background of related articles block', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
 		<td><span class="dashicons dashicons-admin-customizer"></span> <?php emulsion_get_customizer_link_element( 'control', 'emulsion_comments_bg' ); ?></td>
-		<td><?php esc_html_e('Set the background of comment block', 'emulsion')?></td>
+		<td><?php esc_html_e('Set the background of comment block', 'emulsion-addons')?></td>
 	</tr>
 	<tr>
-		<td><span class="dashicons dashicons-admin-customizer"></span> <?php  emulsion_get_customizer_link_element( 'panel', 'emulsion_theme_settings_border_panel', esc_html__( 'Custom Border', 'emulsion' ) ); ?></td>
-		<td><?php esc_html_e('Set the custom border', 'emulsion')?></td>
+		<td><span class="dashicons dashicons-admin-customizer"></span> <?php  emulsion_get_customizer_link_element( 'panel', 'emulsion_theme_settings_border_panel', esc_html__( 'Custom Border', 'emulsion-addons' ) ); ?></td>
+		<td><?php esc_html_e('Set the custom border', 'emulsion-addons')?></td>
 	</tr>
 </table>
 

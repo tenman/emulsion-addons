@@ -27,14 +27,14 @@
 	 "icon-phone" , "icon-email" , "icon-rss" , "icon-amazon");
  
 printf('<p><a href="%2$s">%1$s</a></p>', 
-		esc_html__('More Info', 'emulsion' ), 
+		esc_html__('More Info', 'emulsion-addons' ), 
 		'https://www.tenman.info/wp3/emulsion/en/2019/12/17/%e3%83%86%e3%83%bc%e3%83%9e%e3%81%ae-svg-2/'
 );
 
 printf('<table class="svg-icon-table color-scheme-default"><thead><tr><th>%1$s</th><th>%2$s</th><th>%3$s</tr></thead>',
-		esc_html__('Icon', 'emulsion'),
-		esc_html__('Block Editor Additional CSS Class Name', 'emulsion' ),
-		esc_html__('Template', 'emulsion' ) 
+		esc_html__('Icon', 'emulsion-addons'),
+		esc_html__('Block Editor Additional CSS Class Name', 'emulsion-addons' ),
+		esc_html__('Template', 'emulsion-addons' ) 
 );
 
 foreach(  $emulsion_icon_classes as $emulsion_icon ){

@@ -144,27 +144,27 @@ class emulsion_add_meta_boxes {
 				if ( 'Sidebar' == $screen['title'] ) {
 
 					add_meta_box(
-							$key, esc_html__( 'Sidebar', 'emulsion' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
+							$key, esc_html__( 'Sidebar', 'emulsion-addons' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
 					);
 				} elseif ( 'Header' == $screen['title'] ) {
 
 					add_meta_box(
-							$key, esc_html__( 'Header', 'emulsion' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
+							$key, esc_html__( 'Header', 'emulsion-addons' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
 					);
 				} elseif ( 'Style' == $screen['title'] ) {
 
 					add_meta_box(
-							$key, esc_html__( 'Style', 'emulsion' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
+							$key, esc_html__( 'Style', 'emulsion-addons' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
 					);
 				} elseif ( 'Menu' == $screen['title'] ) {
 
 					add_meta_box(
-							$key, esc_html__( 'Menu', 'emulsion' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
+							$key, esc_html__( 'Menu', 'emulsion-addons' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
 					);
 				} elseif ( 'Background Image' == $screen['title'] ) {
 
 					add_meta_box(
-							$key, esc_html__( 'Background Image', 'emulsion' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
+							$key, esc_html__( 'Background Image', 'emulsion-addons' ), $screen['html'], $screen['post_type'], 'side', 'low', $screen['args']
 					);
 				} else {
 
@@ -332,25 +332,25 @@ function emulsion_post_metabox_html( $post, $callback_args ) {
 	. ' value="' . esc_attr( wp_create_nonce( $callback_args['id'] ) ) . '" />';
 
 	if ( 'emulsion_post_sidebar' == $callback_args['id'] ) {
-		$description = esc_html__( 'You can hide the sidebar for each post.', 'emulsion' );
+		$description = esc_html__( 'You can hide the sidebar for each post.', 'emulsion-addons' );
 	}
 	if ( 'emulsion_post_theme_style_script' == $callback_args['id'] ||
 			'emulsion_post_header' == $callback_args['id'] ||
 			'emulsion_page_header' == $callback_args['id'] ||
 			'emulsion_page_theme_style_script' == $callback_args['id'] ) {
 
-		$description = esc_html__( 'This setting is mainly for page builder users.', 'emulsion' );
+		$description = esc_html__( 'This setting is mainly for page builder users.', 'emulsion-addons' );
 	}
 	if ( 'emulsion_page_sidebar' == $callback_args['id'] ) {
-		$description = esc_html__( 'You can hide the sidebar for each page.', 'emulsion' );
+		$description = esc_html__( 'You can hide the sidebar for each page.', 'emulsion-addons' );
 	}
 	if ( 'emulsion_post_primary_menu' == $callback_args['id'] ||
 			'emulsion_page_primary_menu' == $callback_args['id'] ) {
-		$description = esc_html__( 'Remove Primary Menu', 'emulsion' );
+		$description = esc_html__( 'Remove Primary Menu', 'emulsion-addons' );
 	}
 	if ( 'emulsion_post_background_image' == $callback_args['id'] ||
 			'emulsion_page_background_image' == $callback_args['id'] ) {
-		$description = esc_html__( 'Remove Background Image', 'emulsion' );
+		$description = esc_html__( 'Remove Background Image', 'emulsion-addons' );
 	}
 
 	?>
@@ -371,7 +371,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Default', 'emulsion' )
+					esc_html__( 'Default', 'emulsion-addons' )
 					);
 		}elseif( 'Remove Sidebar' == $key ) {
 
@@ -381,7 +381,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Remove Sidebar', 'emulsion' )
+					esc_html__( 'Remove Sidebar', 'emulsion-addons' )
 					);
 		}elseif( 'Reset Header Color Settings' == $key ) {
 
@@ -391,7 +391,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Reset Header Color Settings', 'emulsion' )
+					esc_html__( 'Reset Header Color Settings', 'emulsion-addons' )
 					);
 		}elseif( 'Reset Background Color' == $key ) {
 
@@ -401,7 +401,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Reset Background Color', 'emulsion' )
+					esc_html__( 'Reset Background Color', 'emulsion-addons' )
 					);
 		}elseif( 'Remove Header' == $key ) {
 
@@ -411,7 +411,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Remove Header', 'emulsion' )
+					esc_html__( 'Remove Header', 'emulsion-addons' )
 					);
 		}elseif( 'Remove All Style, Script' == $key ) {
 
@@ -421,7 +421,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Remove All Style, Script', 'emulsion' )
+					esc_html__( 'Remove All Style, Script', 'emulsion-addons' )
 					);
 		}elseif( 'Remove Primary Menu' == $key ) {
 
@@ -431,7 +431,7 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 					esc_attr( $val ),
 					checked( $current_field, $val, false ),
 					esc_attr( $val ),
-					esc_html__( 'Remove Primary Menu', 'emulsion' )
+					esc_html__( 'Remove Primary Menu', 'emulsion-addons' )
 					);
 		} else {
 			printf( '<p><input type="radio" id="%1$s" name="%2$s" value="%3$s" %4$s><label for="%5$s">%6$s</label></p>',

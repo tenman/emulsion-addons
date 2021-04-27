@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.6.1
+ * Version:     1.6.2
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -14,7 +14,29 @@ $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name'
 $emulsion_addon_accept_theme_version = wp_get_theme( get_template() )->get( 'Version' );
 $emulsion_root						 = plugin_dir_path( __FILE__ );
 
+$priview_theme = filter_input(INPUT_GET, 'customize_theme', FILTER_SANITIZE_SPECIAL_CHARS);
+$priview_theme_id = filter_input(INPUT_GET, 'customize_messenger_channel', FILTER_SANITIZE_SPECIAL_CHARS);
 
+if( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
+
+	//Live Preview keeps the current theme name set unless you save it.
+	//In this case, a fatal error will occur if you refer to a function of the plugin theme,
+	//so stop the operation of the plugin and enable preview.
+
+	return '';
+}
+
+$priview_theme = filter_input(INPUT_GET, 'theme', FILTER_SANITIZE_SPECIAL_CHARS);
+$priview_theme_id = filter_input(INPUT_GET, 'return', FILTER_SANITIZE_SPECIAL_CHARS);
+
+if( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
+
+	//Live Preview keeps the current theme name set unless you save it.
+	//In this case, a fatal error will occur if you refer to a function of the plugin theme,
+	//so stop the operation of the plugin and enable preview.
+
+	return '';
+}
 
 if ( 'emulsion' == $emulsion_addon_accept_theme_name ) {
 
@@ -44,7 +66,9 @@ if ( 'emulsion' == $emulsion_addon_accept_theme_name ) {
 /**
  * Theme
  */
+
 add_action( 'after_setup_theme', 'emulsion_addon_setup' );
+
 
 if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
@@ -123,47 +147,48 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 		if ( $emulsion_favorite_color_palette !== $emulsion_favorite_color_palette_default ) {
 
-			$emulsion_favorite_color_name = esc_html__( 'My Color', 'emulsion' );
+			$emulsion_favorite_color_name = esc_html__( 'My Color', 'emulsion-addons' );
 		} else {
 
-			$emulsion_favorite_color_name = esc_html__( 'Silver', 'emulsion' );
+			$emulsion_favorite_color_name = esc_html__( 'Silver', 'emulsion-addons' );
 		}
+
 		if( 'enable' == get_theme_mod('emulsion_theme_color_palette') ) {
 
 			add_theme_support(
 					'editor-color-palette', array(
 				array(
-					'name'	 => esc_html__( 'Black', 'emulsion' ),
+					'name'	 => esc_html__( 'Black', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'black' ),
 					'color'	 => '#333333',
 				),
 				array(
-					'name'	 => esc_html__( 'Gray', 'emulsion' ),
+					'name'	 => esc_html__( 'Gray', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'gray' ),
 					'color'	 => '#A9A9A9',
 				),
 				array(
-					'name'	 => esc_html__( 'White', 'emulsion' ),
+					'name'	 => esc_html__( 'White', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'white' ),
 					'color'	 => '#ffffff',
 				),
 				array(
-					'name'	 => esc_html__( 'Alert', 'emulsion' ),
+					'name'	 => esc_html__( 'Alert', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'alert' ),
 					'color'	 => 'rgba(231, 76, 60,.4)',
 				),
 				array(
-					'name'	 => esc_html__( 'Notice', 'emulsion' ),
+					'name'	 => esc_html__( 'Notice', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'notice' ),
 					'color'	 => 'rgba(163, 140, 8,.4)',
 				),
 				array(
-					'name'	 => esc_html__( 'Info', 'emulsion' ),
+					'name'	 => esc_html__( 'Info', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'info' ),
 					'color'	 => 'rgba(22, 160, 133,.4)',
 				),
 				array(
-					'name'	 => esc_html__( 'Cool', 'emulsion' ),
+					'name'	 => esc_html__( 'Cool', 'emulsion-addons' ),
 					'slug'	 => sanitize_title( 'cool' ),
 					'color'	 => 'rgba(52, 152, 219,.4)',
 				),
@@ -258,7 +283,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 function emulsion_admin_notice() {
 	$emulsion_addon_theme_name = esc_html( wp_get_theme( get_template() )->get( 'Name' ) );
 
-	printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p> [<strong>%1$s</strong>] %2$s <a href="%3$s">%4$s</a></p></div>', $emulsion_addon_theme_name . esc_html__( ' or this child theme.', 'emulsion' ), esc_html__( 'emulsion addons plugin can not support this theme.', 'emulsion' ), esc_url( admin_url( 'plugins.php?plugin_status=active' ) ), esc_html__( 'You can disable it in the plugins page', 'emulsion' )
+	printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p> [<strong>%1$s</strong>] %2$s <a href="%3$s">%4$s</a></p></div>', $emulsion_addon_theme_name . esc_html__( ' or this child theme.', 'emulsion-addons' ), esc_html__( 'emulsion addons plugin can not support this theme.', 'emulsion-addons' ), esc_url( admin_url( 'plugins.php?plugin_status=active' ) ), esc_html__( 'You can disable it in the plugins page', 'emulsion-addons' )
 	);
 }
 function emulsion_pallet_styles(){

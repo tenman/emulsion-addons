@@ -126,8 +126,8 @@ if ( ! function_exists( 'emulsion_get_current_settings' ) ) {
 		foreach ( $emulsion_customize_args as $key => $val ) {
 
 			$val	 = var_export( get_theme_mod( $key ), true );
-			$val	 = false === $val ? esc_html__( 'Not Yet Customized', 'emulsion' ) : trim( $val, "'" );
-			$filter	 = has_filter( 'theme_mod_' . $key ) ? esc_html__( 'Detected', 'emulsion' ) . ' theme_mod_' . $key : esc_html__( 'Not used', 'emulsion' );
+			$val	 = false === $val ? esc_html__( 'Not Yet Customized', 'emulsion-addons' ) : trim( $val, "'" );
+			$filter	 = has_filter( 'theme_mod_' . $key ) ? esc_html__( 'Detected', 'emulsion-addons' ) . ' theme_mod_' . $key : esc_html__( 'Not used', 'emulsion-addons' );
 			$default = emulsion_get_var( $key, 'default' );
 
 
@@ -136,9 +136,9 @@ if ( ! function_exists( 'emulsion_get_current_settings' ) ) {
 					wp_kses($default,array()),
 					wp_kses($val,array()),
 					wp_kses($filter,array()),
-					esc_html__('Default:', 'emulsion'),
-					esc_html__('Current val:','emulsion'),
-					esc_html__('Filter:','emulsion') );
+					esc_html__('Default:', 'emulsion-addons'),
+					esc_html__('Current val:','emulsion-addons'),
+					esc_html__('Filter:','emulsion-addons') );
 		}
 	}
 }
@@ -717,9 +717,9 @@ if ( ! function_exists( 'emulsion_php_version_notice' ) ) {
 	 */
 	function emulsion_php_version_notice() {
 
-		printf( '<div class="%1$s"><p>%2$s<br />%3$s</p></div>', 'notice notice-error is_dismissable', esc_html__( 'You need to update your PHP version to run this theme.', 'emulsion' ), sprintf(
+		printf( '<div class="%1$s"><p>%2$s<br />%3$s</p></div>', 'notice notice-error is_dismissable', esc_html__( 'You need to update your PHP version to run this theme.', 'emulsion-addons' ), sprintf(
 						/* translators: 1: PHP_VERSION 2: EMULSION_MIN_PHP_VERSION */
-						esc_html__( 'Actual version is: %1$s, required version is: %2$s', 'emulsion' ), esc_html( PHP_VERSION ), esc_html( EMULSION_MIN_PHP_VERSION )
+						esc_html__( 'Actual version is: %1$s, required version is: %2$s', 'emulsion-addons' ), esc_html( PHP_VERSION ), esc_html( EMULSION_MIN_PHP_VERSION )
 				)
 		);
 	}

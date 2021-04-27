@@ -68,13 +68,13 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 		$supports_stream = emulsion_the_theme_supports( 'stream' );
 		$supports_grid	 = emulsion_the_theme_supports( 'grid' );
 
-		$message_protected_post	 = esc_html__( 'Password is required to view this post', 'emulsion' );
+		$message_protected_post	 = esc_html__( 'Password is required to view this post', 'emulsion-addons' );
 		$post_id				 = get_the_ID();
 		$stream					 = emulsion_has_archive_format( $supports_stream );
 		$grid					 = emulsion_has_archive_format( $supports_grid );
 		$get_post				 = get_post( $post_id, 'OBJECT', 'display' );
 		$excerpt_length			 = apply_filters( 'excerpt_length', 256 );
-		$read_more_text			 = esc_html__( '...', 'emulsion' );
+		$read_more_text			 = esc_html__( '...', 'emulsion-addons' );
 		$excerpt_from_content	 = '';
 		$excerpt_html_wrapper	 = '<blockquote cite="%2$s" class="content-excerpt">%1$s</blockquote>';
 
@@ -287,9 +287,9 @@ if ( ! function_exists( 'emulsion_post_excerpt_more' ) ) {
 
 				printf( '<span><a href="%1$s#top" class="skin-button">%2$s<span class="screen-reader-text read-more-context">%3$s</span></a></span>',
 						esc_url( $permalink ),
-						esc_html__( 'Read More', 'emulsion' ),
+						esc_html__( 'Read More', 'emulsion-addons' ),
 						/* translators: %1$s entry title */
-						sprintf( esc_html__('link to post %1$s' ,'emulsion'), wp_kses_post( $article->post_title ) ) );
+						sprintf( esc_html__('link to post %1$s' ,'emulsion-addons'), wp_kses_post( $article->post_title ) ) );
 			}
 		}
 	}

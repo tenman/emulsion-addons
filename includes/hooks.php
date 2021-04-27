@@ -258,14 +258,14 @@ if ( ! function_exists( 'emulsion_read_more_link' ) ) {
 
 		$post_id	 = get_the_ID();
 		$title_text	 = the_title_attribute(
-				array( 'before' => esc_html__( 'link to ', 'emulsion' ),
+				array( 'before' => esc_html__( 'link to ', 'emulsion-addons' ),
 					'echo'	 => false, )
 		);
 
 		if ( is_int( $post_id ) ) {
 
 			return sprintf(
-					'<p class="read-more"><a class="skin-button" href="%1$s" aria-label="%3$s">%2$s<span class="screen-reader-text read-more-context">%3$s</span></a></p>', get_permalink(), esc_html__( 'Read more', 'emulsion' ), $title_text
+					'<p class="read-more"><a class="skin-button" href="%1$s" aria-label="%3$s">%2$s<span class="screen-reader-text read-more-context">%3$s</span></a></p>', get_permalink(), esc_html__( 'Read more', 'emulsion-addons' ), $title_text
 			);
 		}
 	}
@@ -302,7 +302,7 @@ if ( ! function_exists( 'emulsion_custom_gutenberg_edit_link' ) ) {
 				$gutenberg_action = sprintf(
 						'<a href="%1$s" class="skin-button">%2$s</a>', esc_url( add_query_arg(
 										array( 'post' => $post_id, 'action' => 'edit', 'classic-editor' => '', 'classic-editor__forget' => '' ), admin_url( 'post.php' )
-						) ), esc_html__( 'Classic Editor', 'emulsion' ) );
+						) ), esc_html__( 'Classic Editor', 'emulsion-addons' ) );
 
 				return $gutenberg_action;
 			}
@@ -312,7 +312,7 @@ if ( ! function_exists( 'emulsion_custom_gutenberg_edit_link' ) ) {
 			$gutenberg_action = sprintf(
 					'<a href="%1$s" class="skin-button">%2$s</a>', esc_url( add_query_arg(
 									array( 'post' => $post_id, 'action' => 'edit', 'classic-editor' => '', 'classic-editor__forget' => '' ), admin_url( 'post.php' )
-					) ), esc_html__( 'Classic Editor', 'emulsion' ) );
+					) ), esc_html__( 'Classic Editor', 'emulsion-addons' ) );
 
 			return $gutenberg_action;
 		}
@@ -1465,7 +1465,7 @@ if ( ! function_exists( 'emulsion_addons_get_month_link' ) ) {
 
 			$publish_date	 = get_the_time( 'U' );
 			/* translators: %s  human_time_diff() */
-			$date_text		 = sprintf( esc_html__( '%s ago', 'emulsion' ), human_time_diff( $publish_date, current_time( 'timestamp' ) ) );
+			$date_text		 = sprintf( esc_html__( '%s ago', 'emulsion-addons' ), human_time_diff( $publish_date, current_time( 'timestamp' ) ) );
 		}
 		if ( 'default' == $type ) {
 
@@ -1513,8 +1513,8 @@ if ( ! function_exists( 'emulsion_addons_get_post_meta_on' ) ) {
 		$class	 .= 'inline' == get_theme_mod( 'emulsion_post_display_date', emulsion_get_var( 'emulsion_post_display_date' ) ) ? ' has-date' : '';
 		$class	 .= 'inline' == get_theme_mod( 'emulsion_post_display_author', emulsion_get_var( 'emulsion_post_display_author' ) ) ? ' has-author' : '';
 
-		$text_posted_on	 = esc_html__( 'Posted on', 'emulsion' );
-		$text_by		 = esc_html__( 'by', 'emulsion' );
+		$text_posted_on	 = esc_html__( 'Posted on', 'emulsion-addons' );
+		$text_by		 = esc_html__( 'by', 'emulsion-addons' );
 		$author_url		 = get_author_posts_url( $post->post_author );
 		$author_name	 = get_the_author_meta( 'display_name', $post->post_author );
 		$format_type	 = get_theme_mod( 'emulsion_post_display_author_format', emulsion_get_var( 'emulsion_post_display_author_format' ) );
@@ -1917,13 +1917,13 @@ function emulsion_admin_bar_menu() {
 		global $wp_admin_bar;
 
 		if( 'off' == filter_input( INPUT_GET, 'fse' ) ) {
-			$menu_title = esc_html__( 'FSE OFF', 'emulsion' );
+			$menu_title = esc_html__( 'FSE OFF', 'emulsion-addons' );
 			$color = '<strong style="color:#fff;background:#ff0033;display:block;padding-left:8px;padding-right:8px;">';
 		} elseif( 'transitional' == filter_input( INPUT_GET, 'fse' )  ) {
-			$menu_title = esc_html__( 'FSE Transitional', 'emulsion' );
+			$menu_title = esc_html__( 'FSE Transitional', 'emulsion-addons' );
 			$color = '<strong style="color:#fff;background:#3498db;display:block;padding-left:8px;padding-right:8px;">';
 		} else {
-			$menu_title = esc_html__( 'FSE', 'emulsion' );
+			$menu_title = esc_html__( 'FSE', 'emulsion-addons' );
 			$color = '<strong style="color:#000;background:#90ee90;display:block;padding-left:8px;padding-right:8px;">';
 		}
 
@@ -1945,46 +1945,46 @@ function emulsion_admin_bar_menu() {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_off',
-				'title'	 => esc_html__( 'fse-off', 'emulsion' ),
+				'title'	 => esc_html__( 'fse-off', 'emulsion-addons' ),
 				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_transitional',
-				'title'	 => esc_html__( 'fse-transitional', 'emulsion' ),
+				'title'	 => esc_html__( 'fse-transitional', 'emulsion-addons' ),
 				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
 			) );
 
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'emulsion_fse_template',
-				'title'	 => esc_html__( 'wp template', 'emulsion' ),
+				'title'	 => esc_html__( 'wp template', 'emulsion-addons' ),
 				'href'	 => esc_url( get_admin_url( NULL, 'edit.php?post_type=wp_template' ) ),
 			) );
 
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'emulsion_fse_template_part',
-				'title'	 => esc_html__( 'wp template part', 'emulsion' ),
+				'title'	 => esc_html__( 'wp template part', 'emulsion-addons' ),
 				'href'	 => esc_url( get_admin_url( NULL, 'edit.php?post_type=wp_template_part' ) ),
 			) );
 		} else {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_off',
-				'title'	 => esc_html__( 'fse-off', 'emulsion' ),
+				'title'	 => esc_html__( 'fse-off', 'emulsion-addons' ),
 				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_on',
-				'title'	 => esc_html__( 'fse-on', 'emulsion' ),
+				'title'	 => esc_html__( 'fse-on', 'emulsion-addons' ),
 				'href'	 => esc_url( remove_query_arg( 'fse' ) ),
 			) );
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',
 				'id'	 => 'fse_switch_transitional',
-				'title'	 => esc_html__( 'fse-transitional', 'emulsion' ),
+				'title'	 => esc_html__( 'fse-transitional', 'emulsion-addons' ),
 				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
 			) );
 
@@ -1993,8 +1993,8 @@ function emulsion_admin_bar_menu() {
 		if ( ! is_admin() ) {
 
 			$view_currrent = emulsion_do_fse()
-					? esc_html__( 'Being displayed in FSE Template', 'emulsion' )
-					: esc_html__( 'being displayed in Theme Template', 'emulsion' );
+					? esc_html__( 'Being displayed in FSE Template', 'emulsion-addons' )
+					: esc_html__( 'being displayed in Theme Template', 'emulsion-addons' );
 
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'fse_switch',

@@ -239,8 +239,8 @@ function emulsion_customize_controle_js() {
 function emulsion_customize_controle_translate() {
 
 	$emulsion_customizer_redirect_setting_url	 = 'javascript:wp.customize.control( \'emulsion_customizer_preview_redirect\' ).focus()';
-	$emulsion_section_notification_message		 = '<p>' . esc_html__( 'You can move to another page by clicking the preview link', 'emulsion' ) . '</p>'
-			. sprintf( ' <a href="%1$s">%2$s</a>', $emulsion_customizer_redirect_setting_url, esc_html__( 'Redirect setting', 'emulsion' ) );
+	$emulsion_section_notification_message		 = '<p>' . esc_html__( 'You can move to another page by clicking the preview link', 'emulsion-addons' ) . '</p>'
+			. sprintf( ' <a href="%1$s">%2$s</a>', $emulsion_customizer_redirect_setting_url, esc_html__( 'Redirect setting', 'emulsion-addons' ) );
 	$last_post_date								 = strtotime( get_lastpostdate() );
 
 	$translation_array = array(
@@ -253,54 +253,54 @@ function emulsion_customize_controle_translate() {
 		'customizer_preview_redirect'								 => get_theme_mod( 'emulsion_customizer_preview_redirect', emulsion_get_var( 'emulsion_customizer_preview_redirect' ) ),
 		'date_archive_query'										 => date( 'Ym', $last_post_date ),
 		'header_gradient_setting'									 => get_theme_mod( 'emulsion_header_gradient', emulsion_get_var( 'emulsion_header_gradient' ) ),
-		'code_box_gap_not_found_notification'						 => esc_html__( 'Gallery block was not found. Please display a preview with culumns block.', 'emulsion' ),
-		'code_narrow_width_notification'							 => esc_html__( 'The Main width must be the same as or greater than the Content width.', 'emulsion' ),
-		'code_too_width_notification'								 => esc_html__( 'Content width must be less than or equal to Main width.', 'emulsion' ),
-		'code_gallery_not_found_notification'						 => esc_html__( 'Gallery block was not found. Please display a preview with gallery block.', 'emulsion' ),
-		'code_columns_not_found_notification'						 => esc_html__( 'Columns block was not found. Please display a preview with columns block.', 'emulsion' ),
-		'code_media_text_not_found_notification'					 => esc_html__( 'Media text block was not found. Please display a preview with media text block.', 'emulsion' ),
-		'code_reset_theme_setting_notification'						 => esc_html__( 'The theme settings are reset. It can not be undone.', 'emulsion' ),
-		'code_relate_setting_alert'									 => esc_html__( 'This change does not reflect the settings for header media, Display title in header.', 'emulsion' ),
+		'code_box_gap_not_found_notification'						 => esc_html__( 'Gallery block was not found. Please display a preview with culumns block.', 'emulsion-addons' ),
+		'code_narrow_width_notification'							 => esc_html__( 'The Main width must be the same as or greater than the Content width.', 'emulsion-addons' ),
+		'code_too_width_notification'								 => esc_html__( 'Content width must be less than or equal to Main width.', 'emulsion-addons' ),
+		'code_gallery_not_found_notification'						 => esc_html__( 'Gallery block was not found. Please display a preview with gallery block.', 'emulsion-addons' ),
+		'code_columns_not_found_notification'						 => esc_html__( 'Columns block was not found. Please display a preview with columns block.', 'emulsion-addons' ),
+		'code_media_text_not_found_notification'					 => esc_html__( 'Media text block was not found. Please display a preview with media text block.', 'emulsion-addons' ),
+		'code_reset_theme_setting_notification'						 => esc_html__( 'The theme settings are reset. It can not be undone.', 'emulsion-addons' ),
+		'code_relate_setting_alert'									 => esc_html__( 'This change does not reflect the settings for header media, Display title in header.', 'emulsion-addons' ),
 		'code_fadeout_message_category_colors'						 => '<span class="emulsion_fadeout_message emulsion_fadeout_message_category_colors">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to category', 'emulsion' ) . '</span>'
-			. esc_html__( 'You can move to another page by clicking the preview link', 'emulsion' )
-			. sprintf( ' <a href="%1s">%2s</a>', $emulsion_customizer_redirect_setting_url, esc_html__( 'Redirect setting', 'emulsion' ) ),
-		'code_widgets_panel_notification'							 => '<p>' . esc_html__( 'When setting up the post sidebar, the post must be displayed in preview.', 'emulsion' ) . '</p>'
-			. '<p>' . esc_html__( 'When setting up the page sidebar, the page must be displayed in preview.', 'emulsion' ) . '</p>',
-		'code_header_image_notification'							 => esc_html__( 'Header media can not be displayed because the header layout is set to something other than custom.', 'emulsion' ),
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to category', 'emulsion-addons' ) . '</span>'
+			. esc_html__( 'You can move to another page by clicking the preview link', 'emulsion-addons' )
+			. sprintf( ' <a href="%1s">%2s</a>', $emulsion_customizer_redirect_setting_url, esc_html__( 'Redirect setting', 'emulsion-addons' ) ),
+		'code_widgets_panel_notification'							 => '<p>' . esc_html__( 'When setting up the post sidebar, the post must be displayed in preview.', 'emulsion-addons' ) . '</p>'
+			. '<p>' . esc_html__( 'When setting up the page sidebar, the page must be displayed in preview.', 'emulsion-addons' ) . '</p>',
+		'code_header_image_notification'							 => esc_html__( 'Header media can not be displayed because the header layout is set to something other than custom.', 'emulsion-addons' ),
 		'code_section_block_editor_box_gap_notification'			 => '<span class="emulsion_fadeout_message_section_block_editor_box_gap">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has gallery block post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has gallery block post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_block_editor_block_gallery_notification'		 => '<span class="emulsion_fadeout_message_section_block_editor_block_gallery">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has gallery block post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has gallery block post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_block_editor_block_columns_notification'		 => '<span class="emulsion_fadeout_message_section_block_editor_block_columns">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has columns block post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has columns block post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_block_editor_block_media_text_notification'	 => '<span class="emulsion_fadeout_message_section_block_editor_block_media_text">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has columns block post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has columns block post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_block_editor_alignwide_notification'			 => '<span class="emulsion_fadeout_message_section_block_editor_alignwide">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has alignwide, alignfull post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
-		'code_section_block_editor_not_found_notification'			 => '<p>' . esc_html__( 'No posts found related to settings', 'emulsion' ) . '</p>',
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to has alignwide, alignfull post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
+		'code_section_block_editor_not_found_notification'			 => '<p>' . esc_html__( 'No posts found related to settings', 'emulsion-addons' ) . '</p>',
 		'code_section_scheme_notification'					 => '<span class="emulsion_fadeout_message_section_layout_homepage">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_homepage_notification'					 => '<span class="emulsion_fadeout_message_section_layout_homepage">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_category_archives_notification'		 => '<span class="emulsion_fadeout_message_section_layout_category_archives">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to category archives', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to category archives', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_author_archives_notification'			 => '<span class="emulsion_fadeout_message_section_layout_author_archives">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to author archives', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to author archives', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_date_archives_notification'			 => '<span class="emulsion_fadeout_message_section_layout_date_archives">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to date archives', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to date archives', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_layout_tag_archives_notification'				 => '<span class="emulsion_fadeout_message_section_layout_tag_archives">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to tag archives', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to tag archives', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code_section_header_image_notification'			 => '<span class="emulsion_fadeout_message_section_header_image">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to home', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'code__section_layout_main_notification'					 => '<span class="emulsion_fadeout_message__section_layout_main">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to latest post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to latest post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message,
 		'background_image_notification'								 => '<span class="emulsion_fadeout_message__section_background_image">'
-			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to latest post', 'emulsion' ) . '</span>' . $emulsion_section_notification_message
-			. '<p>' . esc_html__( 'The background image is display only for single posts and pages.', 'emulsion' ) . '</p>'
-			. '<p>' . esc_html__( 'If you see a default button, press it to save and reload. Then, set your favorite background image.', 'emulsion' ) . '</p>',
-		'scheme_notification'						 => '<p>'.esc_html__( 'At this time, this setting does not support real-time preview', 'emulsion' ).
-		'<br />'. esc_html__( 'After changing the settings, save and reload your browser', 'emulsion' ). '</p>'	,
+			. '<span class="emulsion-spinner"></span>' . esc_html__( 'moving preview to latest post', 'emulsion-addons' ) . '</span>' . $emulsion_section_notification_message
+			. '<p>' . esc_html__( 'The background image is display only for single posts and pages.', 'emulsion-addons' ) . '</p>'
+			. '<p>' . esc_html__( 'If you see a default button, press it to save and reload. Then, set your favorite background image.', 'emulsion-addons' ) . '</p>',
+		'scheme_notification'						 => '<p>'.esc_html__( 'At this time, this setting does not support real-time preview', 'emulsion-addons' ).
+		'<br />'. esc_html__( 'After changing the settings, save and reload your browser', 'emulsion-addons' ). '</p>'	,
 	);
 	return $translation_array;
 }
@@ -315,35 +315,35 @@ function emulsion_customizer_translate_css( $css ) {
 		return $css;
 	}
 
-	$layout_header			 = esc_html__( 'Layout Header', 'emulsion' );
-	$header_background		 = esc_html__( 'header background', 'emulsion' );
-	$meta_font_settings		 = esc_html__( 'meta font settings', 'emulsion' );
-	$general_font_setting	 = esc_html__( 'general font setting', 'emulsion' );
-	$block_columns_setting	 = esc_html__( 'block columns setting', 'emulsion' );
-	$footer_credit			 = esc_html__( 'footer credit, cols', 'emulsion' );
-	$header_background		 = esc_html__( 'header background', 'emulsion' );
-	$post_metadata			 = esc_html__( 'post metadata', 'emulsion' );
-	$menu_settings			 = esc_html__( 'menu settings', 'emulsion' );
-	$widget_settings		 = esc_html__( 'widget settings', 'emulsion' );
-	$relate_posts_background = esc_html__( 'relate posts background \00a0\00a0', 'emulsion' );
-	$search_drawer			 = esc_html__( 'search drawer', 'emulsion' );
-	$header_media			 = esc_html__( 'header media', 'emulsion' );
-	$layout_home_page		 = esc_html__( 'layout home page', 'emulsion' );
-	$excerpt_length			 = esc_html__( 'excerpt length', 'emulsion' );
-	$layout_category		 = esc_html__( 'layout category', 'emulsion' );
-	$block_media_text		 = esc_html__( 'block media text', 'emulsion' );
-	$table_of_contents		 = esc_html__( 'table of contents', 'emulsion' );
-	$sticky_sidebar			 = esc_html__( 'sticky sidebar', 'emulsion' );
-	$layout_sidebar			 = esc_html__( 'layout sidebar', 'emulsion' );
-	$display_relate_post	 = esc_html__( 'display relate post', 'emulsion' );
-	$layout_posts_page		 = esc_html__( 'layout posts page', 'emulsion' );
-	$layout_date_archive	 = esc_html__( 'layout date archive', 'emulsion' );
-	$layout_author			 = esc_html__( 'layout author', 'emulsion' );
-	$layout_tag_archive		 = esc_html__( 'layout tag archive', 'emulsion' );
-	$excerpt_length			 = esc_html__( 'excerpt length', 'emulsion' );
-	$gallery_block_settings	 = esc_html__( 'gallery block settings', 'emulsion' );
-	$header_media_height	 = esc_html__( 'header media height', 'emulsion' );
-	$emulsion_bg_image       = esc_html__( 'background image', 'emulsion' );
+	$layout_header			 = esc_html__( 'Layout Header', 'emulsion-addons' );
+	$header_background		 = esc_html__( 'header background', 'emulsion-addons' );
+	$meta_font_settings		 = esc_html__( 'meta font settings', 'emulsion-addons' );
+	$general_font_setting	 = esc_html__( 'general font setting', 'emulsion-addons' );
+	$block_columns_setting	 = esc_html__( 'block columns setting', 'emulsion-addons' );
+	$footer_credit			 = esc_html__( 'footer credit, cols', 'emulsion-addons' );
+	$header_background		 = esc_html__( 'header background', 'emulsion-addons' );
+	$post_metadata			 = esc_html__( 'post metadata', 'emulsion-addons' );
+	$menu_settings			 = esc_html__( 'menu settings', 'emulsion-addons' );
+	$widget_settings		 = esc_html__( 'widget settings', 'emulsion-addons' );
+	$relate_posts_background = esc_html__( 'relate posts background \00a0\00a0', 'emulsion-addons' );
+	$search_drawer			 = esc_html__( 'search drawer', 'emulsion-addons' );
+	$header_media			 = esc_html__( 'header media', 'emulsion-addons' );
+	$layout_home_page		 = esc_html__( 'layout home page', 'emulsion-addons' );
+	$excerpt_length			 = esc_html__( 'excerpt length', 'emulsion-addons' );
+	$layout_category		 = esc_html__( 'layout category', 'emulsion-addons' );
+	$block_media_text		 = esc_html__( 'block media text', 'emulsion-addons' );
+	$table_of_contents		 = esc_html__( 'table of contents', 'emulsion-addons' );
+	$sticky_sidebar			 = esc_html__( 'sticky sidebar', 'emulsion-addons' );
+	$layout_sidebar			 = esc_html__( 'layout sidebar', 'emulsion-addons' );
+	$display_relate_post	 = esc_html__( 'display relate post', 'emulsion-addons' );
+	$layout_posts_page		 = esc_html__( 'layout posts page', 'emulsion-addons' );
+	$layout_date_archive	 = esc_html__( 'layout date archive', 'emulsion-addons' );
+	$layout_author			 = esc_html__( 'layout author', 'emulsion-addons' );
+	$layout_tag_archive		 = esc_html__( 'layout tag archive', 'emulsion-addons' );
+	$excerpt_length			 = esc_html__( 'excerpt length', 'emulsion-addons' );
+	$gallery_block_settings	 = esc_html__( 'gallery block settings', 'emulsion-addons' );
+	$header_media_height	 = esc_html__( 'header media height', 'emulsion-addons' );
+	$emulsion_bg_image       = esc_html__( 'background image', 'emulsion-addons' );
 
 
 	$css .= <<<CSS
@@ -497,9 +497,9 @@ CSS;
  */
 function emulsion_customizer_style() {
 
-	$text_section_emulsion_section_layout_homepage			 = esc_html__( 'Each Pages', 'emulsion' );
-	$text_section_emulsion_section_layout_header			 = esc_html__( 'General', 'emulsion' );
-	$text_section_emulsion_section_block_editor_alignwide	 = esc_html( 'Block Editor', 'emulsion' );
+	$text_section_emulsion_section_layout_homepage			 = esc_html__( 'Each Pages', 'emulsion-addons' );
+	$text_section_emulsion_section_layout_header			 = esc_html__( 'General', 'emulsion-addons' );
+	$text_section_emulsion_section_block_editor_alignwide	 = esc_html( 'Block Editor', 'emulsion-addons' );
 
 	$css = '';
 	if ( 'custom' !== get_theme_mod( 'emulsion_header_layout' ) ) {
@@ -834,7 +834,7 @@ function emulsion_message_layout_posts_page() {
 				</label>
 			</li>', '<span class="dashicons dashicons-paperclip" title="change preview"></span>', // Title
 				esc_attr( $customizer_url ), // link
-				esc_html__( 'Move to posts page', 'emulsion' ), //link label
+				esc_html__( 'Move to posts page', 'emulsion-addons' ), //link label
 				esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-info' )
 		);
 	} else {
@@ -848,9 +848,9 @@ function emulsion_message_layout_posts_page() {
 						<a href="%2$s" class="tooltip">%3$s</a>
 					</div>
 				</label>
-			</li>', esc_html__( 'Have you finished setting up the posts page setting ? The layout settings are required before this setting.', 'emulsion' ), // Title
+			</li>', esc_html__( 'Have you finished setting up the posts page setting ? The layout settings are required before this setting.', 'emulsion-addons' ), // Title
 				esc_attr( $customizer_url ), // link
-				esc_html__( 'Setting: Posts page', 'emulsion' ), //link label
+				esc_html__( 'Setting: Posts page', 'emulsion-addons' ), //link label
 				esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-notice' )
 		);
 	}
@@ -878,13 +878,13 @@ function emulsion_message_sidebar_position() {
 					</div>
 				</label>
 			</li>',
-				esc_html__( 'Have you finished setting up your sidebar ?', 'emulsion' ) .
+				esc_html__( 'Have you finished setting up your sidebar ?', 'emulsion-addons' ) .
 				'<p style="font-weight:normal">' .
 				sprintf( /* translators: 1: post sidebar widget count 2: page sidebar count */
-						esc_html__( 'Maybe post sidebar: %1$d. page sidebar: %2$d. ', 'emulsion' ), absint( $post_sidebar_widget ), absint( $page_sidebar_widget ) ) .
+						esc_html__( 'Maybe post sidebar: %1$d. page sidebar: %2$d. ', 'emulsion-addons' ), absint( $post_sidebar_widget ), absint( $page_sidebar_widget ) ) .
 				'</p>',
 				esc_attr( $customizer_url ),
-				esc_html__( 'Go Setting: Sidebar Widgets', 'emulsion' ),
+				esc_html__( 'Go Setting: Sidebar Widgets', 'emulsion-addons' ),
 				esc_attr( __FUNCTION__ ),
 				esc_attr( 'notice emulsion-notice' )
 		);
@@ -915,11 +915,11 @@ function emulsion_message_footer_columns() {
 						<a href="%2$s" class="tooltip">%3$s</a>
 					</div>
 				</label>
-			</li>', esc_html__( 'Have you finished setting up your the footer widgets ?', 'emulsion' ) .
+			</li>', esc_html__( 'Have you finished setting up your the footer widgets ?', 'emulsion-addons' ) .
 				'<p style="font-weight:normal">' .
 				sprintf( /* translators: 1: post sidebar widget count 2: page sidebar count */
-						esc_html__( 'Maybe post footer: %1$d. page footer: %2$d. ', 'emulsion' ), absint( $post_footer_widget ), absint( $page_footer_widget ) ) .
-				'</p>', esc_attr( $customizer_url ), esc_html__( 'Go Setting: Footer Widgets', 'emulsion' ), esc_attr( __FUNCTION__ ), esc_attr( $class )
+						esc_html__( 'Maybe post footer: %1$d. page footer: %2$d. ', 'emulsion-addons' ), absint( $post_footer_widget ), absint( $page_footer_widget ) ) .
+				'</p>', esc_attr( $customizer_url ), esc_html__( 'Go Setting: Footer Widgets', 'emulsion-addons' ), esc_attr( __FUNCTION__ ), esc_attr( $class )
 		);
 	}
 }
@@ -940,7 +940,7 @@ function emulsion_message_post_display_date() {
 						<a href="%2$s" class="tooltip">%3$s</a>
 					</div>
 				</label>
-			</li>', '<span class="dashicons dashicons-paperclip" title="change preview"></span>', esc_attr( $customizer_url ), esc_html__( 'Move to last post', 'emulsion' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-info' )
+			</li>', '<span class="dashicons dashicons-paperclip" title="change preview"></span>', esc_attr( $customizer_url ), esc_html__( 'Move to last post', 'emulsion-addons' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-info' )
 	);
 }
 
@@ -962,7 +962,7 @@ function emulsion_message_header_layout() {
 						<p><a href="%6$s" class="tooltip">%7$s</a></p>
 					</div>
 				</label>
-			</li>', '<span class="dashicons dashicons-paperclip" title="change preview"></span>', esc_attr( $customizer_url_single_post ), esc_html__( 'Move to last post', 'emulsion' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-info' ), esc_attr( $customizer_url_category ), esc_html__( 'Move to Category Archive', 'emulsion' )
+			</li>', '<span class="dashicons dashicons-paperclip" title="change preview"></span>', esc_attr( $customizer_url_single_post ), esc_html__( 'Move to last post', 'emulsion-addons' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-info' ), esc_attr( $customizer_url_category ), esc_html__( 'Move to Category Archive', 'emulsion-addons' )
 	);
 }
 
@@ -982,7 +982,7 @@ function emulsion_message_layout_homepage() {
 						<p>%2$s</p>
 					</div>
 				</label>
-			</li>', esc_html__( 'Notice', 'emulsion' ), esc_html( 'Static page already set in home page. This feature is not available.', 'emulsion' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-notice' )
+			</li>', esc_html__( 'Notice', 'emulsion-addons' ), esc_html( 'Static page already set in home page. This feature is not available.', 'emulsion-addons' ), esc_attr( __FUNCTION__ ), esc_attr( 'notice emulsion-notice' )
 		);
 	}
 }

@@ -25,21 +25,36 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-bg:#fff;
 			--thm_emulsion-accent-fg:#222;
 
+
+
 		}
+		.admin-color-fresh a,
+		.admin-color-default a{
+				color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-default,
 		.color-scheme-fresh{
 			background:#fff;
 			color:#222;
-		}
 
+		}
+		.color-scheme-default a,
+		.color-scheme-fresh	a{
+				color:#222;
+			}
 		.admin-color-light{
 			--thm_emulsion-accent-bg:#e5e5e5;
 			--thm_emulsion-accent-fg:#333;
+
 		}
+		.admin-color-light	a{
+				color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-light *,
 		.color-scheme-light{
 			background:#e5e5e5;
 			color:#333;
+
 		}
 		.color-scheme-light a:hover{
 
@@ -47,7 +62,11 @@ function emulsion_document_style() {
 		.admin-color-blue{
 			--thm_emulsion-accent-bg:#52accc;
 			--thm_emulsion-accent-fg:#fff;
+
 		}
+		.admin-color-blue a{
+				color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-blue *,
 		.color-scheme-blue{
 			background:#52accc;
@@ -59,7 +78,11 @@ function emulsion_document_style() {
 		.admin-color-coffee{
 			--thm_emulsion-accent-bg:#59524c;
 			--thm_emulsion-accent-fg:#fff;
+
 		}
+		.admin-color-coffee	a{
+				color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-coffee *,
 		.color-scheme-coffee{
 			background:#59524c;
@@ -71,6 +94,10 @@ function emulsion_document_style() {
 		.admin-color-ectoplasm{
 			--thm_emulsion-accent-bg:#523f6d;
 			--thm_emulsion-accent-fg:#fff;
+
+		}
+		.admin-color-ectoplasm a{
+			color:var(--thm_emulsion-accent-fg);
 		}
 		.color-scheme-ectoplasm *,
 		.color-scheme-ectoplasm{
@@ -83,7 +110,11 @@ function emulsion_document_style() {
 		.admin-color-midnight{
 			--thm_emulsion-accent-bg:#363b3f;
 			--thm_emulsion-accent-fg:#fff;
+
 		}
+		.admin-color-midnight a{
+			color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-midnight *,
 		.color-scheme-midnight{
 			background:#363b3f;
@@ -95,7 +126,11 @@ function emulsion_document_style() {
 		.admin-color-ocean{
 			--thm_emulsion-accent-bg:#738e96;
 			--thm_emulsion-accent-fg:#fff;
+
 		}
+		.admin-color-ocean a{
+			color:var(--thm_emulsion-accent-fg);
+			}
 		.color-scheme-ocean *,
 		.color-scheme-ocean{
 			background:#738e96;
@@ -107,6 +142,10 @@ function emulsion_document_style() {
 		.admin-color-sunrise{
 			--thm_emulsion-accent-bg:#cf4944;
 			--thm_emulsion-accent-fg:#fff;
+
+		}
+		.admin-color-sunrise a:any-link{
+			color:var(--thm_emulsion-accent-fg);
 		}
 		.color-scheme-sunrise *,
 		.color-scheme-sunrise{
@@ -120,7 +159,10 @@ function emulsion_document_style() {
 			padding-left:24px;
 			padding-right:24px;
 		}
-
+		.wrap-emulsion_document_shortcode p{
+			 margin-top:1.5rem;
+			margin-bottom:0;
+		}
 		div#wpcontent{
 			padding-left:0;
 		}
@@ -311,31 +353,31 @@ function emulsion_document_style() {
 		.lvl-3{
 			text-indent:6rem;
 		}
-		h1{
+		.wrap-emulsion_document_shortcode h1,
+		.emulsion-document #poststuff h1{
 			font-size:3rem;
-			margin-top:1.5rem;
-			margin-bottom:.75rem;
+			margin:1.5em auto .75em;
 			padding-left:24px;
 			padding-right:24px;
 		}
-		h2{
+		.wrap-emulsion_document_shortcode h2,
+		.emulsion-document #poststuff h2{
 			font-size:2rem;
-			margin-top:1.5rem;
-			margin-bottom:.75rem;
+			margin:1.5em auto .75em;
 			padding-left:24px;
 			padding-right:24px;
 		}
-		h3{
-			font-size:1.5rem;
-			margin-top:1.5rem;
-			margin-bottom:.75rem;
+		.wrap-emulsion_document_shortcode h3,
+		.emulsion-document #poststuff h3{
+			font-size:1.15rem;
+			margin:1.5em auto .75em;
 			padding-left:24px;
 			padding-right:24px;
 		}
-		h4{
+		.wrap-emulsion_document_shortcode h4,
+		.emulsion-document #poststuff h4{
 			font-size:1rem;
-			margin-top:1.5rem;
-			margin-bottom:.75rem;
+			margin:1.5em auto .75em;
 			padding-left:24px;
 			padding-right:24px;
 		}
@@ -494,21 +536,21 @@ function emulsion_document_style() {
 .block-name{
 	margin-top:3rem;
 	margin-bottom:3rem;
-	font-size:1.5rem;
+	font-size:1.15rem;
 	border:1px solid;
 	background:#fff;
 	text-decoration:none;
 	display:inline-block;
 	padding:.4rem .8rem .6rem;
 }
-.block-name a{
-
-
-
+.document-description,
+.block-wrapper{
+	overflow:hidden;
 }
+
 CSS;
 
-	printf( '<style type="text/css">%1$s</style>', wp_strip_all_tags( $css ) );
+	printf( '<style>%1$s</style>', wp_strip_all_tags( $css ) );
 }
 
 /**
@@ -517,12 +559,12 @@ CSS;
 function emulsion_admin_tabs( $current = 'homepage' ) {
 
 	$tabs	 = array(
-		'homepage'		 => esc_html__( 'Home', 'emulsion' ),
-		'customizer'	 => esc_html__( 'Customizer', 'emulsion' ),
-		'embed'			 => esc_html__( 'Embed Media', 'emulsion' ),
-		'advanced'		 => esc_html__( 'Advanced Class', 'emulsion' ),
-		'templatetag'	 => esc_html__( 'Template Tag', 'emulsion' ),
-		'icon'			 => esc_html__( 'Theme Icon', 'emulsion' ),
+		'homepage'		 => esc_html__( 'Home', 'emulsion-addons' ),
+		'customizer'	 => esc_html__( 'Customizer', 'emulsion-addons' ),
+		'embed'			 => esc_html__( 'Embed Media', 'emulsion-addons' ),
+		'advanced'		 => esc_html__( 'Advanced Class', 'emulsion-addons' ),
+		'templatetag'	 => esc_html__( 'Template Tag', 'emulsion-addons' ),
+		'icon'			 => esc_html__( 'Theme Icon', 'emulsion-addons' ),
 	);
 	$links	 = array();
 
@@ -567,44 +609,44 @@ function emulsion_get_customizer_link_element( $place, $name, $link_text = '' ) 
 	switch ( $name ) {
 
 		case('header_image'):
-			$label	 = esc_html__( 'Header Media', 'emulsion' );
+			$label	 = esc_html__( 'Header Media', 'emulsion-addons' );
 			break;
 		case('header_textcolor'):
-			$label	 = esc_html__( 'Header Text Color', 'emulsion' );
+			$label	 = esc_html__( 'Header Text Color', 'emulsion-addons' );
 			break;
 		case('widgets'):
-			$label	 = esc_html__( 'Widgets', 'emulsion' );
+			$label	 = esc_html__( 'Widgets', 'emulsion-addons' );
 			break;
 		case('emulsion_section_fonts_widget_meta'):
-			$label	 = esc_html__( 'Widget, Meta data,', 'emulsion' );
+			$label	 = esc_html__( 'Widget, Meta data,', 'emulsion-addons' );
 			break;
 
 		case('background_color'):
-			$label	 = esc_html__( 'Background Color', 'emulsion' );
+			$label	 = esc_html__( 'Background Color', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_homepage'):
-			$label	 = esc_html__( 'Home Page', 'emulsion' );
+			$label	 = esc_html__( 'Home Page', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_posts_page'):
-			$label	 = esc_html__( 'Posts Page', 'emulsion' );
+			$label	 = esc_html__( 'Posts Page', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_date_archives'):
-			$label	 = esc_html__( 'Date Archives', 'emulsion' );
+			$label	 = esc_html__( 'Date Archives', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_category_archives'):
-			$label	 = esc_html__( 'Category Archives', 'emulsion' );
+			$label	 = esc_html__( 'Category Archives', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_tag_archives'):
-			$label	 = esc_html__( 'Category Archives', 'emulsion' );
+			$label	 = esc_html__( 'Category Archives', 'emulsion-addons' );
 			break;
 		case('emulsion_layout_author_archives'):
-			$label	 = esc_html__( 'Author Page', 'emulsion' );
+			$label	 = esc_html__( 'Author Page', 'emulsion-addons' );
 			break;
 		case('background_image'):
-			$label	 = esc_html__( 'Background Image', 'emulsion' );
+			$label	 = esc_html__( 'Background Image', 'emulsion-addons' );
 			break;
 		case('custom_logo'):
-			$label	 = esc_html__( 'Custom Logo', 'emulsion' );
+			$label	 = esc_html__( 'Custom Logo', 'emulsion-addons' );
 			break;
 	}
 	}
@@ -630,7 +672,7 @@ function emulsion_settings_page() {
 
 	<div class="emulsion-document">
 		<header class="emulsion-document-header">
-			<h2><span class="dashicons dashicons-welcome-learn-more"></span> <?php esc_html_e('Theme:','emulsion') ?> <?php echo esc_html( $theme_name ); ?></h2>
+			<h2><span class="dashicons dashicons-welcome-learn-more"></span> <?php esc_html_e( 'Theme:', 'emulsion-addons' ) ?> <?php echo esc_html( $theme_name ); ?></h2>
 		</header>
 
 	<?php //isset( $_GET['tab'] ) ? emulsion_admin_tabs( $_GET['tab'] ) : emulsion_admin_tabs( 'homepage' );   ?>
