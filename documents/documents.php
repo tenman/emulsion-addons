@@ -28,8 +28,10 @@ function emulsion_document_style() {
 
 
 		}
-		.admin-color-fresh a,
-		.admin-color-default a{
+		.wrap-emulsion_document_shortcode .admin-color-fresh a,
+		.wrap-emulsion_document_shortcode .admin-color-default a,
+		.emulsion-document .admin-color-fresh a,
+		.emulsion-document .admin-color-default a{
 				color:var(--thm_emulsion-accent-fg);
 			}
 		.color-scheme-default,
@@ -38,41 +40,47 @@ function emulsion_document_style() {
 			color:#222;
 
 		}
-		.color-scheme-default a,
-		.color-scheme-fresh	a{
+
+		.emulsion-document .color-scheme-default a,
+		.emulsion-document .color-scheme-fresh	a{
 				color:#222;
-			}
+		}
+
+		.color-scheme-light,
 		.admin-color-light{
 			--thm_emulsion-accent-bg:#e5e5e5;
 			--thm_emulsion-accent-fg:#333;
-
 		}
-		.admin-color-light	a{
-				color:var(--thm_emulsion-accent-fg);
-			}
-		.color-scheme-light *,
+		.wrap-emulsion_document_shortcode .color-scheme-light,
+		.emulsion-document .color-scheme-light,
 		.color-scheme-light{
-			background:#e5e5e5;
-			color:#333;
+			background:var(--thm_emulsion-accent-bg);
+			color:var(--thm_emulsion-accent-fg);
 
 		}
-		.color-scheme-light a:hover{
-
+		.wrap-emulsion_document_shortcode .color-scheme-light a,
+		.emulsion-document .color-scheme-light	a,
+		.wrap-emulsion_document_shortcode .admin-color-light a,
+		.emulsion-document .admin-color-light a{
+				color:var(--thm_emulsion-accent-fg);
 		}
+
 		.admin-color-blue{
 			--thm_emulsion-accent-bg:#52accc;
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-blue a{
+		.wrap-emulsion_document_shortcode .admin-color-blue a,
+		.emulsion-document .admin-color-blue a{
 				color:var(--thm_emulsion-accent-fg);
 			}
-		.color-scheme-blue *,
+		.wrap-emulsion_document_shortcode .color-scheme-blue,
+		.emulsion-document .color-scheme-blue,
 		.color-scheme-blue{
 			background:#52accc;
 			color:#fff;
 		}
-		.color-scheme-blue a:hover{
+		.emulsion-document .color-scheme-blue a{
 			color:#fff;
 		}
 		.admin-color-coffee{
@@ -80,15 +88,17 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-coffee	a{
+		.wrap-emulsion_document_shortcode .admin-color-coffee a,
+		.emulsion-document .admin-color-coffee	a{
 				color:var(--thm_emulsion-accent-fg);
 			}
-		.color-scheme-coffee *,
+		.emulsion-document .color-scheme-coffee *,
 		.color-scheme-coffee{
 			background:#59524c;
 			color:#fff;
 		}
-		.color-scheme-coffee a:hover{
+		.wrap-emulsion_document_shortcode .color-scheme-coffee a,
+		.emulsion-document .color-scheme-coffee a{
 			color:#fff;
 		}
 		.admin-color-ectoplasm{
@@ -96,15 +106,21 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-ectoplasm a{
+		.wrap-emulsion_document_shortcode .admin-color-ectoplasm a,
+		.emulsion-document .admin-color-ectoplasm a{
 			color:var(--thm_emulsion-accent-fg);
 		}
-		.color-scheme-ectoplasm *,
+		.wrap-emulsion_document_shortcode .admin-color-ectoplasm h3,
+		.emulsion-document .color-scheme-ectoplasm h3,
+		.wrap-emulsion_document_shortcode .admin-color-ectoplasm,
+		.emulsion-document .color-scheme-ectoplasm,
 		.color-scheme-ectoplasm{
 			background:#523f6d;
 			color:#fff;
 		}
-		.color-scheme-ectoplasm a:hover{
+		.wrap-emulsion_document_shortcode .color-scheme-ectoplasm a,
+		.emulsion-document .color-scheme-ectoplasm a{
+			background:transparent;
 			color:#fff;
 		}
 		.admin-color-midnight{
@@ -112,15 +128,17 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-midnight a{
+		.wrap-emulsion_document_shortcode .admin-color-midnight a,
+		.emulsion-document .admin-color-midnight a{
 			color:var(--thm_emulsion-accent-fg);
 			}
-		.color-scheme-midnight *,
+		.emulsion-document .color-scheme-midnight *,
 		.color-scheme-midnight{
 			background:#363b3f;
 			color:#fff;
 		}
-		.color-scheme-midnight a:hover{
+		.wrap-emulsion_document_shortcode .color-scheme-midnight a,
+		.emulsion-document .color-scheme-midnight a{
 			color:#fff;
 		}
 		.admin-color-ocean{
@@ -128,15 +146,17 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-ocean a{
+		.wrap-emulsion_document_shortcode .admin-color-ocean a,
+		.emulsion-document .admin-color-ocean a{
 			color:var(--thm_emulsion-accent-fg);
 			}
-		.color-scheme-ocean *,
+		.emulsion-document .color-scheme-ocean *,
 		.color-scheme-ocean{
 			background:#738e96;
 			color:#fff;
 		}
-		.color-scheme-ocean a:hover{
+		.wrap-emulsion_document_shortcode .color-scheme-ocean a,
+		.emulsion-document .color-scheme-ocean a{
 			color:#fff;
 		}
 		.admin-color-sunrise{
@@ -144,17 +164,20 @@ function emulsion_document_style() {
 			--thm_emulsion-accent-fg:#fff;
 
 		}
-		.admin-color-sunrise a:any-link{
-			color:var(--thm_emulsion-accent-fg);
+		.wrap-emulsion_document_shortcode .color-scheme-sunrise a,
+		.emulsion-document .color-scheme-sunrise a,
+		.wrap-emulsion_document_shortcode .admin-color-sunrise a,
+		.emulsion-document .admin-color-sunrise a{
+			color:#fff;
 		}
-		.color-scheme-sunrise *,
+
+		.wrap-emulsion_document_shortcode .color-scheme-sunrise,
+		.emulsion-document .color-scheme-sunrise,
 		.color-scheme-sunrise{
 			background:#cf4944;
 			color:#fff;
 		}
-		.color-scheme-sunrise a:hover{
-			color:#fff;
-		}
+
 		p{
 			padding-left:24px;
 			padding-right:24px;
@@ -435,13 +458,13 @@ function emulsion_document_style() {
 	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child *{
 
 	}
-	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child,
+	.wrap-emulsion_document_shortcode .wp-block-group.grid  .wp-block-group__inner-container > .grid-child,
 	.wp-block-group.grid > .wp-block-group__inner-container > .grid-child {
 
 		border:1px solid #ccc;
 	  --thm_content_width: 720px;
-	  margin: var(--thm_box_gap);
-	   margin-bottom: calc(var(--thm_box_gap) * 2);
+
+	margin:5px;
 	  max-width: 100%;
 	  min-width: 0;
 	  box-sizing: border-box;
@@ -541,7 +564,7 @@ function emulsion_document_style() {
 	background:#fff;
 	text-decoration:none;
 	display:inline-block;
-	padding:.4rem .8rem .6rem;
+	padding:.6rem .8rem;
 }
 .document-description,
 .block-wrapper{

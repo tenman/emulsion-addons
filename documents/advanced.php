@@ -57,14 +57,6 @@
 				<li class="label"><?php esc_html_e( 'Custom Format Class', 'emulsion-addons' ) ?></li>
 				<li class="lvl-1">shrink</li>
 				<li class="lvl-2"><?php esc_html_e( 'Remove alignleft alignright class offset', 'emulsion-addons' ) ?></li>
-				<li class="lvl-1">badge</li>
-				<li class="lvl-2 label"><?php esc_html_e( 'budge sub class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">circle</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform Circle. Used with the required badge class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">awarding</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform Awarding shape. Used with the required badge class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">contort</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform contort shape. Used with the required badge class', 'emulsion-addons' ) ?></li>
 				<li class="lvl-1">is-style-circle-mask</li>
 				<li class="lvl-2"><?php esc_html_e( 'When used with alignleft and alignright, the following paragraph follows the circle.', 'emulsion-addons' ) ?></li>
 
@@ -88,15 +80,8 @@
 				<li class="lvl-1">size1of4</li>
 				<li class="lvl-1">size1of5</li>
 				<li class="lvl-1">size2of5</li>
-				<li class="label"><?php esc_html_e( 'Custom Format Class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-1">badge</li>
-				<li class="lvl-2 label"><?php esc_html_e( 'budge sub class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">circle</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform Circle. Used with the required badge class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">awarding</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform Awarding shape. Used with the required badge class', 'emulsion-addons' ) ?></li>
-				<li class="lvl-2">contort</li>
-				<li class="lvl-3"><?php esc_html_e( 'Image Transform contort shape. Used with the required badge class', 'emulsion-addons' ) ?></li>
+
+
 			</ul>
 			<?php
 			printf( '<h4 class="block-name"><a href="%1$s">%2$s</a></h4>', 'https://www.tenman.info/wp3/emulsion/en/2019/12/09/%e3%83%aa%e3%82%b9%e3%83%88%e3%80%80%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%82%af%e3%83%a9%e3%82%b9-2/', esc_html__( 'list', 'emulsion-addons' ) );
