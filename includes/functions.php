@@ -1030,7 +1030,7 @@ function emulsion_amp_setting() {
 		emulsion_remove_supports( 'sidebar' );
 		emulsion_remove_supports( 'sidebar_page' );
 		emulsion_remove_supports( 'title_in_page_header' );
-		add_filter('post_thumbnail_html','_return_empty_string');
+		add_filter('post_thumbnail_html','__return_empty_string');
 		emulsion_remove_supports( 'instantclick' );
 		emulsion_remove_supports( 'toc' );
 		emulsion_remove_supports( 'tooltip' );

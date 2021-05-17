@@ -87,7 +87,28 @@ function emulsion_wp_scss_needs_compiling( $compile ) {
 	return $compile;
 }
 
+function emulsion_image_sizes_for_scss() {
 
+	global $_wp_additional_image_sizes;
+
+	$get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+	$result = '';
+
+	foreach ( $get_intermediate_image_sizes as $_size ) {
+
+		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+
+			$result .= sprintf( ' %1$s %2$s %3$s %4$s,', $_size, get_option( $_size . '_size_w' ), get_option( $_size . '_size_h' ), (bool) get_option( $_size . '_crop' ) );
+		} elseif ( isset( $_wp_additional_image_sizes[$_size] ) ) {
+
+
+			$result .= sprintf( ' %1$s %2$s %3$s %4$s,', $_size, $_wp_additional_image_sizes[$_size]['width'], $_wp_additional_image_sizes[$_size]['height'], (bool) $_wp_additional_image_sizes[$_size]['crop'] );
+		}
+	}
+
+	return trim( $result, ',' );
+}
 
 /**
  * Creating SCSS variables for wp-scss plugin
@@ -199,6 +220,7 @@ function emulsion_wp_scss_set_variables() {
 		'border_sidebar_width'				 => emulsion_get_css_variables_values( 'border_sidebar_width' ),
 		'border_grid_width'					 => emulsion_get_css_variables_values( 'border_grid_width' ),
 		'border_stream_width'				 => emulsion_get_css_variables_values( 'border_grid_width' ),
+		'all_image_sizes' => emulsion_image_sizes_for_scss(),
 	);
 
 	return $variables;

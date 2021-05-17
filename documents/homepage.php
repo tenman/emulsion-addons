@@ -62,8 +62,8 @@
 		<td><a href="<?php echo esc_url( emulsion_theme_info( 'ThemeURI', false ) ); ?>"><?php echo esc_url( emulsion_theme_info( 'ThemeURI', false ) ); ?></a></td>
 	</tr>
 	<tr>
-		<td class='col-1'>Reports bug, any questions</td>
-		<td><?php printf('<a href="%1$s">%1$s</a>', esc_url( esc_html( 'https://wordpress.org/support/theme/emulsion/', 'emulsion-addons' ) ) );?></td>
+		<td class='col-1'><?php esc_html_e( 'Reports bug, any questions', 'emulsion-addons' );?></td>
+		<td><?php printf('<a href="%1$s">%1$s</a>', esc_url( esc_html__( 'https://wordpress.org/support/theme/emulsion/', 'emulsion-addons' ) ) );?></td>
 	</tr>
 	<tr>
 		<td class='col-1'><?php esc_html_e( 'Minimum PHP version', 'emulsion-addons' ); ?></td>

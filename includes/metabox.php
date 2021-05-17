@@ -113,7 +113,8 @@ class emulsion_add_meta_boxes {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ) );
 		add_action( 'save_post', array( $this, 'save' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_save' ) );
-		$this->metabox_display_control();
+		//$this->metabox_display_control();
+		add_action( 'wp', array( $this, 'metabox_display_control' ) );
 	}
 
 	public function metabox_display_control() {
