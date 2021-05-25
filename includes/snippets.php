@@ -24,7 +24,8 @@ function emulsion_snippet_functions() {
 	 * Plugin Breadcrumb NavXT
 	 * https://ja.wordpress.org/plugins/breadcrumb-navxt/
 	 */
-	if ( ! is_front_page() ) {
+	if ( ! is_front_page() && 'no_header' !== $has_theme_header = get_post_meta(get_the_ID(), 'emulsion_post_header', true ) ) {
+		
 		emulsion_article_after( 'emulsion_prepend_page_wrapper', 'action' );
 	}
 
@@ -67,7 +68,9 @@ if ( ! function_exists( 'emulsion_append_header_layer_snippet' ) ) {
 
 		$js = '';
 
-		emulsion_do_snippet( $hook, $type, $css, $js, $html );
+
+			emulsion_do_snippet( $hook, $type, $css, $js, $html );
+
 	}
 
 }
@@ -103,7 +106,7 @@ if ( ! class_exists( 'emulsion_Cta_Layer_Nav_Menu_Walker' ) ) {
 
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 			global $wp_query;
-			
+
 			$classes = emulsion_class_name_sanitize( implode(' ', $item->classes ) );
 
 			$attributes	 = ! empty( $item->attr_title ) ? ' title="' . esc_attr( $item->attr_title ) . '"' : '';

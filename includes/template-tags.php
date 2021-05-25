@@ -98,6 +98,12 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			$post_text = preg_replace( '!\[[^\]]+\]!', '', $post_text );
 
 			/**
+			 * remove blocks not support core
+			 */
+
+		//	$post_text = excerpt_remove_blocks( $post_text );
+
+			/**
 			 * add space end tag before element text
 			 * Even if tags are removed, keep space and increase readability
 			 */
@@ -110,7 +116,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			 * remove element and their contents
 			 */
 
-			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code><pre><script><style><iframe><canvas><noscript><audio><video><noembed>', true );
+			$post_text	 = emulsion_strip_elements( $post_text, '<table><del><figure><blockquote><code><script><style><iframe><canvas><noscript><audio><video><noembed>', true );
 
 			/**
 			 * Remove Comments

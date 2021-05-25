@@ -1,23 +1,23 @@
 <?php
+
 /**
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.6.4
+ * Version:     1.6.5
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
-
 $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name' );
 $emulsion_addon_accept_theme_version = wp_get_theme( get_template() )->get( 'Version' );
 $emulsion_root						 = plugin_dir_path( __FILE__ );
 
-$priview_theme = filter_input(INPUT_GET, 'customize_theme', FILTER_SANITIZE_SPECIAL_CHARS);
-$priview_theme_id = filter_input(INPUT_GET, 'customize_messenger_channel', FILTER_SANITIZE_SPECIAL_CHARS);
+$priview_theme		 = filter_input( INPUT_GET, 'customize_theme', FILTER_SANITIZE_SPECIAL_CHARS );
+$priview_theme_id	 = filter_input( INPUT_GET, 'customize_messenger_channel', FILTER_SANITIZE_SPECIAL_CHARS );
 
-if( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
+if ( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
 
 	//Live Preview keeps the current theme name set unless you save it.
 	//In this case, a fatal error will occur if you refer to a function of the plugin theme,
@@ -26,10 +26,10 @@ if( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) 
 	return '';
 }
 
-$priview_theme = filter_input(INPUT_GET, 'theme', FILTER_SANITIZE_SPECIAL_CHARS);
-$priview_theme_id = filter_input(INPUT_GET, 'return', FILTER_SANITIZE_SPECIAL_CHARS);
+$priview_theme		 = filter_input( INPUT_GET, 'theme', FILTER_SANITIZE_SPECIAL_CHARS );
+$priview_theme_id	 = filter_input( INPUT_GET, 'return', FILTER_SANITIZE_SPECIAL_CHARS );
 
-if( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
+if ( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
 
 	//Live Preview keeps the current theme name set unless you save it.
 	//In this case, a fatal error will occur if you refer to a function of the plugin theme,
@@ -66,7 +66,6 @@ if ( 'emulsion' == $emulsion_addon_accept_theme_name ) {
 /**
  * Theme
  */
-
 add_action( 'after_setup_theme', 'emulsion_addon_setup' );
 
 
@@ -98,7 +97,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 				'admin-preview-callback' => '',
 			) );
 		}
-		if ( ! empty( get_theme_mod( 'background_color' ) ) && get_theme_support( 'custom-background')[0]['default-color'] !== get_theme_mod( 'background_color' ) ) {
+		if ( ! empty( get_theme_mod( 'background_color' ) ) && get_theme_support( 'custom-background' )[0]['default-color'] !== get_theme_mod( 'background_color' ) ) {
 
 			set_theme_mod( 'emulsion_background_remenber', get_theme_mod( 'background_color' ) );
 		} else {
@@ -141,19 +140,20 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 			add_theme_support( 'wp-block-styles' );
 		}
+		$emulsion_favorite_color_name = esc_html__( 'Silver', 'emulsion-addons' );
 
-		$emulsion_favorite_color_palette		 = sanitize_text_field( get_theme_mod( 'emulsion_favorite_color_palette', false ) );
-		$emulsion_favorite_color_palette_default = sanitize_text_field( emulsion_theme_default_val( 'emulsion_favorite_color_palette' ) );
+		if ( function_exists( 'emulsion_theme_default_val' ) ) {
 
-		if ( $emulsion_favorite_color_palette !== $emulsion_favorite_color_palette_default ) {
+			$emulsion_favorite_color_palette		 = sanitize_text_field( get_theme_mod( 'emulsion_favorite_color_palette', false ) );
+			$emulsion_favorite_color_palette_default = sanitize_text_field( emulsion_theme_default_val( 'emulsion_favorite_color_palette' ) );
 
-			$emulsion_favorite_color_name = esc_html__( 'My Color', 'emulsion-addons' );
-		} else {
+			if ( $emulsion_favorite_color_palette !== $emulsion_favorite_color_palette_default ) {
 
-			$emulsion_favorite_color_name = esc_html__( 'Silver', 'emulsion-addons' );
+				$emulsion_favorite_color_name = esc_html__( 'My Color', 'emulsion-addons' );
+			}
 		}
 
-		if( 'enable' == get_theme_mod('emulsion_theme_color_palette') ) {
+		if ( 'enable' == get_theme_mod( 'emulsion_theme_color_palette' ) ) {
 
 			add_theme_support(
 					'editor-color-palette', array(
@@ -204,7 +204,6 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		 * Block Editor experimantal styles
 		 *
 		 */
-
 		if ( emulsion_the_theme_supports( 'block_experimentals' ) ) {
 
 			emulsion_add_supports( 'block_experimentals' );
@@ -220,12 +219,10 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		/**
 		 * FSE
 		 */
-		if( false === emulsion_the_theme_supports( 'full_site_editor' ) ) {
+		if ( false === emulsion_the_theme_supports( 'full_site_editor' ) ) {
 
-			emulsion_remove_supports('full_site_editor');
+			emulsion_remove_supports( 'full_site_editor' );
 		}
-
-
 	}
 
 	if ( function_exists( 'has_header_video' ) ) {
@@ -242,39 +239,17 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 	/**
 	 * emulsion theme suppports
 	 */
-	'disable' == get_theme_mod( 'emulsion_relate_posts', emulsion_get_var( 'emulsion_relate_posts' ) )
-			? emulsion_remove_supports( 'relate_posts' )
-			: '';
-	'disable' == get_theme_mod( 'emulsion_tooltip', emulsion_get_var( 'emulsion_tooltip' ) )
-			? emulsion_remove_supports( 'tooltip' )
-			: '';
-	'disable' == get_theme_mod( 'emulsion_search_drawer', emulsion_get_var( 'emulsion_search_drawer' ) )
-			? emulsion_remove_supports( 'search_drawer' )
-			: '';
-	'full_text' == get_theme_mod( 'emulsion_layout_search_results', emulsion_get_var( 'emulsion_layout_search_results' ) )
-			? emulsion_remove_supports( 'search_keyword_highlight' )
-			: '';
-	'disable' == get_theme_mod( 'emulsion_alignfull', emulsion_get_var( 'emulsion_alignfull' ) )
-			? emulsion_remove_supports( 'alignfull' )
-			: '';
-	'no' == get_theme_mod( 'emulsion_title_in_header', emulsion_get_var( 'emulsion_title_in_header' ) )
-			? emulsion_remove_supports( 'title_in_page_header' )
-			: '';
-	'disable' == get_theme_mod( 'emulsion_table_of_contents', emulsion_get_var( 'emulsion_table_of_contents' ) )
-			? emulsion_remove_supports( 'toc' )
-			: '';
-	'remove' == get_theme_mod( 'emulsion_page_header', emulsion_get_var( 'emulsion_page_header' ) )
-			? emulsion_remove_supports( 'header' )
-			: '';
+	'disable' == get_theme_mod( 'emulsion_relate_posts', emulsion_get_var( 'emulsion_relate_posts' ) ) ? emulsion_remove_supports( 'relate_posts' ) : '';
+	'disable' == get_theme_mod( 'emulsion_tooltip', emulsion_get_var( 'emulsion_tooltip' ) ) ? emulsion_remove_supports( 'tooltip' ) : '';
+	'disable' == get_theme_mod( 'emulsion_search_drawer', emulsion_get_var( 'emulsion_search_drawer' ) ) ? emulsion_remove_supports( 'search_drawer' ) : '';
+	'full_text' == get_theme_mod( 'emulsion_layout_search_results', emulsion_get_var( 'emulsion_layout_search_results' ) ) ? emulsion_remove_supports( 'search_keyword_highlight' ) : '';
+	'disable' == get_theme_mod( 'emulsion_alignfull', emulsion_get_var( 'emulsion_alignfull' ) ) ? emulsion_remove_supports( 'alignfull' ) : '';
+	'no' == get_theme_mod( 'emulsion_title_in_header', emulsion_get_var( 'emulsion_title_in_header' ) ) ? emulsion_remove_supports( 'title_in_page_header' ) : '';
+	'disable' == get_theme_mod( 'emulsion_table_of_contents', emulsion_get_var( 'emulsion_table_of_contents' ) ) ? emulsion_remove_supports( 'toc' ) : '';
+	'remove' == get_theme_mod( 'emulsion_page_header', emulsion_get_var( 'emulsion_page_header' ) ) ? emulsion_remove_supports( 'header' ) : '';
 
-	'disable' == get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) )
-			? emulsion_remove_supports( 'instantclick' )
-			: '';
-	'disable' == get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) )
-			? emulsion_remove_supports( 'lazyload' )
-			: '';
-
-
+	'disable' == get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) ? emulsion_remove_supports( 'instantclick' ) : '';
+	'disable' == get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) ) ? emulsion_remove_supports( 'lazyload' ) : '';
 }
 
 /**
@@ -286,24 +261,27 @@ function emulsion_admin_notice() {
 	printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p> [<strong>%1$s</strong>] %2$s <a href="%3$s">%4$s</a></p></div>', $emulsion_addon_theme_name . esc_html__( ' or this child theme.', 'emulsion-addons' ), esc_html__( 'emulsion addons plugin can not support this theme.', 'emulsion-addons' ), esc_url( admin_url( 'plugins.php?plugin_status=active' ) ), esc_html__( 'You can disable it in the plugins page', 'emulsion-addons' )
 	);
 }
-function emulsion_pallet_styles(){
 
-	wp_register_style( 'emulsion-pallet', esc_url( plugin_dir_url( __DIR__ ). 'emulsion-addons/css/color-pallet.css' ), array(), time() , 'all' );
+function emulsion_pallet_styles() {
 
-	wp_enqueue_style( 'emulsion-pallet');
+	wp_register_style( 'emulsion-pallet', esc_url( plugin_dir_url( __DIR__ ) . 'emulsion-addons/css/color-pallet.css' ), array(), time(), 'all' );
+
+	wp_enqueue_style( 'emulsion-pallet' );
 }
+
 /**
  * Deactivation
  */
 register_deactivation_hook( __FILE__, 'emulsion_deactivate_plugin' );
 
-function emulsion_deactivate_plugin(){
+function emulsion_deactivate_plugin() {
 	emulsion_wp_scss_deactivate_check();
-	set_theme_mod( 'header_textcolor', '');
+	set_theme_mod( 'header_textcolor', '' );
 }
-register_activation_hook( __FILE__,  'emulsion_activate_plugin' );
 
-function emulsion_activate_plugin(){
+register_activation_hook( __FILE__, 'emulsion_activate_plugin' );
+
+function emulsion_activate_plugin() {
 
 	emulsion_wp_scss_activate_check();
 }

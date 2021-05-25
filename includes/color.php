@@ -300,7 +300,7 @@ $make_boxed_style
 
 .header-layer{
 	color:var(--thm_header_text_color);
-	background:var(--thm_header__bg_color);
+	background:var(--thm_header_bg_color);
 
 }
 .header-is-dark{
