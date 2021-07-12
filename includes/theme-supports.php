@@ -177,4 +177,8 @@ if ( ! function_exists( 'amp_init' ) ) {
 /**
  * FSE
  */
+
 	emulsion_add_supports('full_site_editor');
+
+
+

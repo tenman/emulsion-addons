@@ -25,7 +25,7 @@ function emulsion_snippet_functions() {
 	 * https://ja.wordpress.org/plugins/breadcrumb-navxt/
 	 */
 	if ( ! is_front_page() && 'no_header' !== $has_theme_header = get_post_meta(get_the_ID(), 'emulsion_post_header', true ) ) {
-		
+
 		emulsion_article_after( 'emulsion_prepend_page_wrapper', 'action' );
 	}
 
@@ -89,7 +89,7 @@ if ( ! function_exists( 'emulsion_article_after' ) ) {
 			$html	 .= '</div>';
 		}
 
-		$css = 'div.breadcrumbs{font-size:var(--thm_meta_data_font_size);color:var(--thm_general_text_color); }';
+		$css = '.is-presentation-theme div.breadcrumbs{font-size:var(--thm_meta_data_font_size);color:var(--thm_general_text_color); }';
 		$js	 = '';
 
 		emulsion_do_snippet( $hook, $type, $css, $js, $html );

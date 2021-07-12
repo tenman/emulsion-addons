@@ -291,15 +291,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 		$content_type		 = emulsion_content_type();
 		$classes[]			 = sanitize_html_class( $content_type );
 
-		/**
-		 * Font family class
-		 */
 
-			$heading_font_family = get_theme_mod( 'emulsion_heading_font_family', emulsion_get_var( 'emulsion_heading_font_family' ) );
-			$classes[]			 = sanitize_html_class( 'font-heading-' . $heading_font_family );
-
-			$common_font_family	 = emulsion_get_css_variables_values( 'common_font_family' );
-			$classes[]			 = sanitize_html_class( 'font-common-' . $common_font_family );
 
 		/**
 		 * Category Colors
@@ -346,6 +338,8 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		 */
 
 		set_theme_mod( 'emulsion_scheme', 'default' );
+
+		set_theme_mod( 'emulsion_editor_support', 'theme' );
 
 
 		/**
@@ -755,20 +749,21 @@ if ( ! function_exists( 'emulsion_get_google_font_family_from_url' ) ) {
 
 				if ( false !== $position = strpos( $font, ':' ) ) {
 
-					$result .= ' "' . substr( $font, 0, $position ) . '",';
+					$result .= '"' . substr( $font, 0, $position ) . '",';
 				} else {
-					$result .= ' "' . $font . '",';
+					$result .= '"' . $font . '",';
 				}
 			}
 		} else {
 
 			if ( false !== $position = strpos( $param['family'], ':' ) ) {
 
-				$result .= ' "' . substr( $param['family'], 0, $position ) . '",';
+				$result .= '"' . substr( $param['family'], 0, $position ) . '",';
 			} else {
-				$result .= ' "' . $param['family'] . '",';
+				$result .= '"' . $param['family'] . '",';
 			}
 		}
+
 		$result	 = str_replace( '+', ' ', $result );
 		$result	 = addslashes( $result . $fallback );
 

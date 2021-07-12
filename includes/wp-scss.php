@@ -87,28 +87,7 @@ function emulsion_wp_scss_needs_compiling( $compile ) {
 	return $compile;
 }
 
-function emulsion_image_sizes_for_scss() {
 
-	global $_wp_additional_image_sizes;
-
-	$get_intermediate_image_sizes = get_intermediate_image_sizes();
-
-	$result = '';
-
-	foreach ( $get_intermediate_image_sizes as $_size ) {
-
-		if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
-
-			$result .= sprintf( ' %1$s %2$s %3$s %4$s,', $_size, get_option( $_size . '_size_w' ), get_option( $_size . '_size_h' ), (bool) get_option( $_size . '_crop' ) );
-		} elseif ( isset( $_wp_additional_image_sizes[$_size] ) ) {
-
-
-			$result .= sprintf( ' %1$s %2$s %3$s %4$s,', $_size, $_wp_additional_image_sizes[$_size]['width'], $_wp_additional_image_sizes[$_size]['height'], (bool) $_wp_additional_image_sizes[$_size]['crop'] );
-		}
-	}
-
-	return trim( $result, ',' );
-}
 
 /**
  * Creating SCSS variables for wp-scss plugin
@@ -122,8 +101,8 @@ function emulsion_wp_scss_set_variables() {
 
 	global $emulsion_custom_header_defaults;
 
-	$stream_condition	 = emulsion_get_css_variables_values( 'stream' );
-	$grid_condition		 = emulsion_get_css_variables_values( 'grid' );
+	//$stream_condition	 = emulsion_get_css_variables_values( 'stream' );
+	//$grid_condition		 = emulsion_get_css_variables_values( 'grid' );
 
 	$variables			 = array(
 		'background_image_dim'				 => emulsion_get_css_variables_values( 'background_image_dim' ),
@@ -167,12 +146,12 @@ function emulsion_wp_scss_set_variables() {
 		'header_hover_color'				 => emulsion_get_css_variables_values( 'header_hover_color' ),
 		'header_bg_color'					 => emulsion_get_css_variables_values( 'header_background_color' ),
 		'header_background_gradient_color'	 => emulsion_get_css_variables_values( 'header_background_gradient_color' ),
-		'theme_image_dir'					 => emulsion_get_css_variables_values( 'theme_image_dir' ),
-		'upload_base_dir'					 => emulsion_get_css_variables_values( 'upload_base_dir' ),
+		//'theme_image_dir'					 => emulsion_get_css_variables_values( 'theme_image_dir' ),
+		//'upload_base_dir'					 => emulsion_get_css_variables_values( 'upload_base_dir' ),
 		'header_image_ratio'				 => emulsion_get_css_variables_values( 'header_image_ratio' ),
 		'background_color'					 => emulsion_get_css_variables_values( 'background_color' ),
-		'stream-condition'					 => empty( $stream_condition ) ? 'body' : $stream_condition,
-		'grid-condition'					 => empty( $grid_condition ) ? 'body' : $grid_condition,
+		//'stream-condition'					 => empty( $stream_condition ) ? 'body' : $stream_condition,
+		//'grid-condition'					 => empty( $grid_condition ) ? 'body' : $grid_condition,
 		'language'							 => esc_attr( get_locale() ),
 		'hover_color'						 => emulsion_get_css_variables_values( 'hover_color' ),
 		'sidebar_width'						 => emulsion_get_css_variables_values( 'sidebar_width' ),
@@ -220,7 +199,6 @@ function emulsion_wp_scss_set_variables() {
 		'border_sidebar_width'				 => emulsion_get_css_variables_values( 'border_sidebar_width' ),
 		'border_grid_width'					 => emulsion_get_css_variables_values( 'border_grid_width' ),
 		'border_stream_width'				 => emulsion_get_css_variables_values( 'border_grid_width' ),
-		'all_image_sizes' => emulsion_image_sizes_for_scss(),
 	);
 
 	return $variables;

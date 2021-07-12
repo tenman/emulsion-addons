@@ -3,11 +3,16 @@
 	<h2><?php esc_html_e("Significant changes", 'emulsion-addons' ) ?></h2>
 	<div class="wp-block-group__inner-container">
 		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-sunrise">
+			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/06/17/about-wordpress-5-8-and-emulsion-theme-fse-support/', 'emulsion-addons') ),
+					esc_html__( 'About WordPress 5.8 and emulsion theme FSE support', 'emulsion-addons' ) );?></h3>
+		</div>
+
+		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/05/06/block-editor-effect/', 'emulsion-addons') ),
 					esc_html__( 'Improved so that the theme class is reflected in the block editor', 'emulsion-addons' ) );?></h3>
 		</div>
 
-		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/03/31/%e3%83%96%e3%83%ad%e3%83%83%e3%82%af%e3%82%a8%e3%83%87%e3%82%a3%e3%82%bf%e3%81%ae%e8%89%b2%e8%a8%ad%e5%ae%9a%e3%81%a8%e3%83%86%e3%83%bc%e3%83%9e%e9%96%93%e3%81%ae%e4%ba%92%e6%8f%9b%e6%80%a7%e3%81%ab/', 'emulsion-addons') ),
 					esc_html__( 'Notes on block editor color settings and compatibility between themes', 'emulsion-addons' ) );?></h3>
 		</div>
@@ -31,16 +36,16 @@
 		<div class="grid-child centered vh25 size1of4 solid-border is-style-cicada">
 			<h3><?php  is_admin() ? emulsion_get_customizer_link_element( 'panel', 'emulsion_theme_settings_border_panel', esc_html__( 'Support Custom Border', 'emulsion-addons' ) ): ''; ?></h3>
 		</div>
-		<div class="grid-child centered vh25 size1of3 solid-border is-style-seigaiha">
+		<div class="grid-child centered vh25 size1of4 solid-border is-style-seigaiha">
 			<h3><?php is_admin() ? esc_html_e( 'The primary menu can be displayed normally even if javascript is off', 'emulsion-addons'):''; ?></h3>
 		</div>
 
-		<div class="grid-child centered vh25 size1of3 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2020/06/29/block-group/', 'emulsion-addons' ) ),
 					esc_html__( 'Block group grid class support', 'emulsion-addons' ) );?></h3>
 			<p><?php esc_html_e( 'required Gutenberg Plugin', 'emulsion-addons' ) ?></p>
 		</div>
-		<div class="grid-child centered vh25 size1of3 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2020/06/29/link-color-settings/', 'emulsion-addons' ) ),
 					esc_html__( 'Block paragraph, heading link color support', 'emulsion-addons' )); ?></h3>
 			<p><?php esc_html_e( 'required Gutenberg Plugin', 'emulsion-addons' ) ?></p>

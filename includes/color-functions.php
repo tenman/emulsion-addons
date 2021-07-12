@@ -114,8 +114,8 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'primary_menu_color'		 => array( 'value' => $primary_menu_color, 'unit' => '' ),
 			'primary_menu_background'	 => array( 'value' => $primary_menu_background, 'unit' => '' ),
 			'header_image_ratio' => array( 'value' => emulsion_header_image_ratio(), 'unit' => '' ),
-			'upload_base_dir'	 => array( 'value' => emulsion_upload_base_dir(), 'unit' => '' ),
-			'theme_image_dir'	 => array( 'value' => function_exists( 'emulsion_theme_image_dir' ) ? emulsion_theme_image_dir() : '', 'unit' => '' ),
+			//'upload_base_dir'	 => array( 'value' => emulsion_upload_base_dir(), 'unit' => '' ),
+			//'theme_image_dir'	 => array( 'value' => function_exists( 'emulsion_theme_image_dir' ) ? emulsion_theme_image_dir() : '', 'unit' => '' ),
 			'box_gap'					 => array( 'value' => emulsion_get_var( 'emulsion_box_gap' ), 'unit' => 'px' ),
 			'layout_posts_page'			 => array( 'value' => emulsion_get_var( 'emulsion_layout_posts_page' ), 'unit' => '' ),
 			'layout_author_archives'	 => array( 'value' => emulsion_get_var( 'emulsion_layout_author_archives' ), 'unit' => '' ),
@@ -146,9 +146,9 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 			'header_background_gradient_color'	 => array( 'value' => $header_background_gradient_color, 'unit' => '' ),
 			'background_color'		 => array( 'value' => emulsion_get_background_color(), 'unit' => '' ),
 			'footer_widget_width'	 => array( 'value' => emulsion_get_footer_cols_css(), 'unit' => '%' ),
-			'stream' => array( 'value' => emulsion_get_template_part_css_selectors( 'stream' ), 'unit' => '' ),
-			'grid'	 => array( 'value' => emulsion_get_template_part_css_selectors( 'grid' ), 'unit' => '' ),
-			'font_sizes'	 => array( 'value' => emulsion_get_font_sizes(), 'unit' => '' ),
+			//'stream' => array( 'value' => emulsion_get_template_part_css_selectors( 'stream' ), 'unit' => '' ),
+			//'grid'	 => array( 'value' => emulsion_get_template_part_css_selectors( 'grid' ), 'unit' => '' ),
+			'font_sizes'	 => array( 'value' => emulsion_theme_get_font_sizes(), 'unit' => '' ),
 			'color_palette'	 => array( 'value' => emulsion_get_color_palette(), 'unit' => '' ),
 			'border_global'	 => array( 'value' => emulsion_get_var( 'emulsion_border_global' ), 'unit' => '' ),
 			'border_sidebar' => array( 'value' => emulsion_get_var( 'emulsion_border_sidebar' ), 'unit' => '' ),
@@ -558,34 +558,7 @@ if ( ! function_exists( 'emulsion_get_background_color' ) ) {
 
 }
 
-if ( ! function_exists( 'emulsion_get_font_sizes' ) ) {
 
-	/**
-	 * block editor font sizes
-	 * @return string
-	 */
-	function emulsion_get_font_sizes() {
-
-		$font_size_vals				 = get_theme_support( 'editor-font-sizes' );
-		$disable_custom_font_size	 = get_theme_support( 'disable-custom-font-size' );
-		$font_sizes					 = '';
-
-		if ( isset( $font_size_vals ) && is_array( $font_size_vals ) && ! $disable_custom_font_size ) {
-
-			foreach ( $font_size_vals[0] as $font_val ) {
-
-				$font_sizes .= sprintf( '%1$s %2$s,', $font_val['slug'], $font_val['size'] );
-			}
-			$font_sizes = trim( $font_sizes, "," );
-		} else {
-
-			// gutenberg default values
-			$font_sizes = "small 14,regular 16, large 36, larger 48";
-		}
-		return $font_sizes;
-	}
-
-}
 
 if ( ! function_exists( 'emulsion_get_color_palette' ) ) {
 
@@ -866,7 +839,7 @@ function emulsion_primary_menu_text_color_reset() {
 
 	return emulsion_contrast_color( $background );
 }
-
+/*
 function emulsion_get_template_part_css_selectors( $name = null,
 		$template_slug = 'template-parts/content.php' ) {
 
@@ -910,14 +883,15 @@ function emulsion_get_template_part_css_selectors( $name = null,
 				}
 				$class			 = str_replace( 'post_tag', 'tag', $class );
 				$class			 = sanitize_html_class( $class );
-				$stream_classes	 .= sprintf( '.%1$s,', $class );
+				$stream_classes	 .= sprintf( '%1$s,', $class );
 			}
 		}
 
 		$stream_classes = trim( $stream_classes, ',' );
+
 	}
 	return $stream_classes;
-}
+}*/
 
 /**
  * SCSS variables $image_sizes

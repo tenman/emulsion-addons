@@ -4,7 +4,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     1.6.5
+ * Version:     2.0.0
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -58,7 +58,6 @@ if ( 'emulsion' == $emulsion_addon_accept_theme_name ) {
 	include_once( $emulsion_root . 'includes/wp-scss.php' );
 	include_once( $emulsion_root . 'documents/documents.php' );
 } else {
-	//add_action( 'admin_notices', 'emulsion_admin_notice' );
 	add_action( 'wp_enqueue_scripts', 'emulsion_pallet_styles' );
 	return;
 }
@@ -250,17 +249,10 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 	'disable' == get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) ? emulsion_remove_supports( 'instantclick' ) : '';
 	'disable' == get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) ) ? emulsion_remove_supports( 'lazyload' ) : '';
+
 }
 
-/**
- * Notification
- */
-function emulsion_admin_notice() {
-	$emulsion_addon_theme_name = esc_html( wp_get_theme( get_template() )->get( 'Name' ) );
 
-	printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p> [<strong>%1$s</strong>] %2$s <a href="%3$s">%4$s</a></p></div>', $emulsion_addon_theme_name . esc_html__( ' or this child theme.', 'emulsion-addons' ), esc_html__( 'emulsion addons plugin can not support this theme.', 'emulsion-addons' ), esc_url( admin_url( 'plugins.php?plugin_status=active' ) ), esc_html__( 'You can disable it in the plugins page', 'emulsion-addons' )
-	);
-}
 
 function emulsion_pallet_styles() {
 

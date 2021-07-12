@@ -76,8 +76,8 @@ function emulsion__css_variables( $css = '' ) {
 	$header_hover_color					 = emulsion_get_css_variables_values( 'header_hover_color' );
 	$header_bg_color					 = emulsion_get_css_variables_values( 'header_background_color' );
 	$header_background_gradient_color	 = emulsion_get_css_variables_values( 'header_background_gradient_color' );
-	$theme_image_dir					 = emulsion_get_css_variables_values( 'theme_image_dir' );
-	$upload_base_dir					 = emulsion_get_css_variables_values( 'upload_base_dir' );
+	//$theme_image_dir					 = emulsion_get_css_variables_values( 'theme_image_dir' );
+	//$upload_base_dir					 = emulsion_get_css_variables_values( 'upload_base_dir' );
 	$header_image_ratio					 = emulsion_get_css_variables_values( 'header_image_ratio' );
 	$background_color					 = emulsion_get_css_variables_values( 'background_color' );
 	$language							 = esc_attr( get_locale() );
@@ -130,7 +130,7 @@ function emulsion__css_variables( $css = '' ) {
 
 
 	$style = <<<CSS
-body{
+:root{
 	/* dinamic */
 	--thm_background_image_dim:$background_image_dim;
 	--thm_border_global:$border_global;
@@ -158,7 +158,7 @@ body{
 	--thm_general_text_color:$general_text_color;
 	--thm_header_background_gradient_color:$header_background_gradient_color;
 	--thm_header_hover_color: $header_hover_color;
-	--thm_header_image_dim:rgba(0,0,0,.3);
+	--thm_header_image_dim:rgba(0,0,0,.5);
 	--thm_header_link_color: $header_link_color;
 	--thm_header_media_max_height:$header_media_max_height;
 	--thm_heading_font_base:$heading_font_base;
@@ -225,6 +225,11 @@ CSS;
 
 function emulsion_dinamic_css( $css = '' ) {
 
+	if( 'fse' == get_theme_mod('emulsion_editor_support') ) {
+
+		return $css;
+	}
+
 	/**
 	 * CSS variables
 	 */
@@ -237,7 +242,6 @@ function emulsion_dinamic_css( $css = '' ) {
 			return $css . $saved_css;
 		}
 	}
-
 
 	$make_boxed_style	 = '';
 	$boxed_style_1		 = ' .has-column main .grid {	--thm_main_width: calc(100vw - var(--thm_sidebar_width) - 48px);}';
@@ -264,7 +268,10 @@ function emulsion_dinamic_css( $css = '' ) {
 			$make_boxed_style	 .= $condition . $boxed_style_5;
 		}
 	}
+
 	$style = emulsion__css_variables();
+
+
 
 	$style .= <<<CSS
 
@@ -1185,13 +1192,13 @@ function emulsion_resuponsive_css() {
         position:relative;
         z-index:1;
         flex-basis:100%;
-        width:100vw;
-        max-width:100vw;
+        width:100%;
+        max-width:100%;
         flex:1 0;
     }
 	ul.sidebar-widget-area-lists{
-        width:100vw;
-		max-width:100vw;
+        width:100%;
+		max-width:100%;
     }
 }
 
