@@ -907,9 +907,9 @@ function emulsion_get_images_width_for_scss() {
 
 	foreach ( $image_sizes as $_size ) {
 		if ( in_array( $_size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
-			$sizes .= $_size . "	" . get_option( "{$_size}_size_w" ) . ',';
+			$sizes .= $_size . " " . get_option( "{$_size}_size_w" ) . "	" . get_option( "{$_size}_size_h" ) .',';
 		} elseif ( isset( $_wp_additional_image_sizes[$_size] ) ) {
-			$sizes .= $_size . "	" . $_wp_additional_image_sizes[$_size]['width'] . ',';
+			$sizes .= $_size . " " . $_wp_additional_image_sizes[$_size]['width'] .  " " . $_wp_additional_image_sizes[$_size]['height'] .',';
 		}
 	}
 
