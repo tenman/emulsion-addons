@@ -267,12 +267,13 @@
 			<li class="lvl-1">alignright</li>
 			<li class="lvl-1">alignwide</li>
 			<li class="lvl-1">alignfull</li>
-		</ul>
-		<li class="label"><?php esc_html_e( 'Width Control Class', 'emulsion-addons' ) ?></li>
+
+			<li class="label"><?php esc_html_e( 'Width Control Class', 'emulsion-addons' ) ?></li>
 			<li class="lvl-1">size1of3</li>
 			<li class="lvl-1">size1of4</li>
 			<li class="lvl-1">size1of5</li>
 			<li class="lvl-1">size2of5</li>
+		</ul>
 		<h4 class="block-name"><?php esc_html_e( 'media text', 'emulsion-addons' ) ?></h4>
 		<ul class="additional-class">
 			<li>...</li>

@@ -249,7 +249,30 @@ h6.has-text-color>a {
 .has-text-color{
     /*background:transparent;*/
 }
-
+.has-emulsion-black-background-color{
+    background:#000000;
+    color:var(--thm_white_color);
+}
+.has-emulsion-white-background-color{
+    background:#ffffff;
+    color:var(--thm_black_color);
+}
+.has-emulsion-muted-background-color{
+    background:#ecf0f1;
+    color:var(--thm_black_color);
+}
+.has-emulsion-alert-background-color{
+    background:#ED4F32;
+    color:var(--thm_white_color);
+}
+.has-emulsion-warning-background-color{
+    background:#EDE04D;
+    color:var(--thm_black_color);
+}
+.has-emulsion-notice-background-color{
+    background:#4bb1cf;
+    color:var(--thm_black_color);
+}
 .has-stripe-background-color:not(.has-text-color),
 .mark-stripe:not(.has-text-color),
 .mark-success:not(.has-text-color),
@@ -304,7 +327,8 @@ body.emulsion-has-sidebar.is-dark.scheme-midnight .primary-menu-wrapper nav[clas
 /**
  * Hide elements that don't make sense for theme-dependent block patterns
  */
-
+.sticky-post.content-none,
+.relate-post-no-icon,
 .emulsion-modal-title,  /* old version */
 .modal-open-link,       /* old version */
 .emulsion-dependency{   /* @since 1.8.1 */
