@@ -131,7 +131,7 @@ function emulsion__css_variables( $css = '' ) {
 
 	$style = <<<CSS
 :root{
-	/* dinamic */
+	/* emulsionCssVariablesDinamic */
 	--thm_background_image_dim:$background_image_dim;
 	--thm_border_global:$border_global;
 	--thm_border_global_style:$border_global_style;
@@ -223,7 +223,11 @@ CSS;
 	return $css . $style;
 }
 
+
 function emulsion_dinamic_css( $css = '' ) {
+
+
+	//$css = '';
 
 	if( 'fse' == get_theme_mod('emulsion_editor_support') ) {
 
@@ -269,9 +273,7 @@ function emulsion_dinamic_css( $css = '' ) {
 		}
 	}
 
-	$style = emulsion__css_variables();
-
-
+	$style = '';
 
 	$style .= <<<CSS
 
@@ -321,13 +323,10 @@ CSS;
 
 	$style = emulsion_remove_spaces_from_css( $style );
 
-	$stream_css = emulsion_stream_layout_css();
-	$stream_css = '';
-	$grid_css = emulsion_grid_layout_css();
-	$grid_css = '';
 
-	//$responsive_css = "/* responsive test */\n". emulsion_resuponsive_css();
-	$responsive_css = '';
+	$stream_css		 = '';
+	$grid_css		 = '';
+	$responsive_css	 = '';
 
 
 	$css_result = $grid_css . $stream_css . $style . $responsive_css;

@@ -578,7 +578,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 
 	function emulsion_styles( $css ) {
 
-		$style = $css;
+		//$style = $css;
 
 		//$style	 .= emulsion_inline_style_filter( '' );
 
@@ -592,7 +592,9 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 
 		if( is_user_logged_in() ) {
 
-			$style .= emulsion_dinamic_css( '' );
+			//$style .= emulsion_dinamic_css( '' );
+			$style .= emulsion__css_variables( '' );
+
 		} else {
 
 		}

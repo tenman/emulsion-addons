@@ -170,7 +170,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			 * Return an alternate character to a line feed to hold line breaks
 			 */
 
-			$post_text	 = str_replace( array( "[lb2]", "[lb1]" ), array( "\r\n\r\n", "\r\n" ), $post_text );
+			$post_text	 = str_replace( array( "[lb2]", "[lb1]" ), array( "\r\n", "\r\n" ), $post_text );
 
 			$post_text = preg_replace( array( '/\[[lb12]*(' . $read_more_text . ')?\s*$/' ), $read_more_text, $post_text );
 

@@ -309,7 +309,7 @@ function emulsion_document_style() {
 			vertical-align:top;
 		}
 		.dashicons-layout:before {
-			content: "\f538";
+			content: "\\f538";
 			margin-right:6px;
 		}
 		.template-tag-table,
