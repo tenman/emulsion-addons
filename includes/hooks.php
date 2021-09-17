@@ -578,15 +578,14 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 
 	function emulsion_styles( $css ) {
 
-		//$style = $css;
 
-		//$style	 .= emulsion_inline_style_filter( '' );
+
+		$style = '';
 
 		$style	 .= emulsion_term_duplicate_link_hide( '' );
 		$style	 .= emulsion_smart_category_highlight( '' );
 		$style	 .= emulsion_adminbar_css( '' );
-		//$style	 .= emulsion_add_common_font_css( '' );
-		//$style	 .= emulsion_heading_font_css( '' );
+
 		$style	 .= emulsion_widget_meta_font_css( '' );
 		$style	 .= emulsion_block_latest_posts_excerpt( '' );
 

@@ -1196,7 +1196,7 @@ function emulsion_resuponsive_css() {
         flex:1 0;
     }
 	ul.sidebar-widget-area-lists{
-        width:100%;
+       /* width:100%;*/
 		max-width:100%;
     }
 }
