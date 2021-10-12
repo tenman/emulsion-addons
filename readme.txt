@@ -2,7 +2,7 @@
 Contributors: nobita
 Tags: emulsion theme,customizer
 Requires at least: 5.6
-Tested up to: 5.8.0
+Tested up to: 5.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,8 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
+=2.0.7 : October 12 2021 =
+        * https://github.com/tenman/emulsion-addons/releases
 =2.0.6 : September 17 2021 =
         * https://github.com/tenman/emulsion-addons/releases
 =2.0.4 : August 30 2021 =

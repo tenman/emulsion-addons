@@ -420,19 +420,19 @@ function emulsion_document_style() {
 		}
 	svg.icon-cool{
             --thm_social_icon_color:rgba(52, 152, 219, 1);
-            fill:var(--thm_social_icon_color);
+            fill:var(--thm_social_icon_color, #666);
     }
     svg.icon-notice{
             --thm_social_icon_color:rgba(163, 140, 8, 1);
-            fill:var(--thm_social_icon_color);
+            fill:var(--thm_social_icon_color, #666);
     }
 	svg.icon-info{
             --thm_social_icon_color:rgba(22, 160, 133, 1);
-            fill:var(--thm_social_icon_color);
+            fill:var(--thm_social_icon_color, #666);
     }
 	svg.icon-alert{
             --thm_social_icon_color:rgba(231, 76, 60, 1);
-            fill:var(--thm_social_icon_color);
+            fill:var(--thm_social_icon_color, #666);
     }
 	svg.icon.icon-dark{
             --thm_social_icon_color:#000;

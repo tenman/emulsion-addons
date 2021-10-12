@@ -792,8 +792,8 @@ function emulsion_resuponsive_css() {
         padding-right:var(--thm_content_gap);
     }
     .entry-content .wp-block-table{
-        margin-left:0;
-        margin-right:0;
+        margin-left:auto;
+        margin-right:auto;
         max-width:100%;
     }
     .wp-block-table.stretch,
@@ -803,13 +803,13 @@ function emulsion_resuponsive_css() {
     .emulsion-has-sidebar.enable-alignfull .emulsion-table-wrapper.alignfull .wp-block-table,
     .entry-content  .emulsion-table-wrapper.alignfull,
     .entry-content  .emulsion-table-wrapper.alignwide{
-        margin-left:0;
-        margin-right:0;
+        margin-left:auto;
+        margin-right:auto;
         width:100%;
     }
 	.entry-content .wp-block-media-text{
-        margin-left:0;
-        margin-right:0;
+        margin-left:auto;
+        margin-right:auto;
     }
 
   .hentry .entry-content .wp-block-cover {
@@ -1103,7 +1103,6 @@ function emulsion_resuponsive_css() {
     display: block;
     z-index: 10;
     position: absolute;
-    right: 48px;
     top: 1.5rem;
   }
 
@@ -1276,9 +1275,7 @@ function emulsion_resuponsive_css() {
 		width: 100vw;
 		height: 53px;
 	}
-	body header.template-part-header .header-layer-site-title-navigation .header-layer-nav-menu nav[class|="menu"] {
-		width: calc(100vw - 48px);
-	}
+
 	body header.template-part-header .header-layer-site-title-navigation .header-layer-nav-menu input[type="checkbox"][data-skin="hamburger"]:checked ~ nav {
 		top: 0;
 	}
