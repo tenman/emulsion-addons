@@ -508,6 +508,31 @@ function emulsion_customizer_style() {
 		$css .= '#customize-controls #accordion-section-header_image:hover .accordion-section-title{pointer-events:none;color:silver;border-color:silver;cursor:default;}';
 	}
 
+	if ( 'fse' == get_theme_mod( 'emulsion_editor_support' ) ) {
+		$css .= <<<CSS
+			#customize-theme-controls #accordion-section-emulsion_section_single_post_navigation,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_customizer,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_relate_posts,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_search_drawer,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_instantclick,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_lazyload,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_sticky_sidebar,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_tooltip,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_toc,
+			#customize-theme-controls #accordion-section-emulsion_section_advanced_excerpt,
+			/*#customize-theme-controls #accordion-panel-emulsion_theme_settings_advanced_panel,*/
+			#customize-theme-controls #accordion-section-header_image,
+			#customize-theme-controls #accordion-panel-emulsion_theme_settings_post_panel,
+			#customize-theme-controls #accordion-panel-emulsion_theme_settings_layout_panel,
+			#customize-theme-controls #accordion-panel-emulsion_theme_settings_fonts_panel,
+			#customize-theme-controls #accordion-panel-emulsion_theme_settings_border_panel,
+			#customize-theme-controls #accordion-section-colors{
+				display:none !important;
+			}
+
+CSS;
+	}
+
 	$css .= <<<CUSTOMIZE_CSS
 			/* todo */
 #customize-theme-controls input[type="number"]{
