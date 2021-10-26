@@ -876,7 +876,7 @@ if ( ! function_exists( 'emulsion_block_latest_posts_excerpt' ) ) {
 
 	function emulsion_block_latest_posts_excerpt( $css ) {
 
-		$excerpt_lines	 = get_theme_mod( 'emulsion_excerpt_length_grid', emulsion_get_var( 'emulsion_excerpt_length_grid' ) );
+		$excerpt_lines	 = absint( get_theme_mod( 'emulsion_excerpt_length_grid', emulsion_get_var( 'emulsion_excerpt_length_grid' ) ) );
 		$style			 = '';
 
 		if ( function_exists( 'emulsion_lang_cjk' ) && emulsion_lang_cjk() ) {
@@ -884,7 +884,7 @@ if ( ! function_exists( 'emulsion_block_latest_posts_excerpt' ) ) {
 			$style = <<<CSS
 
 body .wp-block-latest-posts > li .wp-block-latest-posts__post-excerpt{
-	height:calc( var(--thm_meta_data_font_size) * var(--thm_content_line_height) * absint($excerpt_lines) );
+	height:calc( var(--thm_meta_data_font_size) * var(--thm_content_line_height) * $excerpt_lines );
 	overflow:hidden;
 }
 
