@@ -1063,7 +1063,7 @@ if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 		  font-family: {$font_family};
 		  text-transform: {$text_transform};
 		}
-		body.layout-grid .entry-title {
+		body.is-loop.layout-grid .entry-title {
 		  font-size: 22px;
 		}
 		body.layout-stream .entry-title {

@@ -1953,7 +1953,7 @@ $emulsion_theme_customize_panels = array(
 		'priority'		 => 41,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => esc_html__( 'Border', 'emulsion-addons' ),
+		'title'			 => esc_html__( 'Borders', 'emulsion-addons' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_fonts_panel'			 => array(
@@ -1974,7 +1974,7 @@ $emulsion_theme_customize_panels = array(
 		'priority'		 => 42,
 		'capability'	 => $emulsion_customize_cap,
 		'theme_supports' => '',
-		'title'			 => esc_html__( 'Layout', 'emulsion-addons' ),
+		'title'			 => esc_html__( 'Layouts', 'emulsion-addons' ),
 		'description'	 => '',
 	),
 	'emulsion_theme_settings_advanced_panel'		 => array(
