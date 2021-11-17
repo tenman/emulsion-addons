@@ -1115,16 +1115,14 @@ function emulsion_resuponsive_css() {
     background: url("{$theme_image_uri}/images/svg/arrow-up.svg#white");
     background-size: contain;
   }
-  .on-scroll .template-part-header-custom ~ .primary-menu-wrapper {
-    transition: box-shadow 0.5s ease-in-out;
-    transition-property: box-shadow;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
-    -webkit-box-shadow:var(--thm_box_shadow);
-    -moz-box-shadow:var(--thm_box_shadow);
-    box-shadow:var(--thm_box_shadow);
-  }
+   .on-scroll .template-part-header-custom ~ .primary-menu-wrapper{
+        filter: var(--thm_filter_shadow, drop-shadow(3px 3px 3px rgba(0,0,0,0.3)));
+        transition: filter 0.5s ease-in-out;
+        transition-delay: 0s;
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.5s;
+        transition-property: filter;
+   }
   .template-part-header-custom ~ .primary-menu-wrapper input[type="checkbox"][data-skin] + label[for="primary-menu-controll"] {
     visibility: visible;
     display: block;
