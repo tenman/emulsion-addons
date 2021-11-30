@@ -191,6 +191,7 @@ function emulsion__css_variables( $css = '' ) {
     --thm_content_gap: $content_gap;
     --thm_content_line_height: $content_line_height;
     --thm_content_width: $content_width;
+	--thm_wide_width: 920px;
     --thm_default_header_height: $default_header_height;
     --thm_footer_widget_width: $footer_widget_width;
 
@@ -950,7 +951,8 @@ function emulsion_resuponsive_css() {
 
   .emulsion-has-sidebar .entry-content .wp-block-columns.alignwide {
     position: static;
-    width: calc(  var(--thm_content_width) + var(--thm_align_offset));
+    /*width: calc(  var(--thm_content_width) + var(--thm_align_offset));*/
+	width:var(--thm_wide_width, 920px);
     max-width: 100%;
   }
   .emulsion-has-sidebar .entry-content .wp-block-columns.alignfull {
@@ -960,8 +962,8 @@ function emulsion_resuponsive_css() {
   }
   .emulsion-no-sidebar .entry-content .wp-block-columns.alignwide {
     position: static;
-    width: calc(  var(--thm_content_width) + var(--thm_align_offset));
-
+    /*width: calc(  var(--thm_content_width) + var(--thm_align_offset));*/
+	width:var(--thm_wide_width, 920px);
     padding-left:0;
     padding-right:0;
     /*max-width: none;*/
