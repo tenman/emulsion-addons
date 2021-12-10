@@ -200,7 +200,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 					break;
 			}
 		}
-		if ( emulsion_get_supports( 'sidebar' ) || emulsion_get_supports( 'sidebar_page' ) ) {
+		/*if ( emulsion_get_supports( 'sidebar' ) || emulsion_get_supports( 'sidebar_page' ) ) {
 			if ( is_page() ) {
 
 				unset( $classes['emulsion-no-sidebar'] );
@@ -231,9 +231,9 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 						$logged_in &&
 						$metabox_post_control ? 'emulsion-has-sidebar' : 'emulsion-no-sidebar';
 			}
-		}
+		}*/
 
-
+		/*
 		if ( emulsion_get_supports( 'title_in_page_header' ) ) {
 			$title_in_header = get_theme_mod( "emulsion_title_in_header", emulsion_get_var( 'emulsion_title_in_header' ) );
 
@@ -245,7 +245,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 
 				$classes[] = 'emulsion-layout-has-title';
 			}
-		}
+		}*/
 		/**
 		 * full width image
 		 */

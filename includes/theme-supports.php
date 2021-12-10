@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme options page
  */
@@ -85,7 +86,7 @@ emulsion_add_supports( 'header', array(
 /**
  * Background
  */
-emulsion_add_supports( 'background');
+emulsion_add_supports( 'background' );
 /**
  * Custom Logo
  */
@@ -151,7 +152,7 @@ emulsion_add_supports( 'viewport' );
 emulsion_add_supports( 'TGMPA' );
 
 //! emulsion_is_user_logged_in() 後で検証
-if ( ! is_admin() && ! is_customize_preview()  && empty( $_GET ) ) {
+if ( ! is_admin() && ! is_customize_preview() && empty( $_GET ) ) {
 
 	emulsion_add_supports( 'instantclick' );
 	//get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) == 'disable' ? emulsion_remove_supports( 'instantclick' ) : '';
@@ -168,17 +169,24 @@ if ( ! function_exists( 'amp_init' ) ) {
  * Block Editor experimantal styles
  *
  */
-	emulsion_add_supports( 'block_experimentals' );
+emulsion_add_supports( 'block_experimentals' );
 /**
  * Scheme
  */
-	emulsion_add_supports('scheme');
+emulsion_add_supports( 'scheme' );
 
 /**
  * FSE
  */
+emulsion_add_supports( 'full_site_editor' );
 
-	emulsion_add_supports('full_site_editor');
+if ( 'fse' == get_theme_mod( 'emulsion_editor_support', false ) ) {
+
+	emulsion_remove_supports( 'sidebar' );
+	emulsion_remove_supports( 'sidebar-page' );
+	//emulsion_remove_supports( 'title_in_page_header' );
+	//emulsion_remove_supports( 'scheme' );
+}
 
 
 

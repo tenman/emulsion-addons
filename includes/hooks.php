@@ -913,6 +913,12 @@ if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 			return $css. $pre_filter;
 		}
 
+
+		if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
+
+			return $css;
+		}
+
 		$transient_name = __FUNCTION__;
 
 		if ( is_customize_preview() ) {
@@ -965,7 +971,7 @@ if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 
 		$inline_style .= <<<CSS
 
-
+		/* emulsion_widget_meta_font_css */
 		body .primary-menu-wrapper a {
 		  font-size: {$font_size}px;
 		  font-family: {$font_family};

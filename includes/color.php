@@ -23,6 +23,7 @@ function emulsion__css_variables( $css = '' ) {
 			return $css;
 		}
 	}
+
 	//$transient_val = get_transient( $transient_name );
 
 	$transient_val = get_theme_mod( 'emulsion__css_variables' );
@@ -230,7 +231,7 @@ function emulsion_dinamic_css( $css = '' ) {
 
 	//$css = '';
 
-	if( 'fse' == get_theme_mod('emulsion_editor_support') ) {
+	if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
 
 		return $css;
 	}
@@ -355,6 +356,11 @@ CSS;
  * @return type
  */
 function emulsion_stream_layout_css() {
+
+	if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
+
+		return;
+	}
 
 	/**
 	 * Theme main CSS is a compiled static file described in common.css.
@@ -505,6 +511,11 @@ CSS2;
  * @return type
  */
 function emulsion_grid_layout_css() {
+
+	if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
+
+		return $css;
+	}
 
 	/**
 	 * Theme main CSS is a compiled static file described in common.css.
@@ -670,6 +681,10 @@ function emulsion_resuponsive_css() {
 			false === get_theme_mod( 'emulsion_sidebar_width', false ) ) {
 
 		return;
+	}
+	if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
+
+		return $css;
 	}
 
 	/**
@@ -1355,6 +1370,15 @@ function emulsion_resuponsive_css() {
 		padding-left: var(--thm_content_gap);
 		padding-right: var(--thm_content_gap);
 		box-sizing: border-box;
+	}
+}
+@media screen and (max-width: $content_width_plus_content_gap ) {
+	 .emulsion .is-style-responsive {
+		 display: flex;
+		 flex-wrap: wrap;
+		 align-items: stretch;
+		 flex-direction: column;
+		 padding: 0;
 	}
 }
 CSS;
