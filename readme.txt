@@ -40,6 +40,8 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
+=2.1.6 : December 20 2021 =
+        * https://github.com/tenman/emulsion-addons/tags
 =2.1.5 : December 10 2021 =
         * https://github.com/tenman/emulsion-addons/tags
 =2.1.4 : November 29 2021 =

@@ -63,7 +63,7 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'post_class', 'emulsion_add_woocommerce_class_to_post' );
 	add_filter( 'emulsion_hover_color', 'emulsion_hover_color_filter' );
 
-	'experimental' === get_theme_mod( 'emulsion_editor_support' ) ? add_action( 'admin_bar_menu', 'emulsion_admin_bar_menu' ): '';
+	//'experimental' === get_theme_mod( 'emulsion_editor_support' ) ? add_action( 'admin_bar_menu', 'emulsion_admin_bar_menu' ): '';
 
 
 	add_filter( 'theme_mod_background_image', 'emulsion_bg_img_display_hide_post_editor' );
@@ -1711,7 +1711,7 @@ CODE;
 		echo $tracking_code;
 	}
 }
-
+/*
 function emulsion_admin_bar_menu() {
 
 	global $menu;
@@ -1818,3 +1818,4 @@ function emulsion_admin_bar_menu() {
 		}
 	}
 }
+*/
