@@ -951,7 +951,7 @@ if ( function_exists( 'amp_init' ) ) {
 	 * for reader template
 	 * https://wordpress.org/plugins/amp/
 	 */
-	add_action( 'amp_post_template_css', 'emulsion_addons_amp_css' );
+	//add_action( 'amp_post_template_css', 'emulsion_addons_amp_css' );
 
 	if ( ! function_exists( 'emulsion_addons_amp_css' ) ) {
 
@@ -994,8 +994,8 @@ function emulsion_amp_enqueue_script() {
 		$post_id = get_the_ID();
 
 		if ( ! is_singular() ||
-				is_singular() && ! empty( $post_id ) && 'no_style' !== get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) &&
-				is_singular() && ! empty( $post_id ) && 'no_style' !== get_post_meta( $post_id, 'emulsion_page_theme_style_script', true )
+				is_singular() && ! empty( $post_id ) && 'no_style' !== get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) //&&
+				//is_singular() && ! empty( $post_id ) && 'no_style' !== get_post_meta( $post_id, 'emulsion_page_theme_style_script', true )
 		) {
 
 			if ( false == wp_style_is( 'amp-reader' ) ) {
@@ -1038,7 +1038,7 @@ function emulsion_amp_setting() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'emulsion_setup_styles' );
+//add_action( 'wp_enqueue_scripts', 'emulsion_setup_styles' );
 
 function emulsion_setup_styles() {
 	/**

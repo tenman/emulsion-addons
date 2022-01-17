@@ -3,6 +3,10 @@
 	<h2><?php esc_html_e("Significant changes", 'emulsion-addons' ) ?></h2>
 	<div class="wp-block-group__inner-container">
 		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-sunrise">
+			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/01/13/wordpress-5-9-with-emulsion-theme/', 'emulsion-addons') ),
+					esc_html__( 'About WordPress 5.9 with emulsion theme', 'emulsion-addons' ) );?></h3>
+		</div>
+		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/06/17/about-wordpress-5-8-and-emulsion-theme-fse-support/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 5.8 and emulsion theme FSE support', 'emulsion-addons' ) );?></h3>
 		</div>
@@ -39,17 +43,18 @@
 		<div class="grid-child centered vh25 size1of4 solid-border is-style-seigaiha">
 			<h3><?php is_admin() ? esc_html_e( 'The primary menu can be displayed normally even if javascript is off', 'emulsion-addons'):''; ?></h3>
 		</div>
-
+		<!--
 		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2020/06/29/block-group/', 'emulsion-addons' ) ),
 					esc_html__( 'Block group grid class support', 'emulsion-addons' ) );?></h3>
 			<p><?php esc_html_e( 'required Gutenberg Plugin', 'emulsion-addons' ) ?></p>
 		</div>
+
 		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2020/06/29/link-color-settings/', 'emulsion-addons' ) ),
 					esc_html__( 'Block paragraph, heading link color support', 'emulsion-addons' )); ?></h3>
 			<p><?php esc_html_e( 'required Gutenberg Plugin', 'emulsion-addons' ) ?></p>
-		</div>
+		</div>-->
 	</div>
 </div>
 <h2><?php esc_html_e( 'Theme Info', 'emulsion-addons' ) ?></h2>

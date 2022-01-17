@@ -70,7 +70,7 @@ span.customize-partial-edit-shortcut-emulsion_common_font_family button{
     background-size:16px 16px;
 }
 
-.custom-background.background-css-pattern-seigaiha{		
+.custom-background.background-css-pattern-seigaiha{
     background-color:var(--thm_background_color);
     background-image:
         radial-gradient(circle at 100% 150%, var(--thm_background_color) 24%, var(--thm_sub_background_color_lighten) 25%, var(--thm_sub_background_color_lighten) 28%, var(--thm_background_color) 29%, var(--thm_background_color) 36%, var(--thm_sub_background_color_lighten) 36%, var(--thm_sub_background_color_lighten) 40%, transparent 40%, transparent),
@@ -80,7 +80,7 @@ span.customize-partial-edit-shortcut-emulsion_common_font_family button{
         radial-gradient(circle at 0    50%, var(--thm_sub_background_color_lighten) 5%, var(--thm_background_color) 6%, var(--thm_background_color) 15%, var(--thm_sub_background_color_lighten) 16%, var(--thm_sub_background_color_lighten) 20%, var(--thm_background_color) 21%, var(--thm_background_color) 30%, var(--thm_sub_background_color_lighten) 31%, var(--thm_sub_background_color_lighten) 35%, var(--thm_background_color) 36%, var(--thm_background_color) 45%, var(--thm_sub_background_color_lighten) 46%, var(--thm_sub_background_color_lighten) 49%, transparent 50%, transparent);
     background-size: 50px 25px !important;
 }
-.is-light.custom-background.background-css-pattern-cicada{		
+.is-light.custom-background.background-css-pattern-cicada{
     background-color:var(--thm_background_color);
     background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(255,255,255,.07)), color-stop(50%, transparent)),
         -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(255,255,255,.13)), color-stop(50%, transparent)),
@@ -101,7 +101,7 @@ span.customize-partial-edit-shortcut-emulsion_common_font_family button{
     background-size: 13px, 29px, 37px, 53px;
 }
 
-.is-dark.custom-background.background-css-pattern-cicada{		
+.is-dark.custom-background.background-css-pattern-cicada{
     background-color:var(--thm_background_color);
     background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(0,0,0,.07)), color-stop(50%, transparent)),
         -webkit-gradient(linear, left top, right top, color-stop(50%, rgba(0,0,0,.13)), color-stop(50%, transparent)),
@@ -121,7 +121,7 @@ span.customize-partial-edit-shortcut-emulsion_common_font_family button{
         linear-gradient(90deg, transparent 50%, rgba(0,0,0,.19) 50%);
     background-size: 13px, 29px, 37px, 53px;
 }
-.custom-background.background-css-pattern-lattice{		
+.custom-background.background-css-pattern-lattice{
     background:
         linear-gradient(var(--thm_sub_background_color_lighten) 8px, transparent 8px) 0 -4px,
         linear-gradient(90deg, var(--thm_sub_background_color_lighten) 8px, transparent 8px) -4px 0;
@@ -186,7 +186,7 @@ header.header-layer {
     width:200px;
     font-size:13px;
     position:absolute;
-    top:24px;
+    top:13px;
     left:-8px;
     line-height:32px;
     border:1px solid #cdcdcd;
@@ -325,7 +325,8 @@ body.is-loop.customize-partial-edit-shortcuts-shown .customize-partial-edit-shor
 .social-navigation .customize-partial-edit-shortcut[class*="customize-partial-edit-shortcut-nav_menu_instance"] button,
 .primary-menu-wrapper .customize-partial-edit-shortcut[class*="customize-partial-edit-shortcut-nav_menu_instance"] button{
     left:0;
-    top:-13px;
+    //top:-13px;
+    top:0;
 }
 .social-navigation .customize-partial-edit-shortcut[class*="customize-partial-edit-shortcut-nav_menu_instance"]:hover:after,
 .primary-menu-wrapper .customize-partial-edit-shortcut[class*="customize-partial-edit-shortcut-nav_menu_instance"]:hover:after{
@@ -364,11 +365,11 @@ body.is-loop.customize-partial-edit-shortcuts-shown .customize-partial-edit-shor
 .footer-widget-area  [class*="customize-partial-edit-shortcut-widget"]:hover:after,
 .sidebar-widget-area [class*="customize-partial-edit-shortcut-widget"]:hover:after{
     content:'widget settings';
-    top:48px;
+    top:35px;
 }
 .footer-widget-area  [class*="customize-partial-edit-shortcut-widget"] button,
 .sidebar-widget-area [class*="customize-partial-edit-shortcut-widget"] button{
-    top:24px; 
+    top:24px;
 }
 .entry-content .customize-partial-edit-shortcut-emulsion_block_gallery_section_height button{
     left:0;
@@ -545,5 +546,5 @@ body.is-loop.customize-partial-edit-shortcuts-shown .customize-partial-edit-shor
 }
 .excerpt article footer{
     margin-top:0;
-    margin-bottom:0;  
+    margin-bottom:0;
 }

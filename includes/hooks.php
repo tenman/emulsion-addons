@@ -291,7 +291,7 @@ if ( ! function_exists( 'emulsion_custom_gutenberg_edit_link' ) ) {
 	 */
 	function emulsion_custom_gutenberg_edit_link( $link, $post_id, $text ) {
 
-		if( is_multisite() ) {
+		if( is_multisite() || ! class_exists( 'Classic_Editor') ) {
 
 			return $link;
 		}
