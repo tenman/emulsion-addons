@@ -447,4 +447,4 @@ function emulsion_radio_fields( $current_field, $group_name = '', $fields = arra
 	}
 }
 
-emulsion_get_supports('metabox') ? new emulsion_add_meta_boxes() : '';
+//emulsion_get_supports('metabox') ? new emulsion_add_meta_boxes() : '';

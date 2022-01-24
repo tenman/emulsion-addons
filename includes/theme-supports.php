@@ -96,9 +96,13 @@ emulsion_add_supports( 'custom-logo' );
  * SVG
  * include footer
  */
-emulsion_add_supports( 'social-link-menu' );
-
 emulsion_add_supports( 'footer-svg' );
+
+/**
+ * Classic Social Link
+ * var 2.2.0 default is false
+ */
+emulsion_add_supports( 'social-link-menu' );
 
 /**
  * Excerpt
