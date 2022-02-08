@@ -17,10 +17,12 @@ function emulsion_set_wp_scss_options() {
 
 	if ( false == $wpscss_options ) {
 
-		$emulsion_scss_dir	 = '/source/scss/';
-		$emulsion_css_dir	 = '/css/';
+		$emulsion_base_compiling_folder	 = 'Current Theme';
+		$emulsion_scss_dir				 = '/source/scss/';
+		$emulsion_css_dir				 = '/css/';
 
-		if ( $wpscss_options['scss_dir'] !== $emulsion_scss_dir || $wpscss_options['css_dir'] !== $emulsion_css_dir ) {
+		if ( $wpscss_options['scss_dir'] !== $emulsion_scss_dir || $wpscss_options['css_dir'] !== $emulsion_css_dir || $wpscss_options["base_compiling_folder"] !== 'Current Theme' ) {
+			
 			if ( file_exists( get_theme_file_path( $emulsion_scss_dir ) ) ) {
 
 				$wpscss_options['scss_dir'] = $emulsion_scss_dir;
@@ -30,10 +32,13 @@ function emulsion_set_wp_scss_options() {
 				$wpscss_options['css_dir'] = $emulsion_css_dir;
 			}
 
+			$wpscss_options["base_compiling_folder"] = $emulsion_base_compiling_folder;
+
 			update_option( 'wpscss_options', $wpscss_options );
 		}
 	}
 }
+
 // TODO
 register_activation_hook( WP_CONTENT_DIR . '/plugins/wp-scss/wp-scss.php', 'emulsion_wp_scss_activate_check' );
 
