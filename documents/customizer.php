@@ -1,3 +1,11 @@
+<?php
+
+if( 'theme' !== emulsion_get_theme_operation_mode() ) {
+
+	return;
+}
+
+?>
 <h3><?php esc_html_e( 'Theme customizer overview', 'emulsion-addons' ); ?></h3>
 
 <table class="form-table emulsion-document-table color-scheme-default">

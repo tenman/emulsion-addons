@@ -1,4 +1,9 @@
+<?php
+if( 'theme' !== emulsion_get_theme_operation_mode() ) {
 
+	return;
+}
+?>
 <h2> Template Tags </h2>
 <a href="https://developer.wordpress.org/themes/basics/template-hierarchy/">Template Hierarchy</a>
 <p>Once you understand Template Hierarchy, this theme is more flexible and configurable.</p>
@@ -39,7 +44,7 @@
 	<td style="border:1px solid #ccc"><?php esc_html_e('Remove Site Header', 'emulsion-addons'); ?></td>
 </tr>
 	</tbody>
-<tfoot>	
+<tfoot>
 <tr>
 
 	<td style="border:1px solid #ccc" colspan="2">

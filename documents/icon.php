@@ -1,5 +1,8 @@
 <?php
+if( 'theme' !== emulsion_get_theme_operation_mode() ) {
 
+	return;
+}
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

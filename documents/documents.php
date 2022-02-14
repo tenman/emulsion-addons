@@ -589,6 +589,13 @@ function emulsion_admin_tabs( $current = 'homepage' ) {
 		'templatetag'	 => esc_html__( 'Template Tag', 'emulsion-addons' ),
 		'icon'			 => esc_html__( 'Theme Icon', 'emulsion-addons' ),
 	);
+	if( 'theme' !== emulsion_get_theme_operation_mode() ) {
+
+		$tabs	 = array(
+			'homepage'		 => esc_html__( 'Home', 'emulsion-addons' ),
+			'advanced'		 => esc_html__( 'Advanced Class', 'emulsion-addons' ),
+		);
+	}
 	$links	 = array();
 
 	echo '<h2 class="nav-tab-wrapper">';

@@ -1,3 +1,9 @@
+<?php
+if( 'theme' !== emulsion_get_theme_operation_mode() ) {
+
+	return;
+}
+?>
 <h3>Oembed media support</h3>
 
 <table class="form-table emulsion-document-table color-scheme-default">
