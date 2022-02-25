@@ -467,7 +467,7 @@ if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 			}
 
 			$theme_classes	 = implode( ' ', emulsion_addons_body_class( array() ) );
-			$theme_classes	 = str_replace( array( 'noscript' ), '', $theme_classes );
+			$theme_classes	 = str_replace( array( 'noscript','is-loop', 'is-light', 'layout-list' ), '', $theme_classes );
 
 			return $classes . ' '. $theme_classes . $emulsion_brightnes . $color_for_editor_class . $block_editor_class_name;
 		}

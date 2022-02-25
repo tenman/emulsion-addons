@@ -200,52 +200,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 					break;
 			}
 		}
-		/*if ( emulsion_get_supports( 'sidebar' ) || emulsion_get_supports( 'sidebar_page' ) ) {
-			if ( is_page() ) {
 
-				unset( $classes['emulsion-no-sidebar'] );
-				unset( $classes['emulsion-has-sidebar'] );
-
-				$sidebar_condition		 = get_theme_mod( 'emulsion_condition_display_page_sidebar', emulsion_get_var( 'emulsion_condition_display_page_sidebar' ) );
-				$logged_in				 = 'logged_in_user' == $sidebar_condition && ! is_user_logged_in() ? false : true;
-				$metabox_page_control	 = emulsion_metabox_display_control( 'page_sidebar' );
-
-
-				$classes[] = is_active_sidebar( 'sidebar-3' ) &&
-						emulsion_get_supports( 'sidebar_page' ) &&
-						$logged_in &&
-						$metabox_page_control ? 'emulsion-has-sidebar' : 'emulsion-no-sidebar';
-			} else {
-
-				unset( $classes['emulsion-no-sidebar'] );
-				unset( $classes['emulsion-has-sidebar'] );
-
-				$sidebar_condition = get_theme_mod( 'emulsion_condition_display_posts_sidebar', emulsion_get_var( 'emulsion_condition_display_posts_sidebar' ) );
-
-
-				$logged_in				 = 'logged_in_user' == $sidebar_condition && ! is_user_logged_in() ? false : true;
-				$metabox_post_control	 = emulsion_metabox_display_control( 'sidebar' );
-
-				$classes[] = is_active_sidebar( 'sidebar-1' ) &&
-						emulsion_get_supports( 'sidebar' ) &&
-						$logged_in &&
-						$metabox_post_control ? 'emulsion-has-sidebar' : 'emulsion-no-sidebar';
-			}
-		}*/
-
-		/*
-		if ( emulsion_get_supports( 'title_in_page_header' ) ) {
-			$title_in_header = get_theme_mod( "emulsion_title_in_header", emulsion_get_var( 'emulsion_title_in_header' ) );
-
-			if ( 'yes' == $title_in_header ) {
-
-				$classes[] = 'emulsion-header-has-title';
-			}
-			if ( 'no' == $title_in_header ) {
-
-				$classes[] = 'emulsion-layout-has-title';
-			}
-		}*/
 		/**
 		 * full width image
 		 */
@@ -334,7 +289,7 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		 * default value has been dinamic @1.5.3
 		 */
 		set_theme_mod( 'emulsion_scheme', 'default' );
-		set_theme_mod( 'emulsion_editor_support', 'theme' );
+		set_theme_mod( 'emulsion_editor_support', 'transitional' );
 		set_theme_mod( 'emulsion_header_template', 'default' );
 		set_theme_mod( 'emulsion_footer_template', 'default' );
 		set_theme_mod( 'emulsion_should_load_separate_core_block_assets', 'disable' );

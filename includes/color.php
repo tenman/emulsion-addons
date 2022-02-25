@@ -203,7 +203,7 @@ function emulsion__css_variables( $css = '' ) {
     --thm_heading_font_weight: $heading_font_weight;
     --thm_hover_color:$hover_color;
     --thm_i18n_no_title:$i18n_no_title;/* Not Work Now( .hoge:before{content:var(--thm_i18n_no_title,'No Title');}). Please use SCSS variables(.hoge:before{content:'#{$i18n_no_title}';}) */
-    --thm_main_width-with-sidebar: calc(100vw - var(--thm_sidebar_width) - 48px );
+    /*--thm_main_width-with-sidebar: calc(100vw - var(--thm_sidebar_width) - 48px );*/
     --thm_main_width: $main_width;
     --thm_meta_data_font_family: $meta_data_font_family;
     --thm_meta_data_font_size: $meta_data_font_size;
