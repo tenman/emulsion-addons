@@ -6,6 +6,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+	if ( function_exists('emulsion_get_theme_operation_mode') && 'fse' == emulsion_get_theme_operation_mode() ) {
+			return $color;
+	}
 global $wp_customize;
 add_action( 'customize_register', 'emulsion_remove_display_header_text', 11 );
 

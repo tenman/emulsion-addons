@@ -154,6 +154,10 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 	function emulsion_addons_body_class( $classes ) {
 		global $_wp_theme_features;
 
+		if('fse' == emulsion_get_theme_operation_mode() ) {
+			return $classes;
+		}
+
 		$metabox_flag = false;
 
 		if ( is_page() && false == emulsion_metabox_display_control( 'page_style' ) ) {

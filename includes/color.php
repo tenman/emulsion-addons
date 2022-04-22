@@ -9,9 +9,13 @@ function emulsion__css_variables( $css = '' ) {
 
 	$transient_name = __FUNCTION__;
 
+	if( 'fse' == emulsion_get_theme_operation_mode() && defined('EMULSION_DEFAULT_VARIABLES')) {
+
+		return ':root{'.EMULSION_DEFAULT_VARIABLES.'}';
+	}
+
 	if ( is_customize_preview() ) {
 
-		//delete_transient( $transient_name );
 		remove_theme_mod( 'emulsion__css_variables' );
 	}
 	if ( is_singular() ) {
@@ -24,12 +28,10 @@ function emulsion__css_variables( $css = '' ) {
 		}
 	}
 
-	//$transient_val = get_transient( $transient_name );
-
 	$transient_val = get_theme_mod( 'emulsion__css_variables' );
 
-	if ( ! is_user_logged_in() ) {
-
+	//if ( false !== $transient_val &&( ! is_user_logged_in() || ! is_customize_preview() ) ) {
+	if ( false !== $transient_val && ! is_customize_preview() ) {
 		return $css . $transient_val;
 	}
 
@@ -215,10 +217,8 @@ function emulsion__css_variables( $css = '' ) {
 CSS;
 
 	$style = apply_filters( 'emulsion__css_variables', $style );
-
 	$style = emulsion_sanitize_css( $style );
 
-	//set_transient( $transient_name, $style, 60 * 60 * 24 );
 	set_theme_mod( 'emulsion__css_variables', $style );
 
 

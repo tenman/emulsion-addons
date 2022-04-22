@@ -341,9 +341,26 @@ if ( ! function_exists( 'emulsion_shortcode_wrapper' ) ) {
 	 */
 	function emulsion_shortcode_wrapper( $output, $tag, $attr, $m ) {
 
-		$tag_class = sanitize_html_class( $tag );
+		$tag_class		 = sanitize_html_class( $tag );
+		$element		 = 'span';
+		$element_types	 = array( '<div', '<dl', '<ul', '<ol', '<p', '<table', '<aside', '<nav', '<address', '<blockquote', '<!-- wp:' );
 
-		$output = sprintf( '<div class="shortcode-wrapper wrap-%2$s">%1$s</div>', $output, $tag_class );
+
+
+		foreach ( $element_types as $block ) {
+
+			if ( false !== strstr( $output, $block ) ) {
+
+				$element = 'div';
+				break;
+			}
+		}
+
+
+
+		$element = apply_filters( 'emulsion_shortcode_wrapper_'. $tag, $element );
+
+		$output = sprintf( '<%3$s class="shortcode-wrapper wrap-%2$s">%1$s</%3$s>', $output, $tag_class, $element );
 
 		return $output;
 	}
@@ -384,98 +401,7 @@ if ( ! function_exists( 'emulsion_excerpt_length' ) ) {
 	}
 
 }
-/**
- * Theme body class
- */
-if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 
-	function emulsion_admin_body_class( $classes ) {
-		global $post, $wp_version;
-
-
-		if ( ! isset( $post ) || ! function_exists( 'emulsion_get_var' ) ) {
-			return $classes;
-		}
-
-		if ( isset( $post ) && use_block_editor_for_post( $post ) ) {
-
-			if ( function_exists( 'emulsion_contrast_color' ) ) {
-
-				$text_color = emulsion_contrast_color();
-			} else {
-
-				$text_color = '#333333';
-			}
-
-			$emulsion_post_theme_style_script	 = get_post_meta( absint( $post->ID ), 'emulsion_post_theme_style_script', true );
-			$emulsion_page_theme_style_script	 = get_post_meta( absint( $post->ID ), 'emulsion_page_theme_style_script', true );
-
-			if ( 'no_bg' !== $emulsion_post_theme_style_script && 'no_bg' !== $emulsion_page_theme_style_script ) {
-
-				if ( '#ffffff' == $text_color ) {
-
-					$emulsion_brightnes = ' is-dark is-dark-theme';
-				}
-				if ( '#333333' == $text_color ) {
-
-					$emulsion_brightnes = ' is-light';
-				}
-			}
-			if ( 'no_bg' == $emulsion_post_theme_style_script || 'no_bg' == $emulsion_page_theme_style_script ) {
-
-				$default_background	 = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
-				$text_color			 = emulsion_contrast_color( $default_background );
-
-				if ( '#ffffff' == $text_color ) {
-
-					$emulsion_brightnes = ' is-dark is-dark-theme';
-				}
-				if ( '#333333' == $text_color ) {
-
-					$emulsion_brightnes = ' is-light';
-				}
-			}
-			if ( function_exists( 'emulsion_get_var' ) ) {
-				$colors_for_editor = get_theme_mod( 'emulsion_colors_for_editor', emulsion_get_var( 'emulsion_colors_for_editor' ) );
-			} else {
-				$colors_for_editor = 'disable';
-			}
-
-			if ( 'enable' == $colors_for_editor ) {
-
-				$color_for_editor_class = ' emulsion-color-enable';
-			} else {
-				$color_for_editor_class = ' emulsion-color-disable';
-			}
-			/**
-			 * gutengerg7.2 html structure changed
-			 * The editor style implemented in 5.0-core cannot control block styles after GB7.2.
-			 * Need to add style for new editor structure and keep style for old structure
-			 * Add a new body class to allow the theme to control the editor style
-			 */
-			if ( has_action( 'admin_enqueue_scripts', 'gutenberg_edit_site_init' ) ) {
-
-				$block_editor_class_name = ' emulsion-gb-phase-site';
-			} else {
-
-				$block_editor_class_name = ' emulsion-gb-phase-block';
-			}
-
-			if ( version_compare( $wp_version, '5.5', '>=' ) ) {
-
-				$block_editor_class_name = ' emulsion-gb-phase-site';
-			}
-
-			$theme_classes	 = implode( ' ', emulsion_addons_body_class( array() ) );
-			$theme_classes	 = str_replace( array( 'noscript','is-loop', 'is-light', 'layout-list' ), '', $theme_classes );
-
-			return $classes . ' '. $theme_classes . $emulsion_brightnes . $color_for_editor_class . $block_editor_class_name;
-		}
-
-		return $classes;
-	}
-
-}
 if ( ! function_exists( 'emulsion_brightness_class' ) ) {
 
 	function emulsion_brightness_class( $classes ) {
@@ -1653,7 +1579,11 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id,
 
 function emulsion_description( $script ) {
 
-	$script .= <<<SCRIPT
+	//Todo: fse theme can not support meta description
+
+	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
+
+		$script .= <<<SCRIPT
 	jQuery(document).ready(function ($) {
 
     /**
@@ -1674,6 +1604,7 @@ function emulsion_description( $script ) {
     }
 });
 SCRIPT;
+	}
 
 	return $script;
 }
@@ -1710,6 +1641,98 @@ CODE;
 		set_theme_mod( $theme_mod_name, $tracking_code );
 		echo $tracking_code;
 	}
+}
+/**
+ * Theme body class
+ */
+if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
+
+	function emulsion_admin_body_class( $classes ) {
+		global $post, $wp_version;
+
+
+		if ( ! isset( $post ) || ! function_exists( 'emulsion_get_var' ) ) {
+			return $classes;
+		}
+
+		if ( isset( $post ) && use_block_editor_for_post( $post ) ) {
+
+			if ( function_exists( 'emulsion_contrast_color' ) ) {
+
+				$text_color = emulsion_contrast_color();
+			} else {
+
+				$text_color = '#333333';
+			}
+
+			$emulsion_post_theme_style_script	 = get_post_meta( absint( $post->ID ), 'emulsion_post_theme_style_script', true );
+			$emulsion_page_theme_style_script	 = get_post_meta( absint( $post->ID ), 'emulsion_page_theme_style_script', true );
+
+			if ( 'no_bg' !== $emulsion_post_theme_style_script && 'no_bg' !== $emulsion_page_theme_style_script ) {
+
+				if ( '#ffffff' == $text_color ) {
+
+					$emulsion_brightnes = ' is-dark is-dark-theme';
+				}
+				if ( '#333333' == $text_color ) {
+
+					$emulsion_brightnes = ' is-light';
+				}
+			}
+			if ( 'no_bg' == $emulsion_post_theme_style_script || 'no_bg' == $emulsion_page_theme_style_script ) {
+
+				$default_background	 = sprintf( '#%1$s', get_theme_support( 'custom-background', 'default-color' ) );
+				$text_color			 = emulsion_contrast_color( $default_background );
+
+				if ( '#ffffff' == $text_color ) {
+
+					$emulsion_brightnes = ' is-dark is-dark-theme';
+				}
+				if ( '#333333' == $text_color ) {
+
+					$emulsion_brightnes = ' is-light';
+				}
+			}
+			if ( function_exists( 'emulsion_get_var' ) ) {
+				$colors_for_editor = get_theme_mod( 'emulsion_colors_for_editor', emulsion_get_var( 'emulsion_colors_for_editor' ) );
+			} else {
+				$colors_for_editor = 'disable';
+			}
+
+			if ( 'enable' == $colors_for_editor ) {
+
+				$color_for_editor_class = ' emulsion-color-enable';
+			} else {
+				$color_for_editor_class = ' emulsion-color-disable';
+			}
+			/**
+			 * gutengerg7.2 html structure changed
+			 * The editor style implemented in 5.0-core cannot control block styles after GB7.2.
+			 * Need to add style for new editor structure and keep style for old structure
+			 * Add a new body class to allow the theme to control the editor style
+			 */
+			if ( has_action( 'admin_enqueue_scripts', 'gutenberg_edit_site_init' ) ) {
+
+				$block_editor_class_name = ' emulsion-gb-phase-site';
+			} else {
+
+				$block_editor_class_name = ' emulsion-gb-phase-block';
+			}
+
+			if ( version_compare( $wp_version, '5.5', '>=' ) ) {
+
+				$block_editor_class_name = ' emulsion-gb-phase-site';
+			}
+
+			$theme_classes	 = implode( ' ', emulsion_addons_body_class( array() ) );
+			$theme_classes	 = str_replace( array( 'noscript','is-loop', 'is-light', 'layout-list' ), '', $theme_classes );
+
+			return $classes . ' '. $theme_classes . $emulsion_brightnes . $color_for_editor_class . $block_editor_class_name;
+		}
+
+		return $classes;
+	}
+
 }
 /*
 function emulsion_admin_bar_menu() {

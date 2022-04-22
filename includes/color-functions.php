@@ -17,6 +17,10 @@ if ( ! function_exists( 'emulsion_get_css_variables_values' ) ) {
 
 		global $emulsion_custom_header_defaults, $wp_filter, $content_width, $emulsion_customize_args;
 
+		if( 'fse' == emulsion_get_theme_operation_mode() && defined('EMULSION_DEFAULT_VARIABLES')) {
+			return true;
+		}
+
 		if ( 'enable' == emulsion_get_var( 'emulsion_header_gradient' ) ) {
 
 			$header_background_color			 = emulsion_get_var( 'emulsion_header_background_color' );
