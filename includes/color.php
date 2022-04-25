@@ -14,10 +14,6 @@ function emulsion__css_variables( $css = '' ) {
 		return ':root{'.EMULSION_DEFAULT_VARIABLES.'}';
 	}
 
-	if ( is_customize_preview() ) {
-
-		remove_theme_mod( 'emulsion__css_variables' );
-	}
 	if ( is_singular() ) {
 
 		$post_id = get_the_ID();
@@ -30,11 +26,9 @@ function emulsion__css_variables( $css = '' ) {
 
 	$transient_val = get_theme_mod( 'emulsion__css_variables' );
 
-	//if ( false !== $transient_val &&( ! is_user_logged_in() || ! is_customize_preview() ) ) {
-	if ( false !== $transient_val && ! is_customize_preview() ) {
-		return $css . $transient_val;
+	if ( false === current_user_can( 'edit_posts' ) ) {
+			return $css . $transient_val;
 	}
-
 	/**
 	 * CSS variables
 	 */
