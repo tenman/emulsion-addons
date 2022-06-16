@@ -528,6 +528,15 @@ function emulsion_document_style() {
     margin-right: auto;
   }
 }
+
+	.full_text .grid-child.size1of1,
+	.full_text .grid-child.size1of2,
+	.full_text .grid-child.size1of3,
+	.full_text .grid-child.size1of4,
+	.full_text .grid-child.size1of5{
+		width:100%;
+	}
+
 .centered{
     display: -webkit-box;
     -webkit-box-pack: center;
