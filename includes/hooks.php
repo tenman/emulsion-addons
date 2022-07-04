@@ -1734,111 +1734,159 @@ if ( ! function_exists( 'emulsion_admin_body_class' ) ) {
 	}
 
 }
-/*
-function emulsion_admin_bar_menu() {
+/**
+ * Posts Table column template
+ */
 
-	global $menu;
+//if ( current_user_can( 'edit_theme_options' ) ) {
 
-	if( ! function_exists( 'gutenberg_is_fse_theme' ) ) {
+	add_filter( 'manage_posts_columns', 'emulsion_posts_table_add_column' );
+	add_filter( 'manage_pages_columns', 'emulsion_posts_table_add_column' );
+	add_action( 'manage_posts_custom_column', 'emulsion_posts_table_template_data', 10, 2 );
+	add_action( 'manage_pages_custom_column', 'emulsion_posts_table_template_data', 10, 2 );
+	add_action( 'restrict_manage_posts', 'emulsion_posts_table_template_dropdown' );
+	add_filter( 'query_vars', 'emulsion_posts_table_query_var_template' );
+	add_filter( 'posts_where', 'emulsion_posts_table_post_where' );
+//}
 
+function emulsion_posts_table_add_column( $columns ) {
+
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return $columns;
+	}
+
+	$new_columns = array();
+
+	foreach ( $columns as $key => $value ) {
+		if ( $key === 'author' ) {
+
+			$new_columns['template'] = esc_html__( 'Template', 'emulsion' );
+		}
+		$new_columns[$key] = $value;
+	}
+
+	return $new_columns;
+}
+//https://www.tenman.info/wp-37/wp-admin/themes.php?page=gutenberg-edit-site&postType=wp_template&postId=emulsion%2F%2Fsingle-with-toc
+
+function emulsion_posts_table_template_data( $column, $post_id ) {
+
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
 		return;
 	}
 
-	if ( ! gutenberg_is_fse_theme() || ! emulsion_get_supports( 'full_site_editor' ) ) {
-		return;
-	}
+	switch ( $column ) {
 
-	if ( current_user_can( 'manage_options' ) ) {
-		global $wp_admin_bar;
+		case 'template':
+			$templates			 = get_page_templates();
+			$current_template	 = sanitize_text_field( get_post( $post_id )->page_template );
+			$result				 = ! empty( get_query_var( 'template' ) ) ? sanitize_text_field( get_query_var( 'template' ) ) : esc_html__( 'Default', 'emulsion' );
+			$template_id		 = 'emulsion//' . $current_template;
 
-		if( 'off' == filter_input( INPUT_GET, 'fse' ) ) {
-			$menu_title = esc_html__( 'FSE OFF', 'emulsion-addons' );
-			$color = '<strong style="color:#fff;background:#ff0033;display:block;padding-left:8px;padding-right:8px;">';
-		} elseif( 'transitional' == filter_input( INPUT_GET, 'fse' )  ) {
-			$menu_title = esc_html__( 'FSE Transitional', 'emulsion-addons' );
-			$color = '<strong style="color:#fff;background:#3498db;display:block;padding-left:8px;padding-right:8px;">';
-		} else {
-			$menu_title = esc_html__( 'FSE', 'emulsion-addons' );
-			$color = '<strong style="color:#000;background:#90ee90;display:block;padding-left:8px;padding-right:8px;">';
-		}
+			//Gutenberg In Version 13.5.1, the transition to the template page is restricted, so we will not link
 
-		if ( is_admin() ) {
+			$link_flag			 = false;
 
-			//$color = '<strong style="display:block;padding-left:8px;padding-right:8px;">';
-		}
+			if ( 'php' == pathinfo( $current_template )['extension'] ) {
 
-		$wp_admin_bar->add_menu( array(
-			'parent' => 'top-secondary',
-			'id'	 => 'fse_switch',
-			'title'	 => $color . $menu_title . '</strong>',
-			'href'	 => esc_url( remove_query_arg( 'fse' ) ),
-		) );
+				$link_url = esc_url( admin_url( 'index.php' ) );
+				$link_flag = false;
+			} else {
 
+				$link_url = esc_url( admin_url( 'themes.php?page=gutenberg-edit-site&postType=wp_template&postId=' . $template_id ) );
+			}
 
-		if ( ! filter_input( INPUT_GET, 'fse' ) ) {
+			$link_url = wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' );
 
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_switch_off',
-				'title'	 => esc_html__( 'fse-off', 'emulsion-addons' ),
-				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
-			) );
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_switch_transitional',
-				'title'	 => esc_html__( 'fse-transitional', 'emulsion-addons' ),
-				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
-			) );
+			foreach ( $templates as $template_name => $file_name ) {
 
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'emulsion_fse_template',
-				'title'	 => esc_html__( 'wp template', 'emulsion-addons' ),
-				'href'	 => esc_url( get_admin_url( NULL, 'edit.php?post_type=wp_template' ) ),
-			) );
+				if ( $file_name === $current_template ) {
 
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'emulsion_fse_template_part',
-				'title'	 => esc_html__( 'wp template part', 'emulsion-addons' ),
-				'href'	 => esc_url( get_admin_url( NULL, 'edit.php?post_type=wp_template_part' ) ),
-			) );
-		} else {
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_switch_off',
-				'title'	 => esc_html__( 'fse-off', 'emulsion-addons' ),
-				'href'	 => esc_url( add_query_arg( array( 'fse' => 'off' ) ) ),
-			) );
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_switch_on',
-				'title'	 => esc_html__( 'fse-on', 'emulsion-addons' ),
-				'href'	 => esc_url( remove_query_arg( 'fse' ) ),
-			) );
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_switch_transitional',
-				'title'	 => esc_html__( 'fse-transitional', 'emulsion-addons' ),
-				'href'	 => esc_url( add_query_arg( array( 'fse' => 'transitional' ) ) ),
-			) );
+					if ( true === $link_flag ) {
+						$result = sprintf( '<a href="%1$s">%2$s</a>', $link_url, $current_template );
+					} else {
+						$result = $current_template;
+					}
+				}
+			}
 
-		}
-
-		if ( ! is_admin() ) {
-
-			$view_currrent = emulsion_do_fse()
-					? esc_html__( 'Being displayed in FSE Template', 'emulsion-addons' )
-					: esc_html__( 'being displayed in Theme Template', 'emulsion-addons' );
-
-			$wp_admin_bar->add_menu( array(
-				'parent' => 'fse_switch',
-				'id'	 => 'fse_current_view',
-				'title'	 => $view_currrent,
-				'href'	 => '',
-
-			) );
-		}
+			echo $result;
+			break;
 	}
 }
-*/
+
+function emulsion_posts_table_template_dropdown() {
+
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return;
+	}
+
+	$post_type	 = get_post_type();
+	$args		 = array(
+		'posts_per_page' => -1,
+		'post_type'		 => $post_type,
+	);
+	$posts		 = get_posts( $args );
+
+	for ( $i = 0; $i < count( $posts ); $i ++ ) {
+		$value					 = sanitize_text_field( get_post_meta( $posts[$i]->ID, '_wp_page_template', true ) );
+		$current_template[$i]	 = $value;
+	}
+
+	$current_template	 = array_unique( $current_template );
+	$current_template	 = array_values( $current_template );
+	$template_query		 = filter_input( INPUT_GET, 'template' );
+	$template			 = get_page_templates();
+
+	echo '<select name="template">';
+
+	printf( '<option value="">All Templates</option>', esc_html__( 'All Templates' ), 'emulsion' );
+	if ( ! empty( $template_query ) && $template_query === 'default' ) {
+
+		printf( '<option selected value="%2$s">%1$s</option>', esc_html__( 'Default Template', 'emulsion' ), 'default' );
+	} else {
+
+		printf( '<option value="%2$s">%1$s</option>', esc_html__( 'Default Template', 'emulsion' ), 'default' );
+	}
+
+	foreach ( $template as $template_name => $file_name ) {
+
+		for ( $i = 0; $i < count( $current_template ); $i ++ ) {
+
+			if ( $current_template[$i] === $file_name && ! empty( $template_query ) && $template_query === $file_name ) {
+
+				printf( '<option selected value="%1$s">%2$s</option>', $file_name, $template_name );
+			} elseif ( $current_template[$i] === $file_name ) {
+
+				printf( '<option value="%1$s">%2$s</option>', $file_name, $template_name );
+			}
+		}
+	}
+	echo '</select>';
+}
+
+function emulsion_posts_table_query_var_template( $vars ) {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return $vars;
+	}
+	$vars[] = 'template';
+	return $vars;
+}
+
+function emulsion_posts_table_post_where( $where ) {
+
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return $where;
+	}
+
+	global $wpdb;
+
+	$template = get_query_var( 'template' );
+
+	if ( ! empty( $template ) ) {
+
+		$where .= $wpdb->prepare( "AND EXISTS (SELECT * FROM {$wpdb->postmeta} as m WHERE m.post_id = {$wpdb->posts}.ID AND m.meta_key='_wp_page_template' AND m.meta_value = %s)", $template );
+	}
+
+	return $where;
+}
