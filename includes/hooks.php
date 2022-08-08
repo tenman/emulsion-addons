@@ -1581,7 +1581,8 @@ function emulsion_description( $script ) {
 
 	//Todo: fse theme can not support meta description
 
-	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
+//	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
+	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) && 'html' !== get_theme_mod( 'emulsion_header_template', emulsion_theme_default_val( 'emulsion_header_template', 'default') ) ) {
 
 		$script .= <<<SCRIPT
 	jQuery(document).ready(function ($) {

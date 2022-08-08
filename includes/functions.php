@@ -292,10 +292,14 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		/**
 		 * default value has been dinamic @1.5.3
 		 */
+		remove_theme_mod( 'emulsion_header_template');
+		remove_theme_mod( 'emulsion_footer_template');
+		remove_theme_mod( 'emulsion_editor_support');
+		
 		set_theme_mod( 'emulsion_scheme', 'default' );
-		set_theme_mod( 'emulsion_editor_support', 'transitional' );
-		set_theme_mod( 'emulsion_header_template', 'default' );
-		set_theme_mod( 'emulsion_footer_template', 'default' );
+		set_theme_mod( 'emulsion_editor_support', emulsion_theme_default_val( 'emulsion_editor_support', 'default') );
+		set_theme_mod( 'emulsion_header_template', emulsion_theme_default_val( 'emulsion_header_template', 'default')  );
+		set_theme_mod( 'emulsion_footer_template', emulsion_theme_default_val( 'emulsion_footer_template', 'default')  );
 		set_theme_mod( 'emulsion_should_load_separate_core_block_assets', 'disable' );
 		set_theme_mod( 'emulsion_gutenberg_render_layout_support_flag', 'disable' );
 		set_theme_mod( 'emulsion_render_elements_support', 'disable' );
