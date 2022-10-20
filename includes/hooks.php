@@ -69,7 +69,6 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'theme_mod_background_image', 'emulsion_bg_img_display_hide_post_editor' );
 
 
-
 	add_filter( 'emulsion_the_header_layer_class', 'emulsion_addons_the_header_layer_class' );
 	add_filter( 'emulsion_get_month_link', 'emulsion_addons_get_month_link' );
 	add_filter( 'emulsion_get_post_meta_on', 'emulsion_addons_get_post_meta_on', 11 );
@@ -78,13 +77,17 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_site_text_markup_self', 'emulsion_addons_site_text_markup' );
 	add_filter( 'emulsion_site_text_markup', 'emulsion_addons_site_text_markup' );
 	add_filter( 'emulsion_the_site_title', 'emulsion_addons_the_site_title' );
+
 	add_filter( 'the_excerpt', 'emulsion_addons_excerpt' );
 	add_filter( 'the_password_form', 'emulsion_password_form' );
 	add_filter( 'emulsion_current_layout_type', 'emulsion_addons_current_layout_type' );
 	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
+
 	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
 	add_filter( 'emulsion_inline_script', 'emulsion_description' );
-	add_filter( 'theme_mod_emulsion_header_html', 'apply_shortcodes' );
+
+	! empty(get_theme_mod('emulsion_header_html') ) ? add_filter( 'theme_mod_emulsion_header_html', 'apply_shortcodes' ): '';
+
 	add_action( 'wp_footer', 'emulsion_addons_google_tracking_code', 99 );
 }
 

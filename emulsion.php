@@ -3,7 +3,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     2.4.6
+ * Version:     2.5.0
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -320,6 +320,9 @@ function emulsion_activate_plugin() {
 
 function emulsion_relate_posts_shortcode( ){
 
-	return emulsion_get_related_posts();
+	return do_blocks( emulsion_get_related_posts() );
 }
+
 add_shortcode( 'emulsion_relate_posts', 'emulsion_relate_posts_shortcode' );
+
+

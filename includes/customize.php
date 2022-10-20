@@ -859,17 +859,23 @@ function emulsion_message_layout_posts_page() {
 	}
 }
 
+
 function emulsion_message_sidebar_position() {
+	
+	if ( 'fse' == emulsion_get_theme_operation_mode() ) {
+		return '';
+	}
 
 	$page_sidebar				 = is_active_sidebar( 'sidebar-3' ) && emulsion_get_supports( 'sidebar_page' ) ? true : false;
 	$post_sidebar				 = is_active_sidebar( 'sidebar-1' ) && emulsion_get_supports( 'sidebar' ) ? true : false;
 	$post_id					 = emulsion_get_customize_post_id( 'latest-post' );
 	$each_post_sidebar_setting	 = get_post_meta( $post_id, 'emulsion_post_sidebar', true );
-	$widgets					 = get_option( 'sidebars_widgets', array() );
-	$post_sidebar_widget		 = count( $widgets['sidebar-1'] );
-	$page_sidebar_widget		 = count( $widgets['sidebar-3'] );
+
 
 	if ( ! $page_sidebar || ! $post_sidebar ) {
+		$widgets					 = get_option( 'sidebars_widgets', array() );
+		$post_sidebar_widget		 = ! empty( $widgets['sidebar-1']) ? count( $widgets['sidebar-1'] ):1;
+		$page_sidebar_widget		 = ! empty( $widgets['sidebar-3']) ? count( $widgets['sidebar-3'] ):1;
 
 		$customizer_url = 'javascript:wp.customize.panel( \'widgets\' ).focus()';
 
@@ -895,6 +901,10 @@ function emulsion_message_sidebar_position() {
 }
 
 function emulsion_message_footer_columns() {
+
+	if ( 'fse' == emulsion_get_theme_operation_mode() ) {
+		return '';
+	}
 	$footer_widget_page	 = is_active_sidebar( 'sidebar-4' ) && emulsion_get_supports( 'footer_page' ) ? true : false;
 	$footer_widget		 = is_active_sidebar( 'sidebar-2' ) && emulsion_get_supports( 'footer' ) ? true : false;
 	$page				 = get_pages( array( 'number' => '1', 'sort_column' => 'post_date' ) );
@@ -904,8 +914,8 @@ function emulsion_message_footer_columns() {
 	$page_id			 = absint( $page[0]->ID );
 	$class				 = 'notice emulsion-notice';
 	$widgets			 = get_option( 'sidebars_widgets', array() );
-	$post_footer_widget	 = count( $widgets['sidebar-2'] );
-	$page_footer_widget	 = count( $widgets['sidebar-4'] );
+	$post_footer_widget	 = ! empty( $widgets['sidebar-2']) ? count( $widgets['sidebar-2'] ): 1;
+	$page_footer_widget	 = ! empty( $widgets['sidebar-4']) ? count( $widgets['sidebar-4'] ): 1;
 
 	if ( ! $footer_widget || ! $footer_widget_page ) {
 
@@ -1004,7 +1014,10 @@ if ( ! function_exists( 'emulsion_extend_customize_register' ) ) {
 		 */
 		foreach ( $emulsion_theme_customize_panels as $emulsion_panel_key => $emulsion_panel_val ) {
 
-			$wp_customize->add_panel( $emulsion_panel_key, $emulsion_panel_val );
+		//	if ( ! empty( $emulsion_panel_key ) && ! empty( $emulsion_panel_val ) ) {
+
+				$wp_customize->add_panel( $emulsion_panel_key, $emulsion_panel_val );
+		//	}
 		}
 
 		/**
@@ -1012,7 +1025,10 @@ if ( ! function_exists( 'emulsion_extend_customize_register' ) ) {
 		 */
 		foreach ( $emulsion_theme_customize_sections as $emulsion_section_key => $emulsion_section_val ) {
 
-			$wp_customize->add_section( $emulsion_section_key, $emulsion_section_val );
+		//	if ( ! empty( $emulsion_section_key ) && ! empty( $emulsion_section_val ) ) {
+
+				$wp_customize->add_section( $emulsion_section_key, $emulsion_section_val );
+		//	}
 		}
 
 		/**
@@ -1022,34 +1038,37 @@ if ( ! function_exists( 'emulsion_extend_customize_register' ) ) {
 
 		foreach ( $emulsion_customize_args as $key => $emulsion_mod_val ) {
 
-			$id = $key;
+		//	if ( ! empty( $key ) && is_string( $key ) ) {
 
-			$wp_customize->add_setting( $id, array(
-				'default'			 => $emulsion_customize_args[$key]['default'],
-				'type'				 => $emulsion_customize_args[$key]['data_type'],
-				'capability'		 => $emulsion_customize_args[$key]['capability'],
-				'sanitize_callback'	 => $emulsion_customize_args[$key]['sanitize_callback'],
-				'validate_callback'	 => $emulsion_customize_args[$key]['validate_callback'],
-				'transport'			 => $emulsion_customize_args[$key]['transport'],
-			) );
+				$id = $key;
 
-			$id = $key;
+				$wp_customize->add_setting( $id, array(
+					'default'			 => $emulsion_customize_args[$key]['default'],
+					'type'				 => $emulsion_customize_args[$key]['data_type'],
+					'capability'		 => $emulsion_customize_args[$key]['capability'],
+					'sanitize_callback'	 => $emulsion_customize_args[$key]['sanitize_callback'],
+					'validate_callback'	 => $emulsion_customize_args[$key]['validate_callback'],
+					'transport'			 => $emulsion_customize_args[$key]['transport'],
+				) );
 
-			$wp_customize->add_control( $id, array(
-				'label'				 => $emulsion_customize_args[$key]['label'],
-				'section'			 => $emulsion_customize_args[$key]['section'],
-				'settings'			 => $id,
-				'type'				 => $emulsion_customize_args[$key]['type'],
-				'choices'			 => $emulsion_customize_args[$key]['choices'],
-				'priority'			 => $emulsion_customize_args[$key]['priority'],
-				'input_attrs'		 => $emulsion_customize_args[$key]['input_attrs'],
-				'description'		 => $emulsion_customize_args[$key]['description'],
-				'json'				 => $emulsion_customize_args[$key]['json'],
-				'active_callback'	 => $emulsion_customize_args[$key]['active_callback'],
-				'sanitize_callback'	 => $emulsion_customize_args[$key]['sanitize_callback'],
-				'validate'			 => $emulsion_customize_args[$key]['validate'],
-			) );
-		}
+				$id = $key;
+
+				$wp_customize->add_control( $id, array(
+					'label'				 => $emulsion_customize_args[$key]['label'],
+					'section'			 => $emulsion_customize_args[$key]['section'],
+					'settings'			 => $id,
+					'type'				 => $emulsion_customize_args[$key]['type'],
+					'choices'			 => $emulsion_customize_args[$key]['choices'],
+					'priority'			 => $emulsion_customize_args[$key]['priority'],
+					'input_attrs'		 => $emulsion_customize_args[$key]['input_attrs'],
+					'description'		 => $emulsion_customize_args[$key]['description'],
+					'json'				 => $emulsion_customize_args[$key]['json'],
+					'active_callback'	 => $emulsion_customize_args[$key]['active_callback'],
+					'sanitize_callback'	 => $emulsion_customize_args[$key]['sanitize_callback'],
+					'validate'			 => $emulsion_customize_args[$key]['validate'],
+				) );
+			}
+		//}
 
 		/**
 		 * Create Custom Controls
