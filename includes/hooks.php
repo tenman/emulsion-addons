@@ -1773,6 +1773,7 @@ function emulsion_posts_table_add_column( $columns ) {
 }
 //https://www.tenman.info/wp-37/wp-admin/themes.php?page=gutenberg-edit-site&postType=wp_template&postId=emulsion%2F%2Fsingle-with-toc
 
+
 function emulsion_posts_table_template_data( $column, $post_id ) {
 
 	if ( ! current_user_can( 'edit_theme_options' ) ) {
@@ -1782,25 +1783,24 @@ function emulsion_posts_table_template_data( $column, $post_id ) {
 	switch ( $column ) {
 
 		case 'template':
+			$post_id = get_the_ID();
 			$templates			 = get_page_templates();
 			$current_template	 = sanitize_text_field( get_post( $post_id )->page_template );
 			$result				 = ! empty( get_query_var( 'template' ) ) ? sanitize_text_field( get_query_var( 'template' ) ) : esc_html__( 'Default', 'emulsion' );
 			$template_id		 = 'emulsion//' . $current_template;
 
-			//Gutenberg In Version 13.5.1, the transition to the template page is restricted, so we will not link
+			$link_flag			 = true;
 
-			$link_flag			 = false;
-
-			if ( 'php' == pathinfo( $current_template )['extension'] ) {
+			if ( 'php' == pathinfo( $current_template, PATHINFO_EXTENSION ) ) {
 
 				$link_url = esc_url( admin_url( 'index.php' ) );
 				$link_flag = false;
 			} else {
 
-				$link_url = esc_url( admin_url( 'themes.php?page=gutenberg-edit-site&postType=wp_template&postId=' . $template_id ) );
+				$link_url =  add_query_arg( array( 'postType' => 'wp_template', 'postId' => $template_id ), admin_url( 'site-editor.php' ) ) ;
 			}
 
-			$link_url = wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' );
+			$link_url = esc_url( wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' ) );
 
 			foreach ( $templates as $template_name => $file_name ) {
 
