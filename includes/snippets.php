@@ -5,14 +5,14 @@
  * Scripts and styles are processed in a lump without being distributed to each CSS and PHP.
  *
  */
-add_action( 'template_redirect', 'emulsion_snippet_functions' );
+add_action( 'template_redirect', 'emulsion_snippet_functions');
 
 /**
  * register snippet functions
  */
 function emulsion_snippet_functions() {
 
-	if ( 'custom' == get_theme_mod( 'emulsion_header_layout', emulsion_get_var( 'emulsion_header_layout' ) ) ) {
+	if ( 'custom' == get_theme_mod( 'emulsion_header_layout', 'custom' ) ) {
 
 		/**
 		 * Header CTA Button
@@ -67,7 +67,6 @@ if ( ! function_exists( 'emulsion_append_header_layer_snippet' ) ) {
 		$css = '';
 
 		$js = '';
-
 
 			emulsion_do_snippet( $hook, $type, $css, $js, $html );
 
@@ -143,7 +142,7 @@ if ( ! function_exists( 'emulsion_background_css_pattern' ) ) {
 	function emulsion_background_css_pattern( $hook, $type = 'action', $css = '', $js = '',
 			$html = '' ) {
 
-		if ( emulsion_get_supports( 'background_css_pattern' ) ) {
+	//	if ( emulsion_get_supports( 'background_css_pattern' ) ) {
 
 			$html							 = array();
 			$background_css_pattern_class	 = get_theme_mod( 'emulsion_background_css_pattern', emulsion_get_var( 'emulsion_background_css_pattern' ) );
@@ -152,11 +151,51 @@ if ( ! function_exists( 'emulsion_background_css_pattern' ) ) {
 				$class_name	 = 'background-css-pattern-' . $background_css_pattern_class;
 				$html[]		 = $class_name;
 			}
-		}
+	//	}
 
 
 		$js = '';
 		emulsion_do_snippet( $hook, $type, $css, $js, $html );
+	}
+
+}
+
+if ( ! function_exists( 'emulsion_do_snippet' ) ) {
+
+	function emulsion_do_snippet( $hook = '', $type = 'action', $css = '',
+			$js = '', $html = '' ) {
+
+		if ( empty( $hook ) ) {
+			return;
+		}
+
+		empty( $css ) ? '' : add_filter( 'emulsion_inline_style', function( $current_css ) use( $css ) {
+							$css = emulsion_sanitize_css( $css );
+							return $current_css . ' ' . $css;
+						} );
+
+		empty( $js ) ? '' : add_filter( 'emulsion_inline_script', function( $current_js ) use( $js ) {
+
+							return $current_js . ' ' . $js;
+						} );
+
+		$type == 'filter' ? add_filter( $hook, function($current_html) use( $html ) {
+
+							if ( is_array( $current_html ) && is_array( $html ) ) {
+
+								$current_html = array_merge( $current_html, $html );
+
+								return $current_html;
+							}
+							if ( is_string( $current_html ) && is_string( $html ) ) {
+
+								return $current_html . $html;
+							}
+						} ) : '';
+		$type == 'action' ? add_action( $hook, function() use( $html ) {
+							/* $html output action hook results */
+							echo $html;
+						} ) : '';
 	}
 
 }

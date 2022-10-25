@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     2.5.1
+ * Version:     2.5.2
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -12,7 +13,6 @@
 $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name' );
 $emulsion_addon_accept_theme_version = wp_get_theme( get_template() )->get( 'Version' );
 $emulsion_root						 = plugin_dir_path( __FILE__ );
-
 
 $priview_theme		 = filter_input( INPUT_GET, 'customize_theme', FILTER_SANITIZE_SPECIAL_CHARS );
 $priview_theme_id	 = filter_input( INPUT_GET, 'customize_messenger_channel', FILTER_SANITIZE_SPECIAL_CHARS );
@@ -38,12 +38,12 @@ if ( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name )
 	return '';
 }
 
-if( ! function_exists('edit_theme_options')){
+if ( ! function_exists( 'edit_theme_options' ) ) {
 
 	include_once( ABSPATH . 'wp-includes/pluggable.php' );
 }
 
-if (  current_user_can( 'edit_theme_options' )  && ('emulsion' == $emulsion_addon_accept_theme_name || 'emulsion-dev' == $emulsion_addon_accept_theme_name) ) {
+if ( current_user_can( 'edit_theme_options' ) && ('emulsion' == $emulsion_addon_accept_theme_name || 'emulsion-dev' == $emulsion_addon_accept_theme_name) ) {
 
 	include_once( $emulsion_root . 'includes/functions.php');
 
@@ -63,6 +63,7 @@ if (  current_user_can( 'edit_theme_options' )  && ('emulsion' == $emulsion_addo
 	include_once( $emulsion_root . 'includes/wp-scss.php' );
 	include_once( $emulsion_root . 'documents/documents.php' );
 } else {
+	include_once( $emulsion_root . 'includes/snippets.php' );
 	add_action( 'wp_enqueue_scripts', 'emulsion_pallet_styles' );
 	return;
 }
@@ -72,18 +73,11 @@ if (  current_user_can( 'edit_theme_options' )  && ('emulsion' == $emulsion_addo
  */
 add_action( 'after_setup_theme', 'emulsion_addon_setup' );
 
-
 if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 	function emulsion_addon_setup() {
 
-		if(is_user_logged_in() ){
-
-
-
-
-
-
+		if ( is_user_logged_in() ) {
 
 		}
 
@@ -248,7 +242,6 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		/**
 		 * relate posts
 		 */
-
 		if ( false === emulsion_the_theme_supports( 'relate-posts' ) ) {
 
 			emulsion_remove_supports( 'relate-posts' );
@@ -256,7 +249,6 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		/**
 		 * metabox
 		 */
-
 		if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
 
 			new emulsion_add_meta_boxes();
@@ -268,7 +260,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		/**
 		 * Header video
 		 */
-		add_filter( 'emulsion_custom_header_defaults', function( $args ) {
+		add_filter( 'emulsion_custom_header_defaults', function ( $args ) {
 			$args['video'] = true;
 			return $args;
 		} );
@@ -288,10 +280,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 
 	'disable' == get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) ? emulsion_remove_supports( 'instantclick' ) : '';
 	'disable' == get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) ) ? emulsion_remove_supports( 'lazyload' ) : '';
-
 }
-
-
 
 function emulsion_pallet_styles() {
 
@@ -317,12 +306,10 @@ function emulsion_activate_plugin() {
 	emulsion_wp_scss_activate_check();
 }
 
-
-function emulsion_relate_posts_shortcode( ){
+function emulsion_relate_posts_shortcode() {
 
 	return do_blocks( emulsion_get_related_posts() );
 }
 
 add_shortcode( 'emulsion_relate_posts', 'emulsion_relate_posts_shortcode' );
-
 

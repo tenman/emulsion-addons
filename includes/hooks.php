@@ -1023,45 +1023,6 @@ CSS;
 
 }
 
-if ( ! function_exists( 'emulsion_do_snippet' ) ) {
-
-	function emulsion_do_snippet( $hook = '', $type = 'action', $css = '',
-			$js = '', $html = '' ) {
-
-		if ( empty( $hook ) ) {
-			return;
-		}
-
-		empty( $css ) ? '' : add_filter( 'emulsion_inline_style', function( $current_css ) use( $css ) {
-							$css = emulsion_sanitize_css( $css );
-							return $current_css . ' ' . $css;
-						} );
-
-		empty( $js ) ? '' : add_filter( 'emulsion_inline_script', function( $current_js ) use( $js ) {
-
-							return $current_js . ' ' . $js;
-						} );
-
-		$type == 'filter' ? add_filter( $hook, function($current_html) use( $html ) {
-
-							if ( is_array( $current_html ) && is_array( $html ) ) {
-
-								$current_html = array_merge( $current_html, $html );
-
-								return $current_html;
-							}
-							if ( is_string( $current_html ) && is_string( $html ) ) {
-
-								return $current_html . $html;
-							}
-						} ) : '';
-		$type == 'action' ? add_action( $hook, function() use( $html ) {
-							/* $html output action hook results */
-							echo $html;
-						} ) : '';
-	}
-
-}
 if ( ! function_exists( 'emulsion_footer_widget_params' ) ) {
 
 	function emulsion_footer_widget_params( $params ) {
