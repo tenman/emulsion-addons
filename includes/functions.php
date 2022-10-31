@@ -289,20 +289,134 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 		$favorite_color_palette	 = '';
 		$favorite_color_palette	 = get_theme_mod( 'emulsion_favorite_color_palette', emulsion_get_var( 'emulsion_favorite_color_palette' ) );
 
+		if ( empty( $emulsion_theme_mod_args ) ) {
+
+			/**
+			 * Temporary setting
+			 * Settings for older theme versions < theme version 2.5.2
+			 */
+			$emulsion_theme_mod_args = array(
+				'emulsion_editor_support'							 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'fse',
+					'label'				 => esc_html__( 'Theme Operation Mode Setting', 'emulsion' ),
+					'description'		 => esc_html__( 'This theme can be run as either the currently widely used theme ( php template ) or the latest Full site editiong theme ( html template ) by changing the settings.', 'emulsion' ) .
+					sprintf( '<p><a href="%1$s" target="blank" style="text-decoration:underline">%2$s</a></p>', 'https://www.tenman.info/wp3/emulsion/en/2021/10/28/emulsion-theme-editor-type/', esc_html__( 'More Details', 'emulsion' ) ),
+					'sanitize_callback'	 => 'emulsion_editor_support_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'fse'			 => esc_html__( 'Full Site Editing Theme', 'emulsion' ),
+						'transitional'	 => esc_html__( 'FSE Transitional Theme', 'emulsion' ),
+						'theme'			 => esc_html__( 'Classic Theme', 'emulsion' ),
+					),
+				),
+				'emulsion_scheme'									 => array(
+					'section'			 => 'emulsion_scheme',
+					'default'			 => 'default',
+					'label'				 => esc_html__( 'Radio Icon Control', 'emulsion' ),
+					'description'		 => esc_html__( 'Plugins activate more detailed settings such as fonts and sidebar colors.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_scheme_validate',
+					'type'				 => 'emulsionImageRadio',
+				),
+				'emulsion_header_template'							 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'html',
+					'label'				 => esc_html__( 'Header Template', 'emulsion' ),
+					'description'		 => esc_html__( 'Select header template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_header_template_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
+						'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
+					),
+				),
+				'emulsion_footer_template'							 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'html',
+					'label'				 => esc_html__( 'Footer Template', 'emulsion' ),
+					'description'		 => esc_html__( 'Select footer template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_footer_template_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
+						'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
+					),
+				),
+				'emulsion_should_load_separate_core_block_assets'	 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'disable',
+					'label'				 => esc_html__( 'Sparate Core Block CSS Load', 'emulsion' ),
+					'description'		 => esc_html__( 'Check for the presence of the block and load the required style.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_should_load_separate_core_block_assets_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'disable'	 => esc_html__( 'Disabled', 'emulsion' ),
+						'enable'	 => esc_html__( 'Enabled', 'emulsion' ),
+					),
+				),
+				'emulsion_gutenberg_render_layout_support_flag'		 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'disable',
+					'label'				 => esc_html__( 'Use the gutenberg layout feature with is-layout-flow is-layout-constrained', 'emulsion' ),
+					'description'		 => esc_html__( 'The hard-coded inline styles affect the display of the theme.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_gutenberg_render_layout_support_flag_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'disable'	 => esc_html__( 'Use Theme Features', 'emulsion' ),
+						'enable'	 => esc_html__( 'Use Gutenberg features', 'emulsion' ),
+					),
+				),
+				'emulsion_render_elements_support'					 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'disable',
+					'label'				 => esc_html__( 'Elements styles block support.', 'emulsion' ),
+					'description'		 => esc_html__( 'link style gutenberg use Class wp-elements-XXXXXXXXXXXX, theme use Class has-[preset color name]-link-color', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_render_elements_support_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'disable'	 => esc_html__( 'Use Theme Features', 'emulsion' ),
+						'enable'	 => esc_html__( 'Use Gutenberg features', 'emulsion' ),
+					),
+				),
+				'emulsion_custom_css_support'						 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'disable',
+					'label'				 => esc_html__( 'Site Editor with Custom CSS.', 'emulsion' ),
+					'description'		 => esc_html__( 'If enabled, include one of the body classes (is-presentation-fse, is-presentation-transitional, is-presentation-theme) in the CSS ruleset.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_custom_css_support_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'disable'	 => esc_html__( 'Disabled', 'emulsion' ),
+						'enable'	 => esc_html__( 'Enabled', 'emulsion' ),
+					),
+				),
+				'emulsion_core_block_patterns_support'				 => array(
+					'section'			 => 'emulsion_editor',
+					'default'			 => 'disable',
+					'label'				 => esc_html__( 'Core Block Patterns.', 'emulsion' ),
+					'description'		 => esc_html__( 'If enabled,Show the core block pattern. However, the specified external pattern is no longer available in theme.json.', 'emulsion' ),
+					'sanitize_callback'	 => 'emulsion_core_block_patterns_support_validate',
+					'type'				 => 'radio',
+					'choices'			 => array(
+						'disable'	 => esc_html__( 'Disabled', 'emulsion' ),
+						'enable'	 => esc_html__( 'Enabled', 'emulsion' ),
+					),
+				),
+			);
+		}
+
+
 		/**
-		 * default value has been dinamic @1.5.3
+		 * Theme customize settings
 		 */
-		remove_theme_mod( 'emulsion_header_template');
-		remove_theme_mod( 'emulsion_footer_template');
-		remove_theme_mod( 'emulsion_editor_support');
-		
 		set_theme_mod( 'emulsion_scheme', 'default' );
-		set_theme_mod( 'emulsion_editor_support', emulsion_theme_default_val( 'emulsion_editor_support', 'default') );
-		set_theme_mod( 'emulsion_header_template', emulsion_theme_default_val( 'emulsion_header_template', 'default')  );
-		set_theme_mod( 'emulsion_footer_template', emulsion_theme_default_val( 'emulsion_footer_template', 'default')  );
-		set_theme_mod( 'emulsion_should_load_separate_core_block_assets', 'disable' );
-		set_theme_mod( 'emulsion_gutenberg_render_layout_support_flag', 'disable' );
-		set_theme_mod( 'emulsion_render_elements_support', 'disable' );
+
+		set_theme_mod( 'emulsion_editor_support',  emulsion_editor_support_validate( $emulsion_theme_mod_args['emulsion_editor_support']['default'] ) );
+		set_theme_mod( 'emulsion_header_template', emulsion_header_template_validate( $emulsion_theme_mod_args['emulsion_header_template']['default'] ) );
+		set_theme_mod( 'emulsion_footer_template', emulsion_footer_template_validate( $emulsion_theme_mod_args['emulsion_footer_template']['default'] ) );
+		set_theme_mod( 'emulsion_should_load_separate_core_block_assets', emulsion_should_load_separate_core_block_assets_validate( $emulsion_theme_mod_args['emulsion_should_load_separate_core_block_assets']['default'] ) );
+		set_theme_mod( 'emulsion_gutenberg_render_layout_support_flag', emulsion_gutenberg_render_layout_support_flag_validate( $emulsion_theme_mod_args['emulsion_gutenberg_render_layout_support_flag']['default'] ) );
+		set_theme_mod( 'emulsion_render_elements_support', emulsion_render_elements_support_validate( $emulsion_theme_mod_args['emulsion_render_elements_support']['default'] ) );
 
 		/**
 		 * layout grid steam is dinamicaly set emulsion_add_supports()
