@@ -1,4 +1,12 @@
-<div class="document-description">
+<?php
+
+if( 'theme' !== emulsion_get_theme_operation_mode() ) {
+
+	return;
+}
+
+?>
+<!-- comment --><div class="document-description">
 	<p><?php esc_html_e( 'Setting location : ', 'emulsion-addons' ) ?><?php esc_html_e( 'Post Editor/ Select Block / Editor Menu ( Advanced Tab ) / Additional CSS Class', 'emulsion-addons' ) ?></p>
 </div>
 <div class="custom-classes">

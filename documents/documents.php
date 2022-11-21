@@ -602,7 +602,7 @@ function emulsion_admin_tabs( $current = 'homepage' ) {
 
 		$tabs	 = array(
 			'homepage'		 => esc_html__( 'Home', 'emulsion-addons' ),
-			'advanced'		 => esc_html__( 'Advanced Class', 'emulsion-addons' ),
+			
 		);
 	}
 	$links	 = array();

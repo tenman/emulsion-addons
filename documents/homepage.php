@@ -1,8 +1,15 @@
 <div class="wp-block-group grid">
-
 	<h2><?php esc_html_e("Significant changes", 'emulsion-addons' ) ?></h2>
 	<div class="wp-block-group__inner-container">
 		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-sunrise">
+			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/10/25/wordpress-6-1%e3%81%a8emulsion-theme/', 'emulsion-addons') ),
+					esc_html__( 'About WordPress 6.1 with emulsion theme', 'emulsion-addons' ) );?></h3>
+		</div>
+		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/06/08/wordpress-6-0-%e3%81%a8-emulsion-theme/', 'emulsion-addons') ),
+					esc_html__( 'About WordPress 6.0 with emulsion theme', 'emulsion-addons' ) );?></h3>
+		</div>
+		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/01/13/wordpress-5-9-with-emulsion-theme/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 5.9 with emulsion theme', 'emulsion-addons' ) );?></h3>
 		</div>
@@ -11,7 +18,7 @@
 					esc_html__( 'About WordPress 5.8 and emulsion theme FSE support', 'emulsion-addons' ) );?></h3>
 		</div>
 
-		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+		<!--<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/05/06/block-editor-effect/', 'emulsion-addons') ),
 					esc_html__( 'Improved so that the theme class is reflected in the block editor', 'emulsion-addons' ) );?></h3>
 		</div>
@@ -42,7 +49,7 @@
 		</div>
 		<div class="grid-child centered vh25 size1of4 solid-border is-style-seigaiha">
 			<h3><?php is_admin() ? esc_html_e( 'The primary menu can be displayed normally even if javascript is off', 'emulsion-addons'):''; ?></h3>
-		</div>
+		</div>-->
 		<!--
 		<div class="grid-child centered vh25 size1of4 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2020/06/29/block-group/', 'emulsion-addons' ) ),
@@ -76,33 +83,11 @@
 		<td><?php printf('<a href="%1$s">%1$s</a>', esc_url( esc_html__( 'https://wordpress.org/support/theme/emulsion/', 'emulsion-addons' ) ) );?></td>
 	</tr>
 	<tr>
+		<td class='col-1'><?php esc_html_e( 'Release notes', 'emulsion-addons' );?></td>
+		<td><?php printf('<a href="%1$s">%1$s</a>', esc_url( esc_html__( 'https://github.com/tenman/emulsion/releases/', 'emulsion-addons' ) ) );?></td>
+	</tr>
+	<tr>
 		<td class='col-1'><?php esc_html_e( 'Minimum PHP version', 'emulsion-addons' ); ?></td>
 		<td>PHP<?php echo esc_html( EMULSION_MIN_PHP_VERSION ); ?></td>
 	</tr>
 </table>
-
-<h2><?php esc_html_e( 'Theme-specific features', 'emulsion-addons' ); ?></h2>
-<div class="wp-block-group grid">
-	<div class="wp-block-group__inner-container">
-		<div class='grid-child centered vh25 size1of2 solid-border color-scheme-ectoplasm'>
-			<h3><?php esc_html_e( 'Social menu', 'emulsion-addons' ); ?></h3>
-			<p><?php esc_html_e( 'Social menu supports phone links and email links', 'emulsion-addons' ); ?></p>
-			<p><?php esc_html_e( 'These features are closely related to your privacy protection. Please use it after careful consideration', 'emulsion-addons' ); ?></p>
-			<p><?php esc_html_e( 'The telephone number is displayed on the PC browser, but the link does not work. The link works only when access from a mobile browser is detected.', 'emulsion-addons' ); ?></p>
-		</div>
-		<div class='grid-child centered vh25 size1of2 solid-border color-scheme-ocean'>
-			<h3><?php esc_html_e( 'Auto Contrast', 'emulsion-addons' ); ?></h3>
-			<p><?php esc_html_e( 'This theme will automatically set the text color suitable for the background color setting you made', 'emulsion-addons' ); ?></p>
-			<p><?php esc_html_e( 'For example, if a shortcode or plug-in has a background color, try to keep it as readable as possible, but it is not perfect', 'emulsion-addons' ); ?></p>
-			<p><?php esc_html_e( 'If you have any problems, please contact the above support', 'emulsion-addons' ); ?></p>
-		</div>
-		<div class='grid-child centered vh25 size1of2 solid-border color-scheme-midnight'>
-			<h3><?php esc_html_e( 'Dark Mode', 'emulsion-addons' ); ?></h3>
-			<p><?php esc_html_e( 'It is not enabled by default, but can be enabled by changing the EMULSION_DARK_MODE_SUPPORT constant in lib / config.php to true.', 'emulsion-addons' ); ?></p>
-		</div>
-		<div class='grid-child centered vh25 size1of2 solid-border color-scheme-light'>
-		<h3><?php printf( '<a href="%1$s">%2$s</a>', esc_url( esc_html__( 'https://www.tenman.info/wp3/emulsion/en/2019/12/27/accsessibility-ui-2/', 'emulsion-addons' ) ), esc_html__( 'Accessibility', 'emulsion-addons' ) ); ?></h3>
-		<p><?php esc_html_e( 'Themes have a tab navigation feature for accessibility', 'emulsion-addons' ); ?></p>
-		</div>
-	</div>
-</div>
