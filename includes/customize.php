@@ -6,9 +6,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-	if ( function_exists('emulsion_get_theme_operation_mode') && 'fse' == emulsion_get_theme_operation_mode() ) {
-			return $color;
-	}
+if ( function_exists('emulsion_get_theme_operation_mode') && 'fse' == emulsion_get_theme_operation_mode() ) {
+		return;
+}
 global $wp_customize;
 add_action( 'customize_register', 'emulsion_remove_display_header_text', 11 );
 
@@ -861,7 +861,7 @@ function emulsion_message_layout_posts_page() {
 
 
 function emulsion_message_sidebar_position() {
-	
+
 	if ( 'fse' == emulsion_get_theme_operation_mode() ) {
 		return '';
 	}
