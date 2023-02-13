@@ -76,16 +76,11 @@ body:not(.emulsion-not-support-presentation) .wp-block-table{
     --thm_table_pale_blue_background:#e7f5fe;
     --thm_table_pale_pink_background:#ffccf8;
 }
-
-[class*='scheme-']{
+[class*='scheme-']:is-presentation-transitional,
+[class*='scheme-']:is-presentation-theme{
     background:var(--thm_background_color);
 }
 
-
-
-body .grid .article-wrapper article header a {
-
-}
 body .grid .article-wrapper article header.show-post-image a {
     color: var(--thm_white_color);
 }
