@@ -1934,7 +1934,7 @@ $emulsion_customize_args = array(
 		'type'						 => 'text',
 		'input_attrs'				 => array(
 			/* translators: Here is an example of Google Analytics Tracking Code. Please do not translate, please show original text */
-			'placeholder' => __( 'UA-XXXXXX-XX', 'emulsion-addons' ),
+			'placeholder' => __( 'G-XXXXXXXXXX', 'emulsion-addons' ),
 		),
 
 	),

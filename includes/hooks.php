@@ -1577,34 +1577,23 @@ SCRIPT;
 function emulsion_addons_google_tracking_code() {
 
 	$tag			 = sanitize_text_field( get_theme_mod( 'emulsion_google_analytics_tracking_code' ) );
-	$flag			 = get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) ? 'enable' : 'disable';
-	$theme_mod_name	 = 'emulsion_google_analytics_' . $tag . $flag;
-
-	if ( $result = get_theme_mod( $theme_mod_name, false ) && $tag ) {
-
-		//echo $result;
-		//return;
-	}
+	$theme_mod_name	 = 'emulsion_google_analytics_' . $tag;
 
 	if ( ! empty( $tag ) ) {
 
 		$tracking_code = <<<CODE
 
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={$tag}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-
-	gtag('js', new Date());
-
-	gtag('config', '{$tag}');
-
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{$tag}');
 </script>
-
 CODE;
 
 		set_theme_mod( $theme_mod_name, $tracking_code );
-		echo $tracking_code;
 	}
 }
 /**
