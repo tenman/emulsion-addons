@@ -4,7 +4,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     2.7.5
+ * Version:     2.7.6
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -206,45 +206,46 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 					'slug'	 => sanitize_title_with_dashes( $emulsion_favorite_color_name ),
 					'color'	 => $emulsion_favorite_color_palette,
 				),
-			) );
+					) );
 		}
+		if ( function_exists( 'emulsion_the_theme_supports' ) ) {
+			/**
+			 * Block Editor experimantal styles
+			 *
+			 */
+			if ( emulsion_the_theme_supports( 'block_experimentals' ) ) {
 
-		/**
-		 * Block Editor experimantal styles
-		 *
-		 */
-		if ( emulsion_the_theme_supports( 'block_experimentals' ) ) {
+				emulsion_add_supports( 'block_experimentals' );
+			}
+			/**
+			 * Date format Japan era
+			 * replace Y年n月j日 to 令和[0-9]年n月j日
+			 */
+			if ( emulsion_the_theme_supports( 'japan_era' ) ) {
 
-			emulsion_add_supports( 'block_experimentals' );
-		}
-		/**
-		 * Date format Japan era
-		 * replace Y年n月j日 to 令和[0-9]年n月j日
-		 */
-		if ( emulsion_the_theme_supports( 'japan_era' ) ) {
+				emulsion_add_supports( 'japan_era' );
+			}
+			/**
+			 * FSE
+			 */
+			if ( false === emulsion_the_theme_supports( 'full_site_editor' ) ) {
 
-			emulsion_add_supports( 'japan_era' );
-		}
-		/**
-		 * FSE
-		 */
-		if ( false === emulsion_the_theme_supports( 'full_site_editor' ) ) {
+				emulsion_remove_supports( 'full_site_editor' );
+			}
+			/**
+			 * Classic Social Link
+			 */
+			if ( false === emulsion_the_theme_supports( 'social-link-menu' ) ) {
 
-			emulsion_remove_supports( 'full_site_editor' );
-		}
-		/**
-		 * Classic Social Link
-		 */
-		if ( false === emulsion_the_theme_supports( 'social-link-menu' ) ) {
+				emulsion_remove_supports( 'social-link-menu' );
+			}
+			/**
+			 * relate posts
+			 */
+			if ( false === emulsion_the_theme_supports( 'relate-posts' ) ) {
 
-			emulsion_remove_supports( 'social-link-menu' );
-		}
-		/**
-		 * relate posts
-		 */
-		if ( false === emulsion_the_theme_supports( 'relate-posts' ) ) {
-
-			emulsion_remove_supports( 'relate-posts' );
+				emulsion_remove_supports( 'relate-posts' );
+			}
 		}
 		/**
 		 * metabox
