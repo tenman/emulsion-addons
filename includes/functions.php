@@ -315,7 +315,7 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 					'sanitize_callback'	 => 'emulsion_scheme_validate',
 					'type'				 => 'emulsionImageRadio',
 				),
-				'emulsion_header_template'							 => array(
+				/*'emulsion_header_template'							 => array(
 					'section'			 => 'emulsion_editor',
 					'default'			 => 'html',
 					'label'				 => esc_html__( 'Header Template', 'emulsion' ),
@@ -338,7 +338,7 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 						'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
 						'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
 					),
-				),
+				),*/
 				'emulsion_should_load_separate_core_block_assets'	 => array(
 					'section'			 => 'emulsion_editor',
 					'default'			 => 'disable',
@@ -422,8 +422,8 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 
 		set_theme_mod( 'emulsion_dark_mode_support', emulsion_dark_mode_support_validate( $emulsion_theme_mod_args['emulsion_dark_mode_support']['default'] ) );
 		set_theme_mod( 'emulsion_editor_support', emulsion_editor_support_validate( $emulsion_theme_mod_args['emulsion_editor_support']['default'] ) );
-		set_theme_mod( 'emulsion_header_template', emulsion_header_template_validate( $emulsion_theme_mod_args['emulsion_header_template']['default'] ) );
-		set_theme_mod( 'emulsion_footer_template', emulsion_footer_template_validate( $emulsion_theme_mod_args['emulsion_footer_template']['default'] ) );
+		//set_theme_mod( 'emulsion_header_template', emulsion_header_template_validate( $emulsion_theme_mod_args['emulsion_header_template']['default'] ) );
+		//set_theme_mod( 'emulsion_footer_template', emulsion_footer_template_validate( $emulsion_theme_mod_args['emulsion_footer_template']['default'] ) );
 		set_theme_mod( 'emulsion_should_load_separate_core_block_assets', emulsion_should_load_separate_core_block_assets_validate( $emulsion_theme_mod_args['emulsion_should_load_separate_core_block_assets']['default'] ) );
 		set_theme_mod( 'emulsion_gutenberg_render_layout_support_flag', emulsion_gutenberg_render_layout_support_flag_validate( $emulsion_theme_mod_args['emulsion_gutenberg_render_layout_support_flag']['default'] ) );
 		set_theme_mod( 'emulsion_render_elements_support', emulsion_render_elements_support_validate( $emulsion_theme_mod_args['emulsion_render_elements_support']['default'] ) );
