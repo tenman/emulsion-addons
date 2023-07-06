@@ -1745,12 +1745,15 @@ function emulsion_posts_table_template_data( $column, $post_id ) {
 
 				$link_url = esc_url( admin_url( 'index.php' ) );
 				$link_flag = false;
+
 			} else {
 
 				$link_url =  add_query_arg( array( 'postType' => 'wp_template', 'postId' => $template_id ), admin_url( 'site-editor.php' ) ) ;
+				$post_edit_url = add_query_arg( array( 'postType' => 'post', 'postId' => $post_id ,'canvas' => 'edit'), admin_url( 'site-editor.php' ) ) ;
 			}
 
 			$link_url = esc_url( wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' ) );
+			$post_edit_url = esc_url( wp_nonce_url( $post_edit_url, 'emulsion-post-edit-site-editor', 'emulsion_template_nonce' ) );
 
 			foreach ( $templates as $template_name => $file_name ) {
 
@@ -1758,6 +1761,7 @@ function emulsion_posts_table_template_data( $column, $post_id ) {
 
 					if ( true === $link_flag ) {
 						$result = sprintf( '<a href="%1$s">%2$s</a>', $link_url, $current_template );
+						$result .= sprintf( '<br /><a href="%1$s">%2$s</a>', $post_edit_url, esc_html__('Edit (editor)') );
 					} else {
 						$result = $current_template;
 					}
