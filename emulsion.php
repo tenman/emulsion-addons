@@ -4,12 +4,13 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     2.7.9
+ * Version:     2.8.7
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
+
 $emulsion_addon_accept_theme_name	 = wp_get_theme( get_template() )->get( 'Name' );
 $emulsion_addon_accept_theme_version = wp_get_theme( get_template() )->get( 'Version' );
 $emulsion_root						 = plugin_dir_path( __FILE__ );
@@ -43,8 +44,7 @@ if ( ! function_exists( 'edit_theme_options' ) ) {
 	include_once( ABSPATH . 'wp-includes/pluggable.php' );
 }
 
-if ( current_user_can( 'edit_theme_options' ) && ('emulsion' == $emulsion_addon_accept_theme_name || 'emulsion-dev' == $emulsion_addon_accept_theme_name) ) {
-
+if (  false !== strpos($emulsion_addon_accept_theme_name, 'emulsion') || get_template_directory() !== get_stylesheet_directory() ) {
 	include_once( $emulsion_root . 'includes/functions.php');
 
 	include_once( $emulsion_root . 'includes/validate.php');
@@ -242,10 +242,10 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 			/**
 			 * relate posts
 			 */
-			if ( false === emulsion_the_theme_supports( 'relate-posts' ) ) {
+			//if ( false === emulsion_the_theme_supports( 'relate-posts' ) ) {
 
-				emulsion_remove_supports( 'relate-posts' );
-			}
+				//emulsion_remove_supports( 'relate-posts' );
+			//}
 		}
 		/**
 		 * metabox
@@ -308,7 +308,6 @@ function emulsion_activate_plugin() {
 }
 
 function emulsion_relate_posts_shortcode() {
-
 	return do_blocks( emulsion_get_related_posts() );
 }
 

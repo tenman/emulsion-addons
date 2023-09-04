@@ -10,7 +10,7 @@
 .wp-block-cover__inner-container:first-child{
     color:var(--thm_black_color);
 }
-[class*="background-color"],
+[class*="background-color"]:not(.has-icon-background-color),
 .has-background{
     background:var(--thm_unknown-bg);
     color:var(--thm_black_color);
