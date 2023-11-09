@@ -1751,9 +1751,10 @@ function emulsion_posts_table_template_data( $column, $post_id ) {
 				$link_url =  add_query_arg( array( 'postType' => 'wp_template', 'postId' => $template_id ), admin_url( 'site-editor.php' ) ) ;
 				$post_edit_url = add_query_arg( array( 'postType' => 'post', 'postId' => $post_id ,'canvas' => 'edit'), admin_url( 'site-editor.php' ) ) ;
 			}
-
-			$link_url = esc_url( wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' ) );
-			$post_edit_url = esc_url( wp_nonce_url( $post_edit_url, 'emulsion-post-edit-site-editor', 'emulsion_template_nonce' ) );
+			if ( true === $link_flag ) {
+				$link_url = esc_url( wp_nonce_url( $link_url, 'emulsion-link-to-template', 'emulsion_template_nonce' ) );
+				$post_edit_url = esc_url( wp_nonce_url( $post_edit_url, 'emulsion-post-edit-site-editor', 'emulsion_template_nonce' ) );
+			}
 
 			foreach ( $templates as $template_name => $file_name ) {
 

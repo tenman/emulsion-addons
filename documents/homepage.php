@@ -2,6 +2,10 @@
 	<h2><?php esc_html_e("Significant changes", 'emulsion-addons' ) ?></h2>
 	<div class="wp-block-group__inner-container">
 		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-sunrise">
+			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2023/11/08/wordpress-6-4-%e3%81%a8-emulsion%e3%83%86%e3%83%bc%e3%83%9e/', 'emulsion-addons') ),
+					esc_html__( 'About WordPress 6.4 with emulsion theme', 'emulsion-addons' ) );?></h3>
+		</div>
+		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2023/09/05/what-you-can-do-with-the-wordpress-6-3-editor-beginners/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 6.3 with emulsion theme', 'emulsion-addons' ) );?></h3>
 		</div>
@@ -13,15 +17,15 @@
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/10/25/wordpress-6-1%e3%81%a8emulsion-theme/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 6.1 with emulsion theme', 'emulsion-addons' ) );?></h3>
 		</div>
-		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of3 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/06/08/wordpress-6-0-%e3%81%a8-emulsion-theme/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 6.0 with emulsion theme', 'emulsion-addons' ) );?></h3>
 		</div>
-		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of3 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2022/01/13/wordpress-5-9-with-emulsion-theme/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 5.9 with emulsion theme', 'emulsion-addons' ) );?></h3>
 		</div>
-		<div class="grid-child centered vh25 size1of2 solid-border color-scheme-light">
+		<div class="grid-child centered vh25 size1of3 solid-border color-scheme-light">
 			<h3><?php printf('<a href="%1$s">%2$s</a>' , esc_url( esc_html__('https://www.tenman.info/wp3/emulsion/en/2021/06/17/about-wordpress-5-8-and-emulsion-theme-fse-support/', 'emulsion-addons') ),
 					esc_html__( 'About WordPress 5.8 and emulsion theme FSE support', 'emulsion-addons' ) );?></h3>
 		</div>
