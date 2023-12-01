@@ -4,7 +4,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     3.0.0
+ * Version:     3.0.1
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -17,6 +17,19 @@ $emulsion_root						 = plugin_dir_path( __FILE__ );
 
 $priview_theme		 = filter_input( INPUT_GET, 'customize_theme', FILTER_SANITIZE_SPECIAL_CHARS );
 $priview_theme_id	 = filter_input( INPUT_GET, 'customize_messenger_channel', FILTER_SANITIZE_SPECIAL_CHARS );
+
+if ( version_compare( $emulsion_addon_accept_theme_version, '3.0.0', '<' ) ) {
+
+	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+	deactivate_plugins( 'emulsion-addons/emulsion.php' );
+
+	add_action( 'admin_notices', 'emulsion_addons_admin_version_notice' );
+
+	function emulsion_addons_admin_version_notice() {
+		printf( '<div class="notice notice-error is-dismissible emulsion-addon-error"><p>%1$s</p></div>', __('Deactivated the plugin. emulsion-addons version 3.0.0 requires emulsion theme 3.0.0.','emulsion') );
+	}
+}
 
 if ( $priview_theme_id && $priview_theme !== $emulsion_addon_accept_theme_name ) {
 
