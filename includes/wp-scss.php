@@ -22,7 +22,7 @@ function emulsion_set_wp_scss_options() {
 		$emulsion_css_dir				 = '/css/';
 
 		if ( $wpscss_options['scss_dir'] !== $emulsion_scss_dir || $wpscss_options['css_dir'] !== $emulsion_css_dir || $wpscss_options["base_compiling_folder"] !== 'Current Theme' ) {
-			
+
 			if ( file_exists( get_theme_file_path( $emulsion_scss_dir ) ) ) {
 
 				$wpscss_options['scss_dir'] = $emulsion_scss_dir;
@@ -85,7 +85,7 @@ function emulsion_wp_scss_needs_compiling( $compile ) {
 			return true;
 		}
 
-		if( 'yes' == emulsion_get_css_variables_values( 'is_changed' ) ) {
+		if( function_exists('emulsion_get_css_variables_values') && 'yes' == emulsion_get_css_variables_values( 'is_changed' ) ) {
 			return true;
 		}
 	}
@@ -105,6 +105,7 @@ function emulsion_wp_scss_needs_compiling( $compile ) {
 function emulsion_wp_scss_set_variables() {
 
 	global $emulsion_custom_header_defaults;
+	return;
 
 	//$stream_condition	 = emulsion_get_css_variables_values( 'stream' );
 	//$grid_condition		 = emulsion_get_css_variables_values( 'grid' );

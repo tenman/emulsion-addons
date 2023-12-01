@@ -40,6 +40,8 @@ Use these support channels appropriately.
 1. screenshot-1.png
 
 == Changelog ==
+=3.0.0: December 1 2023 =
+        * https://github.com/tenman/emulsion-addons/tags
 =2.9.2: November 9 2023 =
         * https://github.com/tenman/emulsion-addons/tags
 =2.8.8: October 3 2023 =

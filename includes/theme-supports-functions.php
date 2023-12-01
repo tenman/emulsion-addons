@@ -96,42 +96,48 @@ function emulsion_customizer_add_supports_layout() {
 
 	if ( $name == $customizer_setting_home ) {
 
-		$grid[] = 'home';
+		//$grid[] = 'home';
+		$grid[] = '';
 	}
 
 	$emulsion_layout_posts_page = get_theme_mod( 'emulsion_layout_posts_page', emulsion_get_var( 'emulsion_layout_posts_page', 'default' ) );
 
 	if ( $name == $emulsion_layout_posts_page ) {
 
-		$grid[] = 'blog';
+		//$grid[] = 'blog';
+		$grid[] = '';
 	}
 
 	$emulsion_layout_date_archives = get_theme_mod( 'emulsion_layout_date_archives', emulsion_get_var( 'emulsion_layout_date_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_date_archives ) {
 
-		$grid[] = 'date';
+		//$grid[] = 'date';
+		$grid[] = '';
 	}
 
 	$emulsion_layout_category_archives = get_theme_mod( 'emulsion_layout_category_archives', emulsion_get_var( 'emulsion_layout_category_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_category_archives ) {
 
-		$grid[] = 'category';
+		//$grid[] = 'category';
+		$grid[] = '';
 	}
 
 	$emulsion_layout_tag_archives = get_theme_mod( 'emulsion_layout_tag_archives', emulsion_get_var( 'emulsion_layout_tag_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_tag_archives ) {
 
-		$grid[] = 'post_tag';
+		//$grid[] = 'post_tag';
+		$grid[] = '';
 	}
 
 	$emulsion_layout_author_archives = get_theme_mod( 'emulsion_layout_author_archives', emulsion_get_var( 'emulsion_layout_author_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_author_archives ) {
 
-		$grid[] = 'author';
+		//$grid[] = 'author';
+		$grid[] = '';
 	}
 	/**
 	 * Future tasks
@@ -154,41 +160,47 @@ function emulsion_customizer_add_supports_layout() {
 
 	if ( $name == $emulsion_layout_homepage ) {
 
-		$stream[] = 'home';
+		//$stream[] = 'home';
+		$stream[] = '';
 	}
 
 	$emulsion_layout_posts_page = get_theme_mod( 'emulsion_layout_posts_page', emulsion_get_var( 'emulsion_layout_posts_page', 'default' ) );
 
 	if ( $name == $emulsion_layout_posts_page ) {
 
-		$stream[] = 'blog';
+		//$stream[] = 'blog';
+		$stream[] = '';
 	}
 
 	$emulsion_layout_date_archives = get_theme_mod( 'emulsion_layout_date_archives', emulsion_get_var( 'emulsion_layout_date_archives', 'default' ) );
 	if ( $name == $emulsion_layout_date_archives ) {
 
-		$stream[] = 'date';
+		//$stream[] = 'date';
+		$stream[] = '';
 	}
 
 	$emulsion_layout_category_archives = get_theme_mod( 'emulsion_layout_category_archives', emulsion_get_var( 'emulsion_layout_category_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_category_archives ) {
 
-		$stream[] = 'category';
+		//$stream[] = 'category';
+		$stream[] = '';
 	}
 
 	$emulsion_layout_tag_archives = get_theme_mod( 'emulsion_layout_tag_archives', emulsion_get_var( 'emulsion_layout_tag_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_tag_archives ) {
 
-		$stream[] = 'post_tag';
+		//$stream[] = 'post_tag';
+		$stream[] = '';
 	}
 
 	$emulsion_layout_author_archives = get_theme_mod( 'emulsion_layout_author_archives', emulsion_get_var( 'emulsion_layout_author_archives', 'default' ) );
 
 	if ( $name == $emulsion_layout_author_archives ) {
 
-		$stream[] = 'author';
+		//$stream[] = 'author';
+		$stream[] = '';
 	}
 	/**
 	 * Future tasks

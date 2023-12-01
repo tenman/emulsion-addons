@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( function_exists('emulsion_get_theme_operation_mode') && 'fse' == emulsion_get_theme_operation_mode() ) {
 		return;
 }
+
 global $wp_customize;
 add_action( 'customize_register', 'emulsion_remove_display_header_text', 11 );
 

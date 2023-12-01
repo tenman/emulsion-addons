@@ -71,12 +71,13 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 		$message_protected_post	 = esc_html__( 'Password is required to view this post', 'emulsion-addons' );
 		$post_id				 = get_the_ID();
 		$stream					 = emulsion_has_archive_format( $supports_stream );
+
 		$grid					 = emulsion_has_archive_format( $supports_grid );
 		$get_post				 = get_post( $post_id, 'OBJECT', 'display' );
 		$excerpt_length			 = apply_filters( 'excerpt_length', 256 );
 		$read_more_text			 = esc_html__( '...', 'emulsion-addons' );
 		$excerpt_from_content	 = '';
-		$excerpt_html_wrapper	 = '<blockquote cite="%2$s" class="content-excerpt">%1$s</blockquote>';
+		$excerpt_html_wrapper	 = '<blockquote cite="%2$s" class="content-excerpt"><p class="%3$s" data-rows="%4$d">%1$s</p></blockquote>';
 
 		// Create excerpt from entry content
 		$post_text = strip_shortcodes( $get_post->post_content );
@@ -182,7 +183,7 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 
 			if ( $read_more_text !== $post_text && ! empty( $post_id ) ) {
 
-				$excerpt_from_content = sprintf( $excerpt_html_wrapper, wpautop( $post_text ), get_permalink( $post_id ) );
+				$excerpt_from_content = sprintf( $excerpt_html_wrapper, $post_text, get_permalink( $post_id ), 'trancate', 4);
 			} else {
 
 				$excerpt_from_content = '';
@@ -198,7 +199,8 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 			$excerpt_plain_text = trim( wp_strip_all_tags( $excerpt_from_content ) );
 		} else {
 
-			$excerpt_plain_text = trim( wp_strip_all_tags( $has_excerpt ) );
+
+			$excerpt_plain_text = $has_excerpt;
 		}
 
 		if ( ! post_password_required( $post_id ) ) {
@@ -251,8 +253,8 @@ if ( ! function_exists( 'emulsion_post_content' ) ) {
 								echo wpautop( $has_excerpt );
 							} else {
 							    //Wrap with fit class to match content_width
-								$has_excerpt = sprintf('<div class="post-excerpt-html fit">%1$s</div>', $has_excerpt );
-								$has_excerpt  = apply_filters('the_excerpt', $has_excerpt );
+								$has_excerpt = sprintf('<div class="post-excerpt-html alignnone">%1$s</div>', wp_kses_post( $excerpt_plain_text ) );
+
 
 								echo  $has_excerpt;
 							}

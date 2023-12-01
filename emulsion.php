@@ -4,7 +4,7 @@
  * Plugin Name: emulsion addons
  * Plugin URI:  https://github.com/tenman/emulsion-addons
  * Description: A plugin for customizing WordPress theme emulsion.
- * Version:     2.9.2
+ * Version:     3.0.0
  * Author:      nobita
  * Author URI:  https://www.tenman.info/
  * License:     GPLv2 or later
@@ -50,17 +50,18 @@ if (  false !== strpos($emulsion_addon_accept_theme_name, 'emulsion') || get_tem
 	include_once( $emulsion_root . 'includes/validate.php');
 	include_once( $emulsion_root . 'includes/theme-supports-functions.php' );
 	include_once( $emulsion_root . 'includes/theme-supports.php' );
+
 	include_once( $emulsion_root . 'includes/color-functions.php' );
 	include_once( $emulsion_root . 'includes/conf.php' );
 	include_once( $emulsion_root . 'includes/template-tags.php' );
 	include_once( $emulsion_root . 'includes/hooks.php' );
 
 	include_once( $emulsion_root . 'includes/snippets.php' );
-	include_once( $emulsion_root . 'includes/color.php' );
+	//include_once( $emulsion_root . 'includes/color.php' );
 	include_once( $emulsion_root . 'includes/keyword-highlight.php' );
-	include_once( $emulsion_root . 'includes/customize.php' );
-	include_once( $emulsion_root . 'includes/metabox.php' );
-	include_once( $emulsion_root . 'includes/wp-scss.php' );
+	//include_once( $emulsion_root . 'includes/customize.php' );
+	//include_once( $emulsion_root . 'includes/metabox.php' );
+	//include_once( $emulsion_root . 'includes/wp-scss.php' );
 	include_once( $emulsion_root . 'documents/documents.php' );
 } else {
 	include_once( $emulsion_root . 'includes/snippets.php' );
@@ -86,7 +87,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		 */
 		if ( function_exists( 'wp_scss_compile' ) ) {
 
-			add_filter( 'wp_scss_variables', 'emulsion_wp_scss_set_variables' );
+			//add_filter( 'wp_scss_variables', 'emulsion_wp_scss_set_variables' );
 		}
 
 		if ( emulsion_get_supports( 'background' ) ) {
@@ -252,7 +253,7 @@ if ( ! function_exists( 'emulsion_addon_setup' ) ) {
 		 */
 		if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
 
-			new emulsion_add_meta_boxes();
+			//new emulsion_add_meta_boxes();
 		}
 	}
 
@@ -293,19 +294,6 @@ function emulsion_pallet_styles() {
 /**
  * Deactivation
  */
-register_deactivation_hook( __FILE__, 'emulsion_deactivate_plugin' );
-
-function emulsion_deactivate_plugin() {
-	emulsion_wp_scss_deactivate_check();
-	set_theme_mod( 'header_textcolor', '' );
-}
-
-register_activation_hook( __FILE__, 'emulsion_activate_plugin' );
-
-function emulsion_activate_plugin() {
-
-	emulsion_wp_scss_activate_check();
-}
 
 function emulsion_relate_posts_shortcode() {
 	return do_blocks( emulsion_get_related_posts() );

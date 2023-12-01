@@ -524,7 +524,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 		$style	 .= emulsion_widget_meta_font_css( '' );
 		$style	 .= emulsion_block_latest_posts_excerpt( '' );
 
-		if( is_user_logged_in() ) {
+		if( is_user_logged_in() && function_exists('emulsion__css_variables')) {
 
 			//$style .= emulsion_dinamic_css( '' );
 			$style .= emulsion__css_variables( '' );

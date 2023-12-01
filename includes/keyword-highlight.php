@@ -35,10 +35,10 @@ function emulsion_search_from_terms( $target_terms = array( 'category', 'post_ta
 
 		$results .= $result;
 	}
-	// check lost element			
+	// check lost element
 	$emulsion_place = basename(__FILE__). ' line:'. __LINE__. ' '.  __FUNCTION__ .'()';
 	true === WP_DEBUG ? emulsion_elements_assert_equal( $results, wp_kses_post( $results ), $emulsion_place ) : '';
-	
+
 	if ( true == $echo && ! empty( $results ) ) {
 		printf( '<ul class="search-relate-terms horizontal-list-group">%1$s</ul>', wp_kses_post( $results ) );
 	}
@@ -79,7 +79,7 @@ function emulsion_keyword_with_mark_elements( $text ) {
 	$checksum		 = crc32( $text );
 	$class_name		 = trim( sprintf( "search-result-%u\n", $checksum ) );
 	$wrapper		 = '<mark style="%1$s">%2$s</mark>';
-	$block_wrapper	 = '<span class="%1$s">%2$s</span>';
+	$block_wrapper	 = '<div class="%1$s">%2$s</div>';
 
 	foreach ( $hilight_rules as $value ) {
 
