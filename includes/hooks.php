@@ -128,12 +128,7 @@ if ( ! function_exists( 'emulsion_plugins_style_change_inline' ) ) {
 
 			return $css;
 		}
-		if ( ! is_user_logged_in() && emulsion_theme_addons_exists() ) {
 
-			$get_css = file( get_theme_file_path( 'css/common.css' ) );
-			$add_css .= implode( '', $get_css );
-			return $css . $add_css;
-		}
 		return $css;
 	}
 
