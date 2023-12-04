@@ -915,7 +915,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_date_archives"			 => array(
 		'section'					 => 'emulsion_section_layout_date_archives',
-		'default'					 =>  'grid',
+		'default'					 =>  'excerpt',
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -957,7 +957,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_category_archives"		 => array(
 		'section'					 => 'emulsion_section_layout_category_archives',
-		'default'					 => 'stream',
+		'default'					 => 'excerpt',
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -999,7 +999,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_tag_archives"				 => array(
 		'section'					 => 'emulsion_section_layout_tag_archives',
-		'default'					 => 'stream',
+		'default'					 => 'excerpt',
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,
@@ -1041,7 +1041,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_layout_author_archives"			 => array(
 		'section'					 => 'emulsion_section_layout_author_archives',
-		'default'					 => 'stream',
+		'default'					 => 'excerpt',
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,

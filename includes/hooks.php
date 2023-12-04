@@ -7,7 +7,7 @@ function emulsion_addons_hooks_setup() {
  ! class_exists( 'WP_List_Table' ) ? require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) : '';
 
 
-	if ( function_exists( 'emulsion_is_plugin_active' ) && emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) && 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
+	if ( function_exists( 'emulsion_is_plugin_active' ) && function_exists('emulsion_set_wp_scss_options') && emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) && 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
 
 		//When you switch themes, cooperation with wp-scss may be canceled, and if the plugin is active, cooperate.
 		//Do nothing if wp-scss is active before installing the theme.
