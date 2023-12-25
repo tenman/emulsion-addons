@@ -30,6 +30,7 @@ function emulsion_customizer_add_supports_excerpt() {
 	}
 }
 
+
 function emulsion_customizer_add_supports_footer() {
 
 	if ( ! current_user_can( 'edit_theme_options' ) ) {

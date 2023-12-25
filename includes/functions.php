@@ -159,41 +159,12 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 
 		$metabox_flag = false;
 
-		if ( is_page() && false == emulsion_metabox_display_control( 'page_style' ) ) {
-
-			$classes[]		 = 'emulsion-removed-presentation';
-			$metabox_flag	 = true;
-			return $classes;
-		}
-		if ( is_single() && false == emulsion_metabox_display_control( 'style' ) ) {
-
-			$classes[]		 = 'emulsion-removed-presentation';
-			$metabox_flag	 = true;
-			return $classes;
-		}
-		if ( ! emulsion_get_supports( 'enqueue' ) && ! emulsion_is_amp() ) {
-
-			$classes[]		 = 'emulsion-not-support-presentation';
-			$metabox_flag	 = true;
-			return $classes;
-		}
-
 		unset( $classes['emulsion'] );
 
 		$classes[] = sanitize_html_class( emulsion_plugin_info( 'Slug', false ) );
 
 		if ( is_singular() ) {
 
-			$post_id = get_the_ID();
-
-			$classes[]	 = 'no_bg' === get_post_meta( $post_id, 'emulsion_page_theme_style_script', true ) ? 'metabox-reset-page-presentation' : '';
-			$classes[]	 = 'no_bg' === get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) ? 'metabox-reset-post-presentation' : '';
-			$classes[]	 = 'no_menu' === get_post_meta( $post_id, 'emulsion_post_primary_menu', true ) ? 'metabox-removed-post-menu' : '';
-			$classes[]	 = 'no_menu' === get_post_meta( $post_id, 'emulsion_page_primary_menu', true ) ? 'metabox-removed-page-menu' : '';
-			$classes[]	 = 'no_bg' === get_post_meta( $post_id, 'emulsion_post_header', true ) ? 'metabox-reset-post-header' : '';
-			$classes[]	 = 'no_bg' === get_post_meta( $post_id, 'emulsion_page_header', true ) ? 'metabox-reset-page-header' : '';
-			$classes[]	 = 'no_header' === get_post_meta( $post_id, 'emulsion_post_header', true ) ? 'metabox-removed-post-header' : '';
-			$classes[]	 = 'no_header' === get_post_meta( $post_id, 'emulsion_page_header', true ) ? 'metabox-removed-page-header' : '';
 			$classes[]	 = 'is-singular';
 		} else {
 
@@ -216,30 +187,10 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 		}
 
 		/**
-		 * Custom background image
-		 */
-		$page_bg_image_url	 = get_background_image();
-		$supports_background = emulsion_get_supports( 'background' );
-
-		$has_background_img_relate_color = get_theme_mod( 'emulsion_bg_image_text' );
-		if ( ! empty( $page_bg_image_url ) && $supports_background ) {
-
-			$classes[]	 = 'emulsion-has-custom-background-image';
-			$classes[]	 = 'white' === $has_background_img_relate_color ? 'has-background-img-text-white' : '';
-		}
-
-		/**
 		 * Current Page layout type
 		 */
-		if ( is_customize_preview() ) {
-
-			$layout_type = emulsion_customizer_have_posts_class_helper();
-			$classes[]	 = 'layout-' . sanitize_html_class( $layout_type );
-		} else {
-
-			$layout_type = emulsion_current_layout_type();
-			$classes[]	 = 'layout-' . sanitize_html_class( $layout_type );
-		}
+		$layout_type = emulsion_current_layout_type();
+		$classes[]	 = 'layout-' . sanitize_html_class( $layout_type );
 
 		/**
 		 * Content type
@@ -247,22 +198,7 @@ if ( ! function_exists( 'emulsion_addons_body_class' ) ) {
 		$content_type	 = emulsion_content_type();
 		$classes[]		 = sanitize_html_class( $content_type );
 
-		/**
-		 * Category Colors
-		 */
-		if ( 'enable' == get_theme_mod( 'emulsion_category_colors', emulsion_get_var( 'emulsion_category_colors' ) ) ) {
 
-			$classes[] = 'has-category-colors';
-		} else {
-
-			$classes[] = 'disable-category-colors';
-		}
-		if ( emulsion_get_supports( 'background_css_pattern' ) ) {
-
-			$background_css_pattern_class	 = get_theme_mod( 'emulsion_background_css_pattern', emulsion_get_var( 'emulsion_background_css_pattern' ) );
-			$class_name						 = sanitize_html_class( 'background-css-pattern-' . $background_css_pattern_class );
-			$classes[]						 = 'none' !== $background_css_pattern_class ? $class_name : '';
-		}
 
 		return array_filter( $classes ); // remove empty class
 	}
@@ -315,30 +251,30 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 					'sanitize_callback'	 => 'emulsion_scheme_validate',
 					'type'				 => 'emulsionImageRadio',
 				),
-				/*'emulsion_header_template'							 => array(
-					'section'			 => 'emulsion_editor',
-					'default'			 => 'html',
-					'label'				 => esc_html__( 'Header Template', 'emulsion' ),
-					'description'		 => esc_html__( 'Select header template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
-					'sanitize_callback'	 => 'emulsion_header_template_validate',
-					'type'				 => 'radio',
-					'choices'			 => array(
-						'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
-						'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
-					),
-				),
-				'emulsion_footer_template'							 => array(
-					'section'			 => 'emulsion_editor',
-					'default'			 => 'html',
-					'label'				 => esc_html__( 'Footer Template', 'emulsion' ),
-					'description'		 => esc_html__( 'Select footer template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
-					'sanitize_callback'	 => 'emulsion_footer_template_validate',
-					'type'				 => 'radio',
-					'choices'			 => array(
-						'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
-						'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
-					),
-				),*/
+				/* 'emulsion_header_template'							 => array(
+				  'section'			 => 'emulsion_editor',
+				  'default'			 => 'html',
+				  'label'				 => esc_html__( 'Header Template', 'emulsion' ),
+				  'description'		 => esc_html__( 'Select header template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
+				  'sanitize_callback'	 => 'emulsion_header_template_validate',
+				  'type'				 => 'radio',
+				  'choices'			 => array(
+				  'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
+				  'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
+				  ),
+				  ),
+				  'emulsion_footer_template'							 => array(
+				  'section'			 => 'emulsion_editor',
+				  'default'			 => 'html',
+				  'label'				 => esc_html__( 'Footer Template', 'emulsion' ),
+				  'description'		 => esc_html__( 'Select footer template. If you select html, it will be displayed in the new html template in all editor settings.', 'emulsion' ),
+				  'sanitize_callback'	 => 'emulsion_footer_template_validate',
+				  'type'				 => 'radio',
+				  'choices'			 => array(
+				  'html'		 => esc_html__( 'HTML Template', 'emulsion' ),
+				  'default'	 => esc_html__( 'Depends on editor settings', 'emulsion' ),
+				  ),
+				  ), */
 				'emulsion_should_load_separate_core_block_assets'	 => array(
 					'section'			 => 'emulsion_editor',
 					'default'			 => 'disable',
@@ -489,146 +425,6 @@ if ( ! function_exists( 'emulsion_reset_customizer_settings' ) ) {
 
 }
 
-add_filter( 'emulsion_customizer_have_posts_class_helper', 'emulsion_addons_customizer_have_posts_class_helper' );
-
-if ( ! function_exists( 'emulsion_addons_customizer_have_posts_class_helper' ) ) {
-
-	/**
-	 * If the displayed page is grid layout or stream layout, grid or stream are return
-	 * @return type
-	 */
-	function emulsion_addons_customizer_have_posts_class_helper() {
-
-		if ( emulsion_is_posts_page() ) {
-
-			return get_theme_mod( 'emulsion_layout_posts_page', emulsion_get_var( 'emulsion_layout_posts_page' ) );
-		} elseif ( is_home() ) {
-
-			return get_theme_mod( 'emulsion_layout_homepage', emulsion_get_var( 'emulsion_layout_homepage' ) );
-		}
-		if ( is_date() ) {
-
-			return get_theme_mod( 'emulsion_layout_date_archives', emulsion_get_var( 'emulsion_layout_date_archives' ) );
-		}
-		if ( is_category() ) {
-
-			return get_theme_mod( 'emulsion_layout_category_archives', emulsion_get_var( 'emulsion_layout_category_archives' ) );
-		}
-		if ( is_tag() ) {
-
-			return get_theme_mod( 'emulsion_layout_tag_archives', emulsion_get_var( 'emulsion_layout_tag_archives' ) );
-		}
-		if ( is_author() ) {
-
-			return get_theme_mod( 'emulsion_layout_author_archives', emulsion_get_var( 'emulsion_layout_author_archives' ) );
-		}
-
-		return false;
-	}
-
-}
-
-if ( ! function_exists( 'emulsion_custom_background_cb' ) ) {
-
-	/**
-	 * Differences from the core function
-	 * Change background image to multiple background
-	 * filter add emulsion_custom_background_cb
-	 */
-	function emulsion_custom_background_cb() {
-
-		if ( ! is_user_logged_in() && false !== ( $result = get_transient( 'emulsion_custom_background_cb' ) ) ) {
-
-			echo wp_kses( $result, array( 'style' => array( 'id' => true, 'class' => true, 'type' => true ) ) );
-		}
-
-		// $background is the saved custom image, or the default image.
-		$background = set_url_scheme( get_background_image() );
-
-		// $color is the saved custom color.
-		// A default has to be specified in style.css. It will not be printed here.
-		$color = get_background_color();
-
-		if ( $color === get_theme_support( 'custom-background', 'default-color' ) ) {
-			$color = false;
-		}
-
-		$type_attr = current_theme_supports( 'html5', 'style' ) ? '' : ' type="text/css"';
-
-		if ( empty( $background ) && empty( $color ) ) {
-
-			if ( is_customize_preview() ) {
-				printf( '<style%s id="custom-background-css"></style>', wp_kses( $type_attr, array() ) );
-			}
-			return;
-		}
-
-		$style = $color ? "background-color: #$color;" : '';
-
-		if ( $background || ! empty( $style ) ) {
-
-			$image = ' background-image:linear-gradient(var(--thm_background_image_dim), var(--thm_background_image_dim)), url("' . esc_url_raw( $background ) . '");';
-
-			// Background Position.
-			$position_x	 = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
-			$position_y	 = get_theme_mod( 'background_position_y', get_theme_support( 'custom-background', 'default-position-y' ) );
-
-			if ( ! in_array( $position_x, array( 'left', 'center', 'right' ), true ) ) {
-				$position_x = 'left';
-			}
-
-			if ( ! in_array( $position_y, array( 'top', 'center', 'bottom' ), true ) ) {
-				$position_y = 'top';
-			}
-
-			$position = " background-position: $position_x $position_y;";
-
-			// Background Size.
-			$size = get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) );
-
-			if ( ! in_array( $size, array( 'auto', 'contain', 'cover' ), true ) ) {
-				$size = 'auto';
-			}
-
-			$size = " background-size: $size ! important;";
-
-			// Background Repeat.
-			$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
-
-			if ( ! in_array( $repeat, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ), true ) ) {
-				$repeat = 'repeat';
-			}
-
-			$repeat = " background-repeat: $repeat;";
-
-			// Background Scroll.
-			$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
-
-			if ( 'fixed' !== $attachment ) {
-				$attachment = 'scroll';
-			}
-
-			$attachment = " background-attachment: $attachment;";
-
-			$style		 .= $image . $position . $size . $repeat . $attachment;
-			/**
-			 * The CSS specificity is related to the custom background pattern. ( Customizer setting color )
-			 */
-			$rule_set	 = sprintf( ' html body.single-post.custom-background.emulsion-has-custom-background-image, html body.page.custom-background.emulsion-has-custom-background-image  { %1$s }', $style );
-
-			$rule_set = apply_filters( 'emulsion_custom_background_cb', $rule_set, $image, $position, $size, $repeat, $attachment );
-
-			if ( ! empty( $rule_set ) && ! empty( $background ) ) {
-				$result = sprintf( '<style%1$s id="custom-background-css" class="emulsion-callback-css">%2$s</style>', wp_kses( $type_attr, array() ), emulsion_remove_spaces_from_css( $rule_set ) );
-
-				set_transient( 'emulsion_custom_background_cb', $result, 24 * HOUR_IN_SECONDS );
-
-				echo wp_kses( $result, array( 'style' => array( 'id' => true, 'class' => true, 'type' => true ) ) );
-			}
-		}
-	}
-
-}
 if ( ! function_exists( 'emulsion_bg_img_display_hide_post_editor' ) ) {
 
 	function emulsion_bg_img_display_hide_post_editor( $url ) {
@@ -642,53 +438,15 @@ if ( ! function_exists( 'emulsion_bg_img_display_hide_post_editor' ) ) {
 
 			add_filter( 'theme_mod_background_image', '__return_false' );
 			add_filter( 'emulsion_custom_background_cb', '__return_false' );
-			add_filter( 'body_class', 'emulsion_remove_background_img_class' );
+			//add_filter( 'body_class', 'emulsion_remove_background_img_class' );
 		}
 		return $url;
 	}
 
 }
 
-if ( ! function_exists( 'emulsion_remove_custom_background_class' ) ) {
 
-	/**
-	 * If you reset the theme color in the Editor menu, the state will not come out of a custom-background
-	 */
-	function emulsion_remove_custom_background_class( $classes ) {
 
-		$post_id = get_the_ID();
-
-		if ( is_singular() && 'no_bg' == get_post_meta( $post_id, 'emulsion_post_theme_style_script', true ) ) {
-
-			foreach ( $classes as $key => $value ) {
-				if ( $value == 'custom-background' )
-					unset( $classes[$key] );
-			}
-			return $classes;
-		}
-
-		return $classes;
-	}
-
-}
-if ( ! function_exists( 'emulsion_remove_background_img_class' ) ) {
-
-	/**
-	 * background image relate function
-	 * Delete class related to background image when filter theme_mod_background_image return empty
-	 * @param type $classes
-	 * @return type
-	 */
-	function emulsion_remove_background_img_class( $classes ) {
-
-		foreach ( $classes as $key => $value ) {
-			if ( $value == 'emulsion-has-custom-background-image' )
-				unset( $classes[$key] );
-		}
-		return $classes;
-	}
-
-}
 if ( ! function_exists( 'emulsion_link_color_filter' ) ) {
 
 //	add_filter( 'emulsion_link_color', 'emulsion_link_color_filter' );
@@ -712,6 +470,7 @@ if ( ! function_exists( 'emulsion_link_color_filter' ) ) {
 	}
 
 }
+/*
 if ( ! function_exists( 'emulsion_hover_color_filter' ) ) {
 
 	function emulsion_hover_color_filter( $color ) {
@@ -720,10 +479,7 @@ if ( ! function_exists( 'emulsion_hover_color_filter' ) ) {
 
 			return $color;
 		}
-		/**
-		 * apply customizer setting value
-		 * Reflect when a color different from the default color is set in the customizer
-		 */
+
 		$current_value	 = get_theme_mod( 'emulsion_general_link_hover_color', emulsion_get_var( 'emulsion_general_link_hover_color' ) );
 		$default_value	 = emulsion_get_var( 'emulsion_general_link_hover_color', 'default' );
 
@@ -736,6 +492,7 @@ if ( ! function_exists( 'emulsion_hover_color_filter' ) ) {
 	}
 
 }
+*/
 if ( ! function_exists( 'emulsion_add_woocommerce_class_to_post' ) ) {
 
 	/**
@@ -801,58 +558,7 @@ if ( ! function_exists( 'emulsion_php_version_notice' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_get_google_font_family_from_url' ) ) {
 
-	/**
-	 * Parsing the google fonts URL and getting the font name
-	 * @param type $url
-	 * @param type $fallback
-	 * @return type
-	 */
-	function emulsion_get_google_font_family_from_url( $url = '',
-			$fallback = 'sans-serif' ) {
-
-		$query = parse_url( $url, PHP_URL_QUERY );
-
-		if ( is_null( $query ) ) {
-			return;
-		}
-
-		$query	 = htmlspecialchars_decode( $query );
-		$result	 = '';
-
-		parse_str( $query, $param );
-
-		if ( false !== strstr( $param['family'], '|' ) ) {
-
-			$fonts = explode( '|', $param['family'] );
-
-			foreach ( $fonts as $font ) {
-
-				if ( false !== $position = strpos( $font, ':' ) ) {
-
-					$result .= '"' . substr( $font, 0, $position ) . '",';
-				} else {
-					$result .= '"' . $font . '",';
-				}
-			}
-		} else {
-
-			if ( false !== $position = strpos( $param['family'], ':' ) ) {
-
-				$result .= '"' . substr( $param['family'], 0, $position ) . '",';
-			} else {
-				$result .= '"' . $param['family'] . '",';
-			}
-		}
-
-		$result	 = str_replace( '+', ' ', $result );
-		$result	 = addslashes( $result . $fallback );
-
-		return trim( $result, ',' );
-	}
-
-}
 
 if ( ! function_exists( 'emulsion_get_footer_cols' ) ) {
 
@@ -1004,19 +710,7 @@ if ( ! function_exists( 'emulsion_theme_info' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_remove_url_from_text' ) ) {
 
-	/**
-	 * Remove the URL string from the text
-	 * @param type $plain_text
-	 * @return type
-	 */
-	function emulsion_remove_url_from_text( $plain_text = '' ) {
-
-		return preg_replace( "/(https?:\/\/)([-_.!*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/iu", '', $plain_text );
-	}
-
-}
 if ( ! function_exists( 'emulsion_amp_css' ) ) {
 
 	function emulsion_amp_css() {
@@ -1026,36 +720,11 @@ if ( ! function_exists( 'emulsion_amp_css' ) ) {
 
 }
 
-if ( function_exists( 'amp_init' ) ) {
-
-	/**
-	 * AMP
-	 * for reader template
-	 * https://wordpress.org/plugins/amp/
-	 */
-	//add_action( 'amp_post_template_css', 'emulsion_addons_amp_css' );
-
-	/* 	if ( ! function_exists( 'emulsion_addons_amp_css' ) ) {
-
-	  function emulsion_addons_amp_css() {
-
-	  $supports	 = false;
-	  $supports	 = emulsion_the_theme_supports( 'amp' );
-
-	  if ( ! $supports ) {
-	  return;
-	  }
-	  $css_variables = emulsion__css_variables();
-	  echo emulsion_sanitize_css( $css_variables );
-	  }
-
-	  } */
-}
 
 /**
  * AMP plugin setting
  */
-//add_action( 'wp_enqueue_scripts', 'emulsion_amp_enqueue_script' );
+
 add_filter( 'emulsion_template_pre', 'emulsion_amp_setting' );
 
 function emulsion_amp_enqueue_script() {

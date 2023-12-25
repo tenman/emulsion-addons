@@ -64,7 +64,7 @@ function emulsion_keyword_with_mark_elements( $text ) {
 	}
 
 	$search_query					 = get_search_query();
-	$text							 = strip_tags( $text );
+	$text							 = wp_strip_all_tags( $text );
 	$style_rules_for_searched_text	 = 'color:#000;padding:0 .2rem;';
 
 	$hilight_rules = array(
@@ -119,7 +119,7 @@ function emulsion_keyword_with_mark_elements_title( $text ) {
 	}
 
 	$search_query					 = get_search_query();
-	$text							 = strip_tags( $text );
+	$text							 = wp_strip_all_tags( $text );
 	$style_rules_for_searched_text	 = 'color:#000;padding:0 .2rem;';
 
 	$hilight_rules = array(

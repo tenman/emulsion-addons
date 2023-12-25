@@ -645,7 +645,7 @@ $emulsion_customize_args = array(
 	),
 	"emulsion_title_in_header"					 => array(
 		'section'					 => 'emulsion_section_layout_header',
-		'default'					 =>  "yes" ,
+		'default'					 =>  "no" ,
 		'priority'					 => 10,
 		'data_type'					 => $emulsion_setting_type,
 		'capability'				 => $emulsion_customize_cap,

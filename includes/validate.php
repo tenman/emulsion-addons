@@ -1,190 +1,4 @@
 <?php
-
-/**
- * Form allowed elements
- * for wp_kses();
- * target password post form and search form
- */
-const EMULSION_FORM_ALLOWED_ELEMENTS = array(
-	'div'	 => array(
-		'class'	 => true,
-		'id'	 => true,
-	),
-	'form'	 => array(
-		'action' => true,
-		'class'	 => true,
-		'method' => true,
-		'role'	 => true,
-	),
-	'p'		 => array(
-		'class'	 => true,
-		'id'	 => true,
-	),
-	'wbr'	 => true,
-	'label'	 => array(
-		'for'	 => true,
-		'class'	 => true,
-	),
-	'input'	 => array(
-		'name'				 => true,
-		'id'				 => true,
-		'class'				 => true,
-		'type'				 => true,
-		'size'				 => true,
-		'placeholder'		 => true,
-		'required'			 => true,
-		'value'				 => true,
-		'aria-required'		 => true,
-		'aria-describedby'	 => true,
-		'aria-label'		 => true,
-	),
-	'button' => array(
-		'type'	 => true,
-		'class'	 => true,
-	)
-);
-
-/**
- * Target inline svg
- */
-const EMULSION_ICON_SVG_SYMBOLS_ALLOWED_ELEMENTS = array(
-	'svg'	 => array(
-		'class'				 => true,
-		'aria-labelledby'	 => true,
-		'role'				 => true,
-		'aria-hidden'		 => true,
-		'width'				 => true,
-		'height'			 => true,
-		'xmlns'				 => true,
-		'id'              => true,
-	),
-	'defs' => true,
-	'symbol' => array(
-		'class'		 => true,
-		'id'		 => true,
-		'viewBox'	 => true,
-		'viewbox'	 => true,
-	),
-	'title'	 => array(
-		'id'	 => true,
-		'desc'	 => true,
-	),
-	'path'	 => array(
-		'd'		 => true,
-		'class'	 => true,
-		'fill'	 => true
-	),
-	'circle' => array(
-		'cx' => true,
-		'cy' => true,
-		'r'	 => true,
-	),
-	'use'	 => array(
-		'href'		 => true,
-		'xlink:href' => true
-	),
-);
-const EMULSION_EXCERPT_ALLOWED_ELEMENTS = array(
-	'p'	 => array(
-		'data-rows'	 => true,
-		'class'		 => true,
-		'span'		 => true
-	),
-	'br' => array(),
-	'div' => array(
-		'class' => true,
-	),
-	'blockquote' => array(
-		'cite' =>array(),
-		'class' => array(),
-	)
-);
-
-const EMULSION_POST_META_DATA_ALLOWED_ELEMENTS = array(
-	/* posted on */
-	'a'		 => array(
-		'href'		 => true,
-		'class'		 => true,
-		'rel'		 => true,
-		'data-title' => true,
-		'title'		 => true,
-	),
-	'time'	 => array(
-		'datetime'	 => true,
-		'class'		 => true,
-	),
-	'span'	 => array(
-		'class' => true,
-	),
-	'div'	 => array(
-		'class' => true,
-	),
-	'img'	 => array(
-		'class'	 => true,
-		'src'	 => true,
-		'width'	 => true,
-		'height' => true,
-		'alt'	 => true,
-	),
-	'ul'	=> array(
-		'class' => true,
-	),
-	'li'	=> array(
-		'class' => true,
-	),
-);
-/**
- * Theme wp_kses_post allowed tag and attribute
- * filter page_menu_link_attributes
- * @since 1.0.0
- */
-
-add_filter( "wp_kses_allowed_html", function( $allowedposttags, $context ) {
-
-	if ( $context == "post" ) {
-
-		$emulsion_allowed_tag	 = array(
-			'a'		 => array(
-				'href'				 => true,
-				'rel'				 => true,
-				'rev'				 => true,
-				'name'				 => true,
-				'target'			 => true,
-				'download'			 => array(
-					'valueless' => 'y',
-				),
-				'aria-current'		 => true,
-				'data-no-instant'	 => true,
-
-			),
-			'time'	 => array(
-				'class'		 => true,
-				'datetime'	 => true,
-			),
-			'img'	 => array(
-				'aria-hidden' => true,
-				'alt'		 => true,
-				'align'		 => true,
-				'border'	 => true,
-				'decoding'	 => true,
-				'height'	 => true,
-				'hspace'	 => true,
-				'loading'	 => true,
-				'longdesc'	 => true,
-				'vspace'	 => true,
-				'src'		 => true,
-				'usemap'	 => true,
-				'width'		 => true,
-
-			),
-		);
-		$emulsion_allowed_tag	 = array_map( '_wp_add_global_attributes', $emulsion_allowed_tag );
-
-		return array_merge( $allowedposttags, $emulsion_allowed_tag );
-	}
-
-	return $allowedposttags; }, 99, 2 );
-
 /**
  * test
  * List of judgment tests for emulsion_color_value_validate.
@@ -1424,7 +1238,7 @@ function emulsion_theme_color_palette_varidate( $input ) {
 
 function emulsion_common_google_font_url_validate( $input ) {
 
-	if ( 'fonts.googleapis.com' !== parse_url( $input, PHP_URL_HOST ) ) {
+	if ( 'fonts.googleapis.com' !== wp_parse_url( $input, PHP_URL_HOST ) ) {
 		return '';
 	}
 	if ( ! wp_http_validate_url( $input ) ) {
@@ -1435,7 +1249,7 @@ function emulsion_common_google_font_url_validate( $input ) {
 
 function emulsion_heading_google_font_url_validate( $input ) {
 
-	if ( 'fonts.googleapis.com' !== parse_url( $input, PHP_URL_HOST ) ) {
+	if ( 'fonts.googleapis.com' !== wp_parse_url( $input, PHP_URL_HOST ) ) {
 		return '';
 	}
 	if ( ! wp_http_validate_url( $input ) ) {
@@ -1447,7 +1261,7 @@ function emulsion_heading_google_font_url_validate( $input ) {
 
 function emulsion_widget_meta_google_font_url_validate( $input ) {
 
-	if ( 'fonts.googleapis.com' !== parse_url( $input, PHP_URL_HOST ) ) {
+	if ( 'fonts.googleapis.com' !== wp_parse_url( $input, PHP_URL_HOST ) ) {
 		return '';
 	}
 	if ( ! wp_http_validate_url( $input ) ) {

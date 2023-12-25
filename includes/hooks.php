@@ -6,7 +6,7 @@ function emulsion_addons_hooks_setup() {
 
  ! class_exists( 'WP_List_Table' ) ? require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' ) : '';
 
-
+/*
 	if ( function_exists( 'emulsion_is_plugin_active' ) && function_exists('emulsion_set_wp_scss_options') && emulsion_is_plugin_active( 'wp-scss/wp-scss.php' ) && 'active' !== get_theme_mod( 'emulsion_wp_scss_status', false ) ) {
 
 		//When you switch themes, cooperation with wp-scss may be canceled, and if the plugin is active, cooperate.
@@ -25,25 +25,14 @@ function emulsion_addons_hooks_setup() {
 	if ( 'active' !== $wp_scss_status ) {
 		add_action( 'wp_ajax_emulsion_tiny_mce_css_variables', 'emulsion_tiny_mce_css_variables_callback' );
 	}
+ *
+ */
 
-
-	add_filter( 'emulsion_inline_style', 'emulsion_plugins_style_change_inline' );
-	add_action( 'edit_post_link', 'emulsion_custom_gutenberg_edit_link', 10, 3 );
-	function_exists( 'emulsion_customizer_add_supports_excerpt' ) ? add_action( 'emulsion_template_pre_index', 'emulsion_customizer_add_supports_excerpt' ) : '';
-	add_action( 'init', 'emulsion_plugins' );
-	add_action( 'customize_save_after', 'emulsion_customizer_is_changed' );
-	add_filter( 'wp_resource_hints', 'emulsion_resource_hints', 10, 2 );
 	add_filter( 'emulsion_inline_style', 'emulsion_styles' );
 	add_filter( 'wp_list_categories', 'emulsion_category_link_format', 10, 2 );
 	function_exists( 'emulsion_keyword_with_mark_elements_title' ) && ! is_admin() ? add_filter( 'the_title', 'emulsion_keyword_with_mark_elements_title', 99999 ) : '';
 	function_exists( 'emulsion_keyword_with_mark_elements' ) && ! is_admin() ? add_filter( 'the_content', 'emulsion_keyword_with_mark_elements', 99999 ) : '';
 
-
-	'theme' == get_theme_mod( 'emulsion_editor_support', 'theme' ) ? add_filter( 'get_the_excerpt', 'emulsion_get_the_excerpt_filter', 10, 2 ): '';
-	'theme' == get_theme_mod( 'emulsion_editor_support', 'theme' ) ? add_filter( 'wp_trim_excerpt', 'emulsion_cjk_excerpt' ): '';
-
-
-	add_filter( 'embed_oembed_html', 'emulsion_oembed_filter', 99, 4 );
 	add_filter( 'get_archives_link', 'emulsion_archive_link_format', 10, 6 );
 	add_filter( 'the_content_more_link', 'emulsion_read_more_link' );
 	add_filter( 'emulsion_footer_text', 'capital_P_dangit', 11 );
@@ -51,43 +40,13 @@ function emulsion_addons_hooks_setup() {
 	add_filter( 'emulsion_footer_text', 'convert_smilies', 20 );
 	add_filter( 'emulsion_footer_text', 'wpautop' );
 	add_filter( 'do_shortcode_tag', 'emulsion_shortcode_wrapper', 10, 4 );
-
-	add_filter( 'the_excerpt_embed', 'emulsion_the_excerpt_embed', 99 );
-	add_filter( 'excerpt_length', 'emulsion_excerpt_length', 99 );
 	add_filter( 'admin_body_class', 'emulsion_admin_body_class' );
-	add_filter( 'body_class', 'emulsion_brightness_class', 15 );
-
+	//add_filter( 'body_class', 'emulsion_brightness_class', 15 );
 	add_filter( 'body_class', 'emulsion_addons_body_class' );
-
 	add_filter( 'dynamic_sidebar_params', 'emulsion_footer_widget_params' );
 	add_filter( 'post_class', 'emulsion_add_woocommerce_class_to_post' );
-	add_filter( 'emulsion_hover_color', 'emulsion_hover_color_filter' );
-
-	//'experimental' === get_theme_mod( 'emulsion_editor_support' ) ? add_action( 'admin_bar_menu', 'emulsion_admin_bar_menu' ): '';
-
-
-	add_filter( 'theme_mod_background_image', 'emulsion_bg_img_display_hide_post_editor' );
-
-
-	add_filter( 'emulsion_the_header_layer_class', 'emulsion_addons_the_header_layer_class' );
-	add_filter( 'emulsion_get_month_link', 'emulsion_addons_get_month_link' );
-	add_filter( 'emulsion_get_post_meta_on', 'emulsion_addons_get_post_meta_on', 11 );
-	add_filter( 'emulsion_the_post_meta_in', 'emulsion_addons_the_post_meta_in' );
-	add_filter( 'emulsion_the_post_title', 'emulsion_addons_the_post_title' );
-	add_filter( 'emulsion_site_text_markup_self', 'emulsion_addons_site_text_markup' );
-	add_filter( 'emulsion_site_text_markup', 'emulsion_addons_site_text_markup' );
-	add_filter( 'emulsion_the_site_title', 'emulsion_addons_the_site_title' );
-
-	add_filter( 'the_excerpt', 'emulsion_addons_excerpt' );
-	add_filter( 'the_password_form', 'emulsion_password_form' );
-	add_filter( 'emulsion_current_layout_type', 'emulsion_addons_current_layout_type' );
-	add_filter( 'theme_mod_emulsion_header_layout', 'emulsion_header_layout_validate' );
-
-	add_filter( 'emulsion_is_display_featured_image_in_the_loop', 'emulsion_addons_is_display_featured_image_in_the_loop' );
-	add_filter( 'emulsion_inline_script', 'emulsion_description' );
 
 	! empty(get_theme_mod('emulsion_header_html') ) ? add_filter( 'theme_mod_emulsion_header_html', 'apply_shortcodes' ): '';
-
 	add_action( 'wp_footer', 'emulsion_addons_google_tracking_code', 99 );
 }
 
@@ -105,52 +64,6 @@ if ( ! function_exists( 'emulsion_test_for_min_php' ) ) {
 
 }
 
-if ( ! function_exists( 'emulsion_plugins_style_change_inline' ) ) {
-
-	function emulsion_plugins_style_change_inline( $css ) {
-		global $wp_style;
-
-		$add_css = '';
-
-		if ( is_page() && false == emulsion_metabox_display_control( 'page_style' ) ) {
-
-			return;
-		}
-		if ( is_single() && false == emulsion_metabox_display_control( 'style' ) ) {
-
-			return;
-		}
-		if ( ! emulsion_the_theme_supports( 'enqueue' ) ) {
-
-			return;
-		}
-		if ( is_user_logged_in() || is_admin() ) {
-
-			return $css;
-		}
-
-		return $css;
-	}
-
-}
-if ( ! function_exists( 'emulsion_resource_hints' ) ) {
-
-	function emulsion_resource_hints( $urls, $relation_type ) {
-
-		if ( ( wp_style_is( 'common-google-font', 'queue' ) ||
-				wp_style_is( 'heading-google-font', 'queue' ) ||
-				wp_style_is( 'widget-meta-google-font', 'queue' ) ) && 'preconnect' === $relation_type ) {
-
-			$urls[] = array(
-				'href' => 'https://fonts.googleapis.com/',
-				'crossorigin',
-			);
-		}
-
-		return $urls;
-	}
-
-}
 if ( ! function_exists( 'emulsion_tiny_mce_css_variables_callback' ) ) {
 
 	function emulsion_tiny_mce_css_variables_callback() {
@@ -275,56 +188,6 @@ if ( ! function_exists( 'emulsion_read_more_link' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_custom_gutenberg_edit_link' ) ) {
-
-	/**
-	 * Identify posts edited in the classic editor and posts edited in the block editor.
-	 *
-	 * Classic editor Plug-in dependent function
-	 *
-	 * @param type $link
-	 * @param type $post_id
-	 * @param type $text
-	 * @return type
-	 */
-	function emulsion_custom_gutenberg_edit_link( $link, $post_id, $text ) {
-
-		if( is_multisite() || ! class_exists( 'Classic_Editor') ) {
-
-			return $link;
-		}
-
-		$which				 = get_post_meta( $post_id, 'classic-editor-remember', true );
-		$allow_users_option	 = get_option( 'classic-editor-allow-users' );
-
-		$emulsion_disallow_old_post_open_classic_editor = apply_filters( 'emulsion_disallow_old_post_open_classic_editor', false );
-
-		if ( 'allow' == $allow_users_option ) {
-
-			if ( ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) && 'classic-editor' == $which ) {
-
-				$gutenberg_action = sprintf(
-						'<a href="%1$s" class="skin-button">%2$s</a>', esc_url( add_query_arg(
-										array( 'post' => $post_id, 'action' => 'edit', 'classic-editor' => '', 'classic-editor__forget' => '' ), admin_url( 'post.php' )
-						) ), esc_html__( 'Classic Editor', 'emulsion-addons' ) );
-
-				return $gutenberg_action;
-			}
-		}
-		if ( ( current_user_can( 'edit_posts' ) || current_user_can( 'edit_pages' ) ) && ! metadata_exists( 'post', $post_id, 'classic-editor-remember' ) && ! $emulsion_disallow_old_post_open_classic_editor ) {
-
-			$gutenberg_action = sprintf(
-					'<a href="%1$s" class="skin-button">%2$s</a>', esc_url( add_query_arg(
-									array( 'post' => $post_id, 'action' => 'edit', 'classic-editor' => '', 'classic-editor__forget' => '' ), admin_url( 'post.php' )
-					) ), esc_html__( 'Classic Editor', 'emulsion-addons' ) );
-
-			return $gutenberg_action;
-		}
-
-		return $link;
-	}
-
-}
 
 if ( ! function_exists( 'emulsion_shortcode_wrapper' ) ) {
 
@@ -361,41 +224,6 @@ if ( ! function_exists( 'emulsion_shortcode_wrapper' ) ) {
 		$output = sprintf( '<%3$s class="shortcode-wrapper wrap-%2$s">%1$s</%3$s>', $output, $tag_class, $element );
 
 		return $output;
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_the_excerpt_embed' ) ) {
-
-	/**
-	 * The summary sentence is displayed in five lines.
-	 * @param type $excerpt_text
-	 * @since 1.09 line nuber changed from 2 to 5
-	 */
-	function emulsion_the_excerpt_embed( $excerpt_text ) {
-
-
-		$excerpt_text = strip_tags( $excerpt_text );
-
-		printf( '<p style="font-size:13px;max-height:calc(1em * 1.5 * 5);overflow:hidden;">%1$s</p>', wp_kses_post( $excerpt_text ) );
-	}
-
-}
-
-if ( ! function_exists( 'emulsion_excerpt_length' ) ) {
-
-	/**
-	 * get excerpt length
-	 * @param type $length
-	 * @return type
-	 */
-	function emulsion_excerpt_length( $length ) {
-
-		$length = get_theme_mod( 'emulsion_excerpt_length', 256 );
-
-		return absint( $length );
 	}
 
 }
@@ -516,7 +344,7 @@ if ( ! function_exists( 'emulsion_styles' ) ) {
 		$style	 .= emulsion_smart_category_highlight( '' );
 		$style	 .= emulsion_adminbar_css( '' );
 
-		$style	 .= emulsion_widget_meta_font_css( '' );
+		//$style	 .= emulsion_widget_meta_font_css( '' );
 		$style	 .= emulsion_block_latest_posts_excerpt( '' );
 
 		if( is_user_logged_in() && function_exists('emulsion__css_variables')) {
@@ -826,197 +654,7 @@ CSS;
 	}
 
 }
-if ( ! function_exists( 'emulsion_widget_meta_font_css' ) ) {
 
-	function emulsion_widget_meta_font_css( $css ) {
-
-		$pre_filter = apply_filters ( 'emulsion_widget_meta_font_css_pre', false );
-
-		if( false !== $pre_filter  ) {
-
-			return $css. $pre_filter;
-		}
-
-
-		if( function_exists( 'emulsion_inline_style_load_controller' ) && emulsion_inline_style_load_controller( __FUNCTION__ ) ) {
-
-			return $css;
-		}
-
-		$transient_name = __FUNCTION__;
-
-		if ( is_customize_preview() ) {
-
-			delete_transient( $transient_name );
-		}
-
-		$transient_val = get_transient( $transient_name );
-
-		if ( false !== ( $transient_val ) && ! is_user_logged_in() ) {
-
-			return $css . $transient_val;
-		}
-
-		$inline_style = emulsion_sanitize_css( $css );
-		if ( function_exists( 'emulsion_get_var' ) ) {
-			$font_google_family_url	 = get_theme_mod( 'emulsion_widget_meta_google_font_url', emulsion_get_var( 'emulsion_widget_meta_google_font_url' ) );
-			$fallback_font_family	 = get_theme_mod( 'emulsion_widget_meta_font_family', emulsion_get_var( 'emulsion_widget_meta_font_family' ) );
-			$font_size				 = get_theme_mod( 'emulsion_widget_meta_font_size', emulsion_get_var( 'emulsion_widget_meta_font_size' ) );
-			$text_transform			 = get_theme_mod( 'emulsion_widget_meta_font_transform', emulsion_get_var( 'emulsion_widget_meta_font_transform' ) );
-			$widget_title_font		 = get_theme_mod( 'emulsion_widget_meta_title', emulsion_get_var( 'emulsion_widget_meta_title' ) );
-			$common_font_size		 = get_theme_mod( 'emulsion_common_font_size', emulsion_get_var( 'emulsion_common_font_size' ) );
-		} else {
-
-			$font_google_family_url	 = emulsion_theme_default_val( 'emulsion_widget_meta_google_font_url' );
-			$fallback_font_family	 = emulsion_theme_default_val( 'emulsion_widget_meta_font_family' );
-			$font_size				 = emulsion_theme_default_val( 'emulsion_widget_meta_font_size' );
-			$text_transform			 = emulsion_theme_default_val( 'emulsion_widget_meta_font_transform');
-			$widget_title_font		 = emulsion_theme_default_val( 'emulsion_widget_meta_title' );
-			$common_font_size		 = emulsion_theme_default_val( 'emulsion_common_font_size' );
-		}
-
-
-		if ( ! empty( $font_google_family_url ) ) {
-
-			$font_family = emulsion_get_google_font_family_from_url( $font_google_family_url, $fallback_font_family );
-		} else {
-
-			$font_family = $fallback_font_family;
-		}
-
-		if ( $widget_title_font ) {
-
-			$widget_title_font_family = 'font-family:' . $font_family . ';';
-		} else {
-
-			$widget_title_font_family = '';
-		}
-
-
-		$inline_style .= <<<CSS
-
-		/* emulsion_widget_meta_font_css */
-		body .primary-menu-wrapper a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .menu-placeholder {
-		  font-size: {$common_font_size}px
-		}
-		body.emulsion-has-sidebar .template-part-widget-sidebar .sidebar-widget-area-lists {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body.emulsion-has-sidebar .template-part-widget-sidebar .sidebar-widget-area-lists li {
-		  line-height: calc({$common_font_size}px * var( --thm_content-line-height, 1.5 ));
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body.emulsion-has-sidebar .template-part-widget-sidebar .sidebar-widget-area-lists li #wp-calendar caption,
-		body.emulsion-has-sidebar .template-part-widget-sidebar .sidebar-widget-area-lists li .widgettitle {
-		  font-size: 20px;
-		  $widget_title_font_family
-		}
-		body.emulsion-has-sidebar .template-part-widget-sidebar .sidebar-widget-area-lists li a,
-		body.emulsion-has-sidebar .template-part-widget-sidebar a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .footer-widget-area.template-part-widget-footer .footer-widget-area-lists {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .footer-widget-area.template-part-widget-footer .footer-widget-area-lists li {
-		  line-height: calc({$common_font_size}px * var( --thm_content-line-height, 1.5 ));
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .footer-widget-area.template-part-widget-footer .footer-widget-area-lists li #wp-calendar caption,
-		body .footer-widget-area.template-part-widget-footer .footer-widget-area-lists li .widgettitle {
-		  font-size: 20px;
-		  $widget_title_font_family
-		}
-		body .footer-widget-area.template-part-widget-footer .footer-widget-area-lists li a,
-		body .footer-widget-area.template-part-widget-footer a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .relate-content-wrapper {
-		  font-size: {$common_font_size}px;
-		  font-family: {$font_family};
-		}
-		body .relate-content-wrapper .relate-posts-title {
-		  font-size: calc({$font_size}px * 1.4);
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body article footer {
-		  font-size: 16px;
-		}
-		body article footer .skin-button{
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .post-navigation a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body footer.banner {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .navigation.pagination .page-numbers{
-		 font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body footer.banner a {
-		  font-size: 13px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .entry-meta a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .posted-on a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body .footer-widget-area .footer-widget-area-lists a {
-		  font-size: {$font_size}px;
-		  font-family: {$font_family};
-		  text-transform: {$text_transform};
-		}
-		body.is-loop.layout-grid .entry-title {
-		  font-size: 22px;
-		}
-		body.layout-stream .entry-title {
-		  font-size: 22px;
-		}
-		body .relate-posts-title {
-		  font-size: 22px;
-		}
-CSS;
-
-		$inline_style	 = emulsion_sanitize_css( $inline_style );
-		$inline_style	 = emulsion_remove_spaces_from_css( $inline_style );
-		set_transient( $transient_name, $inline_style, 60 * 60 * 24 );
-		return $css . $inline_style;
-	}
-
-}
 
 if ( ! function_exists( 'emulsion_footer_widget_params' ) ) {
 
@@ -1045,18 +683,7 @@ if ( ! function_exists( 'emulsion_footer_widget_params' ) ) {
 	}
 
 }
-if ( ! function_exists( 'emulsion_plugins' ) ) {
 
-	function emulsion_plugins() {
-
-		if ( function_exists( 'amp_init' ) ) {
-
-			add_action( 'amp_post_template_footer', 'emulsion_svg' );
-			add_filter( 'amp_post_template_data', 'emulsion_amp_post_template_data' );
-		}
-	}
-
-}
 if ( ! function_exists( 'emulsion_amp_post_template_data' ) ) {
 
 	function emulsion_amp_post_template_data( $data ) {
@@ -1094,228 +721,6 @@ if ( ! function_exists( 'emulsion_cjk_excerpt' ) ) {
 			return wp_html_excerpt( $text, $length, '...' );
 		}
 		return $text;
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_addons_the_header_layer_class' ) ) {
-
-	/**
-	 * Header Classes
-	 * The CSS class is added by judging whether the image or video is set in the Site header.
-	 * @param type $class
-	 */
-	function emulsion_addons_the_header_layer_class( $class = '' ) {
-
-		$header_background_color		 = get_theme_mod( 'emulsion_header_background_color', emulsion_get_var( 'emulsion_header_background_color' ) );
-		$default_header_background_color = emulsion_get_var( 'emulsion_header_background_color', 'default' );
-		$has_saved_background_color		 = get_theme_mod( 'emulsion_header_background_color' );
-
-		$add_class = '';
-		if ( $default_header_background_color == $header_background_color && $has_saved_background_color == $header_background_color ) {
-
-			$add_class .= ' header-is-default-color';
-		} else {
-
-			$text_color = emulsion_contrast_color( $header_background_color );
-
-			if ( '#333333' == $text_color ) {
-
-				$add_class .= ' header-is-light';
-			}
-			if ( '#ffffff' == $text_color ) {
-
-				$add_class .= ' header-is-dark';
-			}
-		}
-
-			echo esc_html( emulsion_class_name_sanitize( $add_class . $class ) );
-
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_addons_get_month_link' ) ) {
-
-	/**
-	 * Posted on date link
-	 * datelink text date format value. link href url to month archive
-	 * Todo: Paged link not support yet, a fragment identifier not work when paged..
-	 * @return type
-	 */
-	function emulsion_addons_get_month_link() {
-
-		$type			 = get_theme_mod( 'emulsion_post_display_date_format', emulsion_get_var( 'emulsion_post_display_date_format' ) );
-		$entry_date_html = '<a href="%1$s" rel="%2$s"><%4$s class="entry-date %6$s" %5$s>%3$s</%4$s></a>';
-
-		$emulsion_post_id	 = get_the_ID();
-		$published_class	 = 'updated';
-		$archive_year		 = get_the_time( 'Y' );
-		$archive_month		 = get_the_time( 'm' );
-		$month_link			 = esc_url( get_month_link( $archive_year, $archive_month ) . '#post-' . absint( $emulsion_post_id ) );
-
-		if ( 'ago' == $type ) {
-
-			$publish_date	 = get_the_time( 'U' );
-			/* translators: %s  human_time_diff() */
-			$date_text		 = sprintf( esc_html__( '%s ago', 'emulsion-addons' ), human_time_diff( $publish_date, current_time( 'timestamp' ) ) );
-		}
-		if ( 'default' == $type ) {
-
-			$date_format = emulsion_date_format();
-			$date_text	 = get_the_date( $date_format );
-		}
-
-		$entry_date_html = sprintf( $entry_date_html, $month_link, 'date', $date_text, 'time', 'datetime="' . esc_attr( get_the_date( 'c' ) ) . '"', $published_class );
-
-		return $entry_date_html;
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_addons_get_post_meta_on' ) ) {
-
-	/**
-	 * get posted in block
-	 * @return typePost Date and Author in Article
-	 */
-	function emulsion_addons_get_post_meta_on() {
-
-		global $authordata, $post;
-
-		if ( post_password_required() ) {
-			return;
-		}
-
-
-		$html = '<div class="%6$s">
-		<span class="meta-prep meta-prep-author">
-			<span class="posted-on-string screen-reader-text">%1$s</span>
-		</span>
-		%2$s
-		<span class="meta-sep">
-			<span class="posted-by-string screen-reader-text">%3$s</span>
-		</span>
-		<span class="author vcard">%4$s</span>
-		%5$s
-	</div>';
-
-		$class	 = 'posted-on';
-		$class	 .= 'inline' == get_theme_mod( 'emulsion_post_display_date', emulsion_get_var( 'emulsion_post_display_date' ) ) ? ' has-date' : '';
-		$class	 .= 'inline' == get_theme_mod( 'emulsion_post_display_author', emulsion_get_var( 'emulsion_post_display_author' ) ) ? ' has-author' : '';
-
-		$text_posted_on	 = esc_html__( 'Posted on', 'emulsion-addons' );
-		$text_by		 = esc_html__( 'by', 'emulsion-addons' );
-		$author_url		 = get_author_posts_url( $post->post_author );
-		$author_name	 = get_the_author_meta( 'display_name', $post->post_author );
-		$format_type	 = get_theme_mod( 'emulsion_post_display_author_format', emulsion_get_var( 'emulsion_post_display_author_format' ) );
-
-		if ( 'text' == $format_type ) {
-
-			if ( is_author() ) {
-				$author = get_the_author();
-			} else {
-				// filter: the_author_posts_link
-				$author = get_the_author_posts_link();
-			}
-			if ( empty( $author ) ) {
-				//single
-				$author = sprintf( '<a href="%1$s" rel="author" class="url fn nickname">%2$s</a>', esc_url( $author_url ), esc_html( $author_name ) );
-			}
-		}
-		if ( 'inline' == $format_type ) {
-
-			$author_id	 = get_the_author_meta( 'ID' );
-			$font_size	 = get_theme_mod( 'emulsion_widget_meta_font_size', emulsion_get_var( 'emulsion_widget_meta_font_size' ) );
-			$avator_size = (int) $font_size * 1.5;
-			$author		 = get_avatar( $author_id, $avator_size );
-			$author		 = sprintf( '<a href="%1$s" rel="author" class="url fn nickname">%2$s<span class="screen-reader-text">%3$s</span></a>', esc_url( $author_url ), $author, $author_name );
-			$class		 .= ' avatar-inline';
-		}
-		if ( 'block' == $format_type ) {
-
-			$author_id	 = get_the_author_meta( 'ID' );
-			$author		 = get_avatar( $author_id );
-			$author		 = sprintf( '<a href="%1$s" rel="author" class="url fn nickname">%2$s<span class="screen-reader-text">%3$s</span></a>', esc_url( $author_url ), $author, $author_name );
-			$class		 .= ' avatar-block';
-		}
-
-
-		$emulsion_post_id	 = get_the_ID();
-		$comment_link		 = '';
-
-		if ( false !== $emulsion_post_id && comments_open( $emulsion_post_id ) ) {
-
-			$comment_link = wp_kses( emulsion_comment_link(), EMULSION_POST_META_DATA_ALLOWED_ELEMENTS );
-		}
-
-		$entry_month_html = wp_kses( emulsion_get_month_link(), EMULSION_POST_META_DATA_ALLOWED_ELEMENTS );
-
-		$result = sprintf( $html, $text_posted_on, $entry_month_html, $text_by, $author, $comment_link, $class );
-
-		return $result;
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_addons_the_post_meta_in' ) ) {
-
-	/**
-	 * Santize Posted in block and filter
-	 * @return type
-	 */
-	function emulsion_addons_the_post_meta_in( $html ) {
-
-		return wp_kses( $html, EMULSION_POST_META_DATA_ALLOWED_ELEMENTS );
-	}
-
-}
-
-
-
-if ( ! function_exists( 'emulsion_addons_the_post_title' ) ) {
-
-	/**
-	 * Print post title
-	 * @see emulsion_get_post_title()
-	 * filter: emulsion_the_post_title
-	 */
-	function emulsion_addons_the_post_title( $title ) {
-
-		echo wp_kses_post( $title );
-	}
-
-}
-
-
-if ( ! function_exists( 'emulsion_addons_site_text_markup' ) ) {
-
-	function emulsion_addons_site_text_markup( $html ) {
-
-		return wp_kses_post( $html );
-	}
-
-}
-
-
-if ( ! function_exists( 'emulsion_addons_the_site_title' ) ) {
-
-	/**
-	 * Print site title
-	 * @see emulsion_get_site_title()
-	 * filter: emulsion_the_site_title
-	 */
-	function emulsion_addons_the_site_title( $html ) {
-
-		return wp_kses_post( $html );
 	}
 
 }
@@ -1370,40 +775,6 @@ if ( ! function_exists( 'emulsion_addons_current_layout_type' ) ) {
 }
 
 
-
-if ( ! function_exists( 'emulsion_addons_is_display_featured_image_in_the_loop' ) ) {
-
-	/**
-	 * Show post image in each loop pages ( archive ...)
-	 * @return boolean
-	 */
-	function emulsion_addons_is_display_featured_image_in_the_loop( $bool ) {
-
-		if ( is_home() ) {
-			return get_theme_mod( 'emulsion_layout_homepage_post_image', emulsion_get_var( 'emulsion_layout_homepage_post_image' ) ) == 'show';
-		}
-		if ( emulsion_is_posts_page() ) {
-			return get_theme_mod( 'emulsion_layout_posts_page_post_image', emulsion_get_var( 'emulsion_layout_posts_page_post_image' ) ) == 'show';
-		}
-		if ( is_date() ) {
-			return get_theme_mod( 'emulsion_layout_date_archives_post_image', emulsion_get_var( 'emulsion_layout_date_archives_post_image' ) ) == 'show';
-		}
-		if ( is_category() ) {
-			return get_theme_mod( 'emulsion_layout_category_archives_post_image', emulsion_get_var( 'emulsion_layout_category_archives_post_image' ) ) == 'show';
-		}
-		if ( is_tag() ) {
-			return get_theme_mod( 'emulsion_layout_tag_archives_post_image', emulsion_get_var( 'emulsion_layout_tag_archives_post_image' ) ) == 'show';
-		}
-		if ( is_author() ) {
-			return get_theme_mod( 'emulsion_layout_author_archives_post_image', emulsion_get_var( 'emulsion_layout_author_archives_post_image' ) ) == 'show';
-		}
-		if ( is_search() ) {
-			return get_theme_mod( 'emulsion_layout_search_results_post_image', emulsion_get_var( 'emulsion_layout_search_results_post_image' ) ) == 'show';
-		}
-		return true;
-	}
-
-}
 
 add_filter( 'emulsion_metabox_display_control', 'emulsion_addons_metabox_display_control', 11, 5 );
 
@@ -1536,38 +907,6 @@ function emulsion_addons_metabox_display_control( $bool, $location, $post_id,
 	return true;
 }
 
-function emulsion_description( $script ) {
-
-	//Todo: fse theme can not support meta description
-
-//	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) ) {
-	if ( 'fse' !== get_theme_mod( 'emulsion_editor_support' ) && 'html' !== get_theme_mod( 'emulsion_header_template', emulsion_theme_default_val( 'emulsion_header_template', 'default') ) ) {
-
-		$script .= <<<SCRIPT
-	jQuery(document).ready(function ($) {
-
-    /**
-     * when not exists meta description tag, add meta description tag
-     *
-     */
-    function emulsion_get_meta(metaName) {
-        const metas = document.getElementsByTagName('meta');
-        for (let i = 0; i < metas.length; i++) {
-            if (metas[i].getAttribute('name') === metaName) {
-                return metas[i].getAttribute('content');
-            }
-        }
-        return '';
-    }
-    if ('' == emulsion_get_meta('description') && 'none' !== emulsion_script_vars.meta_description) {
-        $("head").append('<meta name="description" content="' + emulsion_script_vars.meta_description + '" />');
-    }
-});
-SCRIPT;
-	}
-
-	return $script;
-}
 
 function emulsion_addons_google_tracking_code() {
 

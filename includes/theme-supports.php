@@ -10,11 +10,7 @@ emulsion_add_supports( 'theme_documents' );
 emulsion_add_supports( 'enqueue' );
 
 emulsion_add_supports( 'primary_menu' );
-/**
- * Search drawer
- */
-emulsion_add_supports( 'search_drawer' );
-//get_theme_mod( 'emulsion_search_drawer', emulsion_get_var( 'emulsion_search_drawer' ) ) == 'disable' ? emulsion_remove_supports( 'search_drawer' ) : '';
+
 
 /**
  * Search keyword highlight
@@ -36,7 +32,6 @@ emulsion_add_supports( 'metabox' );
 /**
  * Footer
  */
-//emulsion_add_supports( 'footer', array( 'cols' => 4 ) );
 emulsion_add_supports( 'footer' );
 emulsion_add_supports( 'footer_page' );
 //emulsion_customizer_add_supports_footer();
@@ -53,7 +48,7 @@ emulsion_add_supports( 'alignfull' );
 /**
  * Title
  */
-emulsion_add_supports( 'title_in_page_header' );
+//emulsion_add_supports( 'title_in_page_header' );
 //get_theme_mod( 'emulsion_title_in_header', emulsion_get_var( 'emulsion_title_in_header' ) ) == 'no' ? emulsion_remove_supports( 'title_in_page_header' ) : '';
 
 /**
@@ -80,8 +75,6 @@ emulsion_add_supports( 'header', array(
 	),
 		)
 );
-
-//get_theme_mod( 'emulsion_page_header', emulsion_get_var( 'emulsion_page_header' ) ) == 'remove' ? emulsion_remove_supports( 'header' ) : '';
 
 /**
  * Background
@@ -112,19 +105,14 @@ emulsion_add_supports( 'excerpt' );
  * relate posts
  */
 emulsion_add_supports( 'relate_posts' );
-//get_theme_mod( 'emulsion_relate_posts', emulsion_get_var( 'emulsion_relate_posts' ) ) == 'disable' ? emulsion_remove_supports( 'relate_posts' ) : '';
-
 /**
  * Tooltip
  */
 emulsion_add_supports( 'tooltip' );
-//get_theme_mod( 'emulsion_tooltip', emulsion_get_var( 'emulsion_tooltip' ) ) == 'disable' ? emulsion_remove_supports( 'tooltip' ) : '';
-
 /**
  * AMP
  */
 emulsion_add_supports( 'amp' ); //https://wordpress.org/plugins/amp/
-
 /**
  * utility
  */
@@ -155,18 +143,9 @@ emulsion_add_supports( 'viewport' );
  */
 emulsion_add_supports( 'TGMPA' );
 
-//! emulsion_is_user_logged_in() 後で検証
-if ( ! is_admin() && ! is_customize_preview() && empty( $_GET ) ) {
 
-	emulsion_add_supports( 'instantclick' );
-	//get_theme_mod( 'emulsion_instantclick', emulsion_get_var( 'emulsion_instantclick' ) ) == 'disable' ? emulsion_remove_supports( 'instantclick' ) : '';
-
-	emulsion_add_supports( 'lazyload' );
-	//get_theme_mod( 'emulsion_lazyload', emulsion_get_var( 'emulsion_lazyload' ) ) == 'disable' ? emulsion_remove_supports( 'lazyload' ) : '';
-}
 
 if ( ! function_exists( 'amp_init' ) ) {
-
 	emulsion_remove_supports( 'amp' );
 }
 /**
